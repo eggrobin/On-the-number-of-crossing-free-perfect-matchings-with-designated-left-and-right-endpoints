@@ -9,8 +9,10 @@
 \usepackage[Mathematics]{semtex}
 
 %%%% Shorthands.
-\newcommand\CAT[1]{\operatorname{CAT}\pa{#1}}
 \newcommand{\idest}{\emph{, i.e.\ }}
+
+\DeclareMathOperator{\cells}{cells}
+\DeclareMathOperator{\spc}{spc}
 
 %%%% Title and authors.
 
@@ -100,12 +102,13 @@ to the point corresponding with the matching closing parenthesis.
 
 Define $l(m)$ for a perfect matching $m$ on $P$ to be the sum of the lengths of the edges of $m$.
 
+\marginfig[\label{figUncrossing}Uncrossing in a left-right perfect matching.]{TODO}
 Then, repeat the following procedure, starting at $k=0$.
 If there is no crossing in $m_k$, we have found a perfect matching with the desired properties.
 If there is a crossing, let $a$, $b$, $c$, and $d$ be the points involved, so that the edge
 $ab$ crosses the edge $cd$. Remove these edges, and replace them by $ad$ and $cb$
 (thus ``uncrossing'' them). This yields another perfect matching $m_{k+1}$. By the triangle
-inequality (see figure [TODO FIGURE]), $l(m_{k+1})<l(m_k)$. 
+inequality (see figure \ref{figUncrossing}), $l(m_{k+1})<l(m_k)$.
 
 If this did not terminate, it would yield a sequence $m$ of crossing perfect matchings on $P$ on
 which $l$ is strictly decreasing, thus an infinite sequence of graphs on $P$.
@@ -125,6 +128,9 @@ Moreover, this lower bound is optimal, since it is attained if $P$ is in convex 
 classes thereof to get an upper bound on perfect matchings]
 
 \section{Matchings across a line}
+TODO rewrite this with $n$ points in total, and maybe name $n/2$, otherwise this is going to be inconsistent
+with subsequent sections and confusing.
+
 Again we consider $2n$ points in general position with respect to the horizontal.
 
 The left-right matchings corresponding to brackets expressions with $n$ opening brackets followed
@@ -138,54 +144,215 @@ There are at most $C_n^2$ crossing-free perfect matchings across a line on $2n$ 
 respect to the horizontal.
 \begin{proof}
 Pick a vertical line that separates the left-points from the right-points; we will call it `the vertical line'.
+Further, let us call set of left-points $L$ and the set of right-points $R$.
 
-Number the left-points from left to right, and the right-points from right to left.
-A perfect matching across a line is uniquely defined by a bijection from the left-points to the right-points,
-and thus, via the numbering, by a bijection from $[n]$ to itself\idest a permutation $\gm \in S_n$.
-Now, number from bottom to top the intersections between the segments of the perfect matching and the vertical
-line.
-This yields two permutations, the left permutation $\gl$ mapping the number of a left-point to its intersection number,
-and the right permutation $gr$ mapping the number of a right-point to its intersection number. [FIGURE]
-Moreover, we have $\gm = \gl \gr^{-1}$.
+A perfect matching across a line is uniquely defined by a bijection $\FunctionSpec \gm L R$ from
+the left-points to the right-points.
+Now, number the intersections between the edges of the perfect matching and the vertical
+line from top to bottom. This yield a numbering $\FunctionSpec \gn E {[n]}$ of the edges.
+
+Define $\gl\of l \DefineAs \gn\of{e_l}$ mapping the number of a left-point to the intersection number of its
+edge, and similarly $\gr\of r \DefineAs \gn\of{e_r}$ for the right-points. We have $\gm = \gl \gr^{-1}$.
 
 The permutations $\gl$ (respectively $\gr$) determine the order in which the left points (respectively right points)
 reach the vertical line.
 
-If the matching is crossing-free, we will show that $\gl$ and $\gr$ have to be in sets of size $C_n$, and thus
-that $\gm = \gl \gr^{-1}$ can take at most $C_n^2$ values\idest that there can be at most $C_n^2$ perfect matchings
-across a line.
+The idea of the proof is as follows: if the matching is crossing-free, we will show that
+$\gl$ and $\gr$ have to be in sets of size $C_n$, thus that $\gm = \gl \gr^{-1}$ can take at most
+$C_n^2$ values\idest that there can be at most $C_n^2$ perfect matchings across a line.
 
-[REWORD THE PART BELOW, NAME THE SET TO WHICH $\gl$ BELONGS]
+Since we are going to reuse these concepts in subsequent proofs, we will formalize and name the properties of
+$\gl$ and $\gr$ that we will consider. A bijection from a set of left-points $\gL$ to $[\Cardinality \gL]$
+that can be constructed by numbering from top to bottom the intersections of the edges incident to $\gL$ with a
+vertical line to the right of $\gL$ is called a \emph{crossing-free left-alignment of $\gL$}. Correspondingly, for
+right-points, we define a \emph{crossing-free right-alignment}.
+\marginfig[A crossing-free left-alignment]{TODO}
 
-To constrain $\gl$ (the same argument holds for $\gr$ with left and right reversed), we look only at the left-points
-and the vertical line, and we note that the value of
-$\gl(1)$\idest the index of the crossing of the vertical line the edge $e_1$ of the leftmost point,
-is equal to one plus the number of points that are below $e_1$. Indeed, the edges of points above $e_1$ must
-themselves reach the vertical line above $e_1$, otherwise they would cross $e_1$, and correspondingly for
-points below $e_1$, so that there are as many edges reaching the vertical line below $e_1$ as there are points
-below $e_1$.
+If we have a crossing-free perfect matching across a line, then $\gl$ as constructed above is a crossing-free
+left-alignment of $L$, and $\gr$ is a crossing-free right-alignment of $R$.
 
-Moreover, as the angle of $e_1$ increases, points are only added to the set of points below $e_1$, so that choosing
-the number of points below $e_1$ determines the sets of points below and above $e_1$.
+\begin{lemma}
+There are at most $C_n$ crossing-free left-alignments of $n$ points.
+\begin{proof}
+Let $l$ be the leftmost point of a set of $L$ of $n$ left-points, and let $\gl$ be a crossing-free
+left-alignment of $L$.
 
-Additionally, since points above $e_1$ must reach the line above $e_1$ and correspondingly for points below,
-if the point numbered $k$ is above $e_1$, then $\gl(k) > \gl(1)$, and if it is below, $\gl(k) < \gl(1)$.
-$\gl$ restricted do the points above and below $e_1$ thus yields bijections from the points
-below $e_1$ to $[1, \gl(1) - 1] \Intersection \Z$, and from the points above to $[\gl(1) + 1, n]$.
-Renumbering, those are permutations on $\gl(1) - 1$ and $n-\gl(1)$ elements, respectively, and they are
-defined as $\gl$ itself was, by the edges.
+$\gl(l)$\idest the index of the crossing of the vertical line the edge $e_l$ of the leftmost point,
+is equal to one plus the number of points that are above $e_l$. Indeed, the edges of points above $e_l$ must
+themselves reach the vertical line above $e_l$, otherwise they would cross $e_l$, and correspondingly for
+points below $e_l$, so that there are as many edges reaching the vertical line below $e_l$ as there are points
+below $e_l$.
 
-Thus, having chosen $i = \gl(1) - 1$ we can choose independently in the same way the permutation of the $\gl(1) - 1$,
-points below and that of the $n - \gl(1)$ points above $e_1$; this yields a recurrence for an upper bound on
-the number $\varpi_n$ of permutations $\gl$ on $n$ points that can be obtained without crossings,
-\[\varpi_k\leq\sum{i=0}[k]\varpi_{i}\varpi_{n-i-1}\text,\]
-where $\varpi_0 = 1$. With equality, this is the recurrence for the Catalan numbers, thus
-$\varpi_k\leq C_k$.
+Moreover, as the oriented angle between $e_l$ and the horizontal increases, points are only added to the
+set of points below $e_l$, so that choosing the number of points below $e_l$ determines the sets of points
+below and above $e_l$.
+
+Further, since points above $e_l$ must reach the line above $e_l$ and correspondingly for points below,
+if the point $p$ is above $e_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus,
+$\gl$ restricted do the points above $e_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
+$e_l$, and $\gl-\gl(l)$ is a crossing-free left-alignment of the $n - \gl(l)$ points below $e_l$.
+
+Thus, $\gl$ is determined by the choice of $i \DefineAs \gl(l) - 1$ and crossing-free left-alignments
+of $i$ and $n-i-i$ points. It follows that if $\varpi_k$ is a bound for the number of crossing-free
+left-alignments of $k$ points when $k < n$,
+we can give a bound on the number of crossing-free left-alignments of $n$ points,
+\[\varpi_n\DefineAs\sum{i=0}[k]\varpi_{i}\varpi_{n-i-1}\text.\]
+We can start the recurrence with $\varpi_0 = 1$; this is the recurrence for the Catalan numbers, thus
+$\varpi_k=C_k$.
+\end{proof}
+\end{lemma}
+The same result holds for right-alignments, completing the proof.
 \end{proof}
 \end{theorem}
-
-\section{Overcounting in the upper bounds for matchings across a line}
+\section{Analysing the overcounting in the upper bound for matchings across a line}
 \section{Highly convex matchings across a line}
+\section{Three changes of bracket direction}
+We now consider left-right matchings corresponding to bracket expressions which have three
+changes of bracket directions\idest bracket expressions of the form
+$\langle\dotsb\langle\rangle\dotsb\rangle\langle\dotsb\langle\rangle\dotsb\rangle$,
+$k$ opening brackets, $l$ closing brackets, $q$ opening brackets, $p$ closing brackets, where
+$k-l=p-q\geq 0$ and $k+l+p+q\DefinitionOf n$.
+
+In term of points, this means that four sets can be separated by vertical lines, from left
+to right, $k$ left-points forming the set $K$, $l$ right-points forming $L$, $q$ left-points
+forming $Q$, ad $p$ right-points forming $P$.
+We pick a vertical line separating $K$ and $L$ and call it ``the left line'', and we pick
+a vertical line separating $P$ and $Q$ and call it ``the right line''
+
+Given a crossing-free perfect matching on those points, numbering from top to bottom the
+intersections between edges incident to the points of $K$ and and the left line,
+we get a crossing-free left-alignment of $K$. $k-l$ of the $k$ edges on this vertical
+line are incident to points in $P$; the other $l$ are incident to points in $L$.
+Numbering those $l$ edges yields a crossing-free right-alignment $\gl$ of $L$.
+
+Similarly on the right side, we get a crossing-free right-alignment of $\gp$ of $P$,
+numbering the subset of edges incident to a point in $P$ and a point in $Q$, we get a
+left-alignment $\gq$ of $q$.
+\marginfig[Four crossing-free alignments.]{TODO}
+
+The matching is uniquely determined by $\gk$, $\gp$, the choice of
+the $k-l$ among $k$ points and $k-l=p-q$ among $p$ points that get matched to each other,
+and by $\gl$ and $\gq$, which gives the following bound for the number of these matchings:\[
+C_k \binom k l C_l C_q \binom p q C_p\text.\]
+
+[TODO give the asymptotics of this here; it's not so good, but it motivates the improvements below]
+
+We can however improve upon that bound: indeed, once $\gk$, $\gp$, and the set of points
+of $K$ matched to $P$ are fixed, the edges of the matching that cross both the left line
+and the right line---let us call these ``long edges''---are determined. As a result,
+the region between the left line and the
+right line is partitioned in trapezoidal cells, and the portion of any edge from $K$ to $L$ and
+from $P$ to $Q$ that lies between the left line and the right line is confined to a
+single of those cells. It follows that $\gl$ is composed of crossing-free
+right-alignments the of subsets of $L$ separated by the long edges, and similarly for $\gq$
+with subsets of $Q$.
+\marginfig[Splitting the middle two crossing-free alignments.]{TODO}
+
+Let us look at the edges crossing the left line (the same argument applies to the right line),
+numbered from top to bottom: $k-l$ of those are
+long edges, let $S \Subset [k]$ be their numbers; in between two long edges, above the first
+long edge, and below the last one, we have the edges that define the crossing-free right-alignments
+that make up $\gl$. It follows that a crossing-free right-alignment of $m$ points that makes up
+$\gl$ corresponds to a maximal sequence of $m$ consecutive elements of $[k] \setminus S$.
+
+We will call the set of maximal sequences of consecutive elements of $S'$ the \emph{cells} of
+$S'$, written $\cells\of{S'}$.
+
+[TODO what have I done with that binomial? it is stupidly large]
+
+Then, we can improve the $\binom k l C_l$ factor in the bound (in which the binomial comes from
+the choice of the long edges amongst the $k$ edges on the left line, and the Catalan number comes
+from the choice of $\gl$), summing over the choices of the long edges (and thus of $S$ above).
+The improved factor becomes\[
+\spc\of{k, l}\DefineAs
+\sum{S\in\binom{[k]}{k-l}} \quad \prod{c\in\cells\of{[k] \setminus S}}C_{\Cardinality c} =
+\sum{S'\in\binom{[k]}{l}} \quad \prod{c\in\cells\of{S'}}C_{\Cardinality c}\text,
+\]
+and the overall bound becomes\[
+C_k\spc\of{k, l}\spc\of{p, q}C_p\text.
+\]
+
+In order to compute $\spc$ efficiently, and eventually, get its asymptotics, it is useful to get rid
+of the $\cells$ function. We can express $\spc$ as a recurrence instead.
+First, we note that $\spc\of{k,k} = C_k$: there is only one summand, $S'$ is the whole set, so
+it has only one cell, namely itself.
+Otherwise, $k-l\geq 1$; in the sum over the $S$, consider the greatest element $j$ of $S$, which is at least
+$k-l$, and split the sum over that,
+\[\spc\of{k, l} = \sum{j=k-l}[k]
+\sum{\substack{S\in\binom{[k]}{k-l} \\ j=\max S}} \quad
+\prod{c\in\cells\of{[k] \setminus S}}C_{\Cardinality c}\text.
+\]
+For fixed $j$, all summands (of the sum over $S$) will have a factor
+with $c=\set{j+1,\dotsc,k}$, and thus a factor of
+$C_{k-j}$. Factoring out this $C_{k-j}$, we get
+\[\spc\of{k, l} = \sum{j=k-l}[k]
+C_{k-j} \quad
+\sum{\substack{S\in\binom{[k]}{k-l} \\ j=\max S}} \quad
+\prod{\substack{c\in\cells\of{[k] \setminus S} \\ c\neq\set{j+1,\dotsc,k}}}
+    C_{\Cardinality c}\text.
+\]
+Now, note that choosing a subset $S$ of $[k]$ of size $k-l$ whose maximum is $j$ is equivalent to choosing
+a subset $s$ of $[j-1]$ of size $k-l - 1$, where $S=s\Union\set{j}$. Moreover, the cells of $[k]\setminus S$ other
+than $\set{j+1,\dotsc,k}$ are exactly the cells of $[j-1]\setminus s$, thus
+\[\spc\of{k, l} = \sum{j=k-l}[k]
+C_{k-j} \quad
+\sum{s\in\binom{[j-1]}{k-l - 1}} \qquad
+\prod{c\in\cells\of{[j-1]\setminus s}}
+    C_{\Cardinality c}\text.
+\]
+By definition of $\spc$, this means
+\[\spc\of{k, l} = \sum{j=k-l}[k]
+C_{k-j}
+\spc\of{j-1,l+j-k}\text.
+\]
+Rewriting this as as sum over $i\DefineAs k-j$,
+\[\spc\of{k, l} = \sum{i=0}[l]
+C_{i}
+\spc\of{k-i-1,l-i}\text.
+\]\marginfig[The $l+1$ summands in the $\spc$ recurrence.]{TODO}
+We can now turn this recurrence into a simpler recurrence, which we prove by recurrence.
+
+Since $\spc$ has not been formally defined for negative arguments, we extend the definition
+with $\spc\of{k,l}=0$ for $l<0$; this is consistent with the definition, since it yields a sum over
+subsets $S\Subset [k]$ bigger than $k$, and it yields an empty sum in the recurrence we just derived.
+
+Moreover, note that for $k - 1 = l$, we have
+\begin{align*}
+\spc\of{k, l}
+&= \sum{i=0}[l]C_{i}\spc\of{k-i-1,l-i} = \sum{i=0}[l]C_{i}\spc\of{l-i,l-i}\\
+&= \sum{i=0}[l]C_{i}C_{l-i} = C_{l+1}
+\end{align*}
+
+Assume $\spc\of{k',l'}=\spc\of{k'-1,l'}+\spc\of{k',l'-1}$ for $l<k$, and either $k'<k$ or $l'<l \And k'=k$.
+Then we can apply this assumption to the summands of $\spc\of{k, l}$. If $k - 1 < l$, we have
+\marginfig[The recurrence applied to the sum, yielding two sums, proving the recurrence.]{TODO}
+\begin{align*}
+\spc\of{k, l} &= \sum{i=0}[l]
+C_{i}
+\spc\of{k-i-1,l-i} \\
+&= \sum{i=0}[l]
+C_{i}
+\pa{\spc\of{k-i-2,l-i}+\spc\of{k-i-1,l-i-1}} \\
+&= \sum{i=0}[l]
+C_{i}\spc\of{k-i-2,l-i}
++\sum{i=0}[l]C_{i}\spc\of{k-i-1,l-i-1} \\
+&= \sum{i=0}[l]
+C_{i}\spc\of{(k-1)-i-1,l-i}
++\sum{i=0}[l-1]C_{i}\spc\of{k-i-1,(l-1)-i} \\&\phantom{=}\qquad + C_{l}\spc\of{k-l-1,-1}\text, \\
+\intertext{so, substituting the recurrence for $\spc$,}
+&= \spc\of{k-1, l} + \spc\of{k,l-1}\text.
+\end{align*}
+If, on the other hand, we have $k - 1 = l$, we get
+\begin{align*}
+\spc\of{k, l}
+&= \sum{i=0}[l]C_{i}\spc\of{k-i-1,l-i} = \sum{i=0}[l]C_{i}\spc\of{l-i,l-i}\\
+&= \sum{i=0}[l]C_{i}C_{l-i} = C_l + \sum{i=0}[l-1]C_{i}C_{((l-1)-i)+1} \\
+\intertext{applying [TODO number equations] on the left and [TODO] on the right,}
+&= \spc\of{k-1, l} + \sum{i=0}[l-1]C_{i}\spc\of{k-i-1,(l-1)-i} \\
+&= \spc\of{k-1, l} + \spc\of{k,l-1}\text.
+\end{align*}
+
+
 
 \clearpage
 \nocite{*}
