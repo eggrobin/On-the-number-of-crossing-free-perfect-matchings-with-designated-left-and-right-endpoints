@@ -214,6 +214,7 @@ changes of bracket directions\idest bracket expressions of the form
 $\langle\dotsb\langle\rangle\dotsb\rangle\langle\dotsb\langle\rangle\dotsb\rangle$,
 $k$ opening brackets, $l$ closing brackets, $q$ opening brackets, $p$ closing brackets, where
 $k-l=p-q\geq 0$ and $k+l+p+q\DefinitionOf n$.
+We will call the bracket expression of that form $\langle^k\rangle^l\langle^q\rangle^p$.
 
 In term of points, this means that four sets can be separated by vertical lines, from left
 to right, $k$ left-points forming the set $K$, $l$ right-points forming $L$, $q$ left-points
@@ -235,7 +236,8 @@ left-alignment $\gq$ of $q$.
 The matching is uniquely determined by $\gk$, $\gp$, the choice of
 the $k-l$ among $k$ points and $k-l=p-q$ among $p$ points that get matched to each other,
 and by $\gl$ and $\gq$, which gives the following bound for the number of these matchings:\[
-C_k \binom k l C_l C_q \binom p q C_p\text.\]
+\Cardinality{f_P^{-1}\of{\set{\langle^k\rangle^l\langle^q\rangle^p}}}
+\leq C_k \binom k l C_l C_q \binom p q C_p\text.\]
 
 [TODO give the asymptotics of this here; it's not so good, but it motivates the improvements below]
 
