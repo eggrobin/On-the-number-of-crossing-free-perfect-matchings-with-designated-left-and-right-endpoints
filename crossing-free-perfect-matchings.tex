@@ -13,6 +13,8 @@
 
 \DeclareMathOperator{\cells}{cells}
 \DeclareMathOperator{\spc}{spc}
+\DeclareMathOperator{\PM}{PM}
+\DeclareMathOperator{\CFPM}{CFPM}
 
 \newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
 
@@ -85,18 +87,64 @@ Alternatively, we may be interested in asymptotics on such $l$s and $u$s.
 \section{Convex point sets}
 \section{Crossing-free perfect matchings}
 
-[Somewhere, define left-right matching, "general position wrt the horizontal",
-"numbered from left to right"; prove that a matching yields a WFBE;
-when talking about matchings we will talk about "the edge of a point"]
+[TODO define: when talking about matchings we will talk about "the edge of a point"]
 
-\section{Brackets expressions and an optimal lower bound}
+We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CFPM_P$ the set
+of crossing-free perfect matchings on the point set $P$.
+
+\section{Left-right perfect matchings and bracket expressions}
+A point set in the plane is \emph{in general position} if no three points are aligned.
+
+We say that a point set is \emph{in general position with respect to the horizontal} if it
+is in general position and no two points lie on a vertical line. Note that any point set in
+general position can be put in general position with respect to the horizontal by an arbitrarily
+small rotation. Moreover, note that points in general position with respect to the horizontal
+are ordered from left to right.
+
+A \emph{bracket expression} of size $n$ is a sequence of $n$ opening brackets $\langle$ or closing
+brackets $\rangle$.
+It is a \emph{well-formed prefix} if, when read from left to right, the number of closing brackets
+encountered never exceeds the number of opening brackets encountered.
+A \emph{well-formed bracket expression} is a well-formed prefix with the same number of opening and
+closing brackets.
+
+It is a well-known result [TODO FIND A CITATION] that the number of well-formed bracket expressions
+of size $2k$ is the Catalan number $C_k$.
+Moreover, note that inserting an opening bracket, followed a closing bracket anywhere after the
+inserted opening bracket, into a well-formed bracket expression, results in a well-formed bracket
+expression.
+
+Given a point set $P$  of size $n$ in general position with respect to the horizontal and a perfect
+matching $\gm$ on $P$, any point in $P$ is either a left or right endpoint of an edge, since it
+is incident to exactly one edge, and that edge is not vertical.
+
+\marginfig[A well-formed bracket expression constructed from a perfect matching]{TODO figure}
+Construct a bracket expression $\gb\of\gm$ of size $n$ as follows: order $P$ from left to right;
+the $i$th bracket is opening if the $i$th point of $P$ is a left endpoint of $\gm$, and it is
+closing otherwise.
+This bracket expression is well-formed, since it can be constructed by starting from the
+(well-formed) empty bracket expression, by successively inserting both brackets corresponding to
+each edge, where the closing bracket will be inserted to the right of the opening bracket.
+
+Given a well-formed bracket expression $B$ and a point set $P$, we will say that a perfect matching
+$\gm$ is \emph{consistent with} $B$ if $\gb\of\gm = B$; moreover, we will refer to the points of
+$P$ corresponding to opening brackets of $B$ as \emph{left-points} (since they will be left endpoints
+of any perfect matching consistent with $B$), and similarly we will refer to the points of $P$
+corresponding to closing brackets of $B$ as \emph{right-points}.
+
+One approach to bounding the size of $\CFPM_P$ is to bound the size of
+$\gb^{-1}\of{B}\Intersection \CFPM_P$ for bracket expressions $B$ of size $n$\idest the
+number of crossing-free perfect matchings on $P$ consistent with $B$. We will thus define
+\[\gn_P\of B \DefineAs \gb^{-1}\of{B}\Intersection \CFPM_P\text.\]
+\section{An optimal lower bound for the number of crossing-free perfect matchings}
 This argument is due to E.~Welzl [cite paper to appear, is there a preprint?].
 
 \begin{theorem}
-Let $P$ be a point set of size $2n$ in general position with respect to the horizontal,
-numbered from left to right, and let $B$ be a well-formed bracket expression of size $2n$.
-Then there exists a crossing-free perfect matching such that the $k$th point of $P$ is a left
-endpoint if and only if the $k$th bracket of $B$ is an opening bracket.
+Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
+numbered from left to right, and let $B$ be a well-formed bracket expression of size $n$.
+Then there exists a crossing-free perfect matching such that the $i$th point of $P$ is a left
+endpoint if and only if the $i$th bracket of $B$ is an opening bracket; in other words,
+$\gn_P\of B \geq 1$.
 \begin{proof}
 Let $m_0$ be a perfect matching on $P$ consistent with $B$. This is always possible, for instance,
 parsing the bracket expression, match the point corresponding with an opening parenthesis
@@ -105,12 +153,12 @@ to the point corresponding with the matching closing parenthesis.
 Define $l(m)$ for a perfect matching $m$ on $P$ to be the sum of the lengths of the edges of $m$.
 
 \marginfig[\label{figUncrossing}Uncrossing in a left-right perfect matching.]{TODO}
-Then, repeat the following procedure, starting at $k=0$.
-If there is no crossing in $m_k$, we have found a perfect matching with the desired properties.
+Then, repeat the following procedure, starting at $i=0$.
+If there is no crossing in $m_i$, we have found a perfect matching with the desired properties.
 If there is a crossing, let $a$, $b$, $c$, and $d$ be the points involved, so that the edge
 $ab$ crosses the edge $cd$. Remove these edges, and replace them by $ad$ and $cb$
-(thus ``uncrossing'' them). This yields another perfect matching $m_{k+1}$. By the triangle
-inequality (see figure \ref{figUncrossing}), $l(m_{k+1})<l(m_k)$.
+(thus ``uncrossing'' them). This yields another perfect matching $m_{i+1}$. By the triangle
+inequality (see figure \ref{figUncrossing}), $l(m_{i+1})<l(m_i)$.
 
 If this did not terminate, it would yield a sequence $m$ of crossing perfect matchings on $P$ on
 which $l$ is strictly decreasing, thus an infinite sequence of graphs on $P$.
@@ -118,11 +166,11 @@ Since there are only finitely many graphs on $P$, this is a contradiction, so we
 crossing-free perfect matching.
 \end{proof}
 \end{theorem}
-This immediately yields a lower bound, since there are $C_n$ well-formed bracket expressions
-of size $2n$.
+This immediately yields a lower bound, since there are $C_{\frac n 2}$ well-formed bracket expressions
+of size $n$.
 \begin{corollary}
-Let $P$ be a point set of size $2n$ in general position. There are at least $C_n$ distinct
-crossing-free perfect matchings on $P$.
+Let $P$ be a point set of size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
+crossing-free perfect matchings on $P$\idest $\CFPM_P \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position.
 
@@ -130,20 +178,17 @@ Moreover, this lower bound is optimal, since it is attained if $P$ is in convex 
 classes thereof to get an upper bound on perfect matchings]
 
 \section{Matchings across a line}
-TODO rewrite this with $n$ points in total, and maybe name $n/2$, otherwise this is going to be inconsistent
-with subsequent sections and confusing.
-
-Again we consider $2n$ points in general position with respect to the horizontal.
-
-The left-right matchings corresponding to brackets expressions with $n$ opening brackets followed
-by $n$ closing brackets, $\langle \dotsb \langle \rangle \dotsb \rangle$, are called \emph{matchings
+Again we consider $n=2k$ points in general position with respect to the horizontal.
+The left-right matchings corresponding to brackets expressions with $k$ opening brackets followed
+by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
 across a line}. Indeed, any segment in such a matching will cross any vertical line that separates
 the left-points from the right-points. [FIGURE]
 
 The following result was shown by Micha Sharir and Emo Welzl in 2006 [CITATION HERE].
 \begin{theorem}[Sharir--Welzl]
-There are at most $C_n^2$ crossing-free perfect matchings across a line on $2n$ points in general position with
-respect to the horizontal.
+There are at most $C_{\frac n 2}^2$ crossing-free perfect matchings across a line on a point set $P$ of size
+$n=2k$ points in general position with respect to the horizontal\idest
+$\gn_P\of {\langle^k\rangle^k} < C_k^2$.
 \begin{proof}
 Pick a vertical line that separates the left-points from the right-points; we will call it \emph{the vertical line}.
 Further, let us call set of left-points $L$ and the set of right-points $R$.
@@ -151,17 +196,17 @@ Further, let us call set of left-points $L$ and the set of right-points $R$.
 A perfect matching across a line is uniquely defined by a bijection $\FunctionSpec \gm L R$ from
 the left-points to the right-points.
 Now, number the intersections between the edges of the perfect matching and the vertical
-line from top to bottom. This yield a numbering $\FunctionSpec \gn E {[n]}$ of the edges.
+line from top to bottom. This yield a numbering $\FunctionSpec \gi E {[k]}$ of the edges.
 
-Define $\gl\of l \DefineAs \gn\of{e_l}$ mapping the number of a left-point to the intersection number of its
-edge, and similarly $\gr\of r \DefineAs \gn\of{e_r}$ for the right-points. We have $\gm = \gl \gr^{-1}$.
+Define $\gl\of l \DefineAs \gi\of{e_l}$ mapping the number of a left-point to the intersection number of its
+edge, and similarly $\gr\of r \DefineAs \gi\of{e_r}$ for the right-points. We have $\gm = \gl \gr^{-1}$.
 
 The permutations $\gl$ (respectively $\gr$) determine the order in which the left points (respectively right points)
 reach the vertical line.
 
 The idea of the proof is as follows: if the matching is crossing-free, we will show that
-$\gl$ and $\gr$ have to be in sets of size $C_n$, thus that $\gm = \gl \gr^{-1}$ can take at most
-$C_n^2$ values\idest that there can be at most $C_n^2$ perfect matchings across a line.
+$\gl$ and $\gr$ have to be in sets of size $C_k$, thus that $\gm = \gl \gr^{-1}$ can take at most
+$C_k^2$ values\idest that there can be at most $C_nk^2$ perfect matchings across a line.
 
 Since we are going to reuse these concepts in subsequent proofs, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider. A bijection from a set of left-points $\gL$ to $[\Cardinality \gL]$
@@ -174,9 +219,9 @@ If we have a crossing-free perfect matching across a line, then $\gl$ as constru
 left-alignment of $L$, and $\gr$ is a crossing-free right-alignment of $R$.
 
 \begin{lemma}
-There are at most $C_n$ crossing-free left-alignments of $n$ points.
+There are at most $C_k$ crossing-free left-alignments of $k$ points.
 \begin{proof}
-Let $l$ be the leftmost point of a set of $L$ of $n$ left-points, and let $\gl$ be a crossing-free
+Let $l$ be the leftmost point of a set of $L$ of $k$ left-points, and let $\gl$ be a crossing-free
 left-alignment of $L$.
 
 $\gl(l)$\idest the index of the crossing of the vertical line the edge $e_l$ of the leftmost point,
@@ -192,13 +237,13 @@ below and above $e_l$.
 Further, since points above $e_l$ must reach the line above $e_l$ and correspondingly for points below,
 if the point $p$ is above $e_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus,
 $\gl$ restricted do the points above $e_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
-$e_l$, and $\gl-\gl(l)$ is a crossing-free left-alignment of the $n - \gl(l)$ points below $e_l$.
+$e_l$, and $\gl-\gl(l)$ is a crossing-free left-alignment of the $k - \gl(l)$ points below $e_l$.
 
 Thus, $\gl$ is determined by the choice of $i \DefineAs \gl(l) - 1$ and crossing-free left-alignments
-of $i$ and $n-i-i$ points. It follows that if $\varpi_k$ is a bound for the number of crossing-free
-left-alignments of $k$ points when $k < n$,
-we can give a bound on the number of crossing-free left-alignments of $n$ points,
-\[\varpi_n\DefineAs\sum{i=0}[k]\varpi_{i}\varpi_{n-i-1}\text.\]
+of $i$ and $k-i-i$ points. It follows that if $\varpi_a$ is a bound for the number of crossing-free
+left-alignments of $a$ points when $a < k$,
+we can give a bound on the number of crossing-free left-alignments of $k$ points,
+\[\varpi_k\DefineAs\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
 We can start the recurrence with $\varpi_0 = 1$; this is the recurrence for the Catalan numbers, thus
 $\varpi_k=C_k$.
 \end{proof}
