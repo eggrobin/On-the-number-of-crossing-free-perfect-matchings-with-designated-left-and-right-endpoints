@@ -85,6 +85,7 @@ where the $P$ runs over all point sets that satisfy the relevant properties.
 
 Alternatively, we may be interested in asymptotics on such $l$s and $u$s.
 \section{Convex point sets}
+
 \section{Crossing-free perfect matchings}
 
 [TODO define: when talking about matchings we will talk about "the edge of a point"]
@@ -134,8 +135,13 @@ corresponding to closing brackets of $B$ as \emph{right-points}.
 
 One approach to bounding the size of $\CFPM_P$ is to bound the size of
 $\gb^{-1}\of{B}\Intersection \CFPM_P$ for bracket expressions $B$ of size $n$\idest the
-number of crossing-free perfect matchings on $P$ consistent with $B$. We will thus define
+number of crossing-free perfect matchings on $P$ consistent with $B$. We thus define
 \[\gn_P\of B \DefineAs \gb^{-1}\of{B}\Intersection \CFPM_P\text.\]
+In order to concisely refer to bracket expressions, we will use the notations
+$\langle^k$ for $k$ successive opening brackets, and $\rangle^k$ for $k$ successive
+closing brackets, for instance,\[
+\langle^2\rangle\langle^2\rangle^3 = \langle\langle\rangle\langle\langle\rangle\rangle\rangle
+\text.\]
 \section{An optimal lower bound for the number of crossing-free perfect matchings}
 This argument is due to E.~Welzl [cite paper to appear, is there a preprint?].
 
@@ -256,10 +262,9 @@ The same result holds for right-alignments, completing the proof.
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
-$\langle\dotsb\langle\rangle\dotsb\rangle\langle\dotsb\langle\rangle\dotsb\rangle$,
+$\langle^k\rangle^l\langle^q\rangle^p$,
 $k$ opening brackets, $l$ closing brackets, $q$ opening brackets, $p$ closing brackets, where
 $k-l=p-q\geq 0$ and $k+l+p+q\DefinitionOf n$.
-We will call the bracket expression of that form $\langle^k\rangle^l\langle^q\rangle^p$.
 
 In term of points, this means that four sets can be separated by vertical lines, from left
 to right, $k$ left-points forming the set $K$, $l$ right-points forming $L$, $q$ left-points
@@ -281,7 +286,7 @@ left-alignment $\gq$ of $q$.
 The matching is uniquely determined by $\gk$, $\gp$, the choice of
 the $k-l$ among $k$ points and $k-l=p-q$ among $p$ points that get matched to each other,
 and by $\gl$ and $\gq$, which gives the following bound for the number of these matchings:\[
-\Cardinality{f_P^{-1}\of{\set{\langle^k\rangle^l\langle^q\rangle^p}}}
+\gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}
 \leq C_k \binom k l C_l C_q \binom p q C_p\text.\]
 
 [TODO give the asymptotics of this here; it's not so good, but it motivates the improvements below]
@@ -316,9 +321,10 @@ The improved factor becomes\[
 \sum{S\in\binom{[k]}{k-l}} \quad \prod{c\in\cells\of{[k] \setminus S}}C_{\Cardinality c} =
 \sum{S'\in\binom{[k]}{l}} \quad \prod{c\in\cells\of{S'}}C_{\Cardinality c}\text,
 \]
-and the overall bound becomes\[
-C_k\spc\of{k, l}\spc\of{p, q}C_p\text.
-\]
+and the overall bound becomes\begin{equation}
+\gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}\leq
+C_k\spc\of{k, l}\spc\of{p, q}C_p\text.\label{bound-ck-spckl-spcpq-cp}
+\end{equation}
 
 \subsection{A recurrence}
 In order to compute $\spc$ efficiently, and eventually, get its asymptotics, it is useful to get rid
@@ -429,13 +435,59 @@ We thus have the following recurrence for $\spc$:
 This is the recurrence defining the Catalan triangle [CITATIONS], and its solution is known, namely [CITATION]
 \begin{equation}
 \spc\of{k,l} = \frac
-{\Factorial{\pa{k+l}} \Factorial{\pa{k-l+1}}}
-{\Factorial l \Factorial{\pa{k+1}}}\text.
+{\Factorial{\pa{k+l}} \pa{k-l+1}}
+{\Factorial l \Factorial{\pa{k+1}}}
+= \frac{k-l+1}{k+1} \binom{k+l}{k}\label{spc-solution}
+\text.
 \end{equation}
 \subsubsection{A combinatorial interpretation of the first recurrence}
 \subsection{Asymptotics}
-We can now use the expression for $\spc$ to study the asymptotics of the bound.
-
+We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
+(\ref{bound-ck-spckl-spcpq-cp}).
+We are interested in the asymptotics as a function of the size of of the bracket expression $n = k+l+p+q$.
+Since the bound is a product of two identical two-parameter factors, we study one of them,\[
+C_k\spc\of{k,l}\text,
+\]
+as a function of $n_1\DefineAs k+l$. Let $l = \ga k$, thus $0\leq \ga\leq 1$,
+the above expression becomes \[
+C_{\frac{n_1}{\ga + 1}} \binom{n_1}{\frac{n_1}{\ga + 1}} \frac{\pa{1-\ga}n+\ga+1}{n+\ga+1}\text.
+\]
+Asymptotically as $n_1\longrightarrow \infty$, this yields\[
+\frac
+  {1}
+  {n_1\sqrt{\Pi n_1}}
+4^{\frac{n_1}{\ga + 1}}
+\frac
+  {\sqrt{1+\ga}}
+  {\sqrt{2\Pi n_1 \ga}}
+\pa{
+  \frac
+    {1+\ga}
+    {\ga^{\frac{\ga}{\ga + 1}}}}^{n_1}
+\pa{1-\ga}\text,
+\]
+or, up to a polynomially-bounded factor,\[
+4^{\frac{n_1}{\ga + 1}}
+\pa{
+  \frac
+    {1+\ga}
+    {\ga^{\frac{\ga}{\ga + 1}}}}^{n_1}
+=
+\pa{
+4^{\ga + 1}
+\frac
+  {1+\ga}
+  {\ga^{\frac{\ga}{\ga + 1}}}}^{n_1}\text.
+\]
+As $\ga$ ranges from $0$ to $1$, the base of that exponential reaches a maximum of $5$ at
+$\ga=\frac 1 4$. We thus have the following asymptotic bound.\begin{equation}
+\gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}\leq
+C_k\spc\of{k, l}\spc\of{p, q}C_p\text.\label{bound-ck-spckl-spcpq-cp}
+\preccurlyeq
+\preccurlyeq 5^{k+l}5^{p+q} = 5^n
+\end{equation}
+[TODO: would it be interesting or feasible to average over all $\langle^k\rangle^l\langle^q\rangle^p$,
+for fixed $n$?]
 \clearpage
 \nocite{*}
 \bibliography{crossing-free-perfect-matchings}
