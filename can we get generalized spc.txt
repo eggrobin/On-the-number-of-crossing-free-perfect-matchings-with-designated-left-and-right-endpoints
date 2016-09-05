@@ -5,5 +5,37 @@
 <><><>
   k    l   m   r    q    p
 <<<<<|>>> <<<|>>>> <<<|>>>>
-C_k                     C_p
+ C_k                    C_p
      k  k-l+m=p-q+r   p
+
+remember, it's all about having an inverse function, even if geometrically wobbly;
+the wobbliness would affect the overcounting analysis
+
+catalan:
+choose K left-alignment;
+spc:
+choose which k-l cross first cellar from the left;  -- can we have that word? I like that word :D
+choose, knowing which k-l cross first cellar, right-alignment of L in first cellar;
+spc:
+choose which k-l cross first cellar from the right;
+choose, knowing that, left-alignment of M in first cellar;
+spc:
+choose which p-q cross second cellar from the left;
+choose, knowing that, right-alignment of R in first cellar;
+spc:
+choose which p-q cross second cellar from the right;
+choose, knowing that, left-alignment of Q in first cellar;
+catalan:
+choose P right-alignment;
+
+What comes out of a cellar like |><|?
+with k pts on the left, and thus k pts on the right,
+it adds a factor of spc(k, 1)^2 = k^2.
+
+Thus <^k (><)^l >^k has a bound of C_k^2 k^(2l), for a length of 2(k+l).
+Can we bound based on the maximum depth of the bracket expression?
+let d be the max. depth, c the number of cellars.
+then we have a (C_d)^(2(c+1)) bound apparently?
+Though of course if we're going for the finer approach of averaging over WFBEs, we should really take the finer spc bound itself...
+
+silly idea: wfbe s.t. ith < naturally matched with jth > <-- ith <(l-pt) matched to jth >(r-pt) in CFPM.
