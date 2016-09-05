@@ -3,6 +3,7 @@
 \usepackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{intersections}
 \usepackage{tikz-qtree}
 \usepackage{braids}
 
@@ -83,15 +84,19 @@ set $P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
 l \of n \leq g \of n \leq u \of n \text,\]
 where the $P$ runs over all point sets that satisfy the relevant properties.
 
-Alternatively, we may be interested in asymptotics on such $l$s and $u$s.
+In addition, we may be interested in asymptotics on such $l$s and $u$s; since these bounds are
+often exponential, we tend to ignore polynomial factors; we will thus say that\[
+f \of n \preccurlyeq u \of n
+\]
+if $f\of n \leq p\of n u \of n$ for some polynomially-bounded $p$.
 \section{Convex point sets}
+[talk about the number of triangulations and crossing-free perfect matchings; this is a good place
+to introduce the recurrence for Catalan numbers too]
 
 \section{Crossing-free perfect matchings}
-
-[TODO define: when talking about matchings we will talk about "the edge of a point"]
-
 We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CFPM_P$ the set
 of crossing-free perfect matchings on the point set $P$.
+[TODO cite existing results]
 
 \section{Left-right perfect matchings and bracket expressions}
 A point set in the plane is \emph{in general position} if no three points are aligned.
@@ -110,8 +115,17 @@ A \emph{well-formed bracket expression} is a well-formed prefix with the same nu
 closing brackets.
 
 It is a well-known result [TODO FIND A CITATION] that the number of well-formed bracket expressions
-of size $2k$ is the Catalan number $C_k$.
-Moreover, note that inserting an opening bracket, followed a closing bracket anywhere after the
+of size $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
+a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminal
+in angle brackets here, since that would result in hopeless confusion in a grammar describing nothing but
+sequences of angle brackets.}\begin{align*}
+\text{wfbe} \Coloneq
+& \langle \text{wfbe} \rangle \text{wfbe} \\
+\mid\: & \text{empty}\text,
+\end{align*}
+where the sum ranges over the sizes of the component bracket expressions.
+
+Note that inserting an opening bracket, followed a closing bracket anywhere after the
 inserted opening bracket, into a well-formed bracket expression, results in a well-formed bracket
 expression.
 
@@ -119,7 +133,34 @@ Given a point set $P$  of size $n$ in general position with respect to the horiz
 matching $\gm$ on $P$, any point in $P$ is either a left or right endpoint of an edge, since it
 is incident to exactly one edge, and that edge is not vertical.
 
-\marginfig[A well-formed bracket expression constructed from a perfect matching]{TODO figure}
+\marginfig[A well-formed bracket expression constructed from a perfect matching]{
+\begin{tikzpicture}[scale=0.5]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot] at (0,2) (p1) {};
+\node[dot] at (1,3) (p2) {};
+\node[dot] at (2,4) (p3) {};
+\node[dot] at (3,0) (p4) {};
+\node[dot] at (5,1) (p5) {};
+\node[dot] at (6,3) (p6) {};
+
+\node at (0,-1) (b1) {$\langle$};
+\node at (1,-1) (b2) {$\langle$};
+\node at (2,-1) (b3) {$\rangle$};
+\node at (3,-1) (b4) {$\langle$};
+\node at (5,-1) (b5) {$\rangle$};
+\node at (6,-1) (b6) {$\rangle$};
+
+\draw (p1) -- (p5);
+\draw (p2) -- (p3);
+\draw (p4) -- (p6);
+
+\draw[dashed] (p1) -- (b1);
+\draw[dashed] (p2) -- (b2);
+\draw[dashed] (p3) -- (b3);
+\draw[dashed] (p4) -- (b4);
+\draw[dashed] (p5) -- (b5);
+\draw[dashed] (p6) -- (b6);
+\end{tikzpicture}}
 Construct a bracket expression $\gb\of\gm$ of size $n$ as follows: order $P$ from left to right;
 the $i$th bracket is opening if the $i$th point of $P$ is a left endpoint of $\gm$, and it is
 closing otherwise.
@@ -142,14 +183,20 @@ $\langle^k$ for $k$ successive opening brackets, and $\rangle^k$ for $k$ success
 closing brackets, for instance,\[
 \langle^2\rangle\langle^2\rangle^3 = \langle\langle\rangle\langle\langle\rangle\rangle\rangle
 \text.\]
-\section{An optimal lower bound for the number of crossing-free perfect matchings}
-This argument is due to E.~Welzl [cite paper to appear, is there a preprint?].
 
-\begin{theorem}
+[TODO a section or subsection or something here, talking about the trivial upper bounds on $\langle\rangle$,
+and about the bound on a product of bracket expressions. Maybe about the boring stuff like
+$\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
+
+[TODO cite the existing upper bound from Sharir---Welzl 2006 (the proof is unrelated to anything here
+though)]
+\section{An optimal lower bound for the number of crossing-free perfect matchings}
+This argument is due to E.~Welzl [TODO cite paper to appear, is there a preprint?].
+
+\begin{theorem}[Welzl---maybe other people?]
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
 numbered from left to right, and let $B$ be a well-formed bracket expression of size $n$.
-Then there exists a crossing-free perfect matching such that the $i$th point of $P$ is a left
-endpoint if and only if the $i$th bracket of $B$ is an opening bracket; in other words,
+Then there exists a crossing-free perfect matching consistent with $B$; in other words,
 $\gn_P\of B \geq 1$.
 \begin{proof}
 Let $m_0$ be a perfect matching on $P$ consistent with $B$. This is always possible, for instance,
@@ -158,7 +205,20 @@ to the point corresponding with the matching closing parenthesis.
 
 Define $l(m)$ for a perfect matching $m$ on $P$ to be the sum of the lengths of the edges of $m$.
 
-\marginfig[\label{figUncrossing}Uncrossing in a left-right perfect matching.]{TODO}
+\marginfig[\label{figUncrossing}Uncrossing in a left-right perfect matching. Replacing the thick
+edges by the thin ones reduces the total edge length, while preserving left and right endpoints.]{
+\begin{tikzpicture}[scale=1]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot,label=below:$a$] at (0,0) (a) {};
+\node[dot,label=above:$c$] at (-0.5,1) (c) {};
+\node[dot,label=below:$d$] at (2,0.5) (d) {};
+\node[dot,label=above:$b$] at (1.5,1.5) (b) {};
+
+\draw (a) -- (d);
+\draw (c) -- (b);
+\draw[very thick] (a) -- (b);
+\draw[very thick] (c) -- (d);
+\end{tikzpicture}}
 Then, repeat the following procedure, starting at $i=0$.
 If there is no crossing in $m_i$, we have found a perfect matching with the desired properties.
 If there is a crossing, let $a$, $b$, $c$, and $d$ be the points involved, so that the edge
@@ -167,7 +227,7 @@ $ab$ crosses the edge $cd$. Remove these edges, and replace them by $ad$ and $cb
 inequality (see figure \ref{figUncrossing}), $l(m_{i+1})<l(m_i)$.
 
 If this did not terminate, it would yield a sequence $m$ of crossing perfect matchings on $P$ on
-which $l$ is strictly decreasing, thus an infinite sequence of graphs on $P$.
+which $l$ is strictly decreasing, thus an infinite sequence of distinct graphs on $P$.
 Since there are only finitely many graphs on $P$, this is a contradiction, so we eventually find a
 crossing-free perfect matching.
 \end{proof}
@@ -179,18 +239,14 @@ Let $P$ be a point set of size $n$ in general position. There are at least $C_{\
 crossing-free perfect matchings on $P$\idest $\CFPM_P \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position.
-
-[TODO something about the general idea of proving upper bounds for left-right perfect matchings or
-classes thereof to get an upper bound on perfect matchings]
-
 \section{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The left-right matchings corresponding to brackets expressions with $k$ opening brackets followed
 by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
 across a line}. Indeed, any segment in such a matching will cross any vertical line that separates
-the left-points from the right-points. [FIGURE]
+the left-points from the right-points.
 
-The following result was shown by Micha Sharir and Emo Welzl in 2006 [CITATION HERE].
+The following result was shown by Micha Sharir and Emo Welzl in 2006 [TODO cite].
 \begin{theorem}[Sharir--Welzl]
 There are at most $C_{\frac n 2}^2$ crossing-free perfect matchings across a line on a point set $P$ of size
 $n=2k$ points in general position with respect to the horizontal\idest
@@ -219,7 +275,31 @@ $\gl$ and $\gr$ that we will consider. A bijection from a set of left-points $\g
 that can be constructed by numbering from top to bottom the intersections of the edges incident to $\gL$ with a
 vertical line to the right of $\gL$ is called a \emph{crossing-free left-alignment of $\gL$}. Correspondingly, for
 right-points, we define a \emph{crossing-free right-alignment}.
-\marginfig[A crossing-free left-alignment]{TODO}
+\marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick edge),
+the rest consists in two crossing-free left-alignments of $i$ and $k-i-1$
+points each---here $k = 5$ and $i = 2$.]{
+\begin{tikzpicture}[scale=0.75]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot] at (-5,2) (p1) {};
+\node[dot] at (-4,1) (p2) {};
+\node[dot] at (-3,3) (p3) {};
+\node[dot] at (-2,1.5) (p4) {};
+\node[dot] at (-1,3.5) (p5) {};
+
+\node[inner sep=0pt,label=right:$1$] at (0,4) (l1) {};
+\node[inner sep=0pt,label=right:$2$] at (0,3.5) (l2) {};
+\node[inner sep=0pt,label=right:$3$] at (0,2.5) (l3) {};
+\node[inner sep=0pt,label=right:$4$] at (0,1.5) (l4) {};
+\node[inner sep=0pt,label=right:$5$] at (0,1) (l5) {};
+
+\draw[->,very thick] (p1) -- (l3);
+\draw[->] (p3) -- (l1);
+\draw[->] (p5) -- (l2);
+\draw[->] (p4) -- (l4);
+\draw[->] (p2) -- (l5);
+
+\draw[very thick] (0,5) -- (0,0);
+\end{tikzpicture}}
 
 If we have a crossing-free perfect matching across a line, then $\gl$ as constructed above is a crossing-free
 left-alignment of $L$, and $\gr$ is a crossing-free right-alignment of $R$.
@@ -254,7 +334,7 @@ We can start the recurrence with $\varpi_0 = 1$; this is the recurrence for the 
 $\varpi_k=C_k$.
 \end{proof}
 \end{lemma}
-The same result holds for right-alignments, completing the proof.
+The same result holds for right-alignments, completing the proof of the theorem.
 \end{proof}
 \end{theorem}
 \section{Analysing the overcounting in the upper bound for matchings across a line}
@@ -281,7 +361,97 @@ Numbering those $l$ edges yields a crossing-free right-alignment $\gl$ of $L$.
 Similarly on the right side, we get a crossing-free right-alignment of $\gp$ of $P$,
 numbering the subset of edges incident to a point in $P$ and a point in $Q$, we get a
 left-alignment $\gq$ of $q$.
-\marginfig[Four crossing-free alignments.]{TODO}
+\begin{figure}[!ht]
+\centering
+\begin{tikzpicture}[scale=0.5]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.25]
+\node[dot] at (-9,1.9) (k1) {};
+\node[dot] at (-8,1) (k2) {};
+\node[dot] at (-7,4) (k3) {};
+\node[dot] at (-6,3) (k4) {};
+\node[dot] at (-5,0) (k5) {};
+
+\node[dot] at (-3.5,1.5) (l1) {};
+\node[dot] at (-2.5,0.5) (l2) {};
+\node[dot] at (-1.5,2.5) (l3) {};
+\node[dot] at (-0.5,3) (l4) {};
+
+\node[dot] at (0.5,3.5) (p1) {};
+\node[dot] at (1.5,0) (p2) {};
+\node[dot] at (2.5,1) (p3) {};
+\node[dot] at (3.5,2.5) (p4) {};
+
+\node[dot] at (5,2.5) (q1) {};
+\node[dot] at (6,0.5) (q2) {};
+\node[dot] at (7,3.5) (q3) {};
+\node[dot] at (8,1.5) (q4) {};
+\node[dot] at (9,2.1) (q5) {};
+
+\draw[very thick, name path=left line] (-4.25,5) -- (-4.25,-1);
+\draw[very thick, name path=right line] (4.25,5) -- (4.25,-1);
+
+\draw[gray, name path=edge] (k1) -- (q5);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (k1) -- (align);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (q5) -- (align);
+
+
+\draw[gray, name path=edge] (k3) -- (l4);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (k3) -- (align);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (l4) -- (align);
+
+\draw[gray, name path=edge] (k2) -- (l1);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (k2) -- (align);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (l1) -- (align);
+
+\draw[gray, name path=edge] (k4) -- (l3);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (k4) -- (align);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (l3) -- (align);
+
+\draw[gray, name path=edge] (k5) -- (l2);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (k5) -- (align);
+\draw[->,thick,name intersections={of=edge and left line, by=align}] (l2) -- (align);
+
+
+\draw[gray, name path=edge] (q1) -- (p4);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (q1) -- (align);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (p4) -- (align);
+
+\draw[gray, name path=edge] (q2) -- (p2);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (q2) -- (align);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (p2) -- (align);
+
+\draw[gray, name path=edge] (q3) -- (p1);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (q3) -- (align);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (p1) -- (align);
+
+\draw[gray, name path=edge] (q4) -- (p3);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (q4) -- (align);
+\draw[->,thick,name intersections={of=edge and right line, by=align}] (p3) -- (align);
+
+\node at (-9,-1) {$\langle$};
+\node at (-8,-1) {$\langle$};
+\node at (-7,-1) {$\langle$};
+\node at (-6,-1) {$\langle$};
+\node at (-5,-1) {$\langle$};
+
+\node at (-3.5,-1) {$\rangle$};
+\node at (-2.5,-1) {$\rangle$};
+\node at (-1.5,-1) {$\rangle$};
+\node at (-0.5,-1) {$\rangle$};
+
+\node at (0.5,-1) {$\langle$};
+\node at (1.5,-1) {$\langle$};
+\node at (2.5,-1) {$\langle$};
+\node at (3.5,-1) {$\langle$};
+
+\node at (5,-1) {$\rangle$};
+\node at (6,-1) {$\rangle$};
+\node at (7,-1) {$\rangle$};
+\node at (8,-1) {$\rangle$};
+\node at (9,-1) {$\rangle$};
+\end{tikzpicture}
+\caption{Four crossing-free alignments.\label{figCFPMklqp}}
+\end{figure}
 
 The matching is uniquely determined by $\gk$, $\gp$, the choice of
 the $k-l$ among $k$ points and $k-l=p-q$ among $p$ points that get matched to each other,
@@ -300,8 +470,7 @@ right line is partitioned in trapezoidal cells, and the portion of any edge from
 from $P$ to $Q$ that lies between the left line and the right line is confined to a
 single of those cells. It follows that $\gl$ is composed of crossing-free
 right-alignments the of subsets of $L$ separated by the long edges, and similarly for $\gq$
-with subsets of $Q$.
-\marginfig[Splitting the middle two crossing-free alignments.]{TODO}
+with subsets of $Q$ (in figure~\ref figCFPMklqp, there is one long edge, and thus two cells).
 
 Let us look at the edges crossing the left line (the same argument applies to the right line),
 numbered from top to bottom: $k-l$ of those are
@@ -482,9 +651,10 @@ or, up to a polynomially-bounded factor,\[
 As $\ga$ ranges from $0$ to $1$, the base of that exponential reaches a maximum of $5$ at
 $\ga=\frac 1 4$. We thus have the following asymptotic bound.\begin{equation}
 \gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}\leq
-C_k\spc\of{k, l}\spc\of{p, q}C_p\text.\label{bound-ck-spckl-spcpq-cp}
+C_k\spc\of{k, l}\spc\of{p, q}C_p
 \preccurlyeq
-\preccurlyeq 5^{k+l}5^{p+q} = 5^n
+5^{k+l}5^{p+q} = 5^n
+\text.
 \end{equation}
 [TODO: would it be interesting or feasible to average over all $\langle^k\rangle^l\langle^q\rangle^p$,
 for fixed $n$?]
