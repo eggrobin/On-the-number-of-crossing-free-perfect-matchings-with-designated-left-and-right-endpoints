@@ -116,7 +116,7 @@ closing brackets.
 
 It is a well-known result [TODO FIND A CITATION] that the number of well-formed bracket expressions
 of size $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
-a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminal
+a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
 in angle brackets here, since that would result in hopeless confusion in a grammar describing nothing but
 sequences of angle brackets.}\begin{align*}
 \text{wfbe} \Coloneq
@@ -133,7 +133,7 @@ Given a point set $P$  of size $n$ in general position with respect to the horiz
 matching $\gm$ on $P$, any point in $P$ is either a left or right endpoint of an edge, since it
 is incident to exactly one edge, and that edge is not vertical.
 
-\marginfig[A well-formed bracket expression constructed from a perfect matching]{
+\marginfig[A well-formed bracket expression constructed from a perfect matching.]{
 \begin{tikzpicture}[scale=0.5]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \node[dot] at (0,2) (p1) {};
@@ -195,13 +195,13 @@ This argument is due to E.~Welzl [TODO cite paper to appear, is there a preprint
 
 \begin{theorem}[Welzl---maybe other people?]
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
-numbered from left to right, and let $B$ be a well-formed bracket expression of size $n$.
+and let $B$ be a well-formed bracket expression of size $n$.
 Then there exists a crossing-free perfect matching consistent with $B$; in other words,
 $\gn_P\of B \geq 1$.
 \begin{proof}
 Let $m_0$ be a perfect matching on $P$ consistent with $B$. This is always possible, for instance,
-parsing the bracket expression, match the point corresponding with an opening parenthesis
-to the point corresponding with the matching closing parenthesis.
+parsing the bracket expression, match the point corresponding to an opening parenthesis
+and the point corresponding to the matching closing parenthesis.
 
 Define $l(m)$ for a perfect matching $m$ on $P$ to be the sum of the lengths of the edges of $m$.
 
@@ -232,18 +232,18 @@ Since there are only finitely many graphs on $P$, this is a contradiction, so we
 crossing-free perfect matching.
 \end{proof}
 \end{theorem}
-This immediately yields a lower bound, since there are $C_{\frac n 2}$ well-formed bracket expressions
-of size $n$.
+This immediately yields a lower bound for the number of crossing-free perfect matchings, since
+there are $C_{\frac n 2}$ well-formed bracket expressions of size $n$.
 \begin{corollary}
 Let $P$ be a point set of size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
-crossing-free perfect matchings on $P$\idest $\CFPM_P \geq C_{\frac n 2}$.
+crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position.
 \section{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The left-right matchings corresponding to brackets expressions with $k$ opening brackets followed
 by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
-across a line}. Indeed, any segment in such a matching will cross any vertical line that separates
+across a line}. Indeed, any edge in such a matching will cross any vertical line that separates
 the left-points from the right-points.
 
 The following result was shown by Micha Sharir and Emo Welzl in 2006 [TODO cite].
@@ -260,19 +260,19 @@ the left-points to the right-points.
 Now, number the intersections between the edges of the perfect matching and the vertical
 line from top to bottom. This yield a numbering $\FunctionSpec \gi E {[k]}$ of the edges.
 
-Define $\gl\of l \DefineAs \gi\of{e_l}$ mapping the number of a left-point to the intersection number of its
+Define $\gl\of l \DefineAs \gi\of{e_l}$ mapping a left-point to the intersection number of its
 edge, and similarly $\gr\of r \DefineAs \gi\of{e_r}$ for the right-points. We have $\gm = \gl \gr^{-1}$.
 
-The permutations $\gl$ (respectively $\gr$) determine the order in which the left points (respectively right points)
+The bijection $\gl$ (respectively $\gr$) determines the order in which the left points (respectively right points)
 reach the vertical line.
 
 The idea of the proof is as follows: if the matching is crossing-free, we will show that
 $\gl$ and $\gr$ have to be in sets of size $C_k$, thus that $\gm = \gl \gr^{-1}$ can take at most
-$C_k^2$ values\idest that there can be at most $C_nk^2$ perfect matchings across a line.
+$C_k^2$ values\idest that there can be at most $C_k^2$ perfect matchings across a line.
 
 Since we are going to reuse these concepts in subsequent proofs, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider. A bijection from a set of left-points $\gL$ to $[\Cardinality \gL]$
-that can be constructed by numbering from top to bottom the intersections of the edges incident to $\gL$ with a
+that can be constructed by numbering from top to bottom the intersections of non-crossing edges incident to $\gL$ with a
 vertical line to the right of $\gL$ is called a \emph{crossing-free left-alignment of $\gL$}. Correspondingly, for
 right-points, we define a \emph{crossing-free right-alignment}.
 \marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick edge),
@@ -320,13 +320,13 @@ Moreover, as the oriented angle between $e_l$ and the horizontal increases, poin
 set of points below $e_l$, so that choosing the number of points below $e_l$ determines the sets of points
 below and above $e_l$.
 
-Further, since points above $e_l$ must reach the line above $e_l$ and correspondingly for points below,
-if the point $p$ is above $e_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus,
+Further, since points above $e_l$ must reach the vertical line above $e_l$, and correspondingly for points below,
+if the point $p$ is above $e_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus
 $\gl$ restricted do the points above $e_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
 $e_l$, and $\gl-\gl(l)$ is a crossing-free left-alignment of the $k - \gl(l)$ points below $e_l$.
 
-Thus, $\gl$ is determined by the choice of $i \DefineAs \gl(l) - 1$ and crossing-free left-alignments
-of $i$ and $k-i-i$ points. It follows that if $\varpi_a$ is a bound for the number of crossing-free
+It follows that $\gl$ is determined by the choice of $i \DefineAs \gl(l) - 1$ and crossing-free left-alignments
+of $i$ and $k-i-i$ points. Therefore, if $\varpi_a$ is a bound for the number of crossing-free
 left-alignments of $a$ points when $a < k$,
 we can give a bound on the number of crossing-free left-alignments of $k$ points,
 \[\varpi_k\DefineAs\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
@@ -348,7 +348,7 @@ $k-l=p-q\geq 0$ and $k+l+p+q\DefinitionOf n$.
 
 In term of points, this means that four sets can be separated by vertical lines, from left
 to right, $k$ left-points forming the set $K$, $l$ right-points forming $L$, $q$ left-points
-forming $Q$, ad $p$ right-points forming $P$.
+forming $Q$, and $p$ right-points forming $P$.
 We pick a vertical line separating $K$ and $L$ and call it \emph{the left line}, and we pick
 a vertical line separating $P$ and $Q$ and call it \emph{the right line}.
 
@@ -376,10 +376,10 @@ left-alignment $\gq$ of $q$.
 \node[dot] at (-1.5,2.5) (l3) {};
 \node[dot] at (-0.5,3) (l4) {};
 
-\node[dot] at (0.5,3.5) (p1) {};
+\node[dot] at (0.5,3.7) (p1) {};
 \node[dot] at (1.5,0) (p2) {};
 \node[dot] at (2.5,1) (p3) {};
-\node[dot] at (3.5,2.5) (p4) {};
+\node[dot] at (3.5,2.8) (p4) {};
 
 \node[dot] at (5,2.5) (q1) {};
 \node[dot] at (6,0.5) (q2) {};
@@ -434,15 +434,22 @@ left-alignment $\gq$ of $q$.
 \node at (-6,-1) {$\langle$};
 \node at (-5,-1) {$\langle$};
 
+\node at (-7,5) {$K$};
+
 \node at (-3.5,-1) {$\rangle$};
 \node at (-2.5,-1) {$\rangle$};
 \node at (-1.5,-1) {$\rangle$};
 \node at (-0.5,-1) {$\rangle$};
 
+\node at (-2,5) {$L$};
+\node at (2,5) {$Q$};
+
 \node at (0.5,-1) {$\langle$};
 \node at (1.5,-1) {$\langle$};
 \node at (2.5,-1) {$\langle$};
 \node at (3.5,-1) {$\langle$};
+
+\node at (7,5) {$P$};
 
 \node at (5,-1) {$\rangle$};
 \node at (6,-1) {$\rangle$};
@@ -458,9 +465,29 @@ the $k-l$ among $k$ points and $k-l=p-q$ among $p$ points that get matched to ea
 and by $\gl$ and $\gq$, which gives the following bound for the number of these matchings:\[
 \gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}
 \leq C_k \binom k l C_l C_q \binom p q C_p\text.\]
-
-[TODO give the asymptotics of this here; it's not so good, but it motivates the improvements below]
-
+Asymptotically, the factor involving $k$ and $l$ is\[
+C_k \binom k l C_l
+\preccurlyeq
+4^{k+l} \binom k l
+\preccurlyeq
+4^{k+l}
+\pa{
+\pa{\frac
+  {\pa{1-\ga}^{1-\frac 1 \ga}}
+  {\ga}}^{\pa{\frac{\ga}{\ga+1}}}}^{k+l}\text,
+\]
+where $l=\ga k$. The base of the exponential bound for the binomial coefficient is maximal
+when $\ga = \frac{3-\sqrt{5}}{2}$, where it is $\GoldenRatio = \frac{1+\sqrt{5}}{2}$.
+This gives the overall bound\[
+\gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}
+\preccurlyeq
+4^{k+l}
+\GoldenRatio^{k+l}
+4^{p+q}
+\GoldenRatio^{p+q}
+= \pa{4\GoldenRatio}^n
+\approx 6.472^n\text.
+\]
 \subsection{Improving the binomial bound}
 We can however improve upon that bound: indeed, once $\gk$, $\gp$, and the set of points
 of $K$ matched to $P$ are fixed, the edges of the matching that cross both the left line
@@ -470,7 +497,7 @@ right line is partitioned in trapezoidal cells, and the portion of any edge from
 from $P$ to $Q$ that lies between the left line and the right line is confined to a
 single of those cells. It follows that $\gl$ is composed of crossing-free
 right-alignments the of subsets of $L$ separated by the long edges, and similarly for $\gq$
-with subsets of $Q$ (in figure~\ref figCFPMklqp, there is one long edge, and thus two cells).
+with subsets of $Q$ (in figure~\ref{figCFPMklqp}, there is one long edge, and thus two cells).
 
 Let us look at the edges crossing the left line (the same argument applies to the right line),
 numbered from top to bottom: $k-l$ of those are
@@ -485,11 +512,12 @@ $S'$, written $\cells\of{S'}$.
 Then, we can improve the $\binom k l C_l$ factor in the bound (in which the binomial comes from
 the choice of the long edges amongst the $k$ edges on the left line, and the Catalan number comes
 from the choice of $\gl$), summing over the choices of the long edges (and thus of $S$ above).
-The improved factor becomes\[
+The improved factor becomes\begin{equation}
 \spc\of{k, l}\DefineAs
 \sum{S\in\binom{[k]}{k-l}} \quad \prod{c\in\cells\of{[k] \setminus S}}C_{\Cardinality c} =
 \sum{S'\in\binom{[k]}{l}} \quad \prod{c\in\cells\of{S'}}C_{\Cardinality c}\text,
-\]
+\label{spcDefinition}
+\end{equation}
 and the overall bound becomes\begin{equation}
 \gn_P\of{\langle^k\rangle^l\langle^q\rangle^p}\leq
 C_k\spc\of{k, l}\spc\of{p, q}C_p\text.\label{bound-ck-spckl-spcpq-cp}
@@ -578,7 +606,6 @@ Further, for $k - 1 = l$, we get
 Now let $k - 1 > l \geq 0$.
 Assume $\spc\of{k',l'}=\spc\of{k'-1,l'}+\spc\of{k',l'-1}$ for $0\leq l'<k'<k$.
 Then we can apply this assumption to the summands of $\spc\of{k, l}$:
-\marginfig[The recurrence applied to the sum, yielding two sums, proving the recurrence.]{TODO}
 \begin{align}
 \spc\of{k, l} &= \sum{i=0}[l]
 C_{i}
@@ -597,10 +624,22 @@ C_{i}\spc\of{(k-1)-i-1,l-i}
 \end{align}
 We thus have the following recurrence for $\spc$:
 \begin{align}
-\spc\of{k,l} &= \spc\of{k-1, l} + \spc\of{k,l-1} & \text{for $k\geq 1$, $0\leq l \leq k$,}\\
+\spc\of{k,l} &= \spc\of{k-1, l} + \spc\of{k,l-1} & \text{for $k\geq 1$, $0\leq l \leq k$,}\label{spc-catalan-triangle}\\
 \spc\of{k,l} &= 0 & \text{for $l < 0$ or $l > k$,}\\
 \spc\of{0,0} &= 1\text.
-\end{align}
+\end{align}\marginfig[The recurrence (\ref{spc-catalan-triangle}).]{
+$\begin{array}{r r r r r r}
+1 \\
+1 & 1 \\
+1 & 2 &  2 \\
+1 & 3 &  5 & 5 \\
+1 & 4 &  9 & \tn{summandAbove}{$14$} & 14 \\
+1 & 5 & \tn{summandLeft}{$14$} & \tn{result}{$28$} & 42 & 42
+\end{array}$
+\tikz[remember picture,overlay]
+    \path[->] (summandAbove.south) edge (result.north -| summandAbove.south)
+              (summandLeft) edge (result);
+}
 This is the recurrence defining the Catalan triangle [CITATIONS], and its solution is known, namely [CITATION]
 \begin{equation}
 \spc\of{k,l} = \frac
@@ -609,7 +648,29 @@ This is the recurrence defining the Catalan triangle [CITATIONS], and its soluti
 = \frac{k-l+1}{k+1} \binom{k+l}{k}\label{spc-solution}
 \text.
 \end{equation}
-\subsubsection{A combinatorial interpretation of the first recurrence}
+\subsubsection{A combinatorial interpretation of $\spc$}
+The Catalan triangle counts well-formed prefix bracket expressions [CITATION]. This can in fact be seen from
+all the definitions of $\spc$ above, thus providing a more combinatorial solution.
+
+In the original definition (\ref{spcDefinition}) of $\spc$, the sum is over the choices for the positions of the
+unmatched $k-l$ opening brackets; between those, well-formed bracket expressions (counted by Catalan numbers) are
+inserted.
+
+The first recurrence (\ref{spcRecurrence1}) corresponds to the following grammatical
+definition\footnote{This grammar requires infinite look-ahead to parse, but doing a first pass to mark the
+unmatched opening brackets resolves that.} of well-formed
+prefixes, where again wfbe denotes a well-formed bracket expression:
+\begin{align*}
+\text{wfprefix} \Coloneq
+& \text{wfbe} \langle \text{wfprefix} \\
+\mid\: & \text{wfbe},
+\end{align*}
+where the sum ranges over the size of the well-formed bracket expression preceding the first unmatched bracket.
+
+Finally, (\ref{spc-catalan-triangle}) reflects the fact that a well-formed prefix with $k$ opening brackets
+and $l$ closing brackets either ends with an opening bracket (preceded by a well-formed prefix with $k-1$ opening
+and $l$ closing brackets), or with a closing bracket (preceded by a well-formed prefix with $k$ opening
+and $l-1$ closing brackets).
 \subsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
