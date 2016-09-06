@@ -38,5 +38,8 @@ let d be the max. depth, c the number of cellars.
 then we have a (C_d)^(2(c+1)) bound apparently?
 Though of course if we're going for the finer approach of averaging over WFBEs, we should really take the finer spc bound itself...
 
+Note: the same sort of overcounting analyses can be applied to spc-derived bounds on arbitrary WFBEs and to the Sharir-Welzl C_k bound!
+
+THIS WILL NOT WORK:
 silly idea: wfbe s.t. ith < naturally matched with jth > <-- ith <(l-pt) matched to jth >(r-pt) in CFPM.
 alternatively, the vertical WFBE?
