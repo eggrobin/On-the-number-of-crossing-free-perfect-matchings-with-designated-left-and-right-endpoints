@@ -39,3 +39,4 @@ then we have a (C_d)^(2(c+1)) bound apparently?
 Though of course if we're going for the finer approach of averaging over WFBEs, we should really take the finer spc bound itself...
 
 silly idea: wfbe s.t. ith < naturally matched with jth > <-- ith <(l-pt) matched to jth >(r-pt) in CFPM.
+alternatively, the vertical WFBE?
