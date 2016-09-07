@@ -106,7 +106,7 @@ We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CF
 of crossing-free perfect matchings on the point set $P$.
 [TODO cite existing results]
 
-\subsection{Left-right perfect matchings and bracket expressions}
+\subsection{Bracket expressions and their relations to perfect matchings}
 A point set in the plane is \emph{in general position} if no three points are collinear.
 
 We say that a point set is \emph{in general position with respect to the horizontal} if it
@@ -125,15 +125,15 @@ closing brackets.
 It is a well-known result [TODO FIND A CITATION] that the number of well-formed bracket expressions
 of length $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
-in angle brackets here, since that would result in hopeless confusion in a grammar describing nothing but
-sequences of angle brackets.}\begin{align*}
+in angle brackets here, as would be usual in Backus---Naur form, since that would result in hopeless
+confusion in a grammar describing nothing but sequences of angle brackets.}\begin{align*}
 \text{wfbe} \Coloneq
 & \langle \text{wfbe} \rangle \text{wfbe} \\
 \mid\: & \text{empty}\text,
 \end{align*}
 where the sum ranges over the lengths of the component bracket expressions.
 
-Note that inserting an opening bracket, followed a closing bracket anywhere after the
+Note that inserting an opening bracket, followed by a closing bracket anywhere after the
 inserted opening bracket, into a well-formed bracket expression, results in a well-formed bracket
 expression.
 
@@ -199,21 +199,20 @@ $\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
 [TODO cite the existing upper bound from Sharir---Welzl 2006 (the proof is unrelated to anything here
 though)]
 \subsection{An optimal lower bound for the number of crossing-free perfect matchings}
-This argument is due to E.~Welzl [TODO cite paper to appear, is there a preprint?].
-
+This proof is due to A.~J.~Ruiz-Vargas and E.~Welzl [TODO cite paper to appear, is there a preprint?].
 \begin{theorem}[Ruiz-Vargas---Welzl]
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
 and let $B$ be a well-formed bracket expression of length $n$.
 Then there exists a crossing-free perfect matching consistent with $B$; in other words,
 $\gn_P\of B \geq 1$.
 \begin{proof}
-Let $m_0$ be a perfect matching on $P$ consistent with $B$. This is always possible, for instance,
-parsing the bracket expression, match the point corresponding to an opening parenthesis
-and the point corresponding to the matching closing parenthesis.
+Let $\gm_0$ be a perfect matching on $P$ consistent with $B$. This is always possible, for instance,
+parsing the bracket expression, match the point corresponding to an opening bracket
+and the point corresponding to the matching closing bracket.
 
 Define $l(m)$ for a perfect matching $m$ on $P$ to be the sum of the lengths of the edges of $m$.
 
-\marginfig[\label{figUncrossing}Uncrossing in a left-right perfect matching. Replacing the thick
+\marginfig[\label{figUncrossing}Untangling in a perfect matching. Replacing the thick
 edges by the thin ones reduces the total edge length, while preserving left and right endpoints.]{
 \begin{tikzpicture}[scale=1]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
@@ -228,25 +227,32 @@ edges by the thin ones reduces the total edge length, while preserving left and 
 \draw[very thick] (c) -- (d);
 \end{tikzpicture}}
 Then, repeat the following procedure, starting at $i=0$.
-If there is no crossing in $m_i$, we have found a perfect matching with the desired properties.
+If there is no crossing in $\gm_i$, we have found a perfect matching with the desired properties.
 If there is a crossing, let $a$, $b$, $c$, and $d$ be the points involved, so that the edge
 $ab$ crosses the edge $cd$. Remove these edges, and replace them by $ad$ and $cb$
-(thus ``uncrossing'' them). This yields another perfect matching $m_{i+1}$. By the triangle
-inequality (see figure \ref{figUncrossing}), $l(m_{i+1})<l(m_i)$.
+(thus untangling them). This yields another perfect matching $\gm_{i+1}$. By the triangle
+inequality (see figure \ref{figUncrossing}), $l(\gm_{i+1})<l(\gm_i)$.
 
-If this did not terminate, it would yield a sequence $m$ of crossing perfect matchings on $P$ on
+If this procedure did not terminate, it would yield a sequence $\gm$ of crossing perfect matchings on $P$ on
 which $l$ is strictly decreasing, thus an infinite sequence of distinct graphs on $P$.
-Since there are only finitely many graphs on $P$, this is a contradiction, so we eventually find a
+Since there are only finitely many graphs on $P$, this is a contradiction, so we
+eventually\footnote{The entangling procedure itself predates this proof, and was shown to terminate in
+$\BigO\of{n^3}$ steps by J.~van~Leeuwen and A.~A.~Schoone in 1980.}
+find a
 crossing-free perfect matching.
 \end{proof}
 \end{theorem}
 This immediately yields a lower bound for the number of crossing-free perfect matchings, since
 there are $C_{\frac n 2}$ well-formed bracket expressions of length $n$.
+Note that this lower bound had already been proved by A.~García, M.~Noy, and J.~Tejel in 1995,
+by a recurrence that split the point set, rather than via well-formed bracket expressions [TODO
+citation].
 \begin{corollary}
 Let $P$ be a point set of size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
 crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position.
+[TODO internal reference; the proof and citation will be in the section on convex point sets.]
 \subsection{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The left-right matchings corresponding to brackets expressions with $k$ opening brackets followed
