@@ -29,10 +29,18 @@ Crossing-Free Perfect Matchings%
 \author{Robin~Leroy}
 \begin{document}
 \maketitle
+\begin{abstract}
+[TODO main results: the spc bound, the bound dependent on the number of interior points;
+maybe I'll have brief discussion of suggestions for improvements to the Catalan and spc
+bounds]
+\end{abstract}
 
+\section*{Introduction}
 blurb
 
-\section{Geometric graphs} 
+\section{Background}
+blurb
+\subsection{Geometric graphs}
 blurb
 \begin{definition}[geometric graph]
 Given a set of points $P$ in the Euclidean plane $\R^2$,
@@ -71,7 +79,7 @@ as a simple graph on the vertices $P$.
 A \emph{crossing-free perfect matching} is a crossing-free geometric graph which is
 perfect matching as a simple graph on the vertices $P$.
 \end{definition}
-\section{Bounds and asymptotics}
+\subsection{Bounds and asymptotics}
 There is interest in statements regarding the number of possible geometric graphs in
 in the aforementioned classes; evidently, that number would depend on the choice of
 the point set $P$, so instead one is interested in bounds on that number depending
@@ -89,16 +97,16 @@ often exponential, we tend to ignore polynomial factors; we will thus say that\[
 f \of n \preccurlyeq u \of n
 \]
 if $f\of n \leq p\of n u \of n$ for some polynomially-bounded $p$.
-\section{Convex point sets}
+\subsection{Convex point sets}
 [talk about the number of triangulations and crossing-free perfect matchings; this is a good place
 to introduce the recurrence for Catalan numbers too]
 
-\section{Crossing-free perfect matchings}
+\subsection{Crossing-free perfect matchings}
 We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CFPM_P$ the set
 of crossing-free perfect matchings on the point set $P$.
 [TODO cite existing results]
 
-\section{Left-right perfect matchings and bracket expressions}
+\subsection{Left-right perfect matchings and bracket expressions}
 A point set in the plane is \emph{in general position} if no three points are aligned.
 
 We say that a point set is \emph{in general position with respect to the horizontal} if it
@@ -190,10 +198,10 @@ $\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
 
 [TODO cite the existing upper bound from Sharir---Welzl 2006 (the proof is unrelated to anything here
 though)]
-\section{An optimal lower bound for the number of crossing-free perfect matchings}
+\subsection{An optimal lower bound for the number of crossing-free perfect matchings}
 This argument is due to E.~Welzl [TODO cite paper to appear, is there a preprint?].
 
-\begin{theorem}[Welzl---maybe other people?]
+\begin{theorem}[Ruiz-Vargas---Welzl]
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
 and let $B$ be a well-formed bracket expression of size $n$.
 Then there exists a crossing-free perfect matching consistent with $B$; in other words,
@@ -239,7 +247,7 @@ Let $P$ be a point set of size $n$ in general position. There are at least $C_{\
 crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position.
-\section{Matchings across a line}
+\subsection{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The left-right matchings corresponding to brackets expressions with $k$ opening brackets followed
 by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
