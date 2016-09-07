@@ -107,7 +107,7 @@ of crossing-free perfect matchings on the point set $P$.
 [TODO cite existing results]
 
 \subsection{Left-right perfect matchings and bracket expressions}
-A point set in the plane is \emph{in general position} if no three points are aligned.
+A point set in the plane is \emph{in general position} if no three points are collinear.
 
 We say that a point set is \emph{in general position with respect to the horizontal} if it
 is in general position and no two points lie on a vertical line. Note that any point set in
@@ -115,7 +115,7 @@ general position can be put in general position with respect to the horizontal b
 small rotation. Moreover, note that points in general position with respect to the horizontal
 are ordered from left to right.
 
-A \emph{bracket expression} of size $n$ is a sequence of $n$ opening brackets $\langle$ or closing
+A \emph{bracket expression} of length $n$ is a sequence of $n$ opening brackets $\langle$ or closing
 brackets $\rangle$.
 It is a \emph{well-formed prefix} if, when read from left to right, the number of closing brackets
 encountered never exceeds the number of opening brackets encountered.
@@ -123,7 +123,7 @@ A \emph{well-formed bracket expression} is a well-formed prefix with the same nu
 closing brackets.
 
 It is a well-known result [TODO FIND A CITATION] that the number of well-formed bracket expressions
-of size $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
+of length $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
 in angle brackets here, since that would result in hopeless confusion in a grammar describing nothing but
 sequences of angle brackets.}\begin{align*}
@@ -131,7 +131,7 @@ sequences of angle brackets.}\begin{align*}
 & \langle \text{wfbe} \rangle \text{wfbe} \\
 \mid\: & \text{empty}\text,
 \end{align*}
-where the sum ranges over the sizes of the component bracket expressions.
+where the sum ranges over the lengths of the component bracket expressions.
 
 Note that inserting an opening bracket, followed a closing bracket anywhere after the
 inserted opening bracket, into a well-formed bracket expression, results in a well-formed bracket
@@ -169,7 +169,7 @@ is incident to exactly one edge, and that edge is not vertical.
 \draw[dashed] (p5) -- (b5);
 \draw[dashed] (p6) -- (b6);
 \end{tikzpicture}}
-Construct a bracket expression $\gb\of\gm$ of size $n$ as follows: order $P$ from left to right;
+Construct a bracket expression $\gb\of\gm$ of length $n$ as follows: order $P$ from left to right;
 the $i$th bracket is opening if the $i$th point of $P$ is a left endpoint of $\gm$, and it is
 closing otherwise.
 This bracket expression is well-formed, since it can be constructed by starting from the
@@ -183,7 +183,7 @@ of any perfect matching consistent with $B$), and similarly we will refer to the
 corresponding to closing brackets of $B$ as \emph{right-points}.
 
 One approach to bounding the size of $\CFPM_P$ is to bound the size of
-$\gb^{-1}\of{B}\Intersection \CFPM_P$ for bracket expressions $B$ of size $n$\idest the
+$\gb^{-1}\of{B}\Intersection \CFPM_P$ for bracket expressions $B$ of length $n$\idest the
 number of crossing-free perfect matchings on $P$ consistent with $B$. We thus define
 \[\gn_P\of B \DefineAs \gb^{-1}\of{B}\Intersection \CFPM_P\text.\]
 In order to concisely refer to bracket expressions, we will use the notations
@@ -203,7 +203,7 @@ This argument is due to E.~Welzl [TODO cite paper to appear, is there a preprint
 
 \begin{theorem}[Ruiz-Vargas---Welzl]
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
-and let $B$ be a well-formed bracket expression of size $n$.
+and let $B$ be a well-formed bracket expression of length $n$.
 Then there exists a crossing-free perfect matching consistent with $B$; in other words,
 $\gn_P\of B \geq 1$.
 \begin{proof}
@@ -241,7 +241,7 @@ crossing-free perfect matching.
 \end{proof}
 \end{theorem}
 This immediately yields a lower bound for the number of crossing-free perfect matchings, since
-there are $C_{\frac n 2}$ well-formed bracket expressions of size $n$.
+there are $C_{\frac n 2}$ well-formed bracket expressions of length $n$.
 \begin{corollary}
 Let $P$ be a point set of size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
 crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
@@ -673,7 +673,7 @@ prefixes, where again wfbe denotes a well-formed bracket expression:
 & \text{wfbe} \langle \text{wfprefix} \\
 \mid\: & \text{wfbe},
 \end{align*}
-where the sum ranges over the size of the well-formed bracket expression preceding the first unmatched bracket.
+where the sum ranges over the length of the well-formed bracket expression preceding the first unmatched bracket.
 
 Finally, (\ref{spc-catalan-triangle}) reflects the fact that a well-formed prefix with $k$ opening brackets
 and $l$ closing brackets either ends with an opening bracket (preceded by a well-formed prefix with $k-1$ opening
@@ -682,7 +682,7 @@ and $l-1$ closing brackets).
 \subsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
-We are interested in the asymptotics as a function of the size of of the bracket expression $n = k+l+p+q$.
+We are interested in the asymptotics as a function of the length of of the bracket expression $n = k+l+p+q$.
 Since the bound is a product of two identical two-parameter factors, we study one of them,\[
 C_k\spc\of{k,l}\text,
 \]
