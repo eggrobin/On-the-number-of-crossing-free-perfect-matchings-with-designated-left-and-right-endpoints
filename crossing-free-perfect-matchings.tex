@@ -276,12 +276,42 @@ $\gn_P\of {\langle^k\rangle^k} \leq C_k^2$.
 The idea of the proof is as follows.
 First, pick a vertical line that separates the left-points from the right-points;
 we will call it \emph{the vertical line}.
-Further, let us call set of left-points $L$ and the set of right-points $R$.
+Further, let us call the set of left-points $L$ and the set of right-points $R$.
 
 A perfect matching across a line is uniquely defined by a bijection $\FunctionSpec \gm L R$ from
-the left-points to the right-points. Consider such a matching, and let $E$ be its set of edges.
+the left-points to the right-points. Consider such a matching, and let $E$ be the set of its edges.
 Now, number the intersections between the edges of the perfect matching and the vertical
 line from top to bottom. This yield a numbering $\FunctionSpec \gi E {[k]}$ of the edges.
+\marginfig[Constructing the numberings $\gl$ and $\gr$ of the left- and right-points from
+a crossing-free perfect matching across a line; here $\gi\of{\set{p,q}} = 2$, and thus
+$\gl\of{p}=\gr\of q = 2$.]{
+\begin{tikzpicture}[scale=0.75]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot] at (-3,1.5) (l1) {};
+\node[dot] at (-2,2) (l2) {};
+\node[dot,label=below left:$p$] at (-0.5,3) (l3) {};
+\node[dot,label=below right:$q$] at (0.5,3) (r1) {};
+\node[dot] at (1,4.5) (r2) {};
+\node[dot] at (2,0) (r3) {};
+
+
+\node at (-3,-1) {$\langle$};
+\node at (-2,-1) {$\langle$};
+\node at (-0.5,-1) {$\langle$};
+\node at (0.5,-1) {$\rangle$};
+\node at (1,-1) {$\rangle$};
+\node at (2,-1) {$\rangle$};
+
+\node[inner sep=0pt,label=above left:$1$] at (0,3.75) {};
+\node[inner sep=0pt,label=above right:$2$] at (0,3) {};
+\node[inner sep=0pt,label=above right:$3$] at (0,1) {};
+
+\draw (l1) -- (r2);
+\draw (l2) -- (r3);
+\draw (l3) -- (r1);
+
+\draw[very thick] (0,5) -- (0,0);
+\end{tikzpicture}}
 
 Define $\gl\of l \DefineAs \gi\of{e_l}$ mapping a left-point to the intersection number of its
 edge, and similarly $\gr\of r \DefineAs \gi\of{e_r}$ for the right-points. We have
