@@ -343,9 +343,9 @@ definition.
 \end{definition}
 
 \begin{lemma}
-There are at most $C_k$ crossing-free left-alignments of $k$ points on a given line.
-\begin{proof}
 Let $\gL$ be a set of $k$ points in general position, and let $V$ be a vertical line to the right of $\gL$.
+There are at most $C_k$ crossing-free left-alignments of $\gL$ on $V$.
+\begin{proof}
 Let $l$ be the leftmost point of $\gL$, and let $\gl$ be a crossing-free left-alignment of $\gL$ on $V$.
 Let $A=\setst{a_p}{p\in\gL}$ be a set of non-crossing line segments satisfying the properties in the definition
 of crossing-free aligments.
@@ -371,7 +371,8 @@ in the definition.
 
 It follows that $\gl$ is determined by the choice of $\gl\of l$ and crossing-free left-alignments
 of $\gl\of{l}-1$ and $k-\gl\of{l}$ points.
-Letting $i\DefineAs \gl\of l - 1$, these are crossing-free alignments of $i$ and $k-i-1$ points.
+Letting $i\DefineAs \gl\of l - 1$, these are crossing-free alignments of $i$ and $k-i-1$ points (see
+figure~\ref{figCrossingFreeAlignment}).
 Therefore, if $\varpi_j$ is an upper bound for the number of crossing-free
 left-alignments of $j$ points when $j < k$,
 we can give an upper bound on the number of crossing-free left-alignments of $k$ points,
@@ -382,7 +383,7 @@ $\varpi_k=C_k$.
 \end{lemma}
 \marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick segment),
 the rest consists in two crossing-free left-alignments of $i$ and $k-i-1$
-points each---here $k = 5$ and $i = 2$.]{
+points each---here $k = 5$ and $i = 2$.\label{figCrossingFreeAlignment}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \node[dot] at (-5,2) (p1) {};
