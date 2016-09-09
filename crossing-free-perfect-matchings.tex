@@ -36,6 +36,33 @@ bounds, in which case mention it here]
 \end{abstract}
 
 \section*{Introduction}
+In the study of plane embedding of planar graphs, embeddings with non-crossing straight-line edges (called crossing-free
+geometric graphs) are of particular
+interest.
+For instance, it is known [CITE the Dutch paper] that any optimal solution to the travelling salesman problem in the
+Euclidean plane.
+
+In in 1936, K.~Wagner proved\footnote{This result was independently proved by I.~Fáry in 1948 [CITE], and by
+S.~K.~Stein in 1951 [CITE]; it is generally known as Fáry's theorem.} [CITE] that any planar graph has such an
+embedding.
+
+A natural enumerative question is then, given a vertex set of $n$ points in the Euclidean plane,
+to bound the number of plane graphs of a certain sort (cycles, matchings, etc.) which can be
+drawn with non-crossing straight edges.
+For $n$-cycles, the question was introduced by M.~Newborn and W.~O.~J.~Moser in 1976 [CITE], and a super-exponential
+upper bound was given.
+In 1980, M.~Ajtai, V.~Chvátal, M.~Newborn, and E.~Szemerédi proved that there are only exponentially many
+crossing-free geometric graphs on a given point set.
+
+Exponential bounds for various sorts of graphs were then improved, in particular for triangulations---these are
+interesting because they are the maximal crossing-free geometric graphs; finding a bound for them yields a bound
+for the overall number of crossing-free geometric graphs. In addition, bounds on the number of triangulations
+are of interest in geometric modeling [CITE Studies in computational geometry motivated by mesh generation].
+
+For perfect matchings, an optimal lower bound of $C_{\frac n 2}$ was obtained as early as 1995 by A.~García,
+M.~Noy, and J.~Tejel; upper bounds have been harder to come by, with the best one yet being (asymptotically,
+and disregarding polynomial factors) $10.05^n$, given by M.~Sharir and E.~Welzl in 2005 [CITE].
+
 [TODO blurb about history and applications of crossing-free graphs; for instance
 that untangling paper has the fact that an optimal solution to the traveling salesman
 is crossing-free]
@@ -266,7 +293,7 @@ by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
 across a line}. Indeed, any edge in such a matching will cross any vertical line that separates
 the left-points from the right-points.
 
-The following result, and its proof, were given by Micha Sharir and Emo Welzl in 2006 [TODO cite].
+The following result, and its proof, were given by Micha Sharir and Emo Welzl in 2005 [TODO cite].
 \NoEndMark
 \begin{theorem}[Sharir---Welzl]
 Let $P$ be a set of $n=2k$ points in general position with respect to the horizontal.
@@ -324,7 +351,7 @@ If the matching is crossing-free, we will show that
 $\gl$ and $\gr$ have to be in sets of size $C_k$, thus that there are at most $C_k^2$ functions
 $\gm = \gl \gr^{-1}$\idest that there can be at most $C_k^2$ perfect matchings across a line.
 
-Since we are going to reuse these concepts in subsequent proofs, we will formalize and name the properties of
+Since we are going to reuse these concepts in subsequent sections, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider.
 \begin{definition}[crossing-free alignment]
 Let $\gL$ be a set of $k$ points in general position. Let $V$ be a vertical line to the right of $\gL$.
