@@ -37,10 +37,10 @@ Do I mention the expressions for the Catalan triangle (are they known)?]
 \end{abstract}
 
 \section*{Introduction}
-In the study of plane embedding of planar graphs, embeddings with non-crossing straight edges (called crossing-free
-geometric graphs) are of particular
+In the study of plane embeddings of planar graphs, also known as plane graphs,
+embeddings with non-crossing straight edges (called crossing-free geometric graphs) are of particular
 interest.
-For instance, it is known [CITE the Dutch paper] that any optimal solution to the travelling salesman problem in the
+For instance, it is known \cite{LeeuwenSchoone1981} that any optimal solution to the travelling salesman problem in the
 Euclidean plane has non-crossing straight edges.
 In 1936, K.~Wagner proved\footnote{This result was independently proved by I.~Fáry in 1948 [CITE], and by
 S.~K.~Stein in 1951 [CITE]; it is generally known as Fáry's theorem.} [CITE] that any planar graph has such an
@@ -49,10 +49,10 @@ embedding.
 A natural enumerative question is then, given a vertex set of $n$ points in the Euclidean plane,
 to bound the number of plane graphs of a certain sort (cycles, matchings, etc.) which can be
 drawn with non-crossing straight edges.
-For spanning cycles, the question was introduced by M.~Newborn and W.~O.~J.~Moser in 1976 [CITE], and a
-super-exponential upper bound was given.
-In 1980, M.~Ajtai, V.~Chvátal, M.~Newborn, and E.~Szemerédi [CITE] proved that there are only exponentially many
-crossing-free geometric graphs on a given point set.
+For spanning cycles, the question was introduced by M.~Newborn and W.~O.~J.~Moser in 1976 \cite{NewbornMoser1980},
+and a super-exponential upper bound was given.
+In 1980, M.~Ajtai, V.~Chvátal, M.~Newborn, and E.~Szemerédi \cite{AjtaiChvatalNewbornSzemeredi1982}
+proved that there are only exponentially many crossing-free geometric graphs on a given point set.
 
 Exponential bounds for various sorts of graphs were then improved, in particular for triangulations---these are
 interesting because they are the maximal crossing-free geometric graphs; finding a bound for them yields a bound
@@ -63,8 +63,8 @@ Some special configurations of points are better understood; in particular, for 
 the numbers of crossing-free perfect matchings, triangulations, and spanning cycles are known.
 
 For perfect matchings, an optimal lower bound of $C_{\frac n 2}$ was obtained as early as 1995 by A.~García,
-M.~Noy, and J.~Tejel [CITE]; upper bounds have been harder to come by, with the best one yet being asymptotically
-$10.05^n$, given by M.~Sharir and E.~Welzl in 2005 [CITE].
+M.~Noy, and J.~Tejel \cite{GarciaNoyTejel2000}; upper bounds have been harder to come by, with the best one
+yet being asymptotically $10.05^n$, given by M.~Sharir and E.~Welzl in 2005 \cite{SharirWelzl2006}
 In that same work, an upper bound of $5.83^n$ is given for the number of crossing-free perfect matchings on a
 point set whose points are designated as left or right endpoints; moreover, an upper bound of $4^n$ is given
 when all the left endpoints are to the left of the right endpoints (matchings across a line).
@@ -232,8 +232,7 @@ $\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
 [TODO cite the existing upper bound from Sharir---Welzl 2006 (the proof is unrelated to anything here
 though)]
 \subsection{An optimal lower bound for the number of crossing-free perfect matchings}
-The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl [TODO cite paper to appear, is there a preprint?].
-\begin{theorem}[Ruiz-Vargas---Welzl]
+The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
 and let $B$ be a well-formed bracket expression of length $n$.
 Then there exists a crossing-free perfect matching consistent with $B$; in other words,
@@ -275,12 +274,11 @@ $\BigO\of{n^3}$ steps by J.~van~Leeuwen and A.~A.~Schoone in 1980 [TODO citation
 find a
 crossing-free perfect matching.
 \end{proof}
-\end{theorem}
 This immediately yields a lower bound for the number of crossing-free perfect matchings, since
 there are $C_{\frac n 2}$ well-formed bracket expressions of length $n$.
 Note that this lower bound had already been proved by A.~García, M.~Noy, and J.~Tejel in 1995,
-by a recurrence that split the point set, rather than via well-formed bracket expressions [TODO
-citation].
+by a recurrence that split the point set, rather than via well-formed bracket expressions
+\cite{GarciaNoyTejel2000}.
 \begin{corollary}
 Let $P$ be a point set of size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
 crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
@@ -294,7 +292,7 @@ by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
 across a line}. Indeed, any edge in such a matching will cross any vertical line that separates
 the left-points from the right-points.
 
-The following result, and its proof, were given by Micha Sharir and Emo Welzl in 2005 [TODO cite].
+The following result, and its proof, were given by Micha Sharir and Emo Welzl in 2005 \cite{SharirWelzl2006}.
 \NoEndMark
 \begin{theorem}[Sharir---Welzl]
 Let $P$ be a set of $n=2k$ points in general position with respect to the horizontal.
