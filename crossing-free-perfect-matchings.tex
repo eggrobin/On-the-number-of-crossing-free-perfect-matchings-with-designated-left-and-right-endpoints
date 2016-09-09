@@ -72,9 +72,8 @@ Here we give new bounds on the number of crossing-free perfect matchings on a po
 right endpoints for specific left-to-right orderings of the left and right endpoints, and give a bound for
 matchings across a line that depends on the number of points in the interior of the convex hull.
 \section{Background}
-blurb
+We first give some definitions, as well as existing proofs whose concepts we will use to derive our results.
 \subsection{Geometric graphs}
-blurb
 \begin{definition}[geometric graph]
 Given a set of points $P$ in the Euclidean plane $\R^2$,
 a \emph{geometric graph} is a collection of straight line segments (edges)
@@ -84,7 +83,7 @@ It can be described as a simple graph (in the combinatorial sense)
 on the vertices $P$, where the edge $\set{v,w}$ corresponds to the segment joining
 $v$ and $w$.
 \end{definition}
-\begin{definition}[crossing-free geometric graph]
+\begin{definition}[crossing-free]
 A geometric graph is \emph{crossing-free} if no two edges share points other than
 their endpoints; it is called \emph{crossing} otherwise.
 
@@ -96,28 +95,24 @@ A \emph{triangulation} is a maximal crossing-free geometric graph, that is, a
 geometric graph such that for all $v$ and $w$ in $P$ that are not joined by a
 segment, adding the segment joining $v$ and $w$ would result in a crossing
 geometric graph.
-
+\end{definition}
 Note that the faces (in the sense of plane graphs) formed by a triangulation are
 all triangles, with the possible exception of the outer face (thus this definition
 is \emph{not} equivalent to that of a triangulation of the $2$-sphere).
-\end{definition}
 
-Since a geometric graph corresponds to a simple graph on the underlying point set,
+Since a geometric graphs corresponds to a simple graph on the underlying point set,
 we can also look at geometric graphs that belong to special classes of simple graphs.
-\begin{definition}[crossing-free matching]
-A crossing-free geometric graph is a \emph{crossing-free matching} if it is a matching
-as a simple graph on the vertices $P$.
-\end{definition}
-\begin{definition}[crossing-free perfect matching]
-A \emph{crossing-free perfect matching} is a crossing-free geometric graph which is
-a perfect matching as a simple graph on the vertices $P$.
-\end{definition}
-\subsection{Bounds and asymptotics}
-There is interest in statements regarding the number of possible geometric graphs in
-in the aforementioned classes; evidently, that number would depend on the choice of
-the point set $P$, so instead one is interested in bounds on that number depending
-on the cardinality $\Cardinality P$, and possibly restricting $P$ so that it satisfies
-certain properties.
+As we will only be focusing on geometric graphs, we simply call
+\emph{perfect matching}
+a geometric graph which corresponds to a perfect matching in the combinatorial sense.
+Similarly, given a point set $P$, a \emph{spanning cycle on $P$} shall refer to a
+geometric graph on $P$ which is a cycle when seen as a simple graph.
+
+As outlined in the introduction, we are interested in statements regarding the number
+of geometric graphs, possibly restricted to a certain type, on a given point set.
+Evidently, that number would depend on the choice of the point set $P$, so instead we seek
+bounds on that number depending on the cardinality $\Cardinality P$, and possibly
+restricting $P$ so that it satisfies certain properties.
 
 In general, if $g\of P$ is the number of geometric graphs of a certain sort on the point
 set $P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
@@ -125,8 +120,9 @@ set $P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
 l \of n \leq g \of n \leq u \of n \text,\]
 where $P$ runs over all point sets that satisfy the relevant properties.
 
-In addition, we may be interested in asymptotics on such bounds $l$ and $u$; since these bounds are
-often exponential, we tend to ignore polynomial factors; we will thus write that\[
+In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
+existing results; since the bounds are often exponential, we tend to ignore polynomial
+factors; we will thus write that\[
 f \of n \preccurlyeq u \of n
 \]
 if $f\of n \leq p\of n u \of n$ for some polynomially-bounded $p$.
