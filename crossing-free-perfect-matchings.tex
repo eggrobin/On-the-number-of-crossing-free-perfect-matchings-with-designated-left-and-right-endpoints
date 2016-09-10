@@ -172,8 +172,8 @@ yielding asymptotically
 C_n \preccurlyeq 4^n\text.
 \end{equation}
 
-[talk about the number of triangulations and crossing-free perfect matchings; this is a good place
-to introduce the recurrence for Catalan numbers too]
+[TODO talk about the number of crossing-free perfect matchings; find the Alfred Errera thing from the octavo
+of the académie royale de belgique, reference 10 in Sharir---Welzl; this might require a trip to the library?]
 
 \subsection{Crossing-free perfect matchings}
 We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CFPM_P$ the set
@@ -198,7 +198,7 @@ A \emph{well-formed bracket expression} is a well-formed prefix with the same nu
 closing brackets.
 
 It is a well-known result, shown\footnote{Specifically, Catalan showed that the recurrence (\ref{CatalanRecurrence})
-counts the number of parenthesizings of $n+1$ factors.} by E.~Catalan in 1838 \cite{Catalan1838}, that the
+counts the number of parenthesizings of $n+1$ factors.} by E.~C.~Catalan in 1838 \cite{Catalan1838}, that the
 number of well-formed bracket expressions
 of length $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
@@ -788,14 +788,16 @@ $\begin{array}{r r r r r r}
     \path[->] (summandAbove.south) edge (result.north -| summandAbove.south)
               (summandLeft) edge (result);
 }
-This is the recurrence defining the Catalan triangle [CITATIONS], and its solution is known, namely [CITATION]
+This is the recurrence defining the Catalan triangle\footnote{[TODO cite something that actually uses that
+name here]}, and its solution is known, namely
 \begin{equation}
 \spc\of{k,l} = \frac
 {\Factorial{\pa{k+l}} \pa{k-l+1}}
 {\Factorial l \Factorial{\pa{k+1}}}
 = \frac{k-l+1}{k+1} \binom{k+l}{k}\label{spc-solution}
-\text.
+\text,
 \end{equation}
+as shown by L.~F.~A.~Arbogast in 1800 \cite[p.~214--217]{Arbogast1800}.
 \subsubsection{A combinatorial interpretation of $\spc$}
 The Catalan triangle counts well-formed prefix bracket expressions [CITATION]. This can in fact be seen from
 all the definitions of $\spc$ above, thus providing a more combinatorial solution.
