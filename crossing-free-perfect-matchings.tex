@@ -141,11 +141,24 @@ For points in convex position, the numbers of triangulations and perfect matchin
 The following recurrence, given by J.~A.~Segner in 1758 \cite{Segner1758}, defines the \emph{Catalan numbers}.
 \begin{theorem}[Segner]
 Let $C_n$ be the number of triangulations of a set of $n+2$ points in convex position.
-Then $C_0 = 1$, and\[
-C_n = \sum {i=0}{n-1} C_i C_{n-i-1}\text.
-\]
+Then $C_0 = 1$, and for $n>0$, \begin{equation}
+C_n = \sum {i=0}[n-1] C_i C_{n-i-1}\text. \label{CatalanRecurrence}
+\end{equation}
 \begin{proof}
+Consider a set of $n+2$ points in convex position.
+For $n=0$ the result is trivial, the only triangulation is an edge.
 
+Let $n > 0$, and number the points in polar order (around the interior of the convex hull), from $0$ to $n+1$.
+The edge $e$ joining points $n+1$ and $\pa{n}$ is in the boundary of the convex hull, and thus must
+be in any triangulation, since no other edge can cross it. Let $i$ be the index of the third point of the
+triangle containing edge $e$, which may be any of the others, from $0$ to $n-1$.
+
+Then, removing that triangle from any triangulation yields triangulations
+of point sets of size $i$ (containing points $0$ through $i-1$) and $n-i-1$ (containing points $i+1$ through
+$n-2$), so $C_n \leq \sum {i=0}[n-1] C_i C_{n-i-1}$.
+Moreover, any triangulations of these two point sets, together with the triangle $\set{n,n-1,i}$
+and the edges $\set{n+1,0}$, $\set{n, n-1}$, $\set{i-1, i}$, and $\set{i, i+1}$, form a triangulation of the
+whole point set, proving equality.
 \end{proof}
 \end{theorem}
 An expression for $C_n$ in terms of factorials was given earlier by Euler \cite{Euler1751}, along
@@ -183,7 +196,9 @@ encountered never exceeds the number of opening brackets encountered.
 A \emph{well-formed bracket expression} is a well-formed prefix with the same number of opening and
 closing brackets.
 
-It is a well-known result [TODO FIND A CITATION] that the number of well-formed bracket expressions
+It is a well-known result, shown\footnote{Specifically, Catalan showed that the recurrence (\ref{CatalanRecurrence})
+counts the number of parenthesizings of $n+1$ factors.} by E.~Catalan in 1838 \cite{Catalan1838}, that the
+number of well-formed bracket expressions
 of length $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
 in angle brackets here, as would be usual in Backus---Naur form, since that would result in hopeless
@@ -297,8 +312,8 @@ If this procedure did not terminate, it would yield a sequence $\tuple{\gm_i}_{i
 perfect matchings on $P$ on which $l$ is strictly decreasing, thus an infinite sequence of distinct
 graphs on $P$.
 Since there are only finitely many graphs on $P$, this is a contradiction, so we
-eventually\footnote{The entangling procedure itself predates this proof, and was shown to terminate in
-$\BigO\of{n^3}$ steps by J.~van~Leeuwen and A.~A.~Schoone in 1980 [TODO citation].}
+eventually\footnote{The untangling procedure itself predates this proof, and was shown to terminate in
+$\BigO\of{n^3}$ steps by J.~van~Leeuwen and A.~A.~Schoone in 1980 \cite{LeeuwenSchoone1981}.}
 find a
 crossing-free perfect matching.
 \end{proof}
