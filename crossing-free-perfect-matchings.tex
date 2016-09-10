@@ -60,7 +60,9 @@ for the overall number of crossing-free geometric graphs. In addition, bounds on
 are of interest in geometric modeling [CITE Studies in computational geometry motivated by mesh generation].
 
 Some special configurations of points are better understood; in particular, for point sets in convex position,
-the numbers of crossing-free perfect matchings, triangulations, and spanning cycles are known.
+the numbers of crossing-free perfect matchings, triangulations, and spanning cycles are known. In fact, the study
+of point sets in convex position vastly predates the general problem, with the number of triangulations given by
+Euler in 1751 \cite{Euler1751}.
 
 For perfect matchings, an optimal lower bound of $C_{\frac n 2}$ was obtained as early as 1995 by A.~García,
 M.~Noy, and J.~Tejel \cite{GarciaNoyTejel2000}; upper bounds have been harder to come by, with the best one
@@ -120,6 +122,10 @@ set $P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
 l \of n \leq g \of n \leq u \of n \text,\]
 where $P$ runs over all point sets that satisfy the relevant properties.
 
+We say that 
+a point set in the plane is \emph{in general position} if no three points are collinear.
+Here we will only study point sets in general position.
+
 In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
 existing results; since the bounds are often exponential, we tend to ignore polynomial
 factors; we will thus write that\[
@@ -128,8 +134,30 @@ f \of n \preccurlyeq u \of n
 if $f\of n \leq p\of n u \of n$ for some polynomially-bounded $p$.
 \subsection{Convex point sets}
 \label{ConvexPointSets}
-A set of points is said to be \emph{in convex position} if all points are in the boundary of its
-convex hull.
+A set of points is said to be \emph{in convex position} if it is in general position and
+all points are in the boundary of its convex hull.
+
+For points in convex position, the numbers of triangulations and perfect matchings are known.
+The following recurrence, given by J.~A.~Segner in 1758 \cite{Segner1758}, defines the \emph{Catalan numbers}.
+\begin{theorem}[Segner]
+Let $C_n$ be the number of triangulations of a set of $n+2$ points in convex position.
+Then $C_0 = 1$, and\[
+C_n = \sum {i=0}{n-1} C_i C_{n-i-1}\text.
+\]
+\begin{proof}
+
+\end{proof}
+\end{theorem}
+An expression for $C_n$ in terms of factorials was given earlier by Euler \cite{Euler1751}, along
+with the generating function.
+A convenient form is\begin{equation}
+C_n = \frac{1}{n+1} \binom {2n} {n}\text,
+\end{equation}
+yielding asymptotically
+\begin{equation}
+C_n \preccurlyeq 4^n\text.
+\end{equation}
+
 [talk about the number of triangulations and crossing-free perfect matchings; this is a good place
 to introduce the recurrence for Catalan numbers too]
 
@@ -141,7 +169,6 @@ When talking about a perfect matching, we will denote the unique edge incident t
 $e_p$.
 
 \subsection{Bracket expressions and their relations to perfect matchings}
-A point set in the plane is \emph{in general position} if no three points are collinear.
 
 We say that a point set is \emph{in general position with respect to the horizontal} if it
 is in general position and no two points lie on a vertical line. Note that any point set in
@@ -349,7 +376,7 @@ reach the vertical line.
 
 If the matching is crossing-free, we will show that
 $\gl$ and $\gr$ have to be in sets of size $C_k$, thus that there are at most $C_k^2$ functions
-$\gm = \gl \gr^{-1}$\idest that there can be at most $C_k^2$ perfect matchings across a line.
+$\gm = \gr^{-1} \Compose \gl$\idest that there can be at most $C_k^2$ perfect matchings across a line.
 
 Since we are going to reuse these concepts in subsequent sections, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider.
