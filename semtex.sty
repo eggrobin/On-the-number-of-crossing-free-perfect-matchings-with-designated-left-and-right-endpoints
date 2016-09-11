@@ -89,15 +89,16 @@
 %%% begin Voodoo
 
 % This adds a widecheck, unicode-math style.
-
-\ExplSyntaxOn
-\cs_gset_protected_nopar:Npx \widecheck {
-  \um_accent:nnn {} { \um_symfont_tl } { "030C }
-}
-%\cs_gset_protected_nopar:Npx \slashed { %circumvent an extremely weird bug...
-%  \um_accent:nnn {} { \um_symfont_tl } { "0338 }
+% TODO(egg): now it doesn't work and I don't know why.
+%\ExplSyntaxOn
+%\cs_gset_protected_nopar:Npx \widecheck {
+%  \@@_accent:nnn {} { \um_symfont_tl } { "030C }
 %}
-\ExplSyntaxOff
+%%\cs_gset_protected_nopar:Npx \slashed { %circumvent an extremely weird bug...
+%%  \um_accent:nnn {} { \um_symfont_tl } { "0338 }
+%%}
+%\ExplSyntaxOff
+
 \usepackage{cancel}
 % U00338 works well for operators, but isn't so nice for letters.
 \newcommand{\slashed}{\cancel}

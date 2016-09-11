@@ -1,6 +1,7 @@
 \documentclass[10pt, a4paper, twoside]{basestyle}
 
 \usepackage{tikz}
+\usetikzlibrary{cd}
 \usetikzlibrary{calc}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{intersections}
@@ -16,6 +17,10 @@
 \DeclareMathOperator{\spc}{spc}
 \DeclareMathOperator{\PM}{PM}
 \DeclareMathOperator{\CFPM}{CFPM}
+\DeclareMathOperator{\PMAL}{PMAL}
+\DeclareMathOperator{\CFPMAL}{CFPMAL}
+\DeclareMathOperator{\CFLA}{CFLA}
+\DeclareMathOperator{\CFRA}{CFRA}
 
 \newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
 
@@ -173,7 +178,7 @@ C_n \preccurlyeq 4^n\text.
 \end{equation}
 
 [TODO talk about the number of crossing-free perfect matchings; find the Alfred Errera thing from the octavo
-of the académie royale de belgique, reference 10 in Sharir---Welzl; this might require a trip to the library?]
+of the académie royale de belgique, reference 10 in Sharir--Welzl; this might require a trip to the library?]
 
 \subsection{Crossing-free perfect matchings}
 We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CFPM_P$ the set
@@ -202,7 +207,7 @@ counts the number of parenthesizings of $n+1$ factors.} by E.~C.~Catalan in 1838
 number of well-formed bracket expressions
 of length $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
-in angle brackets here, as would be usual in Backus---Naur form, since that would result in hopeless
+in angle brackets here, as would be usual in Backus--Naur form, since that would result in hopeless
 confusion in a grammar describing nothing but sequences of angle brackets.}\begin{align*}
 \text{wfbe} \Coloneq
 & \langle \text{wfbe} \rangle \text{wfbe} \\
@@ -246,7 +251,7 @@ is incident to exactly one edge, and that edge is not vertical.
 \draw[dashed] (p5) -- (b5);
 \draw[dashed] (p6) -- (b6);
 \end{tikzpicture}}
-Construct a bracket expression $\gb\of\gm$ of length $n$ as follows: order $P$ from left to right;
+Construct a bracket expression $\gb_P\of\gm$ of length $n$ as follows: order $P$ from left to right;
 the $i$th bracket is opening if the $i$th point of $P$ is a left endpoint of $\gm$, and it is
 closing otherwise.
 This bracket expression is well-formed, since it can be constructed by starting from the
@@ -254,15 +259,15 @@ This bracket expression is well-formed, since it can be constructed by starting 
 each edge, where the closing bracket will be inserted to the right of the opening bracket.
 
 Given a well-formed bracket expression $B$ and a point set $P$, we will say that a perfect matching
-$\gm$ is \emph{consistent with} $B$ if $\gb\of\gm = B$; moreover, we will refer to the points of
+$\gm$ is \emph{consistent with} $B$ if $\gb_P\of\gm = B$; moreover, we will refer to the points of
 $P$ corresponding to opening brackets of $B$ as \emph{left-points} (since they will be left endpoints
 of any perfect matching consistent with $B$), and similarly we will refer to the points of $P$
 corresponding to closing brackets of $B$ as \emph{right-points}.
 
 One approach to bounding the size of $\CFPM_P$ is to bound the size of
-$\gb^{-1}\of{B}\Intersection \CFPM_P$ for bracket expressions $B$ of length $n$\idest the
+$\gb_P^{-1}\of{B}\Intersection \CFPM_P$ for bracket expressions $B$ of length $n$\idest the
 number of crossing-free perfect matchings on $P$ consistent with $B$. We thus define
-\[\gn_P\of B \DefineAs \gb^{-1}\of{B}\Intersection \CFPM_P\text.\]
+\[\gn_P\of B \DefineAs \Cardinality{\gb_P^{-1}\of{B}\Intersection \CFPM_P}\text.\]
 In order to concisely refer to bracket expressions, we will use the notations
 $\langle^k$ for $k$ successive opening brackets, and $\rangle^k$ for $k$ successive
 closing brackets, for instance,\[
@@ -273,7 +278,7 @@ closing brackets, for instance,\[
 and about the bound on a product of bracket expressions. Maybe about the boring stuff like
 $\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
 
-[TODO cite the existing upper bound from Sharir---Welzl 2006 (the proof is unrelated to anything here
+[TODO cite the existing upper bound from Sharir--Welzl 2006 (the proof is unrelated to anything here
 though)]
 \subsection{An optimal lower bound for the number of crossing-free perfect matchings}
 The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
@@ -338,7 +343,7 @@ the left-points from the right-points.
 
 The following result, and its proof, were given by Micha Sharir and Emo Welzl in 2005 \cite{SharirWelzl2006}.
 \NoEndMark
-\begin{theorem}[Sharir---Welzl]
+\begin{theorem}[Sharir--Welzl]
 Let $P$ be a set of $n=2k$ points in general position with respect to the horizontal.
 Then there are at most $C_{\frac n 2}^2$ crossing-free perfect matchings across a line on $P$\idest
 $\gn_P\of {\langle^k\rangle^k} \leq C_k^2$.
@@ -354,7 +359,7 @@ Now, number the intersections between the edges of the perfect matching and the 
 line from top to bottom. This yield a numbering $\FunctionSpec \gi E {[k]}$ of the edges.
 \marginfig[Constructing the numberings $\gl$ and $\gr$ of the left- and right-points from
 a crossing-free perfect matching across a line; here $\gi\of{\set{p,q}} = 2$, and thus
-$\gl\of{p}=\gr\of q = 2$.]{
+$\gl\of{p}=\gr\of q = 2$.\label{figConstructCFA}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \node[dot] at (-3,1.5) (l1) {};
@@ -486,6 +491,54 @@ the portion of the edge $e_p$ to the left of the vertical line.
 Similarly, $\gr$ is a crossing-free right-alignment of $R$ on the vertical line.
 \end{proof}
 \section{Analysing the overcounting in the upper bound for matchings across a line}
+The bound given above for the number of matchings across a line is not optimal;
+an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
+right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{crossingPMAL}).
+\marginfig[Composing crossing-free alignments, only to get a crossing perfect
+matching.\label{crossingPMAL}]{TODO}
+
+There is however more to the overcounting than just counting some crossing matchings.
+To characterize that, it helps to name some functions and sets. Again, are considering a
+set $P$ of $2k$ points in general position with respect to the horizontal and the bracket
+expression $\langle^k\rangle^k$.  We let $L$ be the set of left-points, and $R$ be the
+set of right-points. Moreover, we pick a vertical line separating $L$ and $R$, and call it
+$V$.
+
+In the previous section, given a crossing-free perfect matching $\gm$, we constructed crossing-free
+left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call that
+construction $\gw$, thus $\gw\of{\gm}=\tuple{\gl, \gr}$. Moreover, let us call $\CFLA_{L,V}$ the
+set of crossing-free left-alignments of $L$ on $V$, and $\CFLA_{R,V}$ the set of crossing-free
+left-alignments of $R$ on $V$. Given sets of equal sizes $L$ and $R$,
+$\gl\in\CFLA_{L,V}$, and $\gr\in\CFRA_{R,V}$,
+let $c\of{\gl,\gr}$ be the (possibly crossing) perfect matching $\gr^{-1}\Compose\gl$.
+Finally, let us name the sets of perfect matchings across a line and of
+crossing-free perfect matchings across a line,
+\begin{align*}
+\PMAL_P &\DefineAs \gb_P^{-1}\of{\langle^k\rangle^k}\\
+\CFPMAL_P &\DefineAs \PMAL_P \Intersection \CFPM_P\text.
+\end{align*}
+Then the following diagram commutes\idest constructing crossing-free alignments from a matching
+and then composing them yields the initial matching.
+\[\begin{tikzcd}
+\CFPMAL_P \arrow{r}{\gw} \arrow[hook]{d}{\Subset} & \CFLA_{L,V}\Cartesian\CFRA_{R,V} \arrow{ld}{c} \\
+\PMAL_P
+\end{tikzcd}\]
+The result of Sharir and Welzl consists in deducing from the commutative diagram that
+$\gw$ must be injective, and so that\begin{equation}
+\Cardinality{\CFPMAL_P \arrow{r}{\gw}} \leq
+\Cardinality{\CFLA_{L,V}\Cartesian\CFRA_{R,V} \arrow{ld}{c}}\text, \label{SharirWelzlOvercounting}
+\end{equation}
+and then a bound for the number of crossing-free alignments yields a bound for the number of
+crossing-free matchings across a line.
+
+The inequality (\ref{SharirWelzlOvercounting}) is strict, as shown in figure~\ref{crossingPMAL}.
+We would thus like to study the pairs of crossing-free alignments which are \emph{not} in
+the image of $\gw$, since they are responsible for that excess.
+Evidently, if $c\of{\gl,\gr}$ is crossing, then $\tuple{\gl,\gr}$ is not in the image of $\gw$,
+since the diagram commutes. On the other hand, figure~\ref{figWeirdAligments} shows a pair of
+crossing-free alignments $\tuple{\gl,\gr}$ which composes to a crossing-free alignment
+$\gm = c\of{\gl,\gr}$, but which is not equal to $\gw\of\gm$.
+
 \section{Highly convex matchings across a line}
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
