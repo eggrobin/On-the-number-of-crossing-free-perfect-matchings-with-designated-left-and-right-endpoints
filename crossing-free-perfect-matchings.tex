@@ -525,21 +525,47 @@ and then composing them yields the initial matching.
 \end{tikzcd}\]
 The result of Sharir and Welzl consists in deducing from the commutative diagram that
 $\gw$ must be injective, and so that\begin{equation}
-\Cardinality{\CFPMAL_P \arrow{r}{\gw}} \leq
-\Cardinality{\CFLA_{L,V}\Cartesian\CFRA_{R,V} \arrow{ld}{c}}\text, \label{SharirWelzlOvercounting}
+\Cardinality{\CFPMAL_P} \leq
+\Cardinality{\CFLA_{L,V}\Cartesian\CFRA_{R,V}}\text, \label{SharirWelzlOvercounting}
 \end{equation}
 and then a bound for the number of crossing-free alignments yields a bound for the number of
 crossing-free matchings across a line.
 
 The inequality (\ref{SharirWelzlOvercounting}) is strict, as shown in figure~\ref{crossingPMAL}.
 We would thus like to study the pairs of crossing-free alignments which are \emph{not} in
-the image of $\gw$, since they are responsible for that excess.
-Evidently, if $c\of{\gl,\gr}$ is crossing, then $\tuple{\gl,\gr}$ is not in the image of $\gw$,
-since the diagram commutes. On the other hand, figure~\ref{figWeirdAligments} shows a pair of
+the image of $\gw$, since they are responsible for that excess; we will call them \emph{overcounted}.
+Overcounted pairs of crossing-free alignments fall into one of two categories;
+\begin{enumerate}
+\item
+evidently, if $c\of{\gl,\gr}$ is crossing, then $\tuple{\gl,\gr}$ is not in the image of $\gw$,
+since the diagram commutes;
+\item on the other hand, figure~\ref{figWeirdAligments} shows a pair of
 crossing-free alignments $\tuple{\gl,\gr}$ which composes to a crossing-free alignment
 $\gm = c\of{\gl,\gr}$, but which is not equal to $\gw\of\gm$.
+\end{enumerate}
+To simplify matters, let us point out a necessary condition a pair of crossing-free alignments
+has to fulfill in order not to be overcounted [TODO is it sufficient too? I would think so, but
+somehow I cannot find a proof right now; clearly it rules out the non-crossing inconsistent ("weird")
+case, what about the crossing case?].
 
+Let us first examine again the anatomy of a crossing-free left-aligment. Recall that we iteratively
+pick the leftmost point, choose which points go above its segment (and which points go below),
+split the point set accordingly, and repeat with the two smaller point sets.
+By choosing which points go above and below the segment of the leftmost point $p$, we force it to be in a
+\emph{cone}\idest a region delimited by two rays emanating from $p$ and passing through consecutive points
+in polar order around $p$, or delimited by the ray passing through the first or last point in polar order
+and the vertical. Thus a crossing-free aligment has all its segments constrained
+to cones, see figure~\ref{figCone}. Let us refer to the cone in which $a_p$ has to lie for a crossing-free
+left-alignment $\gl$ as \emph{the cone of $p$ under $\gl$}
+
+Let $\tuple{\gl,\gr}\in \CFLA_{L,V}\Cartesian\CFRA_{R,V}$ such that $\tuple{\gl,\gr} = \gw\of\gm$.
+Then $c\of{\gl,\gr}=\gm$, so the edges of $\gm$ must form the segments required in the definition
+of crossing-free alignments. This means that a left-point $p$ must be matched to a right-point $q$
+lying in the cone of $p$ under $\gl$, see figure~\ref{figAlignmentConsistency}.
+Further, $q$ must itself have $p$ in its cone under $\gr$, see figure~\ref{figMutualCones}.
 \section{Highly convex matchings across a line}
+In particular, this means that if there is no right-point in the cone of $p$ under $\gl$,
+then $\gl$ has to be part of an overcounted pair of matchings.
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
