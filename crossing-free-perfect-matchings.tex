@@ -561,10 +561,13 @@ case, what about the crossing case?].
 Let us first examine again the anatomy of a crossing-free left-aligment. Recall that we iteratively
 pick the leftmost point, choose which points go above its segment (and which points go below),
 split the point set accordingly, and repeat with the two smaller point sets.
-By choosing which points go above and below the segment of the leftmost point $p$, we force it to be in a
+Thus for every point $p$, we consider it at some point as the leftmost point of some $S_p$, and we
+choose which points of $S_p$ are above and which points are below the segment $a_p$ of $p$.
+
+By choosing which points of $S_p$ are above and below the segment of $p$, we force it to be in a
 \emph{cone}\idest a region delimited by two rays emanating from $p$ and passing through consecutive points
-in polar order around $p$, or delimited by the ray passing through the first or last point in polar order
-and the vertical. Thus a crossing-free aligment has all its segments constrained
+of $S_p$ in polar order around $p$, or delimited by the ray passing through the first or last point
+of $S_p$ in polar order and the vertical. Thus a crossing-free aligment has all its segments constrained
 to cones, see figure~\ref{figCone}. Let us refer to the cone in which $a_p$ has to lie for a crossing-free
 left-alignment $\gl$ as \emph{the cone of $p$ under $\gl$}
 
@@ -576,7 +579,7 @@ Further, $q$ must itself have $p$ in its cone under $\gr$, see figure~\ref{figMu
 \section{Highly convex matchings across a line}
 In particular, this means that if there is no right-point in the cone of $p$ under $\gl$,
 then $\gl$ has to be part of an overcounted pair of matchings.
-[TODO bon la il va faloir que je nomme les sous-ensembles de points qui interviennent dans
+[TODO bon là il va faloir que je nomme les sous-ensembles de points qui interviennent dans
 la construction des alignements, sinon je suis pas sorti de l'auberge]
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
