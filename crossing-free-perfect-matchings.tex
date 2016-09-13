@@ -454,7 +454,7 @@ $a_l$, and $\gl-\gl(l)$ restricted to the points below $a_l$ is a crossing-free 
 $k - \gl(l)$ points below $a_l$, where the appropriate subsets of $A$ provide the set of segments required
 in the definition.
 
-It follows that $\gl$ is determined by the choice of $\gl\of l$ and crossing-free left-alignments
+It follows that $\gl$ is determined by the choice of $\gl\of l$ and crossing-free left-align\-ments
 of $\gl\of{l}-1$ and $k-\gl\of{l}$ points.
 Letting $i\DefineAs \gl\of l - 1$, these are crossing-free alignments of $i$ and $k-i-1$ points (see
 figure~\ref{figCrossingFreeAlignment}).
@@ -541,6 +541,8 @@ $\gw$ must be injective, and so that\begin{equation}
 and then a bound for the number of crossing-free alignments yields a bound for the number of
 crossing-free matchings across a line.
 
+\marginfig[Composing crossing-free alignments, and getting a crossing-free perfect matching,
+but one that does not decompose to the original alignments.\label{figWeirdAligments}]{TODO}
 The inequality (\ref{SharirWelzlOvercounting}) is strict, as shown in figure~\ref{crossingPMAL}.
 We would thus like to study the pairs of crossing-free alignments which are \emph{not} in
 the image of $\gw$, since they are responsible for that excess; we will call them \emph{overcounted}.
@@ -558,16 +560,17 @@ has to fulfill in order not to be overcounted [TODO is it sufficient too? I woul
 somehow I cannot find a proof right now; clearly it rules out the non-crossing inconsistent ("weird")
 case, what about the crossing case?].
 
-Let us first examine again the anatomy of a crossing-free left-aligment. Recall that we iteratively
+Let us first examine again the anatomy of a crossing-free left-aligment of $L$. Recall that we iteratively
 pick the leftmost point, choose which points go above its segment (and which points go below),
 split the point set accordingly, and repeat with the two smaller point sets.
-Thus for every point $p$, we consider it at some point as the leftmost point of some $S_p$, and we
-choose which points of $S_p$ are above and which points are below the segment $a_p$ of $p$.
+Thus for every point $p$, we consider it at some point as the leftmost point of some subset
+$S_\gl\of p \Subset L$, and we choose which points of $S_\gl\of p$ are above and which points are
+below the segment $a_p$ of $p$.
 
 By choosing which points of $S_p$ are above and below the segment of $p$, we force it to be in a
 \emph{cone}\idest a region delimited by two rays emanating from $p$ and passing through consecutive points
-of $S_p$ in polar order around $p$, or delimited by the ray passing through the first or last point
-of $S_p$ in polar order and the vertical. Thus a crossing-free aligment has all its segments constrained
+of $S_\gl\of p$ in polar order around $p$, or delimited by the ray passing through the first or last point
+of $S_\gl\of p$ in polar order and the vertical. Thus a crossing-free aligment has all its segments constrained
 to cones, see figure~\ref{figCone}. Let us refer to the cone in which $a_p$ has to lie for a crossing-free
 left-alignment $\gl$ as \emph{the cone of $p$ under $\gl$}
 
