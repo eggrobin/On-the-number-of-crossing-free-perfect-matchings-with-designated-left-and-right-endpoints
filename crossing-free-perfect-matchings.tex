@@ -60,8 +60,8 @@ In 1980, M.~Ajtai, V.~Chvátal, M.~Newborn, and E.~Szemerédi \cite{AjtaiChvatal
 proved that there are only exponentially many crossing-free geometric graphs on a given point set.
 
 Exponential bounds for various sorts of graphs were then improved, in particular for triangulations---these are
-interesting because they are the maximal crossing-free geometric graphs; finding a bound for them yields a bound
-for the overall number of crossing-free geometric graphs. In addition, bounds on the number of triangulations
+the maximal crossing-free geometric graphs, so finding a bound for them yields a bound
+for the overall number of crossing-free geometric graphs. [TODO citation] In addition, bounds on the number of triangulations
 are of interest in geometric modeling [CITE Studies in computational geometry motivated by mesh generation].
 
 Some special configurations of points are better understood; in particular, for point sets in convex position,
@@ -97,8 +97,9 @@ their endpoints; it is called \emph{crossing} otherwise.
 \end{definition}
 Note that being crossing-free implies that the corresponding simple graph is planar, and that the
 geometric graph is a plane embedding.
+\begin{sloppypar}
 \begin{definition}[triangulation]
-A \emph{triangulation} is a maximal crossing-free geometric graph, that is, a
+A \emph{triangulation} is a maximal crossing-free geometric graph, that is,
 geometric graph such that for all $v$ and $w$ in $P$ that are not joined by a
 segment, adding the segment joining $v$ and $w$ would result in a crossing
 geometric graph.
@@ -106,14 +107,13 @@ geometric graph.
 Note that the faces (in the sense of plane graphs) formed by a triangulation are
 all triangles, with the possible exception of the outer face (thus this definition
 is \emph{not} equivalent to that of a triangulation of the $2$-sphere).
+\end{sloppypar}
 
-Since a geometric graphs corresponds to a simple graph on the underlying point set,
+Since a geometric graph corresponds to a simple graph on the underlying point set,
 we can also look at geometric graphs that belong to special classes of simple graphs.
 As we will only be focusing on geometric graphs, we simply call
 \emph{perfect matching}
 a geometric graph which corresponds to a perfect matching in the combinatorial sense.
-Similarly, given a point set $P$, a \emph{spanning cycle on $P$} shall refer to a
-geometric graph on $P$ which is a cycle when seen as a simple graph.
 
 As outlined in the introduction, we are interested in statements regarding the number
 of geometric graphs, possibly restricted to a certain type, on a given point set.
@@ -121,15 +121,15 @@ Evidently, that number would depend on the choice of the point set $P$, so inste
 bounds on that number depending on the cardinality $\Cardinality P$, and possibly
 restricting $P$ so that it satisfies certain properties.
 
+An important property that $P$ can have is general position. We say that 
+a point set in the plane is \emph{in general position} if no three points are collinear.
+Here we will only study point sets in general position.
+
 In general, if $g\of P$ is the number of geometric graphs of a certain sort on the point
 set $P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
 \forall n\in \N, \forall P \text{ such that } \Cardinality P = n,
 l \of n \leq g \of n \leq u \of n \text,\]
 where $P$ runs over all point sets that satisfy the relevant properties.
-
-We say that 
-a point set in the plane is \emph{in general position} if no three points are collinear.
-Here we will only study point sets in general position.
 
 In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
 existing results; since the bounds are often exponential, we tend to ignore polynomial
@@ -137,8 +137,7 @@ factors; we will thus write that\[
 f \of n \preccurlyeq u \of n
 \]
 if $f\of n \leq p\of n u \of n$ for some polynomially-bounded $p$.
-\subsection{Convex point sets}
-\label{ConvexPointSets}
+\subsection{Triangulations of convex point sets and the Catalan numbers}
 A set of points is said to be \emph{in convex position} if it is in general position and
 all points are in the boundary of its convex hull.
 
@@ -167,7 +166,7 @@ Moreover, given a triangulation of $\set{0,\dotsc,i,n+1}$ and a triangulation of
 adding the edge $e$ forms a triangulation of the whole point set, proving equality.
 \end{proof}
 \end{theorem}
-An expression for $C_n$ in terms of factorials was given earlier by Euler \cite{Euler1751}, along
+An explicit expression for $C_n$ was given earlier by Euler \cite{Euler1751}, along
 with the generating function.
 A convenient form is\begin{equation}
 C_n = \frac{1}{n+1} \binom {2n} {n}\text,
@@ -177,13 +176,18 @@ yielding asymptotically
 C_n \preccurlyeq 4^n\text.
 \end{equation}
 
-[TODO talk about the number of crossing-free perfect matchings; find the Alfred Errera thing from the octavo
-of the académie royale de belgique, reference 10 in Sharir--Welzl; this might require a trip to the library?]
-
 \subsection{Crossing-free perfect matchings}
+\label{PerfectMatchingsIntro}
 We will call $\PM_P$ the set of perfect matchings on the point set $P$, and $\CFPM_P$ the set
 of crossing-free perfect matchings on the point set $P$.
-[TODO cite existing results]
+
+[TODO talk about the number of crossing-free perfect matchings in convex position, give the proof;
+find the Alfred Errera thing from the octavo of the académie royale de belgique, reference 10 in
+Sharir--Welzl; this might require a trip to the library?]
+
+For a set $P$ of $n$ points in general position, it was proved by Micha~Sharir and Emo~Welzl in 2005
+\cite{SharirWelzl2006} that $\Cardinality{\CFPM_P} \preccurlyeq 10.05^n$.
+
 When talking about a perfect matching, we will denote the unique edge incident to point $p$ by
 $e_p$.
 
@@ -195,6 +199,8 @@ general position can be put in general position with respect to the horizontal b
 small rotation. Moreover, note that points in general position with respect to the horizontal
 are ordered from left to right.
 
+This ordering can be used to classify perfect matchings on the point set; to this end,
+we introduce bracket expressions.
 A \emph{bracket expression} of length $n$ is a sequence of $n$ opening brackets $\langle$ or closing
 brackets $\rangle$.
 It is a \emph{well-formed prefix} if, when read from left to right, the number of closing brackets
@@ -219,6 +225,7 @@ Note that inserting an opening bracket, followed by a closing bracket anywhere a
 inserted opening bracket, into a well-formed bracket expression, results in a well-formed bracket
 expression.
 
+Well-formed bracket expressions can be used to define classes of perfect matchings on a given point set.
 Given a point set $P$  of size $n$ in general position with respect to the horizontal and a perfect
 matching $\gm$ on $P$, any point in $P$ is either a left or right endpoint of an edge, since it
 is incident to exactly one edge, and that edge is not vertical.
@@ -333,7 +340,10 @@ Let $P$ be a point set of size $n$ in general position. There are at least $C_{\
 crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position (see
-section~\ref{ConvexPointSets}).
+section~\ref{PerfectMatchingsIntro}).
+
+Now that we have a tight uniform lower bound for $\gn_P$, we will start looking at upper bounds
+dependent on the bracket expression.
 \subsection{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The matchings corresponding to brackets expressions with $k$ opening brackets followed
