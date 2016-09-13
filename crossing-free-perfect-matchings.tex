@@ -558,15 +558,7 @@ has to fulfill in order not to be overcounted [TODO is it sufficient too? I woul
 somehow I cannot find a proof right now; clearly it rules out the non-crossing inconsistent ("weird")
 case, what about the crossing case?].
 
-Let us first take another look at the anatomy of a crossing-free left-aligment.
-Given a crossing-free left alignment $\gl$ of $L$, with $l$ the leftmost point of $L$,
-we shall call the set of points $p\in L$ such that $\gl\of p < \gl\of l$ the points
-\emph{above} $l$, and the points $p\in L$ such that $\gl\of p > \gl\of l$ the points
-\emph{below} $l$. Recall that $\gl$ defines a crossing-free left-alignment of the points
-above and $l$ as well as a crossing-free left alignment of the points below $l$.
-
-
- Recall that we iteratively
+Let us first examine again the anatomy of a crossing-free left-aligment. Recall that we iteratively
 pick the leftmost point, choose which points go above its segment (and which points go below),
 split the point set accordingly, and repeat with the two smaller point sets.
 By choosing which points go above and below the segment of the leftmost point $p$, we force it to be in a
