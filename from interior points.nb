@@ -10,16 +10,219 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     25637,        785]
-NotebookOptionsPosition[     23275,        697]
-NotebookOutlinePosition[     23618,        712]
-CellTagsIndexPosition[     23575,        709]
+NotebookDataLength[     35357,       1004]
+NotebookOptionsPosition[     32414,        900]
+NotebookOutlinePosition[     32758,        915]
+CellTagsIndexPosition[     32715,        912]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.6778253596853485`*^9, 3.677825361551321*^9}}],
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\[CurlyPi]", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CurlyPi]", "[", 
+   RowBox[{"\[Delta]1_", ",", "\[Delta]2_", ",", "k_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"\[CurlyPi]", "[", 
+    RowBox[{"\[Delta]1", ",", "\[Delta]2", ",", "k"}], "]"}], "=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{"k", "\[Equal]", 
+      RowBox[{"\[Delta]1", "+", "\[Delta]2"}]}], ",", "1", ",", 
+     RowBox[{"Sum", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"\[CurlyPi]", "[", 
+         RowBox[{"\[Delta]1", ",", "0", ",", "i"}], "]"}], 
+        RowBox[{"\[CurlyPi]", "[", 
+         RowBox[{"0", ",", "\[Delta]2", ",", 
+          RowBox[{"k", "-", "i", "-", "1"}]}], "]"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "\[Delta]1", ",", 
+         RowBox[{"k", "-", "\[Delta]2"}]}], "}"}]}], "]"}]}], 
+    "]"}]}]}]}], "Input",
+ CellChangeTimes->{{3.6778253596853485`*^9, 3.677825361551321*^9}, {
+  3.6828307115080495`*^9, 3.682830943484167*^9}, {3.6828310081598644`*^9, 
+  3.682831009180646*^9}, {3.6828311783674307`*^9, 3.682831302999769*^9}, {
+  3.6828314104958134`*^9, 3.6828314597198515`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[CurlyPi]", "[", 
+  RowBox[{"0", ",", "0", ",", "1"}], "]"}]], "Input",
+ CellChangeTimes->{{3.682831091172564*^9, 3.6828311039607706`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim2"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1024\\\"}]\\)\[NoBreak] exceeded during \
+evaluation of \[NoBreak]\\!\\(\\*RowBox[{\\\"If\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"510\\\"}], \\\"\[Equal]\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"511\\\"}], \\\"+\\\", \\\"0\\\"}]}], \
+\\\",\\\", \\\"1\\\", \\\",\\\", RowBox[{UnderoverscriptBox[\\\"\[Sum]\\\", \
+RowBox[{\\\"i\\\", \\\"=\\\", RowBox[{\\\"-\\\", \\\"511\\\"}]}], \
+RowBox[{RowBox[{\\\"-\\\", \\\"510\\\"}], \\\"-\\\", \\\"0\\\"}]], \
+RowBox[{RowBox[{\\\"\[CurlyPi]\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"511\\\"}], \\\"-\\\", \\\"1\\\"}], \
+\\\",\\\", \\\"0\\\", \\\",\\\", \\\"i\\\"}], \\\"]\\\"}], \\\" \\\", \
+RowBox[{\\\"\[CurlyPi]\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", RowBox[{\
+\\\"0\\\", \\\"-\\\", \\\"1\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"510\\\"}], \\\"-\\\", \\\"i\\\", \\\"-\\\", \\\"1\\\"}]}], \
+\\\"]\\\"}]}]}]}], \\\"]\\\"}]\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/$RecursionLimit\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim2\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.682831104508177*^9, 3.682831307213966*^9, 
+  3.6828314181151457`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim2"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1024\\\"}]\\)\[NoBreak] exceeded during \
+evaluation of \[NoBreak]\\!\\(\\*RowBox[{\\\"If\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"509\\\"}], \\\"\[Equal]\\\", \
+RowBox[{RowBox[{\\\"-\\\", \\\"511\\\"}], \\\"+\\\", \\\"0\\\"}]}], \
+\\\",\\\", \\\"1\\\", \\\",\\\", RowBox[{UnderoverscriptBox[\\\"\[Sum]\\\", \
+RowBox[{\\\"i\\\", \\\"=\\\", RowBox[{\\\"-\\\", \\\"511\\\"}]}], \
+RowBox[{RowBox[{\\\"-\\\", \\\"509\\\"}], \\\"-\\\", \\\"0\\\"}]], \
+RowBox[{RowBox[{\\\"\[CurlyPi]\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"511\\\"}], \\\"-\\\", \\\"1\\\"}], \
+\\\",\\\", \\\"0\\\", \\\",\\\", \\\"i\\\"}], \\\"]\\\"}], \\\" \\\", \
+RowBox[{\\\"\[CurlyPi]\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", RowBox[{\
+\\\"0\\\", \\\"-\\\", \\\"1\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"509\\\"}], \\\"-\\\", \\\"i\\\", \\\"-\\\", \\\"1\\\"}]}], \
+\\\"]\\\"}]}]}]}], \\\"]\\\"}]\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/$RecursionLimit\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim2\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.682831104508177*^9, 3.682831307213966*^9, 
+  3.682831418232461*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim2"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1024\\\"}]\\)\[NoBreak] exceeded during \
+evaluation of \[NoBreak]\\!\\(\\*RowBox[{\\\"Hold\\\", \\\"[\\\", \
+RowBox[{RowBox[{\\\"\[CurlyPi]\\\", \\\"[\\\", \
+RowBox[{RowBox[{RowBox[{\\\"-\\\", \\\"510\\\"}], \\\"-\\\", \\\"1\\\"}], \
+\\\",\\\", \\\"0\\\", \\\",\\\", \\\"i\\\"}], \\\"]\\\"}], \\\" \\\", \
+RowBox[{\\\"\[CurlyPi]\\\", \\\"[\\\", RowBox[{\\\"0\\\", \\\",\\\", RowBox[{\
+\\\"0\\\", \\\"-\\\", \\\"1\\\"}], \\\",\\\", RowBox[{RowBox[{\\\"-\\\", \
+\\\"509\\\"}], \\\"-\\\", \\\"i\\\", \\\"-\\\", \\\"1\\\"}]}], \\\"]\\\"}]}], \
+\\\"]\\\"}]\\)\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/$RecursionLimit\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim2\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.682831104508177*^9, 3.682831307213966*^9, 
+  3.68283141831067*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[RowBox[{\\\"$RecursionLimit\\\", \\\"::\\\", \
+\\\"reclim2\\\"}], \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed \
+during this calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.682831104508177*^9, 3.682831307213966*^9, 
+  3.68283141833674*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{{3.68283109383467*^9, 3.6828311046917133`*^9}, 
+   3.6828313072219887`*^9, 3.6828314227946877`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"\[CurlyPi]", "[", 
+    RowBox[{"\[Delta]", ",", "0", ",", "k"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"\[Delta]", ",", "0", ",", "0"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.6828309549988885`*^9, 3.6828309952925005`*^9}, {
+  3.6828310278735676`*^9, 3.6828310368836093`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim2"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1024\\\"}]\\)\[NoBreak] exceeded during \
+evaluation of \[NoBreak]\\!\\(\\*RowBox[{\\\"3\\\", \\\"-\\\", \\\"0\\\"}]\\)\
+\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/$RecursionLimit\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim2\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.682830996470643*^9, 3.6828310285763865`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim2"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1024\\\"}]\\)\[NoBreak] exceeded during \
+evaluation of \[NoBreak]\\!\\(\\*RowBox[{\\\"Hold\\\", \\\"[\\\", \
+RowBox[{\\\"3\\\", \\\"-\\\", \\\"0\\\"}], \\\"]\\\"}]\\)\[NoBreak]. \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/$RecursionLimit\\\", ButtonNote \
+-> \\\"$RecursionLimit::reclim2\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.682830996470643*^9, 3.6828310286525908`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"$RecursionLimit", "::", "reclim2"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Recursion depth of \
+\[NoBreak]\\!\\(\\*RowBox[{\\\"1024\\\"}]\\)\[NoBreak] exceeded during \
+evaluation of \[NoBreak]\\!\\(\\*RowBox[{\\\"1\\\", \\\"+\\\", \
+RowBox[{\\\"Hold\\\", \\\"[\\\", RowBox[{\\\"Hold\\\", \\\"[\\\", \
+RowBox[{\\\"3\\\", \\\"-\\\", \\\"0\\\"}], \\\"]\\\"}], \\\"]\\\"}]}]\\)\
+\[NoBreak]. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/$RecursionLimit\\\", ButtonNote -> \
+\\\"$RecursionLimit::reclim2\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.682830996470643*^9, 3.6828310287297964`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[RowBox[{\\\"$RecursionLimit\\\", \\\"::\\\", \
+\\\"reclim2\\\"}], \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed \
+during this calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{{3.682830996470643*^9, 3.682831028762886*^9}}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{{3.682830998666509*^9, 3.682831034488341*^9}}]
+}, Open  ]],
 
 Cell[BoxData[{
  RowBox[{
@@ -695,9 +898,9 @@ RBMMqwUMCWq9bDcv4mBA88CMlzB0hU6Z1mpxePLq+zmtFkP/Au9L9ps=
  CellChangeTimes->{3.677991273147153*^9}]
 }, Open  ]]
 },
-WindowSize->{759, 793},
-WindowMargins->{{Automatic, 32}, {4, Automatic}},
-FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (October 9, 2015)",
+WindowSize->{1707, 876},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -711,81 +914,97 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 94, 1, 31, "Input"],
-Cell[655, 23, 1851, 47, 192, "Input"],
+Cell[558, 20, 1179, 28, 52, "Input"],
 Cell[CellGroupData[{
-Cell[2531, 74, 263, 7, 31, "Input"],
-Cell[2797, 83, 279, 6, 31, "Output"]
+Cell[1762, 52, 164, 3, 31, "Input"],
+Cell[1929, 57, 1421, 24, 50, "Message"],
+Cell[3353, 83, 1419, 24, 50, "Message"],
+Cell[4775, 109, 1061, 19, 21, "Message"],
+Cell[5839, 130, 619, 13, 21, "Message"],
+Cell[6461, 145, 154, 2, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3113, 94, 259, 7, 31, "Input"],
-Cell[3375, 103, 228, 5, 31, "Output"]
+Cell[6652, 152, 419, 10, 31, "Input"],
+Cell[7074, 164, 607, 12, 21, "Message"],
+Cell[7684, 178, 653, 12, 21, "Message"],
+Cell[8340, 192, 735, 14, 21, "Message"],
+Cell[9078, 208, 597, 12, 21, "Message"],
+Cell[9678, 222, 101, 1, 31, "Output"]
+}, Open  ]],
+Cell[9794, 226, 1851, 47, 192, "Input"],
+Cell[CellGroupData[{
+Cell[11670, 277, 263, 7, 31, "Input"],
+Cell[11936, 286, 279, 6, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3640, 113, 263, 7, 31, "Input"],
-Cell[3906, 122, 210, 5, 31, "Output"]
+Cell[12252, 297, 259, 7, 31, "Input"],
+Cell[12514, 306, 228, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4153, 132, 239, 7, 31, "Input"],
-Cell[4395, 141, 218, 5, 31, "Output"]
+Cell[12779, 316, 263, 7, 31, "Input"],
+Cell[13045, 325, 210, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4650, 151, 261, 7, 31, "Input"],
-Cell[4914, 160, 225, 5, 31, "Output"]
+Cell[13292, 335, 239, 7, 31, "Input"],
+Cell[13534, 344, 218, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5176, 170, 284, 8, 31, "Input"],
-Cell[5463, 180, 243, 6, 31, "Output"]
+Cell[13789, 354, 261, 7, 31, "Input"],
+Cell[14053, 363, 225, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5743, 191, 261, 7, 31, "Input"],
-Cell[6007, 200, 221, 5, 31, "Output"]
+Cell[14315, 373, 284, 8, 31, "Input"],
+Cell[14602, 383, 243, 6, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6265, 210, 164, 3, 31, "Input"],
-Cell[6432, 215, 220, 5, 31, "Output"]
+Cell[14882, 394, 261, 7, 31, "Input"],
+Cell[15146, 403, 221, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[6689, 225, 409, 13, 31, "Input"],
-Cell[7101, 240, 222, 5, 31, "Output"]
+Cell[15404, 413, 164, 3, 31, "Input"],
+Cell[15571, 418, 220, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7360, 250, 743, 20, 31, "Input"],
-Cell[8106, 272, 682, 20, 31, "Output"]
+Cell[15828, 428, 409, 13, 31, "Input"],
+Cell[16240, 443, 222, 5, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[8825, 297, 674, 20, 31, "Input"],
-Cell[9502, 319, 177, 4, 46, "Output"]
+Cell[16499, 453, 743, 20, 31, "Input"],
+Cell[17245, 475, 682, 20, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[9716, 328, 403, 11, 31, "Input"],
-Cell[10122, 341, 147, 2, 31, "Output"]
-}, Open  ]],
-Cell[10284, 346, 668, 20, 56, "Input"],
-Cell[CellGroupData[{
-Cell[10977, 370, 181, 4, 31, "Input"],
-Cell[11161, 376, 216, 7, 78, "Output"]
+Cell[17964, 500, 674, 20, 31, "Input"],
+Cell[18641, 522, 177, 4, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[11414, 388, 332, 9, 31, "Input"],
-Cell[11749, 399, 676, 21, 57, "Output"]
+Cell[18855, 531, 403, 11, 31, "Input"],
+Cell[19261, 544, 147, 2, 31, "Output"]
+}, Open  ]],
+Cell[19423, 549, 668, 20, 56, "Input"],
+Cell[CellGroupData[{
+Cell[20116, 573, 181, 4, 31, "Input"],
+Cell[20300, 579, 216, 7, 78, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12462, 425, 928, 28, 35, "Input"],
-Cell[13393, 455, 314, 9, 57, "Output"]
+Cell[20553, 591, 332, 9, 31, "Input"],
+Cell[20888, 602, 676, 21, 57, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13744, 469, 614, 18, 67, "Input"],
-Cell[14361, 489, 277, 8, 49, "Output"]
+Cell[21601, 628, 928, 28, 35, "Input"],
+Cell[22532, 658, 314, 9, 57, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[14675, 502, 599, 17, 57, "Input"],
-Cell[15277, 521, 3832, 73, 259, "Output"]
+Cell[22883, 672, 614, 18, 67, "Input"],
+Cell[23500, 692, 277, 8, 49, "Output"]
 }, Open  ]],
-Cell[19124, 597, 548, 16, 57, "Input"],
 Cell[CellGroupData[{
-Cell[19697, 617, 508, 15, 49, "Input"],
-Cell[20208, 634, 3051, 60, 259, "Output"]
+Cell[23814, 705, 599, 17, 57, "Input"],
+Cell[24416, 724, 3832, 73, 259, "Output"]
+}, Open  ]],
+Cell[28263, 800, 548, 16, 57, "Input"],
+Cell[CellGroupData[{
+Cell[28836, 820, 508, 15, 49, "Input"],
+Cell[29347, 837, 3051, 60, 259, "Output"]
 }, Open  ]]
 }
 ]

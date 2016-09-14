@@ -561,7 +561,7 @@ somehow I cannot find a proof right now; clearly it rules out the non-crossing i
 case, what about the crossing case?].
 
 Let us first examine again the anatomy of a crossing-free left-aligment of $L$. Recall that we iteratively
-pick the leftmost point, choose which points go above its segment (and which points go below),
+pick the leftmost point, choose which points are above its segment (and which points are below),
 split the point set accordingly, and repeat with the two smaller point sets.
 Thus for every point $p$, we consider it at some point as the leftmost point of some subset
 $S_\gl\of p \Subset L$, and we choose which points of $S_\gl\of p$ are above and which points are
@@ -582,8 +582,21 @@ Further, $q$ must itself have $p$ in its cone under $\gr$, see figure~\ref{figMu
 \section{Highly convex matchings across a line}
 In particular, this means that if there is no right-point in the cone of $p$ under $\gl$,
 then $\gl$ has to be part of an overcounted pair of matchings.
-[TODO bon là il va faloir que je nomme les sous-ensembles de points qui interviennent dans
-la construction des alignements, sinon je suis pas sorti de l'auberge]
+Thus, if a cone lies outside the convex hull of $S_\gl\of p\Union R$, then
+$p$ cannot be matched in $p$, since that cone contains no right-points, see figure~\ref{figConeOutsideConvexHull}.
+
+Recall that we can recursively bound the number of crossing-free left-alignments of $k$ points depending
+on bounds for smaller crossing-free left-alignments,
+\[\varpi_k\leq\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
+If the upper $\gd_1$ cones are outside the convex hull, then the first $\gd_1$ terms of that sum count
+crossing-free alignments that always form an overcounted pair; similarly, if the lower $\gd_2$ cones
+are outside the convex hull, then the last $\gd_2$ terms are overcounted.
+Thus, if the set of left-points has at least $\gd$ points from the overall convex hull (the leftmost
+point is one of them, so that there are $\gd-1$ other points of the convex hull), we can give a bound
+on the number of non-overcounted crossing-free left-alignments,
+\[\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2]\varpi_{i}\varpi_{k-i-1}\text.\]
+Moreover, 
+[TODO This is getting really messy, I need to define more things...]
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
@@ -966,6 +979,8 @@ C_k\spc\of{k, l}\spc\of{p, q}C_p
 \end{equation}
 [TODO: would it be interesting or feasible to average over all $\langle^k\rangle^l\langle^q\rangle^p$,
 for fixed $n$?]
+[TODO: here a section about spc generalizing to arbitrary WFBEs, and the applicability of overcounting
+analyses]
 \clearpage
 \nocite{*}
 \bibliography{crossing-free-perfect-matchings}
