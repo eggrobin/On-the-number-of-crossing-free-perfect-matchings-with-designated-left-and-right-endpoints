@@ -1,0 +1,45 @@
+\documentclass[10pt, a4paper, twoside]{basestyle}
+
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{intersections}
+\usepackage{tikz-qtree}
+\usepackage{braids}
+
+\usepackage[Mathematics]{semtex}
+
+%%%% Shorthands.
+\newcommand{\idest}{\emph{, i.e.,\ }}
+
+\DeclareMathOperator{\cells}{cells}
+\DeclareMathOperator{\spc}{spc}
+\DeclareMathOperator{\PM}{PM}
+\DeclareMathOperator{\CFPM}{CFPM}
+\DeclareMathOperator{\PMAL}{PMAL}
+\DeclareMathOperator{\CFPMAL}{CFPMAL}
+\DeclareMathOperator{\CFLA}{CFLA}
+\DeclareMathOperator{\CFRA}{CFRA}
+
+\newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
+
+%%%% Title and authors.
+
+\title{%
+\textdisplay{%
+Parenthetical madness%
+}%
+}
+\author{Robin~Leroy}
+\begin{document}
+\begin{align*}
+\pa{x}&(x) \\
+f\of x & f(x) \\
+\pa{x^2}&(x^2) \\
+f\of {x^2} & f(x^2) \\
+f\of {x^2} & f\left(x^2\right) \\
+\pa{\sum {i=0}[k] i} & (\sum {i=0}[k] i) \\
+\pa{\sum {i=0}[k] i} & \left(\sum {i=0}[k] i\right) \\
+\end{align*}
+\end{document}

@@ -157,6 +157,7 @@
             \vphantom{#5}
             {\kern-\nulldelimiterspace}
           }{\right.}
+          \kern-\nulldelimiterspace
         }
         \def\@delimcontent{#5}
         \@delimsizefalse
@@ -168,15 +169,18 @@
             \vphantom{#5}
             {\kern-\nulldelimiterspace}
           }{\right.}
+          \kern-\nulldelimiterspace
         }
         \@delimiterWrapper{\left#3}{
           \vphantom{#5}
           {\kern-\nulldelimiterspace}
         }{\right.}
+        \kern-\nulldelimiterspace
         \@delimsizefalse
         \hphantom{#5}
         \mathclose{
         \@delimsizetrue
+        \kern-\nulldelimiterspace
         \@delimiterWrapper{\left.}{
           {\kern-\nulldelimiterspace}
           \vphantom{#5}
