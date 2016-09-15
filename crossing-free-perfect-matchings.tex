@@ -422,6 +422,7 @@ the following hold:
 \item let $\FunctionSpec \gi A {[k]}$ the numbering of the right endpoints of the segments in
 $A$ from top to bottom, then $\gl\of p = \gi\of{a_p}$.
 \end{enumerate}
+Such a set of segments is said to \emph{realize} $\gl$.
 
 Correspondingly, we define a \emph{crossing-free right-alignment}, where ``right'' and ``left'' are swapped in the
 definition.
@@ -432,8 +433,7 @@ Let $\gL$ be a set of $k$ points in general position, and let $V$ be a vertical 
 There are at most $C_k$ crossing-free left-alignments of $\gL$ on $V$.
 \begin{proof}
 Let $l$ be the leftmost point of $\gL$, and let $\gl$ be a crossing-free left-alignment of $\gL$ on $V$.
-Let $A=\setst{a_p}{p\in\gL}$ be a set of non-crossing line segments satisfying the properties in the definition
-of crossing-free aligments.
+Let $A=\setst{a_p}{p\in\gL}$ be a set of non-crossing line segments realizing $\gl$.
 For a point $p\in\gL$, we will call $a_p$ \emph{the segment of $p$}. We will refer to $V$ as
 \emph{the vertical line}.
 
@@ -563,7 +563,8 @@ case, what about the crossing case?].
 Let us first examine again the anatomy of a crossing-free left-aligment of $L$, with some fresh definitions.
 Given a set of points $P$ in general position, the \emph{extreme points of $P$} are the points of $P$ that
 are in the boundary of the convex hull of $P$.
-Given a set of points $L$ in general position with respect to the horizontal and a nonempty set of points $R$
+Given a set of points $L$ in general position with respect to the horizontal,
+a vertical line $V$ to the right of $L$, and a set of points $R$
 in general position with respect to the horizontal to the right of $L$,
 the \emph{$R$-liminary points of $L$} are the points of $L$ which are extreme points of $L\Union R$ and
 are not the leftmost point of $L$, see figure~\ref{figLiminaryPoints}.
@@ -579,6 +580,10 @@ Further, note that we can partition the half-plane to the right of $L_1$ in $\Ca
 separated by rays emanating from $L_1$ and going through other points of $L$. We will call those regions
 \emph{cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
 Note that there are $i$ points of $L$ above the interior of cone number $i+1$, and $\Cardinality L - i - 1$ points below.
+
+Now, note that given a crossing-free left-alignment $\gl$ of $L$ on $V$, for any set of segments $A=\setst{a_p}{p\in L}$
+realizing $\gl$, the segment $a_{L_1}$ of the leftmost point has to be contained in cone number $\gl\of{L_1}$.
+
 
 [TODO everything below is a complete mess; rewrite with the new definitions]
 
