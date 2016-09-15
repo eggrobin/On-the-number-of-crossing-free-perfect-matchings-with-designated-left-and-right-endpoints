@@ -560,6 +560,27 @@ has to fulfill in order not to be overcounted [TODO is it sufficient too? I woul
 somehow I cannot find a proof right now; clearly it rules out the non-crossing inconsistent ("weird")
 case, what about the crossing case?].
 
+Let us first examine again the anatomy of a crossing-free left-aligment of $L$, with some fresh definitions.
+Given a set of points $P$ in general position, the \emph{extreme points of $P$} are the points of $P$ that
+are in the boundary of the convex hull of $P$.
+Given a set of points $L$ in general position with respect to the horizontal and a nonempty set of points $R$
+in general position with respect to the horizontal to the right of $L$,
+the \emph{$R$-liminary points of $L$} are the points of $L$ which are extreme points of $L\Union R$ and
+are not the leftmost point of $L$, see figure~\ref{figLiminaryPoints}.
+We will call $L_1$ the leftmost point of $L$.
+
+Note that in polar order around $L_1$, the $R$-liminary points of $L$ are separated by
+$R$, that is, in polar order, one subset of the $R$-liminary points of $L$ appears first, followed by
+all points of $R$, followed by the rest of the $R$-liminary points of $L$.
+We will call those $R$-liminary points of $L$ which appear below $R$ the \emph{lower $R$-liminary points of $L$},
+and those that appear above $R$ the \emph{upper $R$-liminary points of $L$}.
+
+Further, note that we can partition the half-plane to the right of $L_1$ in $\Cardinality L$ regions,
+by rays emanating from $L_1$ and going through other points of $L$. We will call those regions \emph{cones},
+and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
+
+[TODO everything below is a complete mess; rewrite with the new definitions]
+
 Let us first examine again the anatomy of a crossing-free left-aligment of $L$. Recall that we iteratively
 pick the leftmost point, choose which points are above its segment (and which points are below),
 split the point set accordingly, and repeat with the two smaller point sets.
