@@ -566,13 +566,13 @@ are in the boundary of the convex hull of $P$.
 Given a set of points $L$ in general position with respect to the horizontal,
 a vertical line $V$ to the right of $L$, and a set of points $R$
 in general position with respect to the horizontal to the right of $L$,
-the \emph{$R$-liminary points of $L$} are the points of $L$ which are extreme points of $L\Union R$ and
-are not the leftmost point of $L$, see figure~\ref{figLiminaryPoints}.
-We will call $L_1$ the leftmost point of $L$.
+the \emph{$R$-liminary points of $L$} are the points of $L$ which are extreme points of $L\Union R$,
+see figure~\ref{figLiminaryPoints}.
+We will call $L_1$ the leftmost point of $L$; note that it is an $R$-liminary point of $L$.
 
-Note that in polar order around $L_1$, the $R$-liminary points of $L$ are separated by
+Note that in polar order around $L_1$, the $R$-liminary points of $L$ other than $L_1$ are separated by
 $R$, that is, in polar order, one subset of the $R$-liminary points of $L$ appears first, followed by
-all points of $R$, followed by the rest of the $R$-liminary points of $L$.
+all points of $R$, followed by the rest of the $R$-liminary points of $L$ (except $L_1$).
 We will call those $R$-liminary points of $L$ which appear below $R$ the \emph{lower $R$-liminary points of $L$},
 and those that appear above $R$ the \emph{upper $R$-liminary points of $L$}.
 
@@ -583,6 +583,14 @@ Note that there are $i$ points of $L$ above the interior of cone number $i+1$, a
 
 Now, note that given a crossing-free left-alignment $\gl$ of $L$ on $V$, for any set of segments $A=\setst{a_p}{p\in L}$
 realizing $\gl$, the segment $a_{L_1}$ of the leftmost point has to be contained in cone number $\gl\of{L_1}$.
+As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
+to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
+$\gw$, $L_1$ has to be matched to a right-point in cone number $\gl\of{L_1}$, see figure~\ref{figConesNeedPoints}.
+
+Moreover, since a crossing-free left-alignment $\gl$ is defined by $\gl\of{L_1}$ and crossing-free left alignments
+of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{L_1}$,
+we can recursively apply this argument, with each left-point having to be matched to a right-point a cone defined on
+a subset of the left-points, see figure~\ref{figRecursiveCones}.
 
 
 [TODO everything below is a complete mess; rewrite with the new definitions]
