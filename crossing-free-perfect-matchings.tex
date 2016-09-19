@@ -579,17 +579,17 @@ to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tup
 $\gw$, $\leftmost\of L$ has to be matched to a right-point in left $L$-cone number $\gl\of{\leftmost\of L}$, see
 figure~\ref{figConesNeedPoints}.
 
-To extend this reasoning beyond the leftmost point of $L$, we define \emph{left conings of $L$}.
-A left coning of a point set $L$ is a map $\gk$ from points in $L$ to left $S$-cones for subsets $S$ of $L$
+To extend this reasoning beyond the leftmost point of $L$, we define \emph{left conifers of $L$}.
+A left conifer $\gk$ of a point set $L$ is a map from points in $L$ to left $S$-cones for subsets $S$ of $L$,
 satisfying the following properties:
 \begin{enumerate}
 \item $\gk\of{\leftmost\of L}$ is a left $L$-cone;
-\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\of L}$ is a left coning of these points;
-\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\of L}$ is a left coning of these points.
+\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\of L}$ is a left conifer of these points;
+\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\of L}$ is a left conifer of these points.
 \end{enumerate}
-See figure~\ref{figLeftConing} for an example.
-We call $\LC_L$ the set of left conings of $L$. From the observations above on the number of cones and the
-size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conings of $k$ points,
+See figure~\ref{figLeftconifer} for an example.
+We call $\LC_L$ the set of left conifers of $L$. From the observations above on the number of cones and the
+size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conifers of $k$ points,
 we have
 \[
 \gcp_k=\sum{i=0}[k-1]\varpi_{i}\varpi_{k-i-1} \text{ and } \gcp_0=1\text,
@@ -602,10 +602,10 @@ crossing-free left alignments
 of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
 This is equivalent to choosing left $L$-cone number $\gl\of{\leftmost\of L}$,
 and recursively doing so in the point subsets above and below the
-interior of that cone, see figure~\ref{figRecursiveConing}.
+interior of that cone, see figure~\ref{figRecursiveconifer}.
 This gives an injective map $\FunctionNamedBody\conification\gl{\conification_\gl}$
-from crossing-free left-alignments of $L$ on any line to left conings. 
-Note that it is not bijective, see figure~\ref{crossingConing}.
+from crossing-free left-alignments of $L$ on any line to left conifers. 
+Note that it is not bijective, see figure~\ref{crossingconifer}.
 
 In turn, this yields $\Cardinality{\CFLA_{L,V}}\leq\Cardinality{\LC_L}=C_{\Cardinality L}$, which is exactly the
 Sharir--Welzl bound.
@@ -618,10 +618,10 @@ aligrments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point
 In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
 then $\gl$ is overcounted.
 We will call \emph{vacuous} a left cone that does not contain any right-points,
-and we will call vacuous a left coning that has vacuous cones; thus $\gl$ is overcounted
+and we will call vacuous a left conifer that has vacuous cones; thus $\gl$ is overcounted
 if $\conification_\gl$ is vacuous.
 
-We will now use convexity considerations to give an upper bound on the number of non-vacuous left conings.
+We will now use convexity considerations to give an upper bound on the number of non-vacuous left conifers.
 Let us first define some concepts related to convex hulls.
 Given a set of points $P$ in general position, the \emph{extreme points of $P$} are the points of $P$ that
 are in the boundary of the convex hull of $P$.
@@ -644,7 +644,7 @@ of $L$ are $R$-liminary points of the
 subset of $L$ above $\gk$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
 subset of $L$ below $\gk$, so that we get the recurrence
 \[\varpi_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2-1]\varpi_{i,\gd_1}\varpi_{k-i-1,\gd_2}\text,\]
-where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conings of $k$ points
+where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conifers of $k$ points
 of which at least $\gd$ are $R$-liminary.
 Moreover, we can start that recurrence with
 \begin{align*}
