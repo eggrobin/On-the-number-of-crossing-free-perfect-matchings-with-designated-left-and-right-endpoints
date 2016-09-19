@@ -592,44 +592,40 @@ We call $\LC_L$ the set of left conings of $L$. From the observations above on t
 size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conings of $k$ points,
 we have
 \[
-\gcp_k&=\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1} \text{ and } \gcp_0&=1\text,
+\gcp_k=\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1} \text{ and } \gcp_0=1\text,
 \]
 so that $\Cardinality{\LC_L} = C_{\Cardinality L}$.
 
+\newcommand{\conification}{\mathscr{k}}
 Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
 crossing-free left alignments
 of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
-This is equivalent to choosing a left $L$-cone associated to $\leftmost L$
+This is equivalent to choosing left $L$-cone number $\gl\of{\leftmost\of L}$,
 and recursively doing so in the point subsets above and below the
 interior of that cone, see figure~\ref{figRecursiveConing}.
-Construct in that manner a function from $L$ to left $S$-cones for subsets $S$ of $L$, associating
-to $\leftmost\of L$ the chosen left $L$-cone, and recursively on the upper and lower subsest.
-Call this a \emph{recursive left coning of $L$},
-and let $\LC\of L$ be the set of recursive left conings of $L$.
-We have an injective map $\gk$ from crossing-free left-alignments of $L$ on any line to recursive left conings. 
+This gives an injective map $\FunctionNamedBody\conification\gl{\conification_\gl}$
+from crossing-free left-alignments of $L$ on any line to left conings. 
 Note that it is not bijective, see figure~\ref{crossingConing}.
 
-The Sharir--Welzl bound exactly counts the number of recursive left conings a point set;
-if $\varpi_k$ is the number of ways of choosing left cones recursively on a set of $k$ points,
-\[\varpi_k\leq\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
+In turn, this yields $\Cardinality{\CFLA_{L,V}}\leq\Cardinality{\LC_L}=C_{\Cardinality L}$, which is exactly the
+Sharir--Welzl bound.
 
-Again, a segment $a_p$ that realizes the crossing-free left-alignment $\gl$ must lie within $\cone_\gl p$,
-so if $\gl$ is obtained from a crossing-free perfect matching, $p$ must be matched to a point within $\cone_\gl p$
-in that matching.
+Now, note that
+the map $\conification$ has the property that for any set of segments $A=\setst{a_p}{p\in L}$ realizing $\gl$,
+$a_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
+aligrments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
 \section{Highly convex matchings across a line}
-In particular, this means that if there is no right-point in $\cone_\gl p$,
-then $\gl$ has to be overcounted.
+In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
+then $\gl$ is overcounted.
+We will call \emph{vacuous} a left cone that does not contain any right-points,
+and we will call vacuous a left coning that has vacuous cones; thus $\gl$ is overcounted
+if $\conification_\gl$ is vacuous.
 
-Looking at $\leftmost\of L$, if a left $L$-cone lies outside the convex hull of $L\Union R$, then
-$\leftmost\of L$ cannot be matched in $\leftmost\of L$, since that cone contains no right-points, see
-figure~\ref{figConeOutsideConvexHull}.
-We call \emph{vacuous} a left cone that does not contain any right-points an cone.
-
-[TODO blurb up the following definitions]
+We will now use convexity considerations to give an upper bound on the number of non-vacuous left conings.
+Let us first define some concepts related to convex hulls.
 Given a set of points $P$ in general position, the \emph{extreme points of $P$} are the points of $P$ that
 are in the boundary of the convex hull of $P$.
-Given a set of points $L$ in general position with respect to the horizontal,
-a vertical line $V$ to the right of $L$, and a set of points $R$
+Given a set of points $L$ in general position with respect to the horizontal and a set of points $R$
 in general position with respect to the horizontal to the right of $L$,
 the \emph{$R$-liminary points of $L$} are the points of $L$ which are extreme points of $L\Union R$,
 see figure~\ref{figLiminaryPoints}.
@@ -645,15 +641,22 @@ If there are $\gd_1$ upper $R$-liminary points of $L$, then the first $\gd_1$ le
 Similarly, if there are $\gd_2$ lower $R$-liminary points of $L$, then the last
 $\gd_2$ left $L$-cones are vacuous.
 Thus, if there are at least
-$\gd$ $R$-liminary points of a set of $k$ points, we can give the following upper bound on the number of recursive
-choices of cones that do not involve picking
-vacuous cones, and therefore an upper bound on the number of non-overcounted crossing-free left-alignments
+$\gd$ $R$-liminary points of a set of $k$ points, we can give the following upper bound on the number of
+non-vacuous left conings
 \[\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2]\varpi_{i}\varpi_{k-i-1}\text.\]
-Moreover, for any non-vacuous left $L$-cone $c$, any upper $R$-liminary points of $L$ are $R$-liminary points of the
-subset of $L$ above $c$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
-subset of $L$ below $c$, so that we can get the following recurrence
+Moreover, for any non-vacuous left $L$-cone $\gk$, any upper $R$-liminary points of $L$ are $R$-liminary points of the
+subset of $L$ above $\gk$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
+subset of $L$ below $\gk$, so that we can get the following recurrence
 \[\varpi_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2]\varpi_{i,\gd_1}\varpi_{k-i-1,\gd_2}\]
-where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free left-alignments of $k$
+where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conings of $k$ points
+of which at least $\gd$ are $R$-liminary.
+Moreover, we can start that recurrence with
+\begin{align*}
+\varpi_{k,0}&\DefineAs\varpi_{k,1}\text,\\
+\varpi_{k,k}&\DefineAs1\text,
+\end{align*}
+since there is at least one $R$-liminary point of $L$ (the leftmost one), and if all points are $R$-liminary,
+only one cone is non-vacuous.
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
