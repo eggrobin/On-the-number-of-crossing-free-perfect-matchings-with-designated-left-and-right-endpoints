@@ -22,7 +22,7 @@
 \DeclareMathOperator{\CFLA}{CFLA}
 \DeclareMathOperator{\CFRA}{CFRA}
 \DeclareMathOperator{\leftmost}{lm}
-\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\LC}{LC}
 
 \newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
 
@@ -560,10 +560,72 @@ $\gm = c\of{\gl,\gr}$, but which is not equal to $\gw\of\gm$.
 In addition, we will call a crossing-free left alignment $\gl$ overcounted if any pair
 $\tuple{\gl, \gr}$ is overcounted.
 
-To simplify matters, let us point out a necessary condition a pair of crossing-free alignments
-has to fulfill in order not to be overcounted.
+To hunt down overcounted crossing-free alignments, we will examine in more detail the anatomy of a crossing-free
+left-aligment of $L$ and the proof of the Sharir--Welzl bound for the number of crossing-free left-alignments,
+with some fresh definitions.
 
-Let us first examine again the anatomy of a crossing-free left-aligment of $L$, with some fresh definitions.
+First, for a point set $L$, note that we can partition the half-plane to the right of $\leftmost\of L$ in
+$\Cardinality L$ regions,
+separated by rays emanating from $\leftmost\of L$ and going through other points of $L$. We will call those regions
+\emph{left $L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
+Note that there are $i$ points of $L$ above the interior of left $L$-cone
+number $i+1$, and $\Cardinality L - i - 1$ points below.
+
+Given a crossing-free left-alignment $\gl$ of $L$ on $V$, for any set of segments $A=\setst{a_p}{p\in L}$
+realizing $\gl$, the segment $a_{\leftmost\of L}$ of the leftmost point then has to be contained in left
+$L$-cone number $\gl\of{\leftmost\of L}$.
+As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
+to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
+$\gw$, $\leftmost\of L$ has to be matched to a right-point in left $L$-cone number $\gl\of{\leftmost\of L}$, see
+figure~\ref{figConesNeedPoints}.
+
+To extend this reasoning beyond the leftmost point of $L$, we define \emph{left conings of $L$}.
+A left coning of a point set $L$ is a map $\gk$ from points in $L$ to left $S$-cones for subsets $S$ of $L$
+satisfying the following properties:
+\begin{enumerate}
+\item $\gk\of{\leftmost\of L}$ is a left $L$-cone;
+\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\of L}$ is a left coning of these points;
+\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\of L}$ is a left coning of these points.
+\end{enumerate}
+See figure~\ref{figLeftConing} for an example.
+We call $\LC_L$ the set of left conings of $L$. From the observations above on the number of cones and the
+size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conings of $k$ points,
+we have
+\[
+\gcp_k&=\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1} \text{ and } \gcp_0&=1\text,
+\]
+so that $\Cardinality{\LC_L} = C_{\Cardinality L}$.
+
+Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
+crossing-free left alignments
+of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
+This is equivalent to choosing a left $L$-cone associated to $\leftmost L$
+and recursively doing so in the point subsets above and below the
+interior of that cone, see figure~\ref{figRecursiveConing}.
+Construct in that manner a function from $L$ to left $S$-cones for subsets $S$ of $L$, associating
+to $\leftmost\of L$ the chosen left $L$-cone, and recursively on the upper and lower subsest.
+Call this a \emph{recursive left coning of $L$},
+and let $\LC\of L$ be the set of recursive left conings of $L$.
+We have an injective map $\gk$ from crossing-free left-alignments of $L$ on any line to recursive left conings. 
+Note that it is not bijective, see figure~\ref{crossingConing}.
+
+The Sharir--Welzl bound exactly counts the number of recursive left conings a point set;
+if $\varpi_k$ is the number of ways of choosing left cones recursively on a set of $k$ points,
+\[\varpi_k\leq\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
+
+Again, a segment $a_p$ that realizes the crossing-free left-alignment $\gl$ must lie within $\cone_\gl p$,
+so if $\gl$ is obtained from a crossing-free perfect matching, $p$ must be matched to a point within $\cone_\gl p$
+in that matching.
+\section{Highly convex matchings across a line}
+In particular, this means that if there is no right-point in $\cone_\gl p$,
+then $\gl$ has to be overcounted.
+
+Looking at $\leftmost\of L$, if a left $L$-cone lies outside the convex hull of $L\Union R$, then
+$\leftmost\of L$ cannot be matched in $\leftmost\of L$, since that cone contains no right-points, see
+figure~\ref{figConeOutsideConvexHull}.
+We call \emph{vacuous} a left cone that does not contain any right-points an cone.
+
+[TODO blurb up the following definitions]
 Given a set of points $P$ in general position, the \emph{extreme points of $P$} are the points of $P$ that
 are in the boundary of the convex hull of $P$.
 Given a set of points $L$ in general position with respect to the horizontal,
@@ -578,43 +640,6 @@ $R$, that is, in polar order, one subset of the $R$-liminary points of $L$ appea
 all points of $R$, followed by the rest of the $R$-liminary points of $L$ (except $\leftmost\of L$).
 We will call those $R$-liminary points of $L$ which appear below $R$ the \emph{lower $R$-liminary points of $L$},
 and those that appear above $R$ the \emph{upper $R$-liminary points of $L$}.
-
-Further, note that we can partition the half-plane to the right of $\leftmost\of L$ in $\Cardinality L$ regions,
-separated by rays emanating from $\leftmost\of L$ and going through other points of $L$. We will call those regions
-\emph{left $L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
-Note that there are $i$ points of $L$ above the interior of left $L$-cone
-number $i+1$, and $\Cardinality L - i - 1$ points below.
-
-Now, note that given a crossing-free left-alignment $\gl$ of $L$ on $V$, for any set of segments $A=\setst{a_p}{p\in L}$
-realizing $\gl$, the segment $a_{\leftmost\of L}$ of the leftmost point has to be contained in left
-$L$-cone number $\gl\of{\leftmost\of L}$.
-As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
-to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
-$\gw$, $\leftmost\of L$ has to be matched to a right-point in left $L$-cone number $\gl\of{\leftmost\of L}$, see
-figure~\ref{figConesNeedPoints}.
-
-Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
-crossing-free left alignments
-of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
-This is equivalent to choosing a left $L$-cone associated to $\leftmost L$
-and recursively doing so in the point subsets above and below the
-interior of that cone, see figure~\ref{figRecursiveConing}. This is exactly the Sharir--Welzl bound,
-if $\varpi_k$ is the number of ways of choosing left cones recursively on a set of $k$ points,
-\[\varpi_k\leq\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
-Call $\cone_\gl p$ the left $S$-cone, $S\Subset L$, associated to point $p\in L$ in that fashion.
-
-Again, a segment $a_p$ that realizes the crossing-free left-alignment $\gl$ must lie within $\cone_\gl p$,
-so if $\gl$ is obtained from a crossing-free perfect matching, $p$ must be matched to a point within $\cone_\gl p$
-in that matching.
-\section{Highly convex matchings across a line}
-In particular, this means that if there is no right-point in $\cone_\gl p$,
-then $\gl$ has to be overcounted.
-
-Looking at $\leftmost\of L$, if a left $L$-cone lies outside the convex hull of $L\Union R$, then
-$\leftmost\of L$ cannot be matched in $\leftmost\of L$, since that cone contains no right-points, see
-figure~\ref{figConeOutsideConvexHull}.
-We call \emph{vacuous} a left cone that does not contain any right-points an cone.
-Again, 
 
 If there are $\gd_1$ upper $R$-liminary points of $L$, then the first $\gd_1$ left $L$-cones are vacuous.
 Similarly, if there are $\gd_2$ lower $R$-liminary points of $L$, then the last
