@@ -21,6 +21,8 @@
 \DeclareMathOperator{\CFPMAL}{CFPMAL}
 \DeclareMathOperator{\CFLA}{CFLA}
 \DeclareMathOperator{\CFRA}{CFRA}
+\DeclareMathOperator{\leftmost}{lm}
+\DeclareMathOperator{\cone}{cone}
 
 \newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
 
@@ -555,10 +557,11 @@ since the diagram commutes;
 crossing-free alignments $\tuple{\gl,\gr}$ which composes to a crossing-free alignment
 $\gm = c\of{\gl,\gr}$, but which is not equal to $\gw\of\gm$.
 \end{enumerate}
+In addition, we will call a crossing-free left alignment $\gl$ overcounted if any pair
+$\tuple{\gl, \gr}$ is overcounted.
+
 To simplify matters, let us point out a necessary condition a pair of crossing-free alignments
-has to fulfill in order not to be overcounted [TODO is it sufficient too? I would think so, but
-somehow I cannot find a proof right now; clearly it rules out the non-crossing inconsistent ("weird")
-case, what about the crossing case?].
+has to fulfill in order not to be overcounted.
 
 Let us first examine again the anatomy of a crossing-free left-aligment of $L$, with some fresh definitions.
 Given a set of points $P$ in general position, the \emph{extreme points of $P$} are the points of $P$ that
@@ -568,70 +571,64 @@ a vertical line $V$ to the right of $L$, and a set of points $R$
 in general position with respect to the horizontal to the right of $L$,
 the \emph{$R$-liminary points of $L$} are the points of $L$ which are extreme points of $L\Union R$,
 see figure~\ref{figLiminaryPoints}.
-We will call $L_1$ the leftmost point of $L$; note that it is an $R$-liminary point of $L$.
+We will call $\leftmost\of L$ the leftmost point of $L$; note that it is an $R$-liminary point of $L$.
 
-Note that in polar order around $L_1$, the $R$-liminary points of $L$ other than $L_1$ are separated by
+Note that in polar order around $\leftmost\of L$, the $R$-liminary points of $L$ other than $\leftmost\of L$ are separated by
 $R$, that is, in polar order, one subset of the $R$-liminary points of $L$ appears first, followed by
-all points of $R$, followed by the rest of the $R$-liminary points of $L$ (except $L_1$).
+all points of $R$, followed by the rest of the $R$-liminary points of $L$ (except $\leftmost\of L$).
 We will call those $R$-liminary points of $L$ which appear below $R$ the \emph{lower $R$-liminary points of $L$},
 and those that appear above $R$ the \emph{upper $R$-liminary points of $L$}.
 
-Further, note that we can partition the half-plane to the right of $L_1$ in $\Cardinality L$ regions,
-separated by rays emanating from $L_1$ and going through other points of $L$. We will call those regions
-\emph{cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
-Note that there are $i$ points of $L$ above the interior of cone number $i+1$, and $\Cardinality L - i - 1$ points below.
+Further, note that we can partition the half-plane to the right of $\leftmost\of L$ in $\Cardinality L$ regions,
+separated by rays emanating from $\leftmost\of L$ and going through other points of $L$. We will call those regions
+\emph{left $L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
+Note that there are $i$ points of $L$ above the interior of left $L$-cone
+number $i+1$, and $\Cardinality L - i - 1$ points below.
 
 Now, note that given a crossing-free left-alignment $\gl$ of $L$ on $V$, for any set of segments $A=\setst{a_p}{p\in L}$
-realizing $\gl$, the segment $a_{L_1}$ of the leftmost point has to be contained in cone number $\gl\of{L_1}$.
+realizing $\gl$, the segment $a_{\leftmost\of L}$ of the leftmost point has to be contained in left
+$L$-cone number $\gl\of{\leftmost\of L}$.
 As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
 to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
-$\gw$, $L_1$ has to be matched to a right-point in cone number $\gl\of{L_1}$, see figure~\ref{figConesNeedPoints}.
+$\gw$, $\leftmost\of L$ has to be matched to a right-point in left $L$-cone number $\gl\of{\leftmost\of L}$, see
+figure~\ref{figConesNeedPoints}.
 
-Moreover, since a crossing-free left-alignment $\gl$ is defined by $\gl\of{L_1}$ and crossing-free left alignments
-of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{L_1}$,
-we can recursively apply this argument, with each left-point having to be matched to a right-point a cone defined on
-a subset of the left-points, see figure~\ref{figRecursiveCones}.
-
-
-[TODO everything below is a complete mess; rewrite with the new definitions]
-
-Let us first examine again the anatomy of a crossing-free left-aligment of $L$. Recall that we iteratively
-pick the leftmost point, choose which points are above its segment (and which points are below),
-split the point set accordingly, and repeat with the two smaller point sets.
-Thus for every point $p$, we consider it at some point as the leftmost point of some subset
-$S_\gl\of p \Subset L$, and we choose which points of $S_\gl\of p$ are above and which points are
-below the segment $a_p$ of $p$.
-
-By choosing which points of $S_p$ are above and below the segment of $p$, we force it to be in a
-\emph{cone}\idest a region delimited by two rays emanating from $p$ and passing through consecutive points
-of $S_\gl\of p$ in polar order around $p$, or delimited by the ray passing through the first or last point
-of $S_\gl\of p$ in polar order and the vertical. Thus a crossing-free aligment has all its segments constrained
-to cones, see figure~\ref{figCone}. Let us refer to the cone in which $a_p$ has to lie for a crossing-free
-left-alignment $\gl$ as \emph{the cone of $p$ under $\gl$}
-
-Let $\tuple{\gl,\gr}\in \CFLA_{L,V}\Cartesian\CFRA_{R,V}$ such that $\tuple{\gl,\gr} = \gw\of\gm$.
-Then $c\of{\gl,\gr}=\gm$, so the edges of $\gm$ must form the segments required in the definition
-of crossing-free alignments. This means that a left-point $p$ must be matched to a right-point $q$
-lying in the cone of $p$ under $\gl$, see figure~\ref{figAlignmentConsistency}.
-Further, $q$ must itself have $p$ in its cone under $\gr$, see figure~\ref{figMutualCones}.
-\section{Highly convex matchings across a line}
-In particular, this means that if there is no right-point in the cone of $p$ under $\gl$,
-then $\gl$ has to be part of an overcounted pair of matchings.
-Thus, if a cone lies outside the convex hull of $S_\gl\of p\Union R$, then
-$p$ cannot be matched in $p$, since that cone contains no right-points, see figure~\ref{figConeOutsideConvexHull}.
-
-Recall that we can recursively bound the number of crossing-free left-alignments of $k$ points depending
-on bounds for smaller crossing-free left-alignments,
+Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
+crossing-free left alignments
+of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
+This is equivalent to choosing a left $L$-cone associated to $\leftmost L$
+and recursively doing so in the point subsets above and below the
+interior of that cone, see figure~\ref{figRecursiveConing}. This is exactly the Sharir--Welzl bound,
+if $\varpi_k$ is the number of ways of choosing left cones recursively on a set of $k$ points,
 \[\varpi_k\leq\sum{i=0}[k]\varpi_{i}\varpi_{k-i-1}\text.\]
-If the upper $\gd_1$ cones are outside the convex hull, then the first $\gd_1$ terms of that sum count
-crossing-free alignments that always form an overcounted pair; similarly, if the lower $\gd_2$ cones
-are outside the convex hull, then the last $\gd_2$ terms are overcounted.
-Thus, if the set of left-points has at least $\gd$ points from the overall convex hull (the leftmost
-point is one of them, so that there are $\gd-1$ other points of the convex hull), we can give a bound
-on the number of non-overcounted crossing-free left-alignments,
+Call $\cone_\gl p$ the left $S$-cone, $S\Subset L$, associated to point $p\in L$ in that fashion.
+
+Again, a segment $a_p$ that realizes the crossing-free left-alignment $\gl$ must lie within $\cone_\gl p$,
+so if $\gl$ is obtained from a crossing-free perfect matching, $p$ must be matched to a point within $\cone_\gl p$
+in that matching.
+\section{Highly convex matchings across a line}
+In particular, this means that if there is no right-point in $\cone_\gl p$,
+then $\gl$ has to be overcounted.
+
+Looking at $\leftmost\of L$, if a left $L$-cone lies outside the convex hull of $L\Union R$, then
+$\leftmost\of L$ cannot be matched in $\leftmost\of L$, since that cone contains no right-points, see
+figure~\ref{figConeOutsideConvexHull}.
+We call \emph{vacuous} a left cone that does not contain any right-points an cone.
+Again, 
+
+If there are $\gd_1$ upper $R$-liminary points of $L$, then the first $\gd_1$ left $L$-cones are vacuous.
+Similarly, if there are $\gd_2$ lower $R$-liminary points of $L$, then the last
+$\gd_2$ left $L$-cones are vacuous.
+Thus, if there are at least
+$\gd$ $R$-liminary points of a set of $k$ points, we can give the following upper bound on the number of recursive
+choices of cones that do not involve picking
+vacuous cones, and therefore an upper bound on the number of non-overcounted crossing-free left-alignments
 \[\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2]\varpi_{i}\varpi_{k-i-1}\text.\]
-Moreover, 
-[TODO This is getting really messy, I need to define more things...]
+Moreover, for any non-vacuous left $L$-cone $c$, any upper $R$-liminary points of $L$ are $R$-liminary points of the
+subset of $L$ above $c$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
+subset of $L$ below $c$, so that we can get the following recurrence
+\[\varpi_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2]\varpi_{i,\gd_1}\varpi_{k-i-1,\gd_2}\]
+where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free left-alignments of $k$
 \section{Three changes of bracket direction}
 We now consider left-right matchings corresponding to bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
