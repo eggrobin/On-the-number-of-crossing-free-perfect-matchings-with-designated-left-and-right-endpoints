@@ -596,7 +596,7 @@ we have
 \]
 so that $\Cardinality{\LC_L} = C_{\Cardinality L}$.
 
-\newcommand{\conification}{\mathscr{k}}
+\newcommand{\conification}{\mathfrak{K}}
 Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
 crossing-free left alignments
 of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
@@ -606,14 +606,13 @@ interior of that cone, see figure~\ref{figRecursiveconifer}.
 This gives an injective map $\FunctionNamedBody\conification\gl{\conification_\gl}$
 from crossing-free left-alignments of $L$ on any line to left conifers. 
 Note that it is not bijective, see figure~\ref{crossingconifer}.
-
 In turn, this yields $\Cardinality{\CFLA_{L,V}}\leq\Cardinality{\LC_L}=C_{\Cardinality L}$, which is exactly the
 Sharir--Welzl bound.
 
 Now, note that
 the map $\conification$ has the property that for any set of segments $A=\setst{a_p}{p\in L}$ realizing $\gl$,
 $a_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
-aligrments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
+alignments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
 \section{Highly convex matchings across a line}
 In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
 then $\gl$ is overcounted.
@@ -639,10 +638,10 @@ and those that appear above $R$ the \emph{upper $R$-liminary points of $L$}.
 
 If there are $\gd_1$ upper $R$-liminary points of $L$, then the first $\gd_1$ left $L$-cones are vacuous.
 Similarly, if there are $\gd_2$ lower $R$-liminary points of $L$, then the last
-$\gd_2$ left $L$-cones are vacuous. Moreover, for any non-vacuous left $L$-cone $\gk$, any upper $R$-liminary points
+$\gd_2$ left $L$-cones are vacuous. Moreover, for any non-vacuous left $L$-cone $\mathscr{k}$, any upper $R$-liminary points
 of $L$ are $R$-liminary points of the
-subset of $L$ above $\gk$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
-subset of $L$ below $\gk$, so that we get the recurrence
+subset of $L$ above $\mathscr{k}$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
+subset of $L$ below $\mathscr{k}$, so that we get the recurrence
 \[\varpi_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2-1]\varpi_{i,\gd_1}\varpi_{k-i-1,\gd_2}\text,\]
 where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conifers of $k$ points
 of which at least $\gd$ are $R$-liminary.
