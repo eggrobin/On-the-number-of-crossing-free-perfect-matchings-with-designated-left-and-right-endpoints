@@ -445,6 +445,31 @@ definition.
 A crossing-free left-alignment of five points, with a realizing set of segments---drawn as arrows---is shown in
 figure~\ref{figCrossingFreeAlignment}
 
+\marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick segment),
+the rest consists of two crossing-free left-alignments of $i$ and $k-i-1$
+points each---here $k = 5$ and $i = 2$.\label{figCrossingFreeAlignment}]{
+\begin{tikzpicture}[scale=0.75]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot] at (-5,2) (p1) {};
+\node[dot] at (-4,1) (p2) {};
+\node[dot] at (-3,3) (p3) {};
+\node[dot] at (-2,1.5) (p4) {};
+\node[dot] at (-1,3.5) (p5) {};
+
+\node[inner sep=0pt,label=right:$1$] at (0,4) (l1) {};
+\node[inner sep=0pt,label=right:$2$] at (0,3.5) (l2) {};
+\node[inner sep=0pt,label=right:$3$] at (0,2.5) (l3) {};
+\node[inner sep=0pt,label=right:$4$] at (0,1.5) (l4) {};
+\node[inner sep=0pt,label=right:$5$] at (0,1) (l5) {};
+
+\draw[->,very thick] (p1) -- (l3);
+\draw[->] (p3) -- (l1);
+\draw[->] (p5) -- (l2);
+\draw[->] (p4) -- (l4);
+\draw[->] (p2) -- (l5);
+
+\draw[very thick] (0,5) -- (0,0);
+\end{tikzpicture}}
 \begin{lemma}
 Let $\gL$ be a set of $k$ points in general position, and let $V$ be a vertical line to the right of $\gL$.
 There are at most $C_k$ crossing-free left-alignments of $\gL$ on $V$.
@@ -482,31 +507,6 @@ We can start the recurrence with $\gcp_0 = 1$; this is the recurrence for the Ca
 $\gcp_k=C_k$.
 \end{proof}
 \end{lemma}
-\marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick segment),
-the rest consists of two crossing-free left-alignments of $i$ and $k-i-1$
-points each---here $k = 5$ and $i = 2$.\label{figCrossingFreeAlignment}]{
-\begin{tikzpicture}[scale=0.75]
-\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
-\node[dot] at (-5,2) (p1) {};
-\node[dot] at (-4,1) (p2) {};
-\node[dot] at (-3,3) (p3) {};
-\node[dot] at (-2,1.5) (p4) {};
-\node[dot] at (-1,3.5) (p5) {};
-
-\node[inner sep=0pt,label=right:$1$] at (0,4) (l1) {};
-\node[inner sep=0pt,label=right:$2$] at (0,3.5) (l2) {};
-\node[inner sep=0pt,label=right:$3$] at (0,2.5) (l3) {};
-\node[inner sep=0pt,label=right:$4$] at (0,1.5) (l4) {};
-\node[inner sep=0pt,label=right:$5$] at (0,1) (l5) {};
-
-\draw[->,very thick] (p1) -- (l3);
-\draw[->] (p3) -- (l1);
-\draw[->] (p5) -- (l2);
-\draw[->] (p4) -- (l4);
-\draw[->] (p2) -- (l5);
-
-\draw[very thick] (0,5) -- (0,0);
-\end{tikzpicture}}
 The same results holds for crossing-free right-alignments, simply exchange ``left'' and ``right'' in the above
 lemma and its proof.
 
@@ -670,7 +670,7 @@ since there is at least one $R$-liminary point of $L$ (the leftmost one), and if
 only one cone is non-vacuous.
 \section{Three changes of bracket direction}
 \label{sectionThreeChanges}
-We now consider left-right matchings corresponding to bracket expressions which have three
+We now consider perfect matchings consistent with bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
 $\langle^k\rangle^l\langle^q\rangle^p$,
 $k$ opening brackets, $l$ closing brackets, $q$ opening brackets, $p$ closing brackets, where
@@ -980,7 +980,7 @@ name here]}, and its solution is known, namely
 \text,
 \end{equation}
 as shown by L.~F.~A.~Arbogast in 1800 \cite[p.~214--217]{Arbogast1800}.
-\subsubsection{A combinatorial interpretation of $\spc$}
+\subsubsection{A combinatorial interpretation of \texorpdfstring{$\spc$}{spc}}
 The Catalan triangle counts well-formed prefix bracket expressions [CITATION]. This can in fact be seen from
 all the definitions of $\spc$ above, thus providing a more combinatorial solution.
 
