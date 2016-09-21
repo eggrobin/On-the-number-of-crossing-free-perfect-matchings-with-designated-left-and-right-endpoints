@@ -866,10 +866,11 @@ $S'$, written $\cells\of{S'}$.
 Then, we can improve the $\binom k l C_l$ factor in the bound (in which the binomial comes from
 the choice of the long edges amongst the $k$ edges on the left line, and the Catalan number comes
 from the choice of $\gl$), summing over the choices of the long edges (and thus of $S$ above).
-The improved factor becomes\begin{equation}
+The improved factor becomes\footnote{The name $\spc$ was chosen because we define this as
+a Sum of Products of Catalan numbers.}\begin{equation}
 \spc\of{k, l}\DefineAs
-\sum{S\in\binom{[k]}{k-l}} \quad \prod{c\in\cells\of{[k] \setminus S}}C_{\Cardinality c} =
-\sum{S'\in\binom{[k]}{l}} \quad \prod{c\in\cells\of{S'}}C_{\Cardinality c}\text,
+\sum{S\in\binom{[k]}{k-l}} \quad \prod{\gc\in\cells\of{[k] \setminus S}}C_{\Cardinality \gc} =
+\sum{S'\in\binom{[k]}{l}} \quad \prod{\gc\in\cells\of{S'}}C_{\Cardinality \gc}\text,
 \label{spcDefinition}
 \end{equation}
 and the overall bound becomes\begin{equation}
@@ -886,16 +887,16 @@ Otherwise, $k-l\geq 1$; in the sum over the $S$, consider the greatest element $
 $k-l$, and split the sum over that,
 \[\spc\of{k, l} = \sum{j=k-l}[k]\quad
 \sum{\substack{S\in\binom{[k]}{k-l} \\ j=\max S}} \quad
-\prod{c\in\cells\of{[k] \setminus S}}C_{\Cardinality c}\text.
+\prod{\gc\in\cells\of{[k] \setminus S}}C_{\Cardinality \gc}\text.
 \]
 For fixed $j$, all summands (of the sum over $S$) will have a factor
-with $c=\set{j+1,\dotsc,k}$, and thus a factor of
+with $\gc=\set{j+1,\dotsc,k}$, and thus a factor of
 $C_{k-j}$. Factoring out this $C_{k-j}$, we get
 \[\spc\of{k, l} = \sum{j=k-l}[k]
 C_{k-j} \quad
 \sum{\substack{S\in\binom{[k]}{k-l} \\ j=\max S}} \quad
-\prod{\substack{c\in\cells\of{[k] \setminus S} \\ c\neq\set{j+1,\dotsc,k}}}
-    C_{\Cardinality c}\text.
+\prod{\substack{\gc\in\cells\of{[k] \setminus S} \\ \gc\neq\set{j+1,\dotsc,k}}}
+    C_{\Cardinality \gc}\text.
 \]
 Now, note that choosing a subset $S$ of $[k]$ of size $k-l$ whose maximum is $j$ is equivalent to choosing
 a subset $s$ of $[j-1]$ of size $k-l - 1$, where $S=s\Union\set{j}$. Moreover, the cells of $[k]\setminus S$ other
@@ -903,8 +904,8 @@ than $\set{j+1,\dotsc,k}$ are exactly the cells of $[j-1]\setminus s$, thus
 \[\spc\of{k, l} = \sum{j=k-l}[k]
 C_{k-j} \quad
 \sum{s\in\binom{[j-1]}{k-l - 1}} \quad
-\prod{c\in\cells\of{[j-1]\setminus s}}
-    C_{\Cardinality c}\text.
+\prod{\gc\in\cells\of{[j-1]\setminus s}}
+    C_{\Cardinality \gc}\text.
 \]
 By definition of $\spc$, this means
 \[\spc\of{k, l} = \sum{j=k-l}[k]
