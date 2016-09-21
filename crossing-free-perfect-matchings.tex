@@ -85,13 +85,13 @@ We then study in detail the inequalities in that bound and the objects it actual
 yielding criteria that will allow us to tighten the bound in specific cases (section~\ref{sectionOvercounting}).
 Using these criteria, we give a bound for
 matchings across a line that depends on the number of points in the interior of the convex hull
-(\section~\ref{sectionHighlyConvex}).
+(section~\ref{sectionHighlyConvex}).
 We then give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
 right endpoints for a specific family of left-to-right orderings of the left and right endpoints
 (\ref{sectionThreeChanges}). 
 \section{Background}
 \label{sectionBackground}
-We first give some definitions, as well as existing proofs whose concepts we will use to derive our results.
+We first give some definitions, as well as existing proofs whose ideas we will use to derive our results.
 \subsection{Geometric graphs}
 \begin{definition}[geometric graph]
 Given a set of points $P$ in the Euclidean plane $\R^2$,
@@ -134,12 +134,12 @@ restricting $P$ so that it satisfies certain properties.
 
 An important property that $P$ can have is general position. We say that 
 a point set in the plane is \emph{in general position} if no three points are collinear.
-Here we will only study point sets in general position.
+In this we will only study point sets in general position.
 
 In general, if $g\of P$ is the number of geometric graphs of a certain sort on the point
 set $P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
 \forall n\in \N, \forall P \text{ such that } \Cardinality P = n,
-l \of n \leq g \of n \leq u \of n \text,\]
+l \of n \leq g \of P \leq u \of n \text,\]
 where $P$ runs over all point sets that satisfy the relevant properties.
 
 In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
@@ -163,12 +163,12 @@ C_n = \sum {i=0}[n-1] C_i C_{n-i-1}\text. \label{CatalanRecurrence}
 Consider a set of $n+2$ points in convex position.
 For $n=0$ the result is trivial, the only triangulation is an edge.
 
-Let $n > 0$, and number the points in polar order (around the interior of the convex hull), from $0$ to $n+1$.
+Let $n > 0$, and number the points along the boundary of the convex hull, from $0$ to $n+1$.
 The edge $e$ joining points $n+1$ and $\pa{n}$ is in the boundary of the convex hull, and thus must
 be in any triangulation, since no other edge can cross it. Let $i$ be the index of the third point of the
 triangle containing edge $e$, which may be any of the others, from $0$ to $n-1$.
 
-Then, removing restricting the triangulation to the $i+2$ points $\set{0,\dotsc,i,n+1}$ yields a triangulation
+Then, restricting the triangulation to the $i+2$ points $\set{0,\dotsc,i,n+1}$ yields a triangulation
 of those points.
 Similarly, restricting the triangulation of the whole point set to points $i$ through $n$ yields a triangulation of
 $n-i+1$ points. It follows that $C_n \leq \sum {i=0}[n-1] C_i C_{n-i-1}$.
@@ -184,7 +184,7 @@ C_n = \frac{1}{n+1} \binom {2n} {n}\text,
 \end{equation}
 yielding asymptotically
 \begin{equation}
-C_n \preccurlyeq 4^n\text.
+C_n \sim \frac{4^n}{n^{\frac{3}{2}}\sqrt{\Pi}} \preccurlyeq 4^n\text.
 \end{equation}
 
 \subsection{Crossing-free perfect matchings}
@@ -230,7 +230,7 @@ confusion in a grammar describing nothing but sequences of angle brackets.}\begi
 & \langle \text{wfbe} \rangle \text{wfbe} \\
 \mid\: & \text{empty}\text,
 \end{align*}
-where the sum ranges over the lengths of the component bracket expressions.
+where the sum in the recurrence ranges over the lengths of the component bracket expressions.
 
 Note that inserting an opening bracket, followed by a closing bracket anywhere after the
 inserted opening bracket, into a well-formed bracket expression, results in a well-formed bracket
@@ -300,10 +300,12 @@ $\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
 though)]
 \subsection{An optimal lower bound for the number of crossing-free perfect matchings}
 The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
+\begin{theorem}[Ruiz-Vargas--Welzl]
 Let $P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
 and let $B$ be a well-formed bracket expression of length $n$.
 Then there exists a crossing-free perfect matching consistent with $B$; in other words,
 $\gn_P\of B \geq 1$.
+\end{theorem}
 \begin{proof}
 Let $\gm_0$ be a perfect matching on $P$ consistent with $B$. This is always possible, for instance,
 parsing the bracket expression, match the point corresponding to an opening bracket
@@ -347,7 +349,7 @@ Note that this lower bound had already been proved by A.~García, M.~Noy, and J.
 by a recurrence that split the point set, rather than via well-formed bracket expressions
 \cite{GarciaNoyTejel2000}.
 \begin{corollary}
-Let $P$ be a point set of size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
+Let $P$ be a point set of even size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
 crossing-free perfect matchings on $P$\idest $\Cardinality{\CFPM_P} \geq C_{\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $P$ is in convex position (see
@@ -357,7 +359,7 @@ Now that we have a tight uniform lower bound for $\gn_P$, we will start looking 
 dependent on the bracket expression.
 \subsection{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
-The matchings corresponding to brackets expressions with $k$ opening brackets followed
+The matchings consistent with bracket expressions with $k$ opening brackets followed
 by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
 across a line}. Indeed, any edge in such a matching will cross any vertical line that separates
 the left-points from the right-points.
@@ -374,8 +376,10 @@ First, pick a vertical line that separates the left-points from the right-points
 we will call it \emph{the vertical line}.
 Further, let us call the set of left-points $L$ and the set of right-points $R$.
 
-A perfect matching across a line is uniquely defined by a bijection $\FunctionSpec \gm L R$ from
-the left-points to the right-points. Consider such a matching, and let $E$ be the set of its edges.
+A perfect matching consistent with a given well-formed bracket expression (and in particular, a perfect
+matching across a line) is uniquely defined by a bijection $\FunctionSpec \gm L R$ from
+the left-points to the right-points. Consider such a perfect
+matching across a line, and let $E$ be the set of its edges.
 Now, number the intersections between the edges of the perfect matching and the vertical
 line from top to bottom. This yield a numbering $\FunctionSpec \gi E {[k]}$ of the edges.
 \marginfig[Constructing the numberings $\gl$ and $\gr$ of the left- and right-points from
@@ -418,18 +422,18 @@ reach the vertical line.
 
 If the matching is crossing-free, we will show that
 $\gl$ and $\gr$ have to be in sets of size $C_k$, thus that there are at most $C_k^2$ functions
-$\gm = \gr^{-1} \Compose \gl$\idest that there can be at most $C_k^2$ perfect matchings across a line.
+$\gm = \gr^{-1} \Compose \gl$\idest that there can be at most $C_k^2$ crossing-free perfect matchings across a line.
 
 Since we are going to reuse these concepts in subsequent sections, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider.
 \begin{definition}[crossing-free alignment]
 Let $\gL$ be a set of $k$ points in general position. Let $V$ be a vertical line to the right of $\gL$.
-A bijection from a set of $\gL$ to $k$ is a \emph{crossing-free left-alignment of $\gL$ on $V$} if
-there exists a set $A=\setst{a_p}{p\in\gL}$ of $k$ non-crossing line segments such that
+A bijection $\gl$ from a set of $\gL$ to $k$ is a \emph{crossing-free left-alignment of $\gL$ on $V$} if
+there exists a set $A=\setst{a_p}{p\in\gL}$ of $k$ line segments such that
 the following hold:
 \begin{enumerate}
 \item for every $p\in\gL$, the left endpoint of $a_p$ is $p$, and its right endpoint is on $V$;
-\item no two segments share the same right endpoint;
+\item no two segments cross, and no two segments share any endpoints;
 \item let $\FunctionSpec \gi A {[k]}$ the numbering of the right endpoints of the segments in
 $A$ from top to bottom, then $\gl\of p = \gi\of{a_p}$.
 \end{enumerate}
@@ -445,20 +449,19 @@ There are at most $C_k$ crossing-free left-alignments of $\gL$ on $V$.
 \begin{proof}
 Let $l$ be the leftmost point of $\gL$, and let $\gl$ be a crossing-free left-alignment of $\gL$ on $V$.
 Let $A=\setst{a_p}{p\in\gL}$ be a set of non-crossing line segments realizing $\gl$.
-For a point $p\in\gL$, we will call $a_p$ \emph{the segment of $p$}. We will refer to $V$ as
-\emph{the vertical line}.
+For a point $p\in\gL$, we will call $a_p$ \emph{the segment of $p$}.
 
-$\gl(l)$, being the index on the vertical line of the right endpoint of the segment $a_l$ of the leftmost point,
+$\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $a_l$ of the leftmost point,
 is equal to one plus the number of points of $\gL$ that are above $a_l$. Indeed, the segments of points above $a_l$ must
-themselves reach the vertical line above $a_l$, otherwise they would cross $a_l$, and correspondingly for
-points below $a_l$, so that there are as many edges reaching the vertical line below $a_l$ as there are points
+themselves reach the vertical line $V$ above $a_l$, otherwise they would cross $a_l$, and correspondingly for
+points below $a_l$, so that there are as many edges reaching the vertical line $V$ below $a_l$ as there are points
 below $a_l$.
 
 Moreover, as the oriented angle between $a_l$ and the horizontal increases, points are only added to the
 set of points below $a_l$, so that choosing the number of points below $a_l$ determines the sets of points
 below and above $a_l$.
 
-Further, since points above $a_l$ must reach the vertical line above $a_l$, and correspondingly for points below,
+Further, since points above $a_l$ must reach the vertical line $V$ above $a_l$, and correspondingly for points below,
 if the point $p$ is above $a_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus
 $\gl$ restricted do the points above $a_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
 $a_l$, and $\gl-\gl(l)$ restricted to the points below $a_l$ is a crossing-free left-alignment of the
@@ -469,16 +472,16 @@ It follows that $\gl$ is determined by the choice of $\gl\of l$ and crossing-fre
 of $\gl\of{l}-1$ and $k-\gl\of{l}$ points.
 Letting $i\DefineAs \gl\of l - 1$, these are crossing-free alignments of $i$ and $k-i-1$ points (see
 figure~\ref{figCrossingFreeAlignment}).
-Therefore, if $\varpi_j$ is an upper bound for the number of crossing-free
+Therefore, if $\gcp_j$ is an upper bound for the number of crossing-free
 left-alignments of $j$ points when $j < k$,
 we can give an upper bound on the number of crossing-free left-alignments of $k$ points,
-\[\varpi_k\DefineAs\sum{i=0}[k-1]\varpi_{i}\varpi_{k-i-1}\text.\]
-We can start the recurrence with $\varpi_0 = 1$; this is the recurrence for the Catalan numbers, thus
-$\varpi_k=C_k$.
+\[\gcp_k\DefineAs\sum{i=0}[k-1]\gcp_{i}\gcp_{k-i-1}\text.\]
+We can start the recurrence with $\gcp_0 = 1$; this is the recurrence for the Catalan numbers, thus
+$\gcp_k=C_k$.
 \end{proof}
 \end{lemma}
 \marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick segment),
-the rest consists in two crossing-free left-alignments of $i$ and $k-i-1$
+the rest consists of two crossing-free left-alignments of $i$ and $k-i-1$
 points each---here $k = 5$ and $i = 2$.\label{figCrossingFreeAlignment}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
@@ -602,7 +605,7 @@ We call $\LC_L$ the set of left conifers of $L$. From the observations above on 
 size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conifers of $k$ points,
 we have
 \[
-\gcp_k=\sum{i=0}[k-1]\varpi_{i}\varpi_{k-i-1} \text{ and } \gcp_0=1\text,
+\gcp_k=\sum{i=0}[k-1]\gcp_{i}\gcp_{k-i-1} \text{ and } \gcp_0=1\text,
 \]
 so that $\Cardinality{\LC_L} = C_{\Cardinality L}$.
 
@@ -653,13 +656,13 @@ $\gd_2$ left $L$-cones are vacuous. Moreover, for any non-vacuous left $L$-cone 
 of $L$ are $R$-liminary points of the
 subset of $L$ above $\mathscr{k}$, and any lower $R$-liminary points of $L$ are $R$-liminary points of the
 subset of $L$ below $\mathscr{k}$, so that we get the recurrence
-\[\varpi_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2-1]\varpi_{i,\gd_1}\varpi_{k-i-1,\gd_2}\text,\]
-where $\varpi_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conifers of $k$ points
+\[\gcp_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2-1]\gcp_{i,\gd_1}\gcp_{k-i-1,\gd_2}\text,\]
+where $\gcp_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conifers of $k$ points
 of which at least $\gd$ are $R$-liminary.
 Moreover, we can start that recurrence with
 \begin{align*}
-\varpi_{k,0}&\DefineAs\varpi_{k,1}\text,\\
-\varpi_{k,k}&\DefineAs1\text,
+\gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
+\gcp_{k,k}&\DefineAs1\text,
 \end{align*}
 since there is at least one $R$-liminary point of $L$ (the leftmost one), and if all points are $R$-liminary,
 only one cone is non-vacuous.
