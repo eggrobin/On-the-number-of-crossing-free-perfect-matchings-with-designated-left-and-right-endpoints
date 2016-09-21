@@ -30,16 +30,14 @@
 
 \title{%
 \textdisplay{%
-Crossing-Free Perfect Matchings%
+On the number of crossing-free perfect matchings with designated left and right endpoints%
 }%
 }
 \author{Robin~Leroy}
 \begin{document}
 \maketitle
 \begin{abstract}
-[TODO main results: the spc bound, the bound dependent on the number of interior points;
-maybe I'll have brief discussion of suggestions for improvements to the Catalan and spc
-bounds, in which case mention it here.
+[TODO main results: the spc bound, the bound dependent on the number of interior points.
 Do I mention the expressions for the Catalan triangle (are they known)?]
 \end{abstract}
 
@@ -61,8 +59,8 @@ and a super-exponential upper bound was given.
 In 1980, M.~Ajtai, V.~Chvátal, M.~Newborn, and E.~Szemerédi \cite{AjtaiChvatalNewbornSzemeredi1982}
 proved that there are only exponentially many crossing-free geometric graphs on a given point set.
 
-Exponential bounds for various sorts of graphs were then improved, in particular for triangulations---these are
-the maximal crossing-free geometric graphs, so finding a bound for them yields a bound
+Exponential bounds for various sorts of graphs were then improved, in particular for triangulations---the
+maximal crossing-free geometric graphs. Indeed, finding a bound for them yields a bound
 for the overall number of crossing-free geometric graphs. [TODO citation] In addition, bounds on the number of triangulations
 are of interest in geometric modeling [CITE Studies in computational geometry motivated by mesh generation].
 
@@ -78,10 +76,21 @@ In that same work, an upper bound of $5.83^n$ is given for the number of crossin
 point set whose points are designated as left or right endpoints; moreover, an upper bound of $4^n$ is given
 when all the left endpoints are to the left of the right endpoints (matchings across a line).
 
-Here we give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
-right endpoints for specific left-to-right orderings of the left and right endpoints, and give a bound for
-matchings across a line that depends on the number of points in the interior of the convex hull.
+In this thesis, 
+we start by giving an overview of some of the existing results, in particular a way
+to classify arrangements of designated left and right endpoints,
+and we restate the proof of the bound for matchings across a line by M.~Sharir and E.~Welzl
+(section~\ref{sectionBackground}).
+We then study in detail the inequalities in that bound and the objects it actually counts,
+yielding criteria that will allow us to tighten the bound in specific cases (section~\ref{sectionOvercounting}).
+Using these criteria, we give a bound for
+matchings across a line that depends on the number of points in the interior of the convex hull
+(\section~\ref{sectionHighlyConvex}).
+We then give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
+right endpoints for a specific family of left-to-right orderings of the left and right endpoints
+(\ref{sectionThreeChanges}). 
 \section{Background}
+\label{sectionBackground}
 We first give some definitions, as well as existing proofs whose concepts we will use to derive our results.
 \subsection{Geometric graphs}
 \begin{definition}[geometric graph]
@@ -503,6 +512,7 @@ to the left of the vertical line yields segments that realize $\gl$.
 Similarly, $\gr$ is a crossing-free right-alignment of $R$ on the vertical line.
 \end{proof}
 \section{Analysing the overcounting in the upper bound for matchings across a line}
+\label{sectionOvercounting}
 The bound given above for the number of matchings across a line is not optimal;
 an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
 right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{crossingPMAL}).
@@ -614,6 +624,7 @@ the map $\conification$ has the property that for any set of segments $A=\setst{
 $a_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
 alignments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
 \section{Highly convex matchings across a line}
+\label{sectionHighlyConvex}
 In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
 then $\gl$ is overcounted.
 We will call \emph{vacuous} a left cone that does not contain any right-points,
@@ -653,6 +664,7 @@ Moreover, we can start that recurrence with
 since there is at least one $R$-liminary point of $L$ (the leftmost one), and if all points are $R$-liminary,
 only one cone is non-vacuous.
 \section{Three changes of bracket direction}
+\label{sectionThreeChanges}
 We now consider left-right matchings corresponding to bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
 $\langle^k\rangle^l\langle^q\rangle^p$,
