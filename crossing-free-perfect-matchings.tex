@@ -12,6 +12,7 @@
 
 %%%% Shorthands.
 \newcommand{\idest}{\emph{, i.e.,\ }}
+\newcommand{\etc}{\emph{etc}}
 
 \DeclareMathOperator{\cells}{cells}
 \DeclareMathOperator{\spc}{spc}
@@ -54,7 +55,7 @@ S.~K.~Stein in 1951 [CITE]; it is generally known as Fáry's theorem.} [CITE] th
 embedding.
 
 A natural enumerative question is then, given a vertex set of $n$ points in the Euclidean plane,
-to bound the number of plane graphs of a certain sort (cycles, matchings, etc.) which can be
+to bound the number of plane graphs of a certain sort (cycles, matchings, \etc.) which can be
 drawn with non-crossing straight edges.
 For spanning cycles, the question was introduced by M.~Newborn and W.~O.~J.~Moser in 1976 \cite{NewbornMoser1980},
 and a super-exponential upper bound was given.
@@ -877,7 +878,7 @@ point sets.
 Let us look at the edges crossing $V$, numbered from top to bottom from $1$ to $a$, see
 figure~\ref{figCellsOnALine}. Of these $a$ edges,
 $a-b$ are long edges; they are the edges emanating from $\pointset S$. 
-Their numbers are $S = \ga\of{\pointset S} \Subset [k]$.
+Their numbers are $S = \ga\of{\pointset S} \Subset [a]$.
 The other edges are the ones that emanate from points of $\pointset B$.
 Let $s_i$ be the $i$th element of $S$ in increasing order, thus $s_1=\min S$, and
 $s_{\Cardinality S} = s_{a-b} = \max S$.
@@ -886,7 +887,7 @@ The numbering of the $a$ edges crossing $V$, from top to bottom, then starts wit
 the edges emanating from $\pointset B_1$, numbered $1$ through
 $s_1-1$, the first long edge, numbered $s_1$, the edges emanating from
 $\pointset B_2$, numbered $s_1+1$ through $s_2-1$, the second long edge,
-numbered $s_2$, the edges emanating from $\pointset B_3$, numbered from $s_2+1$, etc.
+numbered $s_2$, the edges emanating from $\pointset B_3$, numbered from $s_2+1$, \etc.
 In other words, the numbers of the edges emanating from any nonempty $\pointset B_i$ forms
 a maximal set of consecutive elements of $[a]\setminus S$. This motivates the following
 definition.
