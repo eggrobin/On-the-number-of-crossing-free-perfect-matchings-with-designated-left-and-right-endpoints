@@ -649,21 +649,28 @@ $\pointset P$ that
 are in the boundary of the convex hull of $\pointset P$.
 Given a set of points $\pointset L$ in general position with respect to the horizontal and a set of points $\pointset R$
 in general position with respect to the horizontal to the right of $\pointset L$,
-the \emph{$\pointset R$-liminary points of $\pointset L$} are the points of $\pointset L$ which are extreme points of $L\Union R$,
+the \emph{$\pointset R$-liminary points of $\pointset L$} are the points of $\pointset L$ which are extreme points
+of $L\Union R$,
 see figure~\ref{figLiminaryPoints}.
-We will call $\leftmost\of L$ the leftmost point of $\pointset L$; note that it is an $\pointset R$-liminary point of $\pointset L$.
+We will call $\leftmost\of L$ the leftmost point of $\pointset L$; note that it is an $\pointset R$-liminary point
+of $\pointset L$.
 
-Note that in polar order around $\leftmost\of L$, the $\pointset R$-liminary points of $\pointset L$ other than $\leftmost\of L$ are separated by
-$\pointset R$, that is, in polar order, one subset of the $\pointset R$-liminary points of $\pointset L$ appears first, followed by
-all points of $\pointset R$, followed by the rest of the $\pointset R$-liminary points of $\pointset L$ (except $\leftmost\of L$).
-We will call those $\pointset R$-liminary points of $\pointset L$ which appear below $\pointset R$ the \emph{lower $\pointset R$-liminary points of $\pointset L$},
+Note that in polar order around $\leftmost\of L$, the $\pointset R$-liminary points of $\pointset L$ other than
+$\leftmost\of L$ are separated by
+$\pointset R$, that is, in polar order, one subset of the $\pointset R$-liminary points of $\pointset L$ appears
+first, followed by
+all points of $\pointset R$, followed by the rest of the $\pointset R$-liminary points of $\pointset L$ (except
+$\leftmost\of L$).
+We will call those $\pointset R$-liminary points of $\pointset L$ which appear below $\pointset R$ the \emph{lower
+$\pointset R$-liminary points of $\pointset L$},
 and those that appear above $\pointset R$ the \emph{upper $\pointset R$-liminary points of $\pointset L$}.
 
 If there are $\gd_1$ upper $\pointset R$-liminary points of $\pointset L$, then the first $\gd_1$ left $\pointset L$-cones are vacuous.
 Similarly, if there are $\gd_2$ lower $\pointset R$-liminary points of $\pointset L$, then the last
 $\gd_2$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone $\mathscr{k}$, any upper $\pointset R$-liminary points
 of $\pointset L$ are $\pointset R$-liminary points of the
-subset of $\pointset L$ above $\mathscr{k}$, and any lower $\pointset R$-liminary points of $\pointset L$ are $\pointset R$-liminary points of the
+subset of $\pointset L$ above $\mathscr{k}$, and any lower $\pointset R$-liminary points of $\pointset L$ are
+$\pointset R$-liminary points of the
 subset of $\pointset L$ below $\mathscr{k}$, so that we get the recurrence
 \[\gcp_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2-1]\gcp_{i,\gd_1}\gcp_{k-i-1,\gd_2}\text,\]
 where $\gcp_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conifers of $k$ points
@@ -673,7 +680,8 @@ Moreover, we can start that recurrence with
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
 \gcp_{k,k}&\DefineAs1\text,
 \end{align*}
-since there is at least one $\pointset R$-liminary point of $\pointset L$ (the leftmost one), and if all points are $\pointset R$-liminary,
+since there is at least one $\pointset R$-liminary point of $\pointset L$ (the leftmost one), and if all points are
+$\pointset R$-liminary,
 only one cone is non-vacuous.
 \section{Three changes of bracket direction}
 \label{sectionThreeChanges}
@@ -843,19 +851,29 @@ This gives the overall bound\[
 Note that this is worse than the existing $5.3793^n$ bound $\gn_{\pointset P}\of{B}$ for an arbitrary
 well-formed bracket expression $B$, see section~\ref{boundOnLeftRightPerfectMatchings}.
 \subsection{Improving the binomial bound}
-We can however improve upon that bound: indeed, once $\ga$, $\gd$, and the set of points
-of $K$ matched to $\pointset P$ are fixed, the edges of the matching that cross both the left line
-and the right line---let us call these \emph{long edges}---are determined. As a result,
-the region between the left line and the
-right line is partitioned in trapezoidal cells, and the portion of any edge from $K$ to $\pointset L$ and
-from $\pointset P$ to $Q$ that lies between the left line and the right line is confined to a
-single of those cells. It follows that $\gl$ is composed of crossing-free
-right-alignments the of subsets of $\pointset L$ separated by the long edges, and similarly for $\gq$
-with subsets of $Q$ (in figure~\ref{figCFPMklqp}, there is one long edge, and thus two cells).
+We can however improve upon that bound. Once $\ga$, $\gd$, $\pointset S$, and $\pointset T$
+are fixed, the edges of the matching that cross both the left line
+and the right line---let us call these \emph{long edges}---are determined.
+As a result,
+the strip $\gS$ between the vertical lines $V$ and $W$ is partitioned in trapezoidal cells
+$Z_1,\dotsc,Z_{a-b+1}$ by the long edges, see figure~\ref{figTrapezoids}.
 
-Let us look at the edges crossing the left line (the same argument applies to the right line),
-numbered from top to bottom: $k-l$ of those are
-long edges, let $S \Subset [k]$ be their numbers; in between two long edges, above the first
+We will consider the crossing-free left-alignment $\gb$; the same argument will hold for $\gg$.
+Since $\pointset B$ lies within the strip $\gS$, it is partitioned in subsets
+$\pointset B_1\Subset Z_1,\dotsc,\pointset B_{a-b+1}\Subset Z_{a-b+1}$.
+Moreover, an edge $e_p$ emanating from a point $p\in\pointset B_i$ cannot cross the long edges,
+and thus the portion $e_p\Intersection \gS$ of $e_p$ that lies within the strip $\gS$ is confined to the cell $Z_i$.
+
+Let $\gb_i$ be the crossing-free right-alignment of $\pointset B_i$ on $V$ realized by
+the segments $\setst{e_p\Intersection \gS}{p\in\pointset B_i}$.
+Since the set of segments $\setst{e_p\Intersection \gS}{p\in\pointset B}$ realizes $\gb$,
+$\gb$ is composed of the crossing-free right-alignments $\gb_i$, formally,
+\[\Restrict{\gb}{\pointset B_i}\of p = \gb\of p - \sum{j=1}[i-1] \Cardinality{\pointset B_i}\text.\]
+
+Let us look at the edges crossing $V$, numbered from top to bottom: $k-l$ of those are
+long edges; they are the edges emanating from $\pointset S$. 
+Let $S = \ga\of{\pointset S} \Subset [k]$ be their numbers. in between two long edges,
+above the first
 long edge, and below the last one, we have the edges that define the crossing-free right-alignments
 that make up $\gl$. It follows that a crossing-free right-alignment of $m$ points that makes up
 $\gl$ corresponds to a maximal sequence of $m$ consecutive elements of $[k] \setminus S$.
@@ -864,8 +882,8 @@ We will call the set of maximal sequences of consecutive elements of $S'$ the \e
 $S'$, written $\cells\of{S'}$.
 
 Then, we can improve the $\binom k l C_l$ factor in the bound (in which the binomial comes from
-the choice of the long edges amongst the $k$ edges on the left line, and the Catalan number comes
-from the choice of $\gl$), summing over the choices of the long edges (and thus of $S$ above).
+the choice of $\pointset S$, and the Catalan number comes
+from the choice of $\gb$), summing over the choices of $\pointset S$ (and thus of $S$ above).
 The improved factor becomes\footnote{The name $\spc$ was chosen because we define this as
 a Sum of Products of Catalan numbers.}\begin{equation}
 \spc\of{k, l}\DefineAs
