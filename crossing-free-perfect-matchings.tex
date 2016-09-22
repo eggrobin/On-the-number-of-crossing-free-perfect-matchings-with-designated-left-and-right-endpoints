@@ -274,7 +274,8 @@ is incident to exactly one edge, and that edge is not vertical.
 \draw[dashed] (p5) -- (b5);
 \draw[dashed] (p6) -- (b6);
 \end{tikzpicture}}
-Construct a bracket expression ${\mathfrak B}_{\pointset P}\of\gm$ of length $n$ as follows: order $\pointset P$ from left to right;
+Construct a bracket expression ${\mathfrak B}_{\pointset P}\of\gm$ of length $n$ as follows: order $\pointset P$ from left
+to right;
 the $i$th bracket is opening if the $i$th point of $\pointset P$ is a left endpoint of $\gm$, and it is
 closing otherwise.
 This bracket expression is well-formed, since it can be constructed by starting from the
@@ -290,7 +291,8 @@ corresponding to closing brackets of $B$ as \emph{right-points}.
 One approach to bounding the size of $\CFPM_{\pointset P}$ is to bound the size of
 ${\mathfrak B}_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}$ for bracket expressions $B$ of length $n$\idest the
 number of crossing-free perfect matchings on $\pointset P$ consistent with $B$. We thus define
-\[\gn_{\pointset P}\of B \DefineAs \Cardinality{{\mathfrak B}_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}}\text.\]
+\[\gn_{\pointset P}\of B \DefineAs
+\Cardinality{{\mathfrak B}_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}}\text.\]
 In order to concisely refer to bracket expressions, we will use the notations
 $\langle^k$ for $k$ successive opening brackets, and $\rangle^k$ for $k$ successive
 closing brackets, for instance,\[
@@ -486,7 +488,8 @@ Let $A=\setst{a_p}{p\in{\pointset S}}$ be a set of non-crossing line segments re
 For a point $p\in{\pointset S}$, we will call $a_p$ \emph{the segment of $p$}.
 
 $\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $a_l$ of the leftmost point,
-is equal to one plus the number of points of ${\pointset S}$ that are above $a_l$. Indeed, the segments of points above $a_l$ must
+is equal to one plus the number of points of ${\pointset S}$ that are above $a_l$. Indeed, the segments of points above
+$a_l$ must
 themselves reach the vertical line $V$ above $a_l$, otherwise they would cross $a_l$, and correspondingly for
 points below $a_l$, so that there are as many edges reaching the vertical line $V$ below $a_l$ as there are points
 below $a_l$.
@@ -554,7 +557,8 @@ crossing-free perfect matchings across a line,
 Then the following diagram commutes\idest constructing crossing-free alignments from a matching
 and then composing them yields the initial matching.
 \[\begin{tikzcd}
-\CFPMAL_{\pointset P} \arrow{r}{\gw} \arrow[hook]{d}{\Subset} & \CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V} \arrow{ld}{c} \\
+\CFPMAL_{\pointset P} \arrow{r}{\gw} \arrow[hook]{d}{\Subset} &
+\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V} \arrow{ld}{c} \\
 \PMAL_{\pointset P}
 \end{tikzcd}\]
 The result of Sharir and Welzl consists in deducing from the commutative diagram that
@@ -602,7 +606,8 @@ $\gw$, $\leftmost\of L$ has to be matched to a right-point in left $\pointset L$
 figure~\ref{figConesNeedPoints}.
 
 To extend this reasoning beyond the leftmost point of $\pointset L$, we define \emph{left conifers of $\pointset L$}.
-A left conifer $\gk$ of a point set $\pointset L$ is a map from points in $\pointset L$ to left $S$-cones for subsets $S$ of $\pointset L$,
+A left conifer $\gk$ of a point set $\pointset L$ is a map from points in $\pointset L$ to left $S$-cones for subsets $S$
+of $\pointset L$,
 satisfying the following properties:
 \begin{enumerate}
 \item $\gk\of{\leftmost\of L}$ is a left $\pointset L$-cone;
@@ -666,9 +671,11 @@ We will call those $\pointset R$-liminary points of $\pointset L$ which appear b
 $\pointset R$-liminary points of $\pointset L$},
 and those that appear above $\pointset R$ the \emph{upper $\pointset R$-liminary points of $\pointset L$}.
 
-If there are $\gd_1$ upper $\pointset R$-liminary points of $\pointset L$, then the first $\gd_1$ left $\pointset L$-cones are vacuous.
+If there are $\gd_1$ upper $\pointset R$-liminary points of $\pointset L$, then the first $\gd_1$ left
+$\pointset L$-cones are vacuous.
 Similarly, if there are $\gd_2$ lower $\pointset R$-liminary points of $\pointset L$, then the last
-$\gd_2$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone $\mathscr{k}$, any upper $\pointset R$-liminary points
+$\gd_2$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
+$\mathscr{k}$, any upper $\pointset R$-liminary points
 of $\pointset L$ are $\pointset R$-liminary points of the
 subset of $\pointset L$ above $\mathscr{k}$, and any lower $\pointset R$-liminary points of $\pointset L$ are
 $\pointset R$-liminary points of the
@@ -860,8 +867,8 @@ the strip $\gS$ between the vertical lines $V$ and $W$ is partitioned by the lon
 $Z_1,\dotsc,Z_{a-b+1}$ (numbered from top to bottom), see figure~\ref{figTrapezoids}.
 
 We will consider the crossing-free right-alignment $\gb$; the same argument will hold for $\gg$.
-Since $\pointset B$ lies within the strip $\gS$, it is partitioned in subsets
-$\pointset B_1\Subset Z_1,\dotsc,\pointset B_{a-b+1}\Subset Z_{a-b+1}$.
+Since $\pointset B$ lies within the strip $\gS$, it is partitioned in $a-b+1$ subsets
+$\pointset B_i\DefineAs\pointset B \Intersection Z_i$.
 Moreover, an edge $e_p$ emanating from a point $p\in\pointset B_i$ cannot cross the long edges,
 and thus the portion $e_p\Intersection \gS$ of $e_p$ that lies within the strip $\gS$ is confined to the cell $Z_i$.
 
@@ -916,45 +923,46 @@ C_a\spc\of{a, b}\spc\of{c, d}C_d\text.\label{bound-ck-spckl-spcpq-cp}
 \subsection{A recurrence}
 In order to compute $\spc$ efficiently, and eventually, get its asymptotics, it is useful to get rid
 of the $\cells$ function. We can express $\spc$ as a recurrence instead.
-First, we note that $\spc\of{k,k} = C_k$: there is only one summand, $S'$ is the whole set, so
-it has only one cell, namely itself.
-Otherwise, $k-l\geq 1$; in the sum over the $S$, consider the greatest element $j$ of $S$, which is at least
-$k-l$, and split the sum over that,
-\[\spc\of{k, l} = \sum{j=k-l}[k]\quad
-\sum{\substack{S\in\binom{[k]}{k-l} \\ j=\max S}} \quad
-\prod{\gc\in\cells\of{[k] \setminus S}}C_{\Cardinality \gc}\text.
+First, we note that $\spc\of{a,a} = C_k$: there is only one summand, $S'$ is the whole set, so
+it has only one cell, namely $S'$ itself.
+Otherwise, $a-b\geq 1$; in the sum over the $S$, consider the greatest element $j$ of $S$, which is at least
+$a-b$, and split the sum over that,
+\[\spc\of{a,b} = \sum{j=a-b}[a]\quad\;
+\sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \quad
+\prod{\gc\in\cells\of{[a] \setminus S}}C_{\Cardinality \gc}\text.
 \]
 For fixed $j$, all summands (of the sum over $S$) will have a factor
-with $\gc=\set{j+1,\dotsc,k}$, and thus a factor of
-$C_{k-j}$. Factoring out this $C_{k-j}$, we get
-\[\spc\of{k, l} = \sum{j=k-l}[k]
-C_{k-j} \quad
-\sum{\substack{S\in\binom{[k]}{k-l} \\ j=\max S}} \quad
-\prod{\substack{\gc\in\cells\of{[k] \setminus S} \\ \gc\neq\set{j+1,\dotsc,k}}}
+with $\gc=\set{j+1,\dotsc,a}$, and thus a factor of
+$C_{a-j}$. Factoring out this $C_{a-j}$, we get
+\[\spc\of{a, b} = \sum{j=a-b}[a]
+C_{a-j} \;\;
+\sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \quad
+\prod{\substack{\gc\in\cells\of{[a] \setminus S} \\ \gc\neq\set{j+1,\dotsc,a}}}
     C_{\Cardinality \gc}\text.
 \]
-Now, note that choosing a subset $S$ of $[k]$ of size $k-l$ whose maximum is $j$ is equivalent to choosing
-a subset $s$ of $[j-1]$ of size $k-l - 1$, where $S=s\Union\set{j}$. Moreover, the cells of $[k]\setminus S$ other
-than $\set{j+1,\dotsc,k}$ are exactly the cells of $[j-1]\setminus s$, thus
-\[\spc\of{k, l} = \sum{j=k-l}[k]
-C_{k-j} \quad
-\sum{s\in\binom{[j-1]}{k-l - 1}} \quad
-\prod{\gc\in\cells\of{[j-1]\setminus s}}
+Now, note that choosing a subset $S$ of $[a]$ of size $a-b$ whose maximum is $j$ is equivalent to choosing
+a subset $\tilde{S}$ of $[j-1]$ of size $a-b - 1$, where $S=\tilde{S}\Union\set{j}$.
+Moreover, the cells of $[a]\setminus S$ other
+than $\set{j+1,\dotsc,a}$ are exactly the cells of $[j-1]\setminus \tilde{S}$, thus
+\[\spc\of{a,b} = \sum{j=a-b}[a]
+C_{a-j} \;\;
+\sum{\tilde{S}\in\binom{[j-1]}{a-b - 1}} \quad\;
+\prod{\gc\in\cells\of{[j-1]\setminus \tilde{S}}}
     C_{\Cardinality \gc}\text.
 \]
 By definition of $\spc$, this means
-\[\spc\of{k, l} = \sum{j=k-l}[k]
-C_{k-j}
-\spc\of{j-1,l+j-k}\text.
+\[\spc\of{a,b} = \sum{j=a-b}[a]
+C_{a-j}
+\spc\of{j-1,b+j-a}\text.
 \]
-Rewriting this as a sum over $i\DefineAs k-j$, this gives us the following recurrence for $\spc$:
-\begin{align}\spc\of{k, l} &= \sum{i=0}[l]
+Rewriting this as a sum over $i\DefineAs a-j$, this gives us the following recurrence for $\spc$:
+\begin{align}\spc\of{a,b} &= \sum{i=0}[l]
 C_{i}
-\spc\of{k-i-1,l-i} &\text{for $l<k$,} \label{spcRecurrence1}\\
-\spc\of{k, k} &= C_k \label{spckk}\text.
-\end{align}\marginfig[The first few values of $\spc$; $k$ vertically from $0$ to $5$,
-$l$ horizontally from $0$ to $k$. The $l+1$ summands in the recurrence (\ref{spcRecurrence1})
-with $k = 6$ and $l = 3$ are highlighted.]{
+\spc\of{a-i-1,b-i} &\text{for $b<a$,} \label{spcRecurrence1}\\
+\spc\of{a,a} &= C_a \label{spckk}\text.
+\end{align}\marginfig[The first few values of $\spc$; $a$ vertically from $0$ to $5$,
+$b$ horizontally from $0$ to $a$. The values appearing in the $b+1$ summands of the
+recurrence (\ref{spcRecurrence1}) with $a = 6$ and $b = 3$ are highlighted.]{
 $\begin{array}{r r r r r r}
 1 \\
 {\color{red}1} & 1 \\
@@ -967,16 +975,16 @@ $\begin{array}{r r r r r r}
     \path[->] (lastSummand.south) edge (result.north -| lastSummand.south);
 }
 \subsection{A better recurrence}
-We can now turn this recurrence into a simpler recurrence, which we will prove by recurrence.
+We can now turn this recurrence into a simpler and better-known one.
 
 Since $\spc$ has not been formally defined for negative arguments, we extend the definition
-with $\spc\of{k,l}=0$ for $l<0$; this is consistent with the definition, since it yields a sum over
-subsets $S\Subset [k]$ bigger than $k$, and it yields an empty sum in the recurrence we just derived.
-In addition to that, we also let $\spc\of{k,l} = 0$ when $l > k$.
+with $\spc\of{a,b}=0$ for $b<0$; this is consistent with original the definition, since it yields a sum over
+subsets $S\Subset [a]$ bigger than $a$, and it yields an empty sum in the recurrence we just derived.
+In addition to that, we also let $\spc\of{a,b} = 0$ when $b > a$.
 
-Note that for $k - 1 = l\geq 0$, we have\begin{align}
-\spc\of{k, l}
-= \sum{i=0}[l]C_{i}\spc\of{k-i-1,l-i} = \sum{i=0}[l]C_{i}\spc\of{l-i,l-i} 
+Note that for $a - 1 = b\geq 0$, we have\begin{align}
+\spc\of{a, b}
+= \sum{i=0}[l]C_{i}\spc\of{a-i-1,l-i} = \sum{i=0}[l]C_{i}\spc\of{b-i,b-i} 
 &= \sum{i=0}[l]C_{i}C_{l-i} \nonumber \\
 &= C_{l+1}\text,\label{spckkminusone}
 \end{align}
