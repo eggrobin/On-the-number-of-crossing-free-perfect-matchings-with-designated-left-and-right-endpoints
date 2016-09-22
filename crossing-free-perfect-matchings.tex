@@ -855,10 +855,10 @@ We can however improve upon that bound. Once $\ga$, $\gd$, $\pointset S$, and $\
 are fixed, the edges of the matching that cross both the left line
 and the right line---let us call these \emph{long edges}---are determined.
 As a result,
-the strip $\gS$ between the vertical lines $V$ and $W$ is partitioned in trapezoidal cells
-$Z_1,\dotsc,Z_{a-b+1}$ by the long edges, see figure~\ref{figTrapezoids}.
+the strip $\gS$ between the vertical lines $V$ and $W$ is partitioned by the long edges in trapezoidal cells
+$Z_1,\dotsc,Z_{a-b+1}$ (numbered from top to bottom), see figure~\ref{figTrapezoids}.
 
-We will consider the crossing-free left-alignment $\gb$; the same argument will hold for $\gg$.
+We will consider the crossing-free right-alignment $\gb$; the same argument will hold for $\gg$.
 Since $\pointset B$ lies within the strip $\gS$, it is partitioned in subsets
 $\pointset B_1\Subset Z_1,\dotsc,\pointset B_{a-b+1}\Subset Z_{a-b+1}$.
 Moreover, an edge $e_p$ emanating from a point $p\in\pointset B_i$ cannot cross the long edges,
@@ -867,33 +867,49 @@ and thus the portion $e_p\Intersection \gS$ of $e_p$ that lies within the strip 
 Let $\gb_i$ be the crossing-free right-alignment of $\pointset B_i$ on $V$ realized by
 the segments $\setst{e_p\Intersection \gS}{p\in\pointset B_i}$.
 Since the set of segments $\setst{e_p\Intersection \gS}{p\in\pointset B}$ realizes $\gb$,
-$\gb$ is composed of the crossing-free right-alignments $\gb_i$, formally,
-\[\Restrict{\gb}{\pointset B_i}\of p = \gb\of p - \sum{j=1}[i-1] \Cardinality{\pointset B_i}\text.\]
+$\gb$ is composed of the crossing-free right-alignments $\gb_i$. Formally, for
+$p\in\pointset B_i$,
+\[\gb\of p = \gb_i\of p + \sum{j=1}[i-1] \Cardinality{\pointset B_i}\text.\]
+We now know that $\gb$ is determined by crossing-free alignments $\gb_i$ of point sets $\pointset B_i$.
+In order to turn this into a bound, we need to know the sizes $\Cardinality{\pointset B_i}$ of these
+point sets.
 
-Let us look at the edges crossing $V$, numbered from top to bottom: $k-l$ of those are
-long edges; they are the edges emanating from $\pointset S$. 
-Let $S = \ga\of{\pointset S} \Subset [k]$ be their numbers. in between two long edges,
-above the first
-long edge, and below the last one, we have the edges that define the crossing-free right-alignments
-that make up $\gl$. It follows that a crossing-free right-alignment of $m$ points that makes up
-$\gl$ corresponds to a maximal sequence of $m$ consecutive elements of $[k] \setminus S$.
+Let us look at the edges crossing $V$, numbered from top to bottom from $1$ to $a$, see
+figure~\ref{figCellsOnALine}. Of these $a$ edges,
+$a-b$ are long edges; they are the edges emanating from $\pointset S$. 
+Their numbers are $S = \ga\of{\pointset S} \Subset [k]$.
+The other edges are the ones that emanate from points of $\pointset B$.
+Let $s_i$ be the $i$th element of $S$ in increasing order, thus $s_1=\min S$, and
+$s_{\Cardinality S} = s_{a-b} = \max S$.
 
-We will call the set of maximal sequences of consecutive elements of $S'$ the \emph{cells} of
-$S'$, written $\cells\of{S'}$.
+The numbering of the $a$ edges crossing $V$, from top to bottom, then starts with
+the edges emanating from $\pointset B_1$, numbered $1$ through
+$s_1-1$, the first long edge, numbered $s_1$, the edges emanating from
+$\pointset B_2$, numbered $s_1+1$ through $s_2-1$, the second long edge,
+numbered $s_2$, the edges emanating from $\pointset B_3$, numbered from $s_2+1$, etc.
+In other words, the numbers of the edges emanating from any nonempty $\pointset B_i$ forms
+a maximal set of consecutive elements of $[a]\setminus S$. This motivates the following
+definition.
 
-Then, we can improve the $\binom k l C_l$ factor in the bound (in which the binomial comes from
+\begin{definition}[cells of a set of integers]
+The \emph{cells} of $S'\Subset \N$, written $\cells\of{S'}$, is the set of maximal subsets of
+consecutive elements $S'$.
+\end{definition}
+For instance, $\cells\of{\set{2,3,5,6,7,10,13,14}}=\set{\set{2,3},\set{5,6,7},\set{10},\set{13,14}}$.
+
+Then, we can improve the $\binom a b C_b$ factor in the bound (in which the binomial comes from
 the choice of $\pointset S$, and the Catalan number comes
 from the choice of $\gb$), summing over the choices of $\pointset S$ (and thus of $S$ above).
 The improved factor becomes\footnote{The name $\spc$ was chosen because we define this as
 a Sum of Products of Catalan numbers.}\begin{equation}
-\spc\of{k, l}\DefineAs
-\sum{S\in\binom{[k]}{k-l}} \quad \prod{\gc\in\cells\of{[k] \setminus S}}C_{\Cardinality \gc} =
-\sum{S'\in\binom{[k]}{l}} \quad \prod{\gc\in\cells\of{S'}}C_{\Cardinality \gc}\text,
+\spc\of{a,b}\DefineAs
+\sum{S\in\binom{[a]}{a-b}} \quad \prod{\gc\in\cells\of{[a] \setminus S}}C_{\Cardinality \gc} =
+\sum{S'\in\binom{[a]}{b}} \quad \prod{\gc\in\cells\of{S'}}C_{\Cardinality \gc}\text,
 \label{spcDefinition}
 \end{equation}
 and the overall bound becomes\begin{equation}
-\gn_{\pointset P}\of{\langle^k\rangle^l\langle^q\rangle^p}\leq
-C_k\spc\of{k, l}\spc\of{p, q}C_p\text.\label{bound-ck-spckl-spcpq-cp}
+\gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
+C_a\spc\of{a, b}\spc\of{c, d}C_d\text.\label{bound-ck-spckl-spcpq-cp}
 \end{equation}
 
 \subsection{A recurrence}
