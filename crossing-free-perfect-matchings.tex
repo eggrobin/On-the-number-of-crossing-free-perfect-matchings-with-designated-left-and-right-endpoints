@@ -844,7 +844,8 @@ C_a \binom a b C_b
   {\pa{1-\gh}^{1-\frac 1 \gh}}
   {\gh}}^{\pa{\frac{\gh}{\gh+1}}}}_{x_\gh}}^{a+b}\text,
 \]
-where $a=\gh b$. The base $x_\gh$ of the exponential bound for the binomial coefficient is maximal
+where $b=\gh a$, thus $\gh\in\intclos 01$. The base $x_\gh$ of the exponential bound
+for the binomial coefficient is maximal
 when $\gh = \frac{3-\sqrt{5}}{2}$, where it is $\GoldenRatio = \frac{1+\sqrt{5}}{2}$.
 This gives the overall bound\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
@@ -975,57 +976,60 @@ $\begin{array}{r r r r r r}
     \path[->] (lastSummand.south) edge (result.north -| lastSummand.south);
 }
 \subsection{A better recurrence}
-We can now turn this recurrence into a simpler and better-known one.
-
+We can now turn this recurrence into a simpler and better-known one, namely
+\begin{align}
+\spc\of{a,b} &= \spc\of{a-1, b} + \spc\of{a,b-1} & \text{for $a\geq 1$, $0\leq b \leq a$,}\label{spc-catalan-triangle}\\
+\spc\of{a,b} &= 0 & \text{for $b < 0$ or $b > a$,}\label{degeneratespc}\\
+\spc\of{0,0} &= 1 \label{spc00}\text.
+\end{align}
 Since $\spc$ has not been formally defined for negative arguments, we extend the definition
 with $\spc\of{a,b}=0$ for $b<0$; this is consistent with original the definition, since it yields a sum over
 subsets $S\Subset [a]$ bigger than $a$, and it yields an empty sum in the recurrence we just derived.
-In addition to that, we also let $\spc\of{a,b} = 0$ when $b > a$.
+In addition to that, we also let $\spc\of{a,b} = 0$ when $b > a$. This takes care of (\ref{degeneratespc}).
+Moreover, we know that $\spc\of{0,0}=C_0=1$. There thus remains to prove (\ref{spc-catalan-triangle}).
+We will do so first for $b=a$, then for $b=a-1$, and finally for the $0\leq b < a-1$.
 
-Note that for $a - 1 = b\geq 0$, we have\begin{align}
-\spc\of{a, b}
-= \sum{i=0}[l]C_{i}\spc\of{a-i-1,l-i} = \sum{i=0}[l]C_{i}\spc\of{b-i,b-i} 
-&= \sum{i=0}[l]C_{i}C_{l-i} \nonumber \\
-&= C_{l+1}\text,\label{spckkminusone}
+Note that we have\begin{align}
+\spc\of{b, b-1}
+= \sum{i=0}[b-1]C_{i}\spc\of{b-i-1,b-i-1} 
+= \sum{i=0}[b-1]C_{i}C_{b-i-1} \nonumber \\
+&= C_{b}\text,\label{spckkminusone}
 \end{align}
-and thus 
+and thus, for $a=b > 0$,
 \begin{equation}
-\spc\of{k, l} = \spc\of{k-1, l} + \spc\of{k, l-1} = C_k \text{ for $k = l > 0$.}
+\spc\of{a,b} = C_b = 0 + C_b = \spc\of{a-1, b} + \spc\of{a, b-1}.
 \end{equation}
-Further, for $k - 1 = l$, we get
+Further, for $a - 1 = b$, we get
 \begin{align}
-\spc\of{k, l}
-&= \sum{i=0}[l]C_{i}C_{l-i} = C_l + \sum{i=0}[l-1]C_{i}C_{((l-1)-i)+1} \nonumber\\
+\spc\of{a,b}
+&= \sum{i=0}[b]C_{i}C_{b-i} = C_b + \sum{i=0}[b-1]C_{i}C_{b-i} \nonumber\\
 \intertext{applying (\ref{spckk}) on the left and (\ref{spckkminusone}) on the right,}
-&= \spc\of{k-1, l} + \sum{i=0}[l-1]C_{i}\spc\of{k-i-1,(l-1)-i} \nonumber\\
-&= \spc\of{k-1, l} + \spc\of{k,l-1}\text.
+&= \spc\of{a-1, b} + \sum{i=0}[b-1]C_{i}\spc\of{b-i,b-i-1} \nonumber\\
+&= \spc\of{a-1, b} + \sum{i=0}[b-1]C_{i}\spc\of{a-i-1,b-i-1} \nonumber\\
+&= \spc\of{a-1, b} + \spc\of{a,b-1}\text.
 \end{align}
 
-Now let $k - 1 > l \geq 0$.
-Assume $\spc\of{k',l'}=\spc\of{k'-1,l'}+\spc\of{k',l'-1}$ for $0\leq l'<k'<k$.
-Then we can apply this assumption to the summands of $\spc\of{k, l}$:
+Now let $a - 1 > b \geq 0$.
+Assume $\spc\of{a',b'}=\spc\of{a'-1,b'}+\spc\of{a',b'-1}$ for $0\leq b'<a'<a$.
+Then we can apply this assumption to the summands of $\spc\of{a,b}$:
 \begin{align}
-\spc\of{k, l} &= \sum{i=0}[l]
+\spc\of{a,b} &= \sum{i=0}[b]
 C_{i}
-\spc\of{k-i-1,l-i} \nonumber \\
-&= \sum{i=0}[l]
+\spc\of{a-i-1,b-i} \nonumber \\
+&= \sum{i=0}[b]
 C_{i}
-\pa{\spc\of{k-i-2,l-i}+\spc\of{k-i-1,l-i-1}} \nonumber \\
-&= \sum{i=0}[l]
-C_{i}\spc\of{k-i-2,l-i}
-+\sum{i=0}[l]C_{i}\spc\of{k-i-1,l-i-1} \nonumber \\
-&= \sum{i=0}[l]
-C_{i}\spc\of{(k-1)-i-1,l-i}
-+\sum{i=0}[l-1]C_{i}\spc\of{k-i-1,(l-1)-i} \\&\phantom{=}\qquad + C_{l}\spc\of{k-l-1,-1}\text, \nonumber \\
-\intertext{so, substituting the recurrence for $\spc$,}
-&= \spc\of{k-1, l} + \spc\of{k,l-1}\text.
+\pa{\spc\of{a-i-2,b-i}+\spc\of{a-i-1,b-i-1}} \nonumber \\
+&= \sum{i=0}[b]
+C_{i}\spc\of{a-i-2,b-i}
++\sum{i=0}[b]C_{i}\spc\of{a-i-1,b-i-1} \nonumber \\
+&= \sum{i=0}[b]
+C_{i}\spc\of{(a-1)-i-1,b-i}
++\sum{i=0}[b-1]C_{i}\spc\of{a-i-1,(b-1)-i} \\&\phantom{=}\qquad + C_{b}\spc\of{a-b-1,-1}\text, \nonumber \\
+\intertext{so, by (\ref{spcRecurrence1}),}
+&= \spc\of{a-1, l} + \underbrace{\spc\of{a,b-1}}_{=0}\text.
 \end{align}
-We thus have the following recurrence for $\spc$:
-\begin{align}
-\spc\of{k,l} &= \spc\of{k-1, l} + \spc\of{k,l-1} & \text{for $k\geq 1$, $0\leq l \leq k$,}\label{spc-catalan-triangle}\\
-\spc\of{k,l} &= 0 & \text{for $l < 0$ or $l > k$,}\\
-\spc\of{0,0} &= 1\text.
-\end{align}\marginfig[The recurrence (\ref{spc-catalan-triangle}).]{
+This completes the proof of (\ref{spc-catalan-triangle}).
+\marginfig[The recurrence (\ref{spc-catalan-triangle}).]{
 $\begin{array}{r r r r r r}
 1 \\
 1 & 1 \\
@@ -1038,7 +1042,9 @@ $\begin{array}{r r r r r r}
     \path[->] (summandAbove.south) edge (result.north -| summandAbove.south)
               (summandLeft) edge (result);
 }
-This is the recurrence defining the Catalan triangle\footnote{[TODO cite something that actually uses that
+
+The recurrence we just proved is the one defining the Catalan
+triangle\footnote{[TODO cite something that actually uses that
 name here]}, and its solution is known, namely
 \begin{equation}
 \spc\of{k,l} = \frac
@@ -1049,11 +1055,13 @@ name here]}, and its solution is known, namely
 \end{equation}
 as shown by L.~F.~A.~Arbogast in 1800 \cite[p.~214--217]{Arbogast1800}.
 \subsubsection{A combinatorial interpretation of \texorpdfstring{$\spc$}{spc}}
-The Catalan triangle counts well-formed prefix bracket expressions [CITATION]. This can in fact be seen from
-all the definitions of $\spc$ above, thus providing a more combinatorial solution.
+The Catalan triangle counts well-formed prefixes [CITATION];
+specifically, $\spc\of{a,b}$ is the number of well-formed prefixes with $a$ opening brackets
+and $b$ closing brackets. This can in fact be seen from
+all the definitions of $\spc$ above, thus providing a more combinatorial solution, as we will now see.
 
 In the original definition (\ref{spcDefinition}) of $\spc$, the sum is over the choices for the positions of the
-unmatched $k-l$ opening brackets; between those, well-formed bracket expressions (counted by Catalan numbers) are
+$a-b$ unmatched opening brackets; between those, well-formed bracket expressions (counted by Catalan numbers) are
 inserted.
 
 The first recurrence (\ref{spcRecurrence1}) corresponds to the following grammatical
@@ -1071,50 +1079,54 @@ Finally, (\ref{spc-catalan-triangle}) reflects the fact that a well-formed prefi
 and $l$ closing brackets either ends with an opening bracket (preceded by a well-formed prefix with $k-1$ opening
 and $l$ closing brackets), or with a closing bracket (preceded by a well-formed prefix with $k$ opening
 and $l-1$ closing brackets).
+\subsubsection{Tying some loose ends}
+TODO here give a combinatorial proof for the $\gcp$ from the section on highly convex matchings.
 \subsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
-We are interested in the asymptotics as a function of the length of of the bracket expression $n = k+l+p+q$.
+We are interested in the asymptotics as a function of the length $n = a+b+c+d$ of the bracket expression.
 Since the bound is a product of two identical two-parameter factors, we study one of them,\[
-C_k\spc\of{k,l}\text,
+f_{a,b}\DefineAs C_a\spc\of{a,b}\text,
 \]
-as a function of $n_1\DefineAs k+l$. Let $l = \gh k$, thus $0\leq \gh\leq 1$,
+as a function of $k\DefineAs a+b$. Let $b = \gh a$, thus $0\leq \gh\leq 1$,
 the above expression becomes \[
-C_{\frac{n_1}{\gh + 1}} \binom{n_1}{\frac{n_1}{\gh + 1}} \frac{\pa{1-\gh}n+\gh+1}{n+\gh+1}\text.
+f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}=
+C_{\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}} \frac{\pa{1-\gh}k+\gh+1}{k+\gh+1}\text.
 \]
-Asymptotically as $n_1\longrightarrow \infty$, this yields\[
+Asymptotically as $k\longrightarrow \infty$, this yields\[
+f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}\sim
 \frac
   {1}
-  {n_1\sqrt{\Pi n_1}}
-4^{\frac{n_1}{\gh + 1}}
+  {k\sqrt{\Pi k}}
+4^{\frac{k}{\gh + 1}}
 \frac
   {\sqrt{1+\gh}}
-  {\sqrt{2\Pi n_1 \gh}}
+  {\sqrt{2\Pi k \gh}}
 \pa{
   \frac
     {1+\gh}
-    {\gh^{\frac{\gh}{\gh + 1}}}}^{n_1}
+    {\gh^{\frac{\gh}{\gh + 1}}}}^{k}
 \pa{1-\gh}\text,
 \]
 or, up to a polynomially-bounded factor,\[
-4^{\frac{n_1}{\gh + 1}}
+4^{\frac{k}{\gh + 1}}
 \pa{
   \frac
     {1+\gh}
-    {\gh^{\frac{\gh}{\gh + 1}}}}^{n_1}
+    {\gh^{\frac{\gh}{\gh + 1}}}}^{k}
 =
 \pa{
 4^{\gh + 1}
 \frac
   {1+\gh}
-  {\gh^{\frac{\gh}{\gh + 1}}}}^{n_1}\text.
+  {\gh^{\frac{\gh}{\gh + 1}}}}^{k}\text.
 \]
 As $\gh$ ranges from $0$ to $1$, the base of that exponential reaches a maximum of $5$ at
 $\gh=\frac 1 4$. We thus have the following asymptotic bound.\begin{equation}
-\gn_{\pointset P}\of{\langle^k\rangle^l\langle^q\rangle^p}\leq
-C_k\spc\of{k, l}\spc\of{p, q}C_p
+\gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
+C_a\spc\of{a, b}\spc\of{c, d}C_d
 \preccurlyeq
-5^{k+l}5^{p+q} = 5^n
+5^{a+b}5^{c+d} = 5^n
 \text.
 \end{equation}
 [TODO: would it be interesting or feasible to average over all $\langle^k\rangle^l\langle^q\rangle^p$,
