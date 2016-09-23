@@ -139,7 +139,7 @@ restricting $\pointset P$ so that it satisfies certain properties.
 
 An important property that $\pointset P$ can have is general position. We say that 
 a point set in the plane is \emph{in general position} if no three points are collinear.
-In this we will only study point sets in general position.
+In this thesis we will only study point sets in general position.
 
 In general, if $g\of {\pointset P}$ is the number of geometric graphs of a certain sort on the point
 set $\pointset P$, we will look for lower bounds $l$ and upper bounds $u$ of the form\[
@@ -147,9 +147,10 @@ set $\pointset P$, we will look for lower bounds $l$ and upper bounds $u$ of the
 l \of n \leq g \of {\pointset P} \leq u \of n \text,\]
 where $\pointset P$ runs over all point sets that satisfy the relevant properties.
 
+\subsection{Asymptotics}
 In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
-existing results; since the bounds are often exponential, we tend to ignore polynomial
-factors; we will thus write that\[
+existing results. Since the bounds are often exponential, we tend to ignore polynomial
+factors. We will thus write that\[
 u \of n \preccurlyeq_n f \of n
 \]
 if for some polynomial $p$, $\forall n\in \N, u\of n \leq p\of n f \of n$.
@@ -162,23 +163,23 @@ In this thesis, we will often use classes $g_z$ with $z$ being the left-to-right
 of designated left and right endpoints.
 
 When giving exponential bounds in $n$ for these parameterized classes of graphs, we will want to keep
-track of the growth due to $z$; we will thus write that\[
+track of the growth due to $z$. We will write that\[
 u \of {n,z} \preccurlyeq_n f \of {n,z} \text{ \emph{uniformly in $z\in\gW_n$}}\]
 if for some polynomial $p$ (that does not depend on $z$),
-$\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq p\of n f \of {n,z}$.
-If $f \of {n,z}$ then admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
+\[\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq p\of n f \of {n,z}\text.\]
+If $f \of {n,z}$ admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
 that $u\of {n,z} \leq p\of n \bar f \of{n}$, giving an upper bound truly independent of $z$.
 
-Moreover, we will write $g \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of n$ if\[
+Moreover, we will write $g \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of n$ if
+for some $u\of n\preccurlyeq_n f\of n$,\[
 \forall n\in \N, \forall \pointset P \text{ such that } \Cardinality {\pointset P} = n,
-g \of {\pointset P} \leq u \of n\]
-for some $u\of n\preccurlyeq_n f\of n$.
-Similarly we will write $g_z \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of {n,z}$
-\emph{uniformly in $z\in\gW_n$} if\[
+g \of {\pointset P} \leq u \of n\text.\]
+Similarly, we will write $g_z \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of {n,z}$
+\emph{uniformly in $z\in\gW_n$} if
+for some $u \of {n,z} \preccurlyeq_n f \of {n,z}$ uniformly in $z\in\gW_n$,\[
 \forall n\in \N, \forall z\in\gW_n,
 \forall \pointset P \text{ such that } \Cardinality {\pointset P} = n,
-g_z \of {\pointset P} \leq u \of {n, z}\]
-for some $u \of {n,z} \preccurlyeq_n f \of {n,z}$ uniformly in $z\in\gW_n$.
+g_z \of {\pointset P} \leq u \of {n, z}\text.\]
 In both cases $\pointset P$ runs over all point sets that satisfy the relevant properties.
 \subsection{A remark on the asymptotics of the binomial coefficient}
 Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
