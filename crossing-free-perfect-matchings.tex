@@ -453,7 +453,7 @@ we will call it \emph{the vertical line}.
 Further, let us call the set of left-points $\pointset L$ and the set of right-points $\pointset R$.
 
 A perfect matching consistent with a given well-formed bracket expression (and in particular, a perfect
-matching across a line) is uniquely defined by a bijection $\FunctionSpec \gm L R$ from
+matching across a line) is uniquely defined by a bijection $\FunctionSpec \gm {pointset L} {\pointset R}$ from
 the left-points to the right-points. Consider such a perfect
 matching across a line, and let $E$ be the set of its edges.
 Now, number the intersections between the edges of the perfect matching and the vertical
@@ -505,13 +505,13 @@ $\gl$ and $\gr$ that we will consider.
 \begin{definition}[crossing-free alignment]
 Let ${\pointset S}$ be a set of $k$ points in general position. Let $V$ be a vertical line to the right of ${\pointset S}$.
 A bijection $\gl$ from ${\pointset S}$ to $[k]$ is a \emph{crossing-free left-alignment of ${\pointset S}$ on $V$} if
-there exists a set $A=\setst{a_p}{p\in{\pointset S}}$ of $k$ line segments such that
+there exists a set $A=\setst{\gs_p}{p\in{\pointset S}}$ of $k$ line segments such that
 the following hold:
 \begin{enumerate}
-\item for every $p\in{\pointset S}$, the left endpoint of $a_p$ is $p$, and its right endpoint is on $V$;
+\item for every $p\in{\pointset S}$, the left endpoint of $\gs_p$ is $p$, and its right endpoint is on $V$;
 \item no two segments cross, and no two segments share any endpoints;
 \item let $\FunctionSpec \gi A {[k]}$ the numbering of the right endpoints of the segments in
-$A$ from top to bottom, then $\gl\of p = \gi\of{a_p}$.
+$A$ from top to bottom, then $\gl\of p = \gi\of{\gs_p}$.
 \end{enumerate}
 Such a set of segments is said to \emph{realize} $\gl$.
 
@@ -551,25 +551,25 @@ Let ${\pointset S}$ be a set of $k$ points in general position, and let $V$ be a
 There are at most $\CatalanNumber k$ crossing-free left-alignments of ${\pointset S}$ on $V$.
 \begin{proof}
 Let $l$ be the leftmost point of ${\pointset S}$, and let $\gl$ be a crossing-free left-alignment of ${\pointset S}$ on $V$.
-Let $A=\setst{a_p}{p\in{\pointset S}}$ be a set of non-crossing line segments realizing $\gl$.
-For a point $p\in{\pointset S}$, we will call $a_p$ \emph{the segment of $p$}.
+Let $A=\setst{\gs_p}{p\in{\pointset S}}$ be a set of non-crossing line segments realizing $\gl$.
+For a point $p\in{\pointset S}$, we will call $\gs_p$ \emph{the segment of $p$}.
 
-$\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $a_l$ of the leftmost point,
-is equal to one plus the number of points of ${\pointset S}$ that are above $a_l$. Indeed, the segments of points above
-$a_l$ must
-themselves reach the vertical line $V$ above $a_l$, otherwise they would cross $a_l$, and correspondingly for
-points below $a_l$, so that there are as many edges reaching the vertical line $V$ below $a_l$ as there are points
-below $a_l$.
+$\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $\gs_l$ of the leftmost point,
+is equal to one plus the number of points of ${\pointset S}$ that are above $\gs_l$. Indeed, the segments of points above
+$\gs_l$ must
+themselves reach the vertical line $V$ above $\gs_l$, otherwise they would cross $\gs_l$, and correspondingly for
+points below $\gs_l$, so that there are as many edges reaching the vertical line $V$ below $\gs_l$ as there are points
+below $\gs_l$.
 
-Moreover, as the oriented angle between $a_l$ and the horizontal increases, points are only added to the
-set of points below $a_l$, so that choosing the number of points below $a_l$ determines the sets of points
-below and above $a_l$.
+Moreover, as the oriented angle between $\gs_l$ and the horizontal increases, points are only added to the
+set of points below $\gs_l$, so that choosing the number of points below $\gs_l$ determines the sets of points
+below and above $\gs_l$.
 
-Further, since points above $a_l$ must reach the vertical line $V$ above $a_l$, and correspondingly for points below,
-if the point $p$ is above $a_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus
-$\gl$ restricted do the points above $a_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
-$a_l$, and $\gl-\gl(l)$ restricted to the points below $a_l$ is a crossing-free left-alignment of the
-$k - \gl(l)$ points below $a_l$, where the appropriate subsets of $A$ provide the set of segments required
+Further, since points above $\gs_l$ must reach the vertical line $V$ above $\gs_l$, and correspondingly for points below,
+if the point $p$ is above $\gs_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus
+$\gl$ restricted do the points above $\gs_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
+$\gs_l$, and $\gl-\gl(l)$ restricted to the points below $\gs_l$ is a crossing-free left-alignment of the
+$k - \gl(l)$ points below $\gs_l$, where the appropriate subsets of $A$ provide the set of segments required
 in the definition.
 
 It follows that $\gl$ is determined by the choice of $\gl\of l$ and crossing-free left-align\-ments
@@ -589,7 +589,7 @@ lemma and its proof.
 
 \begin{proof}[of the theorem]
 If we have a crossing-free perfect matching across a line, then $\gl$ as constructed above is a crossing-free
-left-alignment of $\pointset L$ on the vertical line; indeed, letting $a_p$ be the portion of the edge $e_p$
+left-alignment of $\pointset L$ on the vertical line; indeed, letting $\gs_p$ be the portion of the edge $e_p$
 to the left of the vertical line yields segments that realize $\gl$.
 Similarly, $\gr$ is a crossing-free right-alignment of $\pointset R$ on the vertical line.
 \end{proof}
@@ -664,8 +664,8 @@ separated by rays emanating from $\leftmost\of L$ and going through other points
 Note that there are $i$ points of $\pointset L$ above the interior of left $\pointset L$-cone
 number $i+1$, and $\Cardinality L - i - 1$ points below.
 
-Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{a_p}{p\in L}$
-realizing $\gl$, the segment $a_{\leftmost\of L}$ of the leftmost point then has to be contained in left
+Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{\gs_p}{p\in L}$
+realizing $\gl$, the segment $\gs_{\leftmost\of L}$ of the leftmost point then has to be contained in left
 $\pointset L$-cone number $\gl\of{\leftmost\of L}$.
 As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
 to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
@@ -706,8 +706,8 @@ In turn, this yields $\Cardinality{\CFLA_{\pointset L, V}}\leq\Cardinality{\L\Ca
 Sharir--Welzl bound.
 
 Now, note that
-the map $\conification$ has the property that for any set of segments $A=\setst{a_p}{p\in L}$ realizing $\gl$,
-$a_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
+the map $\conification$ has the property that for any set of segments $A=\setst{\gs_p}{p\in L}$ realizing $\gl$,
+$\gs_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
 alignments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
 \section{Highly convex matchings across a line}
 \label{sectionHighlyConvex}
