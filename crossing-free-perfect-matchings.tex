@@ -24,6 +24,7 @@
 \DeclareMathOperator{\CFRA}{CFRA}
 \DeclareMathOperator{\leftmost}{lm}
 \DeclareMathOperator{\LC}{LC}
+\newcommand{\CatalanNumber}[1]{\StandardSymbol C_{#1}}
 \newcommand{\pointset}{\symscr}
 \newcommand{\alignment}[1]{\gp_{\pointset #1}}
 
@@ -73,7 +74,7 @@ the numbers of crossing-free perfect matchings, triangulations, and spanning cyc
 of point sets in convex position vastly predates the general problem, with the number of triangulations given by
 Euler in 1751 \cite{Euler1751}.
 
-For perfect matchings, an optimal lower bound of $C_{\frac n 2}$ was obtained as early as 1995 by A.~García,
+For perfect matchings, an optimal lower bound of $\CatalanNumber {\frac n 2}$ was obtained as early as 1995 by A.~García,
 M.~Noy, and J.~Tejel \cite{GarciaNoyTejel2000}; upper bounds have been harder to come by, with the best one
 yet being asymptotically $10.05^n$, given by M.~Sharir and E.~Welzl in 2005 \cite{SharirWelzl2006}
 In that same work, an upper bound of $5.83^n$ is given for the number of crossing-free perfect matchings on a
@@ -204,9 +205,9 @@ all points are in the boundary of its convex hull.
 For points in convex position, the numbers of triangulations and perfect matchings are known.
 The following recurrence, given by J.~A.~Segner in 1758 \cite{Segner1758}, defines the \emph{Catalan numbers}.
 \begin{theorem}[Segner]
-Let $C_n$ be the number of triangulations of a set of $n+2$ points in convex position.
-Then $C_0 = 1$, and for $n>0$, \begin{equation}
-C_n = \sum {i=0}[n-1] C_i C_{n-i-1}\text. \label{CatalanRecurrence}
+Let $\CatalanNumber n$ be the number of triangulations of a set of $n+2$ points in convex position.
+Then $\CatalanNumber 0 = 1$, and for $n>0$, \begin{equation}
+\CatalanNumber n = \sum {i=0}[n-1] \CatalanNumber i \CatalanNumber {n-i-1}\text. \label{CatalanRecurrence}
 \end{equation}
 \begin{proof}
 Consider a set of $n+2$ points in convex position.
@@ -220,20 +221,20 @@ triangle containing edge $e$, which may be any of the others, from $0$ to $n-1$.
 Then, restricting the triangulation to the $i+2$ points $\set{0,\dotsc,i,n+1}$ yields a triangulation
 of those points.
 Similarly, restricting the triangulation of the whole point set to points $i$ through $n$ yields a triangulation of
-$n-i+1$ points. It follows that $C_n \leq \sum {i=0}[n-1] C_i C_{n-i-1}$.
+$n-i+1$ points. It follows that $\CatalanNumber n \leq \sum {i=0}[n-1] \CatalanNumber i \CatalanNumber {n-i-1}$.
 
 Moreover, given a triangulation of $\set{0,\dotsc,i,n+1}$ and a triangulation of $\set{i,\dotsc, n}$,
 adding the edge $e$ forms a triangulation of the whole point set, proving equality.
 \end{proof}
 \end{theorem}
-An explicit expression for $C_n$ was given earlier by Euler \cite{Euler1751}, along
+An explicit expression for $\CatalanNumber n$ was given earlier by Euler \cite{Euler1751}, along
 with the generating function.
 A convenient form is\begin{equation}
-C_n = \frac{1}{n+1} \binom {2n} {n}\text,
+\CatalanNumber n = \frac{1}{n+1} \binom {2n} {n}\text,
 \end{equation}
 yielding asymptotically
 \begin{equation}
-C_n \sim \frac{4^n}{n^{\frac{3}{2}}\sqrt{\Pi}} \preccurlyeq_n 4^n\text.
+\CatalanNumber n \sim \frac{4^n}{n^{\frac{3}{2}}\sqrt{\Pi}} \preccurlyeq_n 4^n\text.
 \end{equation}
 
 \subsection{Crossing-free perfect matchings}
@@ -272,7 +273,7 @@ closing brackets.
 It is a well-known result, shown\footnote{Specifically, Catalan showed that the recurrence (\ref{CatalanRecurrence})
 counts the number of parenthesizings of $n+1$ factors.} by E.~C.~Catalan in 1838 \cite{Catalan1838}, that the
 number of well-formed bracket expressions
-of length $2k$ is the Catalan number $C_k$. In fact, the recurrence can readily be seen from
+of length $2k$ is the Catalan number $\CatalanNumber k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
 in angle brackets here, as would be usual in Backus--Naur form, since that would result in hopeless
 confusion in a grammar describing nothing but sequences of angle brackets.}\begin{align*}
@@ -398,13 +399,13 @@ find a
 crossing-free perfect matching.
 \end{proof}
 This immediately yields a lower bound for the number of crossing-free perfect matchings, since
-there are $C_{\frac n 2}$ well-formed bracket expressions of length $n$.
+there are $\CatalanNumber {\frac n 2}$ well-formed bracket expressions of length $n$.
 Note that this lower bound had already been proved by A.~García, M.~Noy, and J.~Tejel in 1995,
 by a recurrence that split the point set, rather than via well-formed bracket expressions
 \cite{GarciaNoyTejel2000}.
 \begin{corollary}
-Let $\pointset P$ be a point set of even size $n$ in general position. There are at least $C_{\frac n 2}$ distinct
-crossing-free perfect matchings on $\pointset P$\idest $\Cardinality{\CFPM_{\pointset P}} \geq C_{\frac n 2}$.
+Let $\pointset P$ be a point set of even size $n$ in general position. There are at least $\CatalanNumber {\frac n 2}$ distinct
+crossing-free perfect matchings on $\pointset P$\idest $\Cardinality{\CFPM_{\pointset P}} \geq \CatalanNumber {\frac n 2}$.
 \end{corollary}
 Moreover, this lower bound is optimal, since it is attained if $\pointset P$ is in convex position (see
 section~\ref{PerfectMatchingsIntro}).
@@ -422,8 +423,8 @@ The following result, and its proof, were given by Micha Sharir and Emo Welzl in
 \NoEndMark
 \begin{theorem}[Sharir--Welzl]
 Let $\pointset P$ be a set of $n=2k$ points in general position with respect to the horizontal.
-Then there are at most $C_{\frac n 2}^2$ crossing-free perfect matchings across a line on $\pointset P$\idest
-$\gn_{\pointset P}\of {\langle^k\rangle^k} \leq C_k^2$.
+Then there are at most $\CatalanNumber {\frac n 2}^2$ crossing-free perfect matchings across a line on $\pointset P$\idest
+$\gn_{\pointset P}\of {\langle^k\rangle^k} \leq \CatalanNumber k^2$.
 \end{theorem}
 The idea of the proof is as follows.
 First, pick a vertical line that separates the left-points from the right-points;
@@ -475,8 +476,8 @@ The bijection $\gl$ (respectively $\gr$) determines the order in which the left 
 reach the vertical line.
 
 If the matching is crossing-free, we will show that
-$\gl$ and $\gr$ have to be in sets of size $C_k$, thus that there are at most $C_k^2$ functions
-$\gm = \gr^{-1} \Compose \gl$\idest that there can be at most $C_k^2$ crossing-free perfect matchings across a line.
+$\gl$ and $\gr$ have to be in sets of size $\CatalanNumber k$, thus that there are at most $\CatalanNumber k^2$ functions
+$\gm = \gr^{-1} \Compose \gl$\idest that there can be at most $\CatalanNumber k^2$ crossing-free perfect matchings across a line.
 
 Since we are going to reuse these concepts in subsequent sections, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider.
@@ -526,7 +527,7 @@ points each---here $k = 5$ and $i = 2$.\label{figCrossingFreeAlignment}]{
 \end{tikzpicture}}
 \begin{lemma}
 Let ${\pointset S}$ be a set of $k$ points in general position, and let $V$ be a vertical line to the right of ${\pointset S}$.
-There are at most $C_k$ crossing-free left-alignments of ${\pointset S}$ on $V$.
+There are at most $\CatalanNumber k$ crossing-free left-alignments of ${\pointset S}$ on $V$.
 \begin{proof}
 Let $l$ be the leftmost point of ${\pointset S}$, and let $\gl$ be a crossing-free left-alignment of ${\pointset S}$ on $V$.
 Let $A=\setst{a_p}{p\in{\pointset S}}$ be a set of non-crossing line segments realizing $\gl$.
@@ -559,7 +560,7 @@ left-alignments of $j$ points when $j < k$,
 we can give an upper bound on the number of crossing-free left-alignments of $k$ points,
 \[\gcp_k\DefineAs\sum{i=0}[k-1]\gcp_{i}\gcp_{k-i-1}\text.\]
 We can start the recurrence with $\gcp_0 = 1$; this is the recurrence for the Catalan numbers, thus
-$\gcp_k=C_k$.
+$\gcp_k=\CatalanNumber k$.
 \end{proof}
 \end{lemma}
 The same results holds for crossing-free right-alignments, simply exchange ``left'' and ``right'' in the above
@@ -660,13 +661,14 @@ satisfying the following properties:
 \item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\of L}$ is a left conifer of these points.
 \end{enumerate}
 See figure~\ref{figLeftconifer} for an example.
-We call $\LC_L$ the set of left conifers of $\pointset L$. From the observations above on the number of cones and the
+We call $\L\CatalanNumber L$ the set of left conifers of $\pointset L$. From the observations above on the number
+of cones and the
 size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conifers of $k$ points,
 we have
 \[
 \gcp_k=\sum{i=0}[k-1]\gcp_{i}\gcp_{k-i-1} \text{ and } \gcp_0=1\text,
 \]
-so that $\Cardinality{\LC_L} = C_{\Cardinality L}$.
+so that $\Cardinality{\L\CatalanNumber L} = \CatalanNumber {\Cardinality L}$.
 
 \newcommand{\conification}{\mathfrak{K}}
 Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
@@ -678,7 +680,8 @@ interior of that cone, see figure~\ref{figRecursiveconifer}.
 This gives an injective map $\FunctionNamedBody\conification\gl{\conification_\gl}$
 from crossing-free left-alignments of $\pointset L$ on any line to left conifers. 
 Note that it is not bijective, see figure~\ref{crossingconifer}.
-In turn, this yields $\Cardinality{\CFLA_{\pointset L, V}}\leq\Cardinality{\LC_L}=C_{\Cardinality L}$, which is exactly the
+In turn, this yields $\Cardinality{\CFLA_{\pointset L, V}}\leq\Cardinality{\L\CatalanNumber L}=
+\CatalanNumber {\Cardinality L}$, which is exactly the
 Sharir--Welzl bound.
 
 Now, note that
@@ -876,9 +879,9 @@ The matching is uniquely determined by $\ga$, $\gb$, the choice of
 the subsets $\pointset S\Subset\pointset A$ and $\pointset T \Subset D$,
 and by $\gb$ and $\gc$. This gives the following bound for the number of these matchings:\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
-\leq C_a \binom a b C_b C_c \binom c d C_d\text.\]
+\leq \CatalanNumber a \binom a b \CatalanNumber b \CatalanNumber c \binom c d \CatalanNumber d\text.\]
 Asymptotically, the factor involving $a$ and $b$ is, for $b=\gh a$,\[
-C_a \binom a b C_b
+\CatalanNumber a \binom a b \CatalanNumber b
 \preccurlyeq_{a+b}
 4^{a+b} \binom a b
 \preccurlyeq_{a+b}
@@ -952,61 +955,61 @@ consecutive elements $S'$.
 \end{definition}
 For instance, $\cells\of{\set{2,3,5,6,7,10,13,14}}=\set{\set{2,3},\set{5,6,7},\set{10},\set{13,14}}$.
 
-Then, we can improve the $\binom a b C_b$ factor in the bound (in which the binomial comes from
+Then, we can improve the $\binom a b \CatalanNumber b$ factor in the bound (in which the binomial comes from
 the choice of $\pointset S$, and the Catalan number comes
 from the choice of $\gb$), summing over the choices of $\pointset S$ (and thus of $S$ above).
 The improved factor becomes\footnote{The name $\spc$ was chosen because we define this as
 a Sum of Products of Catalan numbers.}\begin{equation}
 \spc\of{a,b}\DefineAs
-\sum{S\in\binom{[a]}{a-b}} \quad \prod{\gc\in\cells\of{[a] \setminus S}}C_{\Cardinality \gc} =
-\sum{S'\in\binom{[a]}{b}} \quad \prod{\gc\in\cells\of{S'}}C_{\Cardinality \gc}\text,
+\sum{S\in\binom{[a]}{a-b}} \quad \prod{\gc\in\cells\of{[a] \setminus S}}\CatalanNumber {\Cardinality \gc} =
+\sum{S'\in\binom{[a]}{b}} \quad \prod{\gc\in\cells\of{S'}}\CatalanNumber {\Cardinality \gc}\text,
 \label{spcDefinition}
 \end{equation}
 and the overall bound becomes\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
-C_a\spc\of{a, b}\spc\of{c, d}C_d\text.\label{bound-ck-spckl-spcpq-cp}
+\CatalanNumber a\spc\of{a, b}\spc\of{c, d}\CatalanNumber d\text.\label{bound-ck-spckl-spcpq-cp}
 \end{equation}
 
 \subsection{A recurrence}
 In order to compute $\spc$ efficiently, and eventually, get its asymptotics, it is useful to get rid
 of the $\cells$ function. We can express $\spc$ as a recurrence instead.
-First, we note that $\spc\of{a,a} = C_k$: there is only one summand, $S'$ is the whole set, so
+First, we note that $\spc\of{a,a} = \CatalanNumber k$: there is only one summand, $S'$ is the whole set, so
 it has only one cell, namely $S'$ itself.
 Otherwise, $a-b\geq 1$; in the sum over the $S$, consider the greatest element $j$ of $S$, which is at least
 $a-b$, and split the sum over that,
 \[\spc\of{a,b} = \sum{j=a-b}[a]\quad\;
 \sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \quad
-\prod{\gc\in\cells\of{[a] \setminus S}}C_{\Cardinality \gc}\text.
+\prod{\gc\in\cells\of{[a] \setminus S}}\CatalanNumber {\Cardinality \gc}\text.
 \]
 For fixed $j$, all summands (of the sum over $S$) will have a factor
 with $\gc=\set{j+1,\dotsc,a}$, and thus a factor of
-$C_{a-j}$. Factoring out this $C_{a-j}$, we get
+$\CatalanNumber {a-j}$. Factoring out this $\CatalanNumber {a-j}$, we get
 \[\spc\of{a, b} = \sum{j=a-b}[a]
-C_{a-j} \;\;
+\CatalanNumber {a-j} \;\;
 \sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \quad
 \prod{\substack{\gc\in\cells\of{[a] \setminus S} \\ \gc\neq\set{j+1,\dotsc,a}}}
-    C_{\Cardinality \gc}\text.
+    \CatalanNumber {\Cardinality \gc}\text.
 \]
 Now, note that choosing a subset $S$ of $[a]$ of size $a-b$ whose maximum is $j$ is equivalent to choosing
 a subset $\tilde{S}$ of $[j-1]$ of size $a-b - 1$, where $S=\tilde{S}\Union\set{j}$.
 Moreover, the cells of $[a]\setminus S$ other
 than $\set{j+1,\dotsc,a}$ are exactly the cells of $[j-1]\setminus \tilde{S}$, thus
 \[\spc\of{a,b} = \sum{j=a-b}[a]
-C_{a-j} \;\;
+\CatalanNumber {a-j} \;\;
 \sum{\tilde{S}\in\binom{[j-1]}{a-b - 1}} \quad\;
 \prod{\gc\in\cells\of{[j-1]\setminus \tilde{S}}}
-    C_{\Cardinality \gc}\text.
+    \CatalanNumber {\Cardinality \gc}\text.
 \]
 By definition of $\spc$, this means
 \[\spc\of{a,b} = \sum{j=a-b}[a]
-C_{a-j}
+\CatalanNumber {a-j}
 \spc\of{j-1,b+j-a}\text.
 \]
 Rewriting this as a sum over $i\DefineAs a-j$, this gives us the following recurrence for $\spc$:
 \begin{align}\spc\of{a,b} &= \sum{i=0}[l]
-C_{i}
+\CatalanNumber {i}
 \spc\of{a-i-1,b-i} &\text{for $b<a$,} \label{spcRecurrence1}\\
-\spc\of{a,a} &= C_a \label{spckk}\text.
+\spc\of{a,a} &= \CatalanNumber a \label{spckk}\text.
 \end{align}\marginfig[The first few values of $\spc$; $a$ vertically from $0$ to $5$,
 $b$ horizontally from $0$ to $a$. The values appearing in the $b+1$ summands of the
 recurrence (\ref{spcRecurrence1}) with $a = 6$ and $b = 3$ are highlighted.]{
@@ -1032,26 +1035,27 @@ Since $\spc$ has not been formally defined for negative arguments, we extend the
 with $\spc\of{a,b}=0$ for $b<0$; this is consistent with original the definition, since it yields a sum over
 subsets $S\Subset [a]$ bigger than $a$, and it yields an empty sum in the recurrence we just derived.
 In addition to that, we also let $\spc\of{a,b} = 0$ when $b > a$. This takes care of (\ref{degeneratespc}).
-Moreover, we know that $\spc\of{0,0}=C_0=1$. There thus remains to prove (\ref{spc-catalan-triangle}).
+Moreover, we know that $\spc\of{0,0}=\CatalanNumber 0=1$. There thus remains to prove (\ref{spc-catalan-triangle}).
 We will do so first for $b=a$, then for $b=a-1$, and finally for the $0\leq b < a-1$.
 
 Note that we have\begin{align}
 \spc\of{b, b-1}
-= \sum{i=0}[b-1]C_{i}\spc\of{b-i-1,b-i-1} 
-= \sum{i=0}[b-1]C_{i}C_{b-i-1} \nonumber \\
-&= C_{b}\text,\label{spckkminusone}
+= \sum{i=0}[b-1]\CatalanNumber {i}\spc\of{b-i-1,b-i-1} 
+= \sum{i=0}[b-1]\CatalanNumber {i}\CatalanNumber {b-i-1} \nonumber \\
+&= \CatalanNumber {b}\text,\label{spckkminusone}
 \end{align}
 and thus, for $a=b > 0$,
 \begin{equation}
-\spc\of{a,b} = C_b = 0 + C_b = \spc\of{a-1, b} + \spc\of{a, b-1}.
+\spc\of{a,b} = \CatalanNumber b = 0 + \CatalanNumber b = \spc\of{a-1, b} + \spc\of{a, b-1}.
 \end{equation}
 Further, for $a - 1 = b$, we get
 \begin{align}
 \spc\of{a,b}
-&= \sum{i=0}[b]C_{i}C_{b-i} = C_b + \sum{i=0}[b-1]C_{i}C_{b-i} \nonumber\\
+&= \sum{i=0}[b]\CatalanNumber {i}\CatalanNumber {b-i} =
+\CatalanNumber b + \sum{i=0}[b-1]\CatalanNumber{i}\CatalanNumber {b-i} \nonumber\\
 \intertext{applying (\ref{spckk}) on the left and (\ref{spckkminusone}) on the right,}
-&= \spc\of{a-1, b} + \sum{i=0}[b-1]C_{i}\spc\of{b-i,b-i-1} \nonumber\\
-&= \spc\of{a-1, b} + \sum{i=0}[b-1]C_{i}\spc\of{a-i-1,b-i-1} \nonumber\\
+&= \spc\of{a-1, b} + \sum{i=0}[b-1]\CatalanNumber {i}\spc\of{b-i,b-i-1} \nonumber\\
+&= \spc\of{a-1, b} + \sum{i=0}[b-1]\CatalanNumber {i}\spc\of{a-i-1,b-i-1} \nonumber\\
 &= \spc\of{a-1, b} + \spc\of{a,b-1}\text.
 \end{align}
 
@@ -1060,17 +1064,18 @@ Assume $\spc\of{a',b'}=\spc\of{a'-1,b'}+\spc\of{a',b'-1}$ for $0\leq b'<a'<a$.
 Then we can apply this assumption to the summands of $\spc\of{a,b}$:
 \begin{align}
 \spc\of{a,b} &= \sum{i=0}[b]
-C_{i}
+\CatalanNumber {i}
 \spc\of{a-i-1,b-i} \nonumber \\
 &= \sum{i=0}[b]
-C_{i}
+\CatalanNumber {i}
 \pa{\spc\of{a-i-2,b-i}+\spc\of{a-i-1,b-i-1}} \nonumber \\
 &= \sum{i=0}[b]
-C_{i}\spc\of{a-i-2,b-i}
-+\sum{i=0}[b]C_{i}\spc\of{a-i-1,b-i-1} \nonumber \\
+\CatalanNumber {i}\spc\of{a-i-2,b-i}
++\sum{i=0}[b]\CatalanNumber {i}\spc\of{a-i-1,b-i-1} \nonumber \\
 &= \sum{i=0}[b]
-C_{i}\spc\of{(a-1)-i-1,b-i}
-+\sum{i=0}[b-1]C_{i}\spc\of{a-i-1,(b-1)-i} \\&\phantom{=}\qquad + C_{b}\spc\of{a-b-1,-1}\text, \nonumber \\
+\CatalanNumber {i}\spc\of{(a-1)-i-1,b-i}
++\sum{i=0}[b-1]\CatalanNumber {i}\spc\of{a-i-1,(b-1)-i} \\&\phantom{=}\qquad + \CatalanNumber {b}\spc\of{a-b-1,-1}\text,
+\nonumber \\
 \intertext{so, by (\ref{spcRecurrence1}),}
 &= \spc\of{a-1, l} + \underbrace{\spc\of{a,b-1}}_{=0}\text.
 \end{align}
@@ -1132,13 +1137,13 @@ We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymp
 (\ref{bound-ck-spckl-spcpq-cp}).
 We are interested in the asymptotics as a function of the length $n = a+b+c+d$ of the bracket expression.
 Since the bound is a product of two identical two-parameter factors, we study one of them,\[
-f_{a,b}\DefineAs C_a\spc\of{a,b}\text,
+f_{a,b}\DefineAs \CatalanNumber a\spc\of{a,b}\text,
 \]
 as a function of $k\DefineAs a+b$. Let $b = \gh a$, thus $0\leq \gh\leq 1$,
 the above expression becomes \[
 f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}=
-C_{\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}} \frac{k-k\gh+\gh+1}{k+\gh+1}
-\leq C_{\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}}\text.
+\CatalanNumber {\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}} \frac{k-k\gh+\gh+1}{k+\gh+1}
+\leq \CatalanNumber {\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}}\text.
 \]
 Asymptotically, this yields\[
 f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}\preccurlyeq_k
@@ -1154,7 +1159,7 @@ With some calculus, one can see that as $\gh$ ranges from $0$ to $1$,
 the base $y_\gh$ of that exponential reaches a maximum of $5$ at
 $\gh=\frac 1 4$. We thus have the following asymptotic bound:\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
-C_a\spc\of{a, b}\spc\of{c, d}C_d
+\CatalanNumber a\spc\of{a, b}\spc\of{c, d}\CatalanNumber d
 \preccurlyeq_{\Cardinality{\pointset P} = n}
 5^{a+b}5^{c+d} = 5^n
 \end{equation}
