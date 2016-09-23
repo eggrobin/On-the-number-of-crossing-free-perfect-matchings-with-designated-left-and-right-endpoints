@@ -214,7 +214,8 @@ Then $\CatalanNumber 0 = 1$, and for $n>0$, \begin{equation}
 Consider a set of $n+2$ points in convex position.
 For $n=0$ the result is trivial, the only triangulation is an edge.
 
-Let $n > 0$, and number the points along the boundary of the convex hull, from $0$ to $n+1$.
+Let $n > 0$, and number the points along the boundary of the convex hull, from $0$ to $n+1$,
+see figure~\ref{figSegnerRecurrence}.
 The edge $e$ joining points $n+1$ and $n$ is in the boundary of the convex hull, and thus must
 be in any triangulation, since no other edge can cross it. Let $i$ be the index of the third point of the
 triangle containing edge $e$, which may be any of the others, from $0$ to $n-1$.
@@ -228,6 +229,25 @@ Moreover, given a triangulation of $\set{0,\dotsc,i,n+1}$ and a triangulation of
 adding the edge $e$ forms a triangulation of the whole point set, proving equality.
 \end{proof}
 \end{theorem}
+\marginfig[Segner's recurrence.\label{figSegnerRecurrence}]{
+\begin{tikzpicture}[scale=0.5]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot,label=left:$0$] at (1,1) (p0) {};
+\node[dot,label=left:$1$] at (0,2) (p1) {};
+\node[dot,label=left:$i-1$] at (0.5,3.5) (piminus1) {};
+\node[dot,label=above left:$i$] at (2,4) (pi) {};
+\node[dot,label=above:$i+1$] at (4,4) (piplus1) {};
+\node[dot,label=right:$n-1$] at (5.5,3) (pnminus1) {};
+\node[dot,label=right:$n$] at (5,1) (pn) {};
+\node[dot,label=below:$n+1$] at (3,0) (pnplus1) {};
+\draw (pnminus1) -- (pn);
+\draw (pnplus1) -- (p0) -- (p1);
+\draw (pn) -- (pnplus1) node [midway, label=below right:$e$] {};
+\draw (piminus1) -- (pi) -- (piplus1);
+\draw[dotted] (p1) -- (piminus1);
+\draw[dotted] (piplus1) -- (pnminus1);
+\draw (pnplus1) -- (pi) -- (pn);
+\end{tikzpicture}}
 An explicit expression for $\CatalanNumber n$ was given earlier by Euler \cite{Euler1751}, along
 with the generating function.
 A convenient form is\begin{equation}
