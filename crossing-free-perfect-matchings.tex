@@ -149,9 +149,54 @@ where $\pointset P$ runs over all point sets that satisfy the relevant propertie
 In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
 existing results; since the bounds are often exponential, we tend to ignore polynomial
 factors; we will thus write that\[
-f \of n \preccurlyeq u \of n
+u \of n \preccurlyeq_n f \of n
 \]
-if $f\of n \leq p\of n u \of n$ for some polynomially-bounded $p$.
+if for some polynomial $p$, $\forall n\in \N, u\of n \leq p\of n f \of n$.
+
+In some cases, we may be interested in classes of functions $g_z\of{\pointset P}$
+which depend on some parameter $z\in\gW_n$.
+For instance, $g_z$ could count crossing-free graphs on $\pointset P$ that contain a clique of size
+$z\in [n]$.
+In this thesis, we will often use classes $g_z$ with $z$ being the left-to-right ordering
+of designated left and right endpoints.
+
+When giving exponential bounds in $n$ for these parameterized classes of graphs, we will want to keep
+track of the growth due to $z$; we will thus write that\[
+u \of {n,z} \preccurlyeq_n f \of {n,z} \text{ \emph{uniformly in $z\in\gW_n$}}\]
+if for some polynomial $p$ (that does not depend on $z$),
+$\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq p\of n f \of {n,z}$.
+If $f \of {n,z}$ then admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
+that $u\of {n,z} \leq p\of n \bar f \of{n}$, giving an upper bound truly independent of $z$.
+
+Moreover, we will write $g \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of n$ if\[
+\forall n\in \N, \forall \pointset P \text{ such that } \Cardinality {\pointset P} = n,
+g \of {\pointset P} \leq u \of n\]
+for some $u\of n\preccurlyeq_n f\of n$.
+Similarly we will write $g_z \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of {n,z}$
+\emph{uniformly in $z\in\gW_n$} if\[
+\forall n\in \N, \forall z\in\gW_n,
+\forall \pointset P \text{ such that } \Cardinality {\pointset P} = n,
+g_z \of {\pointset P} \leq u \of {n, z}\]
+for some $u \of {n,z} \preccurlyeq_n f \of {n,z}$ uniformly in $z\in\gW_n$.
+In both cases $\pointset P$ runs over all point sets that satisfy the relevant properties.
+\subsection{A remark on the asymptotics of the binomial coefficient}
+Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
+upper bound for them.
+It can be shown by writing the logarithm of the factorial as a sum of logarithms,
+and then bounding that sum by integrals, that\[
+\forall k\in \Positives, \E \pa{\frac{k}{\E}}^k \leq \Factorial k \leq k \E \pa{\frac{k}{\E}}^k\text.
+\]
+It follows that\begin{align*}
+\forall k\in \Positives, \forall \gh\in\intopen 0 1, \binom{k}{\gh k} &\leq
+\frac{k \E \pa{\frac{k}{\E}}^k}{\E \pa{\frac{\gh k}{\E}}^{\gh k} \E \pa{\frac{\pa{1-\gh} k}{\E}}^{\pa{1-\gh}k}}\\
+&=\frac{k}{\E} \frac{k^k}{\pa{\gh k}^{\gh k}\pa{\pa{1-\gh} k}^{\pa{1-\gh} k}} \\
+&=\frac{k}{\E} \pa{\frac{1}{\gh^\gh\pa{1-\gh}^{1-\gh}}}^k \\
+&=\frac{k}{\E} \pa{\frac{\pa{1-\gh}^{\gh-1}}{\gh^\gh}}^k\text,
+\end{align*}
+so that, since $\forall k\in \N, \binom k 0 = \binom k k = 1$, we have
+\begin{equation}
+\binom k {\gh k} \preccurlyeq_k \pa{\frac{\pa{1-\gh}^{\gh-1}}{\gh^\gh}}^k \text{ uniformly in $\gh\in\intclos 0 1$.}
+\end{equation}
 \subsection{Triangulations of convex point sets and the Catalan numbers}
 A set of points is said to be \emph{in convex position} if it is in general position and
 all points are in the boundary of its convex hull.
@@ -188,7 +233,7 @@ C_n = \frac{1}{n+1} \binom {2n} {n}\text,
 \end{equation}
 yielding asymptotically
 \begin{equation}
-C_n \sim \frac{4^n}{n^{\frac{3}{2}}\sqrt{\Pi}} \preccurlyeq 4^n\text.
+C_n \sim \frac{4^n}{n^{\frac{3}{2}}\sqrt{\Pi}} \preccurlyeq_n 4^n\text.
 \end{equation}
 
 \subsection{Crossing-free perfect matchings}
@@ -202,7 +247,7 @@ find the Alfred Errera thing from the octavo of the académie royale de belgique
 Sharir--Welzl; this might require a trip to the library?]
 
 For a set $\pointset P$ of $n$ points in general position, it was proved by Micha~Sharir and Emo~Welzl in 2005
-\cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq 10.05^n$.
+\cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq_n 10.05^n$.
 
 When talking about a perfect matching, we will denote the unique edge incident to point $p$ by
 $e_p$.
@@ -832,11 +877,11 @@ the subsets $\pointset S\Subset\pointset A$ and $\pointset T \Subset D$,
 and by $\gb$ and $\gc$. This gives the following bound for the number of these matchings:\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
 \leq C_a \binom a b C_b C_c \binom c d C_d\text.\]
-Asymptotically, the factor involving $a$ and $b$ is\[
+Asymptotically, the factor involving $a$ and $b$ is, for $b=\gh a$,\[
 C_a \binom a b C_b
-\preccurlyeq
+\preccurlyeq_{a+b}
 4^{a+b} \binom a b
-\preccurlyeq
+\preccurlyeq_{a+b}
 4^{a+b}
 \pa{
 \underbrace{
@@ -844,19 +889,20 @@ C_a \binom a b C_b
   {\pa{1-\gh}^{1-\frac 1 \gh}}
   {\gh}}^{\pa{\frac{\gh}{\gh+1}}}}_{x_\gh}}^{a+b}\text,
 \]
-where $b=\gh a$, thus $\gh\in\intclos 01$. The base $x_\gh$ of the exponential bound
+uniformly in $\gh\in\intclos 01$. The base $x_\gh$ of the exponential bound
 for the binomial coefficient is maximal
 when $\gh = \frac{3-\sqrt{5}}{2}$, where it is $\GoldenRatio = \frac{1+\sqrt{5}}{2}$.
 This gives the overall bound\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
-\preccurlyeq
+\preccurlyeq_{\Cardinality{\pointset P} = n}
 4^{a+b}
 \GoldenRatio^{a+b}
 4^{c+d}
 \GoldenRatio^{c+d}
 = \pa{4\GoldenRatio}^n
-\approx 6.472^n\text.
+\approx 6.472^n
 \]
+uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 Note that this is worse than the existing $5.3793^n$ bound $\gn_{\pointset P}\of{B}$ for an arbitrary
 well-formed bracket expression $B$, see section~\ref{boundOnLeftRightPerfectMatchings}.
 \subsection{Improving the binomial bound}
@@ -1071,9 +1117,9 @@ prefixes, where again wfbe denotes a well-formed bracket expression:
 \begin{align*}
 \text{wfprefix} \Coloneq
 & \text{wfbe} \langle \text{wfprefix} \\
-\mid\: & \text{wfbe},
+\mid\: & \text{wfbe}.
 \end{align*}
-where the sum ranges over the length of the well-formed bracket expression preceding the first unmatched bracket.
+In this case the sum ranges over the length of the well-formed bracket expression preceding the first unmatched bracket.
 
 Finally, (\ref{spc-catalan-triangle}) reflects the fact that a well-formed prefix with $k$ opening brackets
 and $l$ closing brackets either ends with an opening bracket (preceded by a well-formed prefix with $k-1$ opening
@@ -1091,46 +1137,28 @@ f_{a,b}\DefineAs C_a\spc\of{a,b}\text,
 as a function of $k\DefineAs a+b$. Let $b = \gh a$, thus $0\leq \gh\leq 1$,
 the above expression becomes \[
 f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}=
-C_{\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}} \frac{\pa{1-\gh}k+\gh+1}{k+\gh+1}\text.
+C_{\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}} \frac{k-k\gh+\gh+1}{k+\gh+1}
+\leq C_{\frac{k}{\gh + 1}} \binom{k}{\frac{k}{\gh + 1}}\text.
 \]
-Asymptotically as $k\longrightarrow \infty$ for fixed $\gh$, this yields\[
-f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}\sim
-\frac
-  {1}
-  {k\sqrt{\Pi k}}
-4^{\frac{k}{\gh + 1}}
-\frac
-  {\sqrt{1+\gh}}
-  {\sqrt{2\Pi k \gh}}
-\pa{
-  \frac
-    {1+\gh}
-    {\gh^{\frac{\gh}{\gh + 1}}}}^{k}
-\pa{1-\gh}\text,
-\]
-or, up to a polynomially-bounded factor,\[
+Asymptotically, this yields\[
+f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}\preccurlyeq_k
 4^{\frac{k}{\gh + 1}}
 \pa{
   \frac
-    {1+\gh}
-    {\gh^{\frac{\gh}{\gh + 1}}}}^{k}
-=
-\pa{
-4^{\gh + 1}
-\frac
-  {1+\gh}
-  {\gh^{\frac{\gh}{\gh + 1}}}}^{k}\text.
+    {\pa{1-\frac{1}{\gh+1}}^{\frac{1}{\gh+1}-1}}
+    {\pa{\frac{1}{\gh+1}}^{\frac{1}{\gh+1}}}}^{k}
+= \pa{\underbrace{4^{\frac{1}{\gh + 1}} \frac{\gh+1}{\gh^{\frac{\gh}{\gh+1}}}}_{y_\gh}}^k
 \]
-As $\gh$ ranges from $0$ to $1$, the base of that exponential reaches a maximum of $5$ at
-$\gh=\frac 1 4$. We thus have the following asymptotic bound.\begin{equation}
+uniformly in $\gh\in\intclos 0 1$.
+With some calculus, one can see that as $\gh$ ranges from $0$ to $1$,
+the base $y_\gh$ of that exponential reaches a maximum of $5$ at
+$\gh=\frac 1 4$. We thus have the following asymptotic bound:\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
 C_a\spc\of{a, b}\spc\of{c, d}C_d
-\preccurlyeq
+\preccurlyeq_{\Cardinality{\pointset P} = n}
 5^{a+b}5^{c+d} = 5^n
-\text.
 \end{equation}
-[TODO: would it be interesting or feasible to average over all $\langle^k\rangle^l\langle^q\rangle^p$,
-for fixed $n$?]
+uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 \section{Outlook}
 [TODO: here a section about spc generalizing to arbitrary WFBEs, and the applicability of overcounting
 analyses]
