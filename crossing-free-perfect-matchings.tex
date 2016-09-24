@@ -1022,7 +1022,12 @@ $p\in\pointset B_i$,
 We now know that $\gb$ is determined by crossing-free alignments $\gb_i$ of point sets $\pointset B_i$.
 In order to turn this into a bound, we need to know the sizes $\Cardinality{\pointset B_i}$ of these
 point sets.
-\marginfig[TODO\label{figCellsOnALine}]{
+\marginfig[The edges crossing $V$. The points of $\pointset S$ are shown in white. The
+crossing-free left-alignment $\ga$ of $\pointset A$ on $V$ is shown.
+The elements of $S=\ga\of{\pointset S}$ are shown in red.
+We have $\cells\of{[a]\setminus S}=\set{\set{1},\set{3,4},\set{6}}$.
+Since $\pointset B_4$ is empty, there is no cell of ${[a]\setminus S}$
+corresponding to it.\label{figCellsOnALine}]{
 \begin{tikzpicture}[scale=0.6]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \tikzstyle{wdot}=[draw,shape=circle,fill=white,scale=0.5]
@@ -1060,19 +1065,19 @@ point sets.
 \draw[dashed,name intersections={of=long edge and W, by=far}] (d2) -- (far);
 \draw (a2) -- (far);
 \draw[->,thick,name intersections={of=long edge and V, by=align}] (a2) -- (align);
-\node[label={[font=\scriptsize,label distance=-5pt]above left:$2$}] at (align) {};
+\node[label={[font=\scriptsize,label distance=-5pt]above left:$\color{red}2$}] at (align) {};
 
 \path[name path=long edge] (a5) -- (d5);
 \draw[dashed,name intersections={of=long edge and W, by=far}] (d5) -- (far);
 \draw (a5) -- (far);
 \draw[->,thick,name intersections={of=long edge and V, by=align}] (a5) -- (align);
-\node[label={[font=\scriptsize,label distance=-5pt]below left:$5$}] at (align) {};
+\node[label={[font=\scriptsize,label distance=-5pt]below left:$\color{red}5$}] at (align) {};
 
 \path[name path=long edge] (a7) -- (d7);
 \draw[dashed,name intersections={of=long edge and W, by=far}] (d7) -- (far);
 \draw (a7) -- (far);
 \draw[->,thick,name intersections={of=long edge and V, by=align}] (a7) -- (align);
-\node[label={[font=\scriptsize,label distance=-5pt]below left:$7$}] at (align) {};
+\node[label={[font=\scriptsize,label distance=-5pt]below left:$\color{red}7$}] at (align) {};
 
 \draw[gray, name path=edge] (a1) -- (b1);
 \draw[->,thick,name intersections={of=edge and V, by=align}] (a1) -- (align);
