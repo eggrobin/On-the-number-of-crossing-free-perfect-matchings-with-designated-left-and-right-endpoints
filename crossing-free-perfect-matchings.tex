@@ -863,6 +863,7 @@ Now, note that
 the map $\conification$ has the property that for any set of segments $A=\setst{\gs_p}{p\in L}$ realizing $\gl$,
 $\gs_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
 alignments $\gw\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
+
 \section{Highly convex matchings across a line}
 \label{sectionHighlyConvex}
 In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
@@ -870,6 +871,61 @@ then $\gl$ is overcounted.
 We will call \emph{vacuous} a left cone that does not contain any right-points,
 and we will call vacuous a left conifer that has vacuous cones; thus $\gl$ is overcounted
 if $\conification_\gl$ is vacuous.
+\marginfig[Point sets $\pointset L$ and $\pointset R$, both
+of size $8$. $\pointset L$ has five $\pointset R$-liminary points, shown in
+white. One of them is the leftmost point, the others are separated in two
+upper $\pointset R$-liminary points and three lower $\pointset R$-liminary points.
+The first two $\pointset L$-cones and the last three $\pointset L$-cones (shaded)
+are $\pointset R$-vacuous.\label{figLiminaryPoints}]{
+\begin{tikzpicture}[scale=0.75]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\tikzstyle{wdot}=[draw,shape=circle,fill=white,scale=0.5]
+
+\node[wdot, label=left:$\leftmost \pointset L$] at (-5,2) (lm) {};
+\node[wdot] at (-4.25,1.1) (ll1) {};
+\node[wdot] at (-3.5,3.5) (ul1) {};
+\node[wdot] at (-3.25,0.5) (ll2) {};
+\node[wdot] at (-2.5,4) (ul2) {};
+\node[wdot] at (-2.4,0.25) (ll3) {};
+
+\node at (-4,5) {$\pointset L$};
+\node at (-.5,5) {$\pointset R$};
+
+\node[dot] at (-3,2.25) (i2) {};
+\node[dot] at (-2.25,3) (i1) {};
+
+\draw[very thick] (-2,-1) -- (-2,6);
+
+\node[dot] at (-.25,3.25) {};
+\node[dot] at (-1.75,1) {};
+\node[dot] at (-1.5,1.7) {};
+\node[dot] at (-.8,0.75) {};
+\node[dot] at (-1,4) {};
+\node[dot] at (-.75,2.75) {};
+\node[dot] at (-.5,1.5) {};
+\node[dot] at (-.2,1.8) {};
+
+\clip (-6,-1) rectangle (0,6);
+
+\begin{scope}
+\clip (-5,-1) rectangle (0,6);
+\draw (-5,-1) -- (lm) -- (-5,6);
+\draw (lm) -- (ul1) -- ($(lm)!10cm!(ul1)$);
+\draw (lm) -- (ul2) -- ($(lm)!10cm!(ul2)$);
+\draw (lm) -- ($(lm)!10cm!(i1)$);
+\draw (lm) -- ($(lm)!10cm!(i2)$);
+\draw (lm) -- (ll1) -- ($(lm)!10cm!(ll1)$);
+\draw (lm) -- (ll2) -- ($(lm)!10cm!(ll2)$);
+\draw (lm) -- (ll3) -- ($(lm)!10cm!(ll3)$);
+\end{scope}
+
+\begin{scope}[on background layer]
+\clip ($(lm)!10cm!(ul2)$) -- (lm.center) -- ($(lm)!10cm!(ll3)$) -- (-5,-1) -- (-5,6) -- cycle;
+\shade[shading=axis,
+       left color=gray,
+       right color=white] (-5,-1) rectangle (0,6);
+\end{scope}
+\end{tikzpicture}}
 
 We will now use convexity considerations to give an upper bound on the number of non-vacuous left conifers.
 Let us first define some concepts related to convex hulls.
