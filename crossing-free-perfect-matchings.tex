@@ -937,13 +937,25 @@ As a result,
 the strip $\gS$ between the vertical lines $V$ and $W$ is partitioned by the long edges in trapezoidal cells
 $Z_1,\dotsc,Z_{a-b+1}$, numbered from top to bottom, where the first and last cells are
 unbounded, see figure~\ref{figTrapezoids}.
-\marginfig[TODO description\label{figTrapezoids}]{
+\marginfig[The points of $\pointset S\Subset \pointset A$ and
+$\pointset T\Subset \pointset D$ are shown in white.
+The vertical lines $V$ and $W$ bound the strip $\gS$.
+The long edges join $\pointset S$ and
+$\pointset T$, partitioning the strip $\gS$ in cells $Z_i$.
+The crossing-free right-alignments $\gb_i$ are shown.
+Note that here $\pointset B_4$ is empty.
+In this figure, $a=7$, $b=4$, $c=1$, and $d=4$.
+\label{figTrapezoids}]{
 \begin{tikzpicture}[scale=0.6]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \tikzstyle{wdot}=[draw,shape=circle,fill=white,scale=0.5]
 
 \draw[very thick, name path=V] (0,5) -- (0,-2);
 \draw[very thick, name path=W] (4,5) -- (4,-2);
+
+
+\node at (-1,5) {$\pointset A$};
+\node at (5,5) {$\pointset D$};
 
 \node at (0,5.5) {$V$};
 \node at (4,5.5) {$W$};
@@ -953,7 +965,7 @@ unbounded, see figure~\ref{figTrapezoids}.
 \node at (3,4.5) {$Z_1$};
 \node at (3,2.5) {$Z_2$};
 \node at (2.5,0.25) {$Z_3$};
-\node at (3,-1.5) {$Z_4$};
+\node at (1.5,-1) {$Z_4$};
 
 \node[dot] at (-.5,4) (a1) {};
 \node[wdot] at (-2,3.5) (a2) {};
@@ -982,9 +994,17 @@ unbounded, see figure~\ref{figTrapezoids}.
 \draw[gray] (c) -- (dc);
 
 \draw[gray, name path=edge] (a1) -- (b1);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (b1) -- (align);
+\node[label={[font=\scriptsize,label distance=-3pt]above right:$1$}] at (align) {};
 \draw[gray, name path=edge] (a3) -- (b3);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (b3) -- (align);
+\node[label={[font=\scriptsize,label distance=-3pt]above right:$1$}] at (align) {};
 \draw[gray, name path=edge] (a4) -- (b4);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (b4) -- (align);
+\node[label={[font=\scriptsize,label distance=-3pt]below right:$2$}] at (align) {};
 \draw[gray, name path=edge] (a6) -- (b6);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (b6) -- (align);
+\node[label={[font=\scriptsize,label distance=-3pt]below right:$1$}] at (align) {};
 \end{tikzpicture}}
 
 We will consider the crossing-free right-alignment $\gb$; the same argument will hold for $\gg$.
