@@ -1165,10 +1165,11 @@ Then we can apply this assumption to the summands of $\spc\of{a,b}$:
 +\sum{i=0}[b]\CatalanNumber {i}\spc\of{a-i-1,b-i-1} \nonumber \\
 &= \sum{i=0}[b]
 \CatalanNumber {i}\spc\of{(a-1)-i-1,b-i}
-+\sum{i=0}[b-1]\CatalanNumber {i}\spc\of{a-i-1,(b-1)-i} \\&\phantom{=}\qquad + \CatalanNumber {b}\spc\of{a-b-1,-1}\text,
++\sum{i=0}[b-1]\CatalanNumber {i}\spc\of{a-i-1,(b-1)-i} \nonumber \\&\phantom{=}\qquad +
+\underbrace{\CatalanNumber {b}\spc\of{a-b-1,-1}}_{=0}\text,
 \nonumber \\
 \intertext{so, by (\ref{spcRecurrence1}),}
-&= \spc\of{a-1, l} + \underbrace{\spc\of{a,b-1}}_{=0}\text.
+&= \spc\of{a-1, b} + \spc\of{a,b-1}\text.
 \end{align}
 This completes the proof of (\ref{spc-catalan-triangle}).
 \marginfig[The recurrence (\ref{spc-catalan-triangle}).]{
@@ -1189,10 +1190,10 @@ The recurrence we just proved is the one defining the Catalan
 triangle\footnote{[TODO cite something that actually uses that
 name here]}, and its solution is known, namely
 \begin{equation}
-\spc\of{k,l} = \frac
-{\Factorial{\pa{k+l}} \pa{k-l+1}}
-{\Factorial l \Factorial{\pa{k+1}}}
-= \frac{k-l+1}{k+1} \binom{k+l}{k}\label{spc-solution}
+\spc\of{a,b} = \frac
+{\Factorial{\pa{a+b}} \pa{a-b+1}}
+{\Factorial b \Factorial{\pa{a+1}}}
+= \frac{a-b+1}{a+1} \binom{a+b}{a}\label{spc-solution}
 \text,
 \end{equation}
 as shown by L.~F.~A.~Arbogast in 1800 \cite[p.~214--217]{Arbogast1800}.
@@ -1247,8 +1248,9 @@ f_{\frac{k}{\gh+1}, \frac{k\gh}{\gh+1}}\preccurlyeq_k
 \]
 uniformly in $\gh\in\intclos 0 1$.
 With some calculus, one can see that as $\gh$ ranges from $0$ to $1$,
-the base $y_\gh$ of that exponential reaches a maximum of $5$ at
-$\gh=\frac 1 4$. We thus have the following asymptotic bound:\begin{equation}
+the base $y_\gh$ of that exponential is maximal for
+$\gh=\frac 1 4$, where its value is $5$.
+We thus have the following asymptotic bound:\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
 \CatalanNumber a\spc\of{a, b}\spc\of{c, d}\CatalanNumber d
 \preccurlyeq_{\Cardinality{\pointset P} = n}
