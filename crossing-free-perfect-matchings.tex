@@ -613,13 +613,9 @@ left-alignment of $\pointset L$ on the vertical line; indeed, letting $\gs_p$ be
 to the left of the vertical line yields segments that realize $\gl$.
 Similarly, $\gr$ is a crossing-free right-alignment of $\pointset R$ on the vertical line.
 \end{proof}
-\section{Analysing the overcounting in the upper bound for matchings across a line}
-\label{sectionOvercounting}
-The bound given in the previous section for the number of matchings across a line is not optimal;
-an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
-right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{crossingPMAL}).
+
 \marginfig[Composing crossing-free alignments, only to get a crossing perfect
-matching.\label{crossingPMAL}]{
+matching.\label{figCrossingPMAL}]{
 \begin{tikzpicture}[scale=0.6]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 
@@ -642,6 +638,35 @@ matching.\label{crossingPMAL}]{
 \draw[->,very thick] (r1) -- (a1);
 \draw[->,very thick] (l2) -- (a1);
 \end{tikzpicture}}
+\marginfig[Composing crossing-free alignments, and getting a crossing-free perfect matching,
+but one that does not decompose to the original alignments.\label{figWeirdAligments}]{
+\begin{tikzpicture}[scale=0.6]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+
+\draw[very thick, name path=V] (0,2) -- (0,-2);
+
+\node[dot] at (-3,1) (l1) {};
+\node[dot] at (-1,0.25) (l2) {};
+
+\node[dot] at (1,1) (r1) {};
+\node[dot] at (3,1.5) (r2) {};
+
+\coordinate (a1) at (0,0);
+\coordinate (a2) at (0,-1.5);
+
+\draw (l1)--(r2);
+\draw (l2)--(r1);
+
+\draw[->,very thick] (l1) -- (a2);
+\draw[->,very thick] (r2) -- (a2);
+\draw[->,very thick] (r1) -- (a1);
+\draw[->,very thick] (l2) -- (a1);
+\end{tikzpicture}}
+\section{Analysing the overcounting in the upper bound for matchings across a line}
+\label{sectionOvercounting}
+The bound given in the previous section for the number of matchings across a line is not optimal;
+an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
+right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{figCrossingPMAL}).
 
 There is however more to the overcounting than just counting some crossing matchings.
 To characterize that, it helps to name some functions and sets. Again, we are considering a
@@ -691,41 +716,15 @@ is equal to the cardinality of the image of $\decomposition$.
 It follows that the pairs of alignments that are \emph{not} in the image of $\decomposition$ are responsible
 for the slackness of the inequality (\ref{SharirWelzlOvercounting}). We will thus call them
 \emph{overcounted pairs of alignments}.
-\marginfig[Composing crossing-free alignments, and getting a crossing-free perfect matching,
-but one that does not decompose to the original alignments.\label{figWeirdAligments}]{
-\begin{tikzpicture}[scale=0.6]
-\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
-
-\draw[very thick, name path=V] (0,2) -- (0,-2);
-
-\node[dot] at (-3,1) (l1) {};
-\node[dot] at (-1,0.25) (l2) {};
-
-\node[dot] at (1,1) (r1) {};
-\node[dot] at (3,1.5) (r2) {};
-
-\coordinate (a1) at (0,0);
-\coordinate (a2) at (0,-1.5);
-
-\draw (l1)--(r2);
-\draw (l2)--(r1);
-
-\draw[->,very thick] (l1) -- (a2);
-\draw[->,very thick] (r2) -- (a2);
-\draw[->,very thick] (r1) -- (a1);
-\draw[->,very thick] (l2) -- (a1);
-\end{tikzpicture}}
 An overcounted pair of alignments $\composition\of{\gl,\gr}$ falls into one of two families:
 \begin{enumerate}
 \item
-$\composition\of{\gl,\gr}$ can be a crossing perfect matching, as in figure~\ref{crossingPMAL};
+$\composition\of{\gl,\gr}$ can be a crossing perfect matching, as in figure~\ref{figCrossingPMAL};
 This implies that $\tuple{\gl,\gr}$ is not in the image of $\decomposition$, since the diagram commutes;
 \item $\composition\of{\gl,\gr}$ can be a crossing-free perfect matching;
 in this case, we have $\tuple{\gl,\gr}\neq\decomposition\Compose\composition\of{\gl,\gr}$,
 since $\tuple{\gl,\gr}$ is overcounted; an example is shown in figure~\ref{figWeirdAligments}.
 \end{enumerate}
-In addition, we will call a crossing-free left alignment $\gl$ overcounted if any pair
-$\tuple{\gl, \gr}$ is overcounted.
 \marginfig[A set $\pointset L$ of five points. The half-plane to the right
 of the leftmost point $\leftmost \pointset L$ is partitioned in
 $\Cardinality{\pointset L}$ cones $\lcone i$.\label{figCones}]{
@@ -758,16 +757,19 @@ $\Cardinality{\pointset L}$ cones $\lcone i$.\label{figCones}]{
 \end{scope}
 \end{tikzpicture}}
 
-To hunt down overcounted crossing-free alignments, we will examine in more detail the anatomy of a crossing-free
-left-aligment of $\pointset L$ and the proof of the Sharir--Welzl bound for the number of crossing-free left-alignments,
-with some fresh definitions.
+We would therefore like to give a bound on the number of non-overcounted pairs of alignments; in order to do that,
+we turn to the second part of the proof of Sharir and Welzl, namely the bound on the number of pairs of alignments,
+and examine it in more detail, with some fresh definitions.
 
-First, for a point set $\pointset L$, note that we can partition the half-plane to the right of $\leftmost L$ in
-$\Cardinality L$ regions,
-separated by rays emanating from $\leftmost L$ and going through other points of $\pointset L$. We will call those regions
-\emph{left $\pointset L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
-Note that there are $i$ points of $\pointset L$ above the interior of left $\pointset L$-cone
-number $i+1$, and $\Cardinality L - i - 1$ points below.
+First, for a point set $\pointset L$ in general position with respect to the horizontal,
+note that we can partition the half-plane to the right of $\leftmost\pointset L$ in
+$\Cardinality{\pointset L}$ regions,
+separated by rays emanating from $\leftmost\pointset L$ and going through other points of
+$\pointset L$, see figure~\ref{figCones}.
+We will call those regions \emph{left $\pointset L$-cones}, and call them, from top to bottom, $\lcone 1$ to
+$\lcone {\Cardinality{\pointset L}}$.
+Note that there are $i$ points of $\pointset L$ above the interior of $\lcone i$,
+and $\Cardinality {\pointset L} - i - 1$ points below.
 \marginfig[A crossing-free perfect matching across a line $\gm$.
 Its decomposition is $\tuple{\gl,\gr}\DefineAs\decomposition\of\gm$;
 the crossing-free left-alignment $\gl$ is shown here. Since
