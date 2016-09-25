@@ -32,7 +32,8 @@
 \newcommand{\lcone}[1]{\mathscr{k}_{\pointset L, #1}}
 \newcommand{\conification}{\mathfrak{K}}
 \newcommand{\decomposition}{\mathfrak{D}}
-\newcommand{\composition}{\mathfrak{D}}
+\newcommand{\composition}{\mathfrak{C}}
+\newcommand{\bracketing}{\mathfrak{B}}
 
 \newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
 
@@ -361,7 +362,7 @@ is incident to exactly one edge, and that edge is not vertical.
 \draw[dashed] (p5) -- (b5);
 \draw[dashed] (p6) -- (b6);
 \end{tikzpicture}}
-Construct a bracket expression ${\mathfrak B}_{\pointset P}\of\gm$ of length $n$ as follows: order $\pointset P$ from left
+Construct a bracket expression $\bracketing_{\pointset P}\of\gm$ of length $n$ as follows: order $\pointset P$ from left
 to right;
 the $i$th bracket is opening if the $i$th point of $\pointset P$ is a left endpoint of $\gm$, and it is
 closing otherwise.
@@ -370,16 +371,16 @@ This bracket expression is well-formed, since it can be constructed by starting 
 each edge, where the closing bracket will be inserted to the right of the opening bracket.
 
 Given a well-formed bracket expression $B$ and a point set $\pointset P$, we will say that a perfect matching
-$\gm$ is \emph{consistent with} $B$ if ${\mathfrak B}_{\pointset P}\of\gm = B$; moreover, we will refer to the points of
+$\gm$ is \emph{consistent with} $B$ if $\bracketing_{\pointset P}\of\gm = B$; moreover, we will refer to the points of
 $\pointset P$ corresponding to opening brackets of $B$ as \emph{left-points} (since they will be left endpoints
 of any perfect matching consistent with $B$), and similarly we will refer to the points of $\pointset P$
 corresponding to closing brackets of $B$ as \emph{right-points}.
 
 One approach to bounding the size of $\CFPM_{\pointset P}$ is to bound the size of
-${\mathfrak B}_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}$ for bracket expressions $B$ of length $n$\idest the
+$\bracketing_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}$ for bracket expressions $B$ of length $n$\idest the
 number of crossing-free perfect matchings on $\pointset P$ consistent with $B$. We thus define
 \[\gn_{\pointset P}\of B \DefineAs
-\Cardinality{{\mathfrak B}_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}}\text.\]
+\Cardinality{\bracketing_{\pointset P}^{-1}\of{B}\Intersection \CFPM_{\pointset P}}\text.\]
 In order to concisely refer to bracket expressions, we will use the notations
 $\langle^k$ for $k$ successive opening brackets, and $\rangle^k$ for $k$ successive
 closing brackets, for instance,\[
@@ -659,7 +660,7 @@ let $c\of{\gl,\gr}$ be the (possibly crossing) perfect matching $\gr^{-1}\Compos
 Finally, let us name the sets of perfect matchings across a line and of
 crossing-free perfect matchings across a line,
 \begin{align*}
-\PMAL_{\pointset P} &\DefineAs {\mathfrak B}_{\pointset P}^{-1}\of{\langle^k\rangle^k}\\
+\PMAL_{\pointset P} &\DefineAs \bracketing_{\pointset P}^{-1}\of{\langle^k\rangle^k}\\
 \CFPMAL_{\pointset P} &\DefineAs \PMAL_{\pointset P} \Intersection \CFPM_{\pointset P}\text.
 \end{align*}
 Then the following diagram commutes\idest constructing crossing-free alignments from a matching
