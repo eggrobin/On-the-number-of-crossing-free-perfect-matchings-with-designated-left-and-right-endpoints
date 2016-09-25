@@ -602,7 +602,29 @@ The bound given above for the number of matchings across a line is not optimal;
 an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
 right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{crossingPMAL}).
 \marginfig[Composing crossing-free alignments, only to get a crossing perfect
-matching.\label{crossingPMAL}]{TODO}
+matching.\label{crossingPMAL}]{
+\begin{tikzpicture}[scale=0.6]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+
+\draw[very thick, name path=V] (0,1.5) -- (0,-2);
+
+\node[dot] at (-2,1) (l1) {};
+\node[dot] at (-1,0.25) (l2) {};
+
+\node[dot] at (1,1) (r1) {};
+\node[dot] at (2,0) (r2) {};
+
+\coordinate (a1) at (0,0);
+\coordinate (a2) at (0,-1.5);
+
+\draw (l1)--(r2);
+\draw (l2)--(r1);
+
+\draw[->,very thick] (l1) -- (a2);
+\draw[->,very thick] (r2) -- (a2);
+\draw[->,very thick] (r1) -- (a1);
+\draw[->,very thick] (l2) -- (a1);
+\end{tikzpicture}}
 
 There is however more to the overcounting than just counting some crossing matchings.
 To characterize that, it helps to name some functions and sets. Again, are considering a
