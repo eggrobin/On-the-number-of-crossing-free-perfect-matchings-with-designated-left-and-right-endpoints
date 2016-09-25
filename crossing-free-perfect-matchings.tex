@@ -751,9 +751,9 @@ To hunt down overcounted crossing-free alignments, we will examine in more detai
 left-aligment of $\pointset L$ and the proof of the Sharir--Welzl bound for the number of crossing-free left-alignments,
 with some fresh definitions.
 
-First, for a point set $\pointset L$, note that we can partition the half-plane to the right of $\leftmost\of L$ in
+First, for a point set $\pointset L$, note that we can partition the half-plane to the right of $\leftmost L$ in
 $\Cardinality L$ regions,
-separated by rays emanating from $\leftmost\of L$ and going through other points of $\pointset L$. We will call those regions
+separated by rays emanating from $\leftmost L$ and going through other points of $\pointset L$. We will call those regions
 \emph{left $\pointset L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
 Note that there are $i$ points of $\pointset L$ above the interior of left $\pointset L$-cone
 number $i+1$, and $\Cardinality L - i - 1$ points below.
@@ -811,11 +811,11 @@ the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
 \end{scope}
 \end{tikzpicture}}
 Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{\gs_p}{p\in L}$
-realizing $\gl$, the segment $\gs_{\leftmost\of L}$ of the leftmost point then has to be contained in left
-$\pointset L$-cone number $\gl\of{\leftmost\of L}$.
+realizing $\gl$, the segment $\gs_{\leftmost L}$ of the leftmost point then has to be contained in left
+$\pointset L$-cone number $\gl\of{\leftmost L}$.
 As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
 to the left side of $V$ realize the left-alignment in $\gw\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
-$\gw$, $\leftmost\of L$ has to be matched to a right-point in left $\pointset L$-cone number $\gl\of{\leftmost\of L}$, see
+$\gw$, $\leftmost L$ has to be matched to a right-point in left $\pointset L$-cone number $\gl\of{\leftmost L}$, see
 figure~\ref{figConesNeedPoints}.
 
 To extend this reasoning beyond the leftmost point of $\pointset L$, we define \emph{left conifers of $\pointset L$}.
@@ -823,9 +823,9 @@ A left conifer $\gk$ of a point set $\pointset L$ is a map from points in $\poin
 of $\pointset L$,
 satisfying the following properties:
 \begin{enumerate}
-\item $\gk\of{\leftmost\of L}$ is a left $\pointset L$-cone;
-\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\of L}$ is a left conifer of these points;
-\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\of L}$ is a left conifer of these points.
+\item $\gk\of{\leftmost L}$ is a left $\pointset L$-cone;
+\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost L}$ is a left conifer of these points;
+\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost L}$ is a left conifer of these points.
 \end{enumerate}
 \marginfig[A crossing-free left-alignment $\gl$ (the one from figure~\ref{figCrossingFreeAlignment}),
 together with the conifer $\conification_\gl$.\label{figConification}]{
@@ -993,10 +993,10 @@ the red and green cones respectively, and thus they would cross, a contradiction
        nearly transparent] (-1,0) rectangle (0,5);
 \end{scope}
 \end{tikzpicture}}
-Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost\of L}$ and by
+Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost L}$ and by
 crossing-free left alignments
-of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost\of L}$.
-This is equivalent to choosing left $\pointset L$-cone number $\gl\of{\leftmost\of L}$,
+of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost L}$.
+This is equivalent to choosing left $\pointset L$-cone number $\gl\of{\leftmost L}$,
 and recursively doing so in the point subsets above and below the
 interior of that cone, see figure~\ref{figConification}.
 This gives an injective map $\FunctionNamedBody\conification\gl{\conification_\gl}$
@@ -1084,15 +1084,15 @@ in general position with respect to the horizontal to the right of $\pointset L$
 the \emph{$\pointset R$-liminary points of $\pointset L$} are the points of $\pointset L$ which are extreme points
 of $L\Union R$,
 see figure~\ref{figLiminaryPoints}.
-We will call $\leftmost\of L$ the leftmost point of $\pointset L$; note that it is an $\pointset R$-liminary point
+We will call $\leftmost L$ the leftmost point of $\pointset L$; note that it is an $\pointset R$-liminary point
 of $\pointset L$.
 
-Note that in polar order around $\leftmost\of L$, the $\pointset R$-liminary points of $\pointset L$ other than
-$\leftmost\of L$ are separated by
+Note that in polar order around $\leftmost L$, the $\pointset R$-liminary points of $\pointset L$ other than
+$\leftmost L$ are separated by
 $\pointset R$, that is, in polar order, one subset of the $\pointset R$-liminary points of $\pointset L$ appears
 first, followed by
 all points of $\pointset R$, followed by the rest of the $\pointset R$-liminary points of $\pointset L$ (except
-$\leftmost\of L$).
+$\leftmost L$).
 We will call those $\pointset R$-liminary points of $\pointset L$ which appear below $\pointset R$ the \emph{lower
 $\pointset R$-liminary points of $\pointset L$},
 and those that appear above $\pointset R$ the \emph{upper $\pointset R$-liminary points of $\pointset L$}.
