@@ -267,6 +267,20 @@ yielding asymptotically
 We will call $\PM_{\pointset P}$ the set of perfect matchings on the point set $\pointset P$,
 and $\CFPM_{\pointset P}$ the set
 of crossing-free perfect matchings on the point set $\pointset P$.
+\marginfig[Partitioning a convex point set to construct a crossing-free
+perfect matching.\label{figConvexPerfectMatching}]{
+\begin{tikzpicture}[scale=0.5]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
+\node[dot,label=left:$0$] at (1,1) (p0) {};
+\node[dot,label=left:$1$] at (0,2) (p1) {};
+\node[dot,label=left:$2$] at (0.5,3.5) (p2) {};
+\node[dot,label=above left:$2i$] at (2,4) (p2i) {};
+\node[dot,label=above:$2i+1$] at (4,4) (p2iplus1) {};
+\node[dot,label=right:$2i+2$] at (5.5,3) (p2iplus2) {};
+\node[dot,label=right:$2n-2$] at (5,1) (p2nminus2) {};
+\node[dot,label=below:$2n-1$] at (3,0) (p2nminus1) {};
+\draw (p0) -- (p2iplus1);
+\end{tikzpicture}}
 
 [TODO talk about the number of crossing-free perfect matchings in convex position, give the proof;
 find the Alfred Errera thing from the octavo of the académie royale de belgique, reference 10 in
