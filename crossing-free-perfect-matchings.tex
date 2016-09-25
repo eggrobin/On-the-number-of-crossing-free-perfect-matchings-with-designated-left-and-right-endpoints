@@ -30,6 +30,7 @@
 \newcommand{\CatalanNumber}[1]{\StandardSymbol C_{#1}}
 \newcommand{\pointset}{\symscr}
 \newcommand{\lcone}[1]{\mathscr{k}_{\pointset L, #1}}
+\newcommand{\scone}[1]{\mathscr{k}_{\pointset S, #1}}
 \newcommand{\conification}{\mathfrak{K}}
 \newcommand{\decomposition}{\mathfrak{D}}
 \newcommand{\composition}{\mathfrak{C}}
@@ -673,10 +674,7 @@ To characterize that, it helps to name some functions and sets. Again, we are co
 set $\pointset P$ of $2k$ points in general position with respect to the horizontal and the bracket
 expression $\langle^k\rangle^k$.  We let $\pointset L$ be the set of left-points, and $\pointset R$ be the
 set of right-points. Moreover, we pick a vertical line $V$ separating $\pointset L$ and $\pointset R$.
-
-In this section and the following one, crossing-free left- and right-alignments will implicitly be on $V$,
-and unless otherwise mentioned, crossing-free left-alignments will be of $\pointset L$, and crossing-free
-right-alignments will be of $\pointset R$.
+In this section and the following one, crossing-free left- and right-alignments will implicitly be on $V$.
 
 In the previous section, given a crossing-free perfect matching $\gm$, we constructed crossing-free
 left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call these
@@ -719,35 +717,34 @@ is equal to the cardinality of the image of $\decomposition$.
 It follows that the pairs of alignments that are \emph{not} in the image of $\decomposition$ are responsible
 for the slackness of the inequality (\ref{SharirWelzlOvercounting}). We will thus call them
 \emph{overcounted pairs of alignments}.
-An overcounted pair of alignments $\composition\of{\gl,\gr}$ falls into one of two families:
+An overcounted pair of alignments $\tuple{\gl,\gr}$ falls into one of two families:
 \begin{enumerate}
 \item
 $\composition\of{\gl,\gr}$ can be a crossing perfect matching, as in figure~\ref{figCrossingPMAL};
-This implies that $\tuple{\gl,\gr}$ is not in the image of $\decomposition$, since the diagram commutes;
 \item $\composition\of{\gl,\gr}$ can be a crossing-free perfect matching;
 in this case, we have $\tuple{\gl,\gr}\neq\decomposition\Compose\composition\of{\gl,\gr}$,
 since $\tuple{\gl,\gr}$ is overcounted; an example is shown in figure~\ref{figWeirdAligments}.
 \end{enumerate}
-\marginfig[A set $\pointset L$ of five points. The half-plane to the right
-of the leftmost point $\leftmost \pointset L$ is partitioned in
-$\Cardinality{\pointset L}$ cones $\lcone i$.\label{figCones}]{
+\marginfig[A set $\pointset S$ of five points. The half-plane to the right
+of the leftmost point $\leftmost \pointset S$ is partitioned in
+$\Cardinality{\pointset S}$ cones $\scone i$.\label{figCones}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \shade[shading=axis,
        left color=gray,
        right color=white] (-5,0) rectangle (0,5);
        
-\node[dot, label=left:$\leftmost \pointset L$] at (-5,2) (lm) {};
+\node[dot, label=left:$\leftmost \pointset S$] at (-5,2) (lm) {};
 \node[dot] at (-4,1) (p2) {};
 \node[dot] at (-3,4) (p3) {};
 \node[dot] at (-2,1.5) (p4) {};
 \node[dot] at (-1,3.5) (p5) {};
 
-\node at (-4.5,0.5) {$\lcone 5$};
-\node at (-2.5,1) {$\lcone 4$};
-\node at (-1.5,2.5) {$\lcone 3$};
-\node at (-2,4) {$\lcone 2$};
-\node at (-4,4) {$\lcone 1$};
+\node at (-4.5,0.5) {$\scone 5$};
+\node at (-2.5,1) {$\scone 4$};
+\node at (-1.5,2.5) {$\scone 3$};
+\node at (-2,4) {$\scone 2$};
+\node at (-4,4) {$\scone 1$};
 
 \draw (-5,5) -- (-5,0);
 
@@ -814,25 +811,28 @@ the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
 \end{scope}
 \end{tikzpicture}}
 
-We would therefore like to give a bound on the number of non-overcounted pairs of alignments; in order to do that,
+We would like to give a bound on the number of non-overcounted pairs of alignments. In order to do that,
 we turn to the second part of the proof of Sharir and Welzl, namely the bound on the number of pairs of alignments,
 and examine it in more detail, with some fresh definitions. Again, we will look at crossing-free left-alignments; the
 following argument equally applies to crossing-free right-alignments.
 
-First, for a point set $\pointset L$ in general position with respect to the horizontal,
-note that we can partition the half-plane to the right of $\leftmost\pointset L$ in
-$\Cardinality{\pointset L}$ regions,
-separated by rays emanating from $\leftmost\pointset L$ and going through other points of
-$\pointset L$, see figure~\ref{figCones}.
-We will call those regions \emph{left $\pointset L$-cones}, and call them, from top to bottom, $\lcone 1$ to
-$\lcone {\Cardinality{\pointset L}}$.
-Note that there are $i$ points of $\pointset L$ above the interior of $\lcone i$,
-and $\Cardinality {\pointset L} - i - 1$ points below.
+First, for a point set $\pointset S$ in general position with respect to the horizontal,
+note that we can partition the half-plane to the right of $\leftmost\pointset S$ in
+$\Cardinality{\pointset S}$ regions,
+separated by rays emanating from $\leftmost\pointset S$ and going through other points of
+$\pointset S$, see figure~\ref{figCones}.
+We will call those regions \emph{left $\pointset S$-cones}, and call them, from top to bottom, $\scone 1$ to
+$\scone {\Cardinality{\pointset L}}$.
+Note that there are $i$ points of $\pointset S$ above the interior of $\scone i$,
+and $\Cardinality {\pointset S} - i - 1$ points below.
 
-Observe that the same separation of the point set held for realizing segments of crossing-free left-alignments,
+We will use the term \emph{left cone of $\pointset L$} to mean
+``left $\pointset S$-cone for some $\pointset S\Subset\pointset L$''.
+
+Observe that the same separation of the point set occurs with realizing segments of crossing-free left-alignments,
 see for instance figure~\ref{figCrossingFreeAlignment}.
-As a consequence, given a vertical line $V$ to the right of $\pointset L$, and a crossing-free left-alignment
-$\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{\gs_p}{p\in L}$
+As a consequence, given a crossing-free left-alignment
+$\gl$ of $\pointset L$, for any set of segments $A=\setst{\gs_p}{p\in\pointset L}$
 realizing $\gl$, the segment $\gs_{\leftmost\pointset L}$ of the leftmost point has to be contained in left
 $\pointset L$-cone number $\gl\of{\leftmost\pointset L}$.
 As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
@@ -842,8 +842,8 @@ $\decomposition$, $\leftmost\pointset L$ has to be matched to a right-point in t
 $\lcone{\gl\of{\leftmost\pointset L}}$, see figure~\ref{figConesNeedPoints}.
 
 To extend this reasoning beyond the leftmost point of $\pointset L$, we define \emph{left conifers on $\pointset L$}.
-A left conifer $\gk$ on a point set $\pointset L$ is a map from points in $\pointset L$ to left
-$\pointset S$-cones for subsets $\pointset S$ of $\pointset L$,
+A left conifer $\gk$ on $\pointset L$ is a map from points in $\pointset L$ to left
+cones of $\pointset L$,
 satisfying the following properties:
 \begin{enumerate}
 \item $\gk\of{\leftmost\pointset L}$ is a left $\pointset L$-cone;
@@ -981,7 +981,8 @@ we have
 \[
 \gcp_k=\sum{i=0}[k-1]\gcp_{i}\gcp_{k-i-1} \text{ and } \gcp_0=1\text,
 \]
-so that $\Cardinality{\LC {\pointset L}} = \CatalanNumber {\Cardinality{\pointset L}}$.
+where the summation index $i$ corresponds to the choice $\gk\of{\leftmost L}=\lcone {i+1}$.
+We thus have $\Cardinality{\LC {\pointset L}} = \CatalanNumber {\Cardinality{\pointset L}}$.
 
 \marginfig[It is impossible to construct a vertical line $V$ to the right of these four points and a
 crossing-free left-alignment $\gl$ of these points on $V$ such that $\conification_\gl$ is the conifer
@@ -1049,7 +1050,7 @@ Sharir--Welzl bound.
 Note that $\conification$ is in general not bijective, see figure~\ref{figCrossingConifer}.
 
 Now, note that
-the map $\conification$ has the property that for any set of segments $A=\setst{\gs_p}{p\in L}$ realizing $\gl$,
+the map $\conification$ has the property that for any set of segments $A=\setst{\gs_p}{p\in\pointset L}$ realizing $\gl$,
 $\gs_p$ lies inside the cone $\conification_\gl\of{p}$. Since the edges of a matching $\gm$ realize the crossing-free
 alignments $\decomposition\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
 This extends the property illustrated by figure~\ref{figConesNeedPoints} to the whole of $\pointset L$.
@@ -1057,20 +1058,20 @@ This extends the property illustrated by figure~\ref{figConesNeedPoints} to the 
 In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
 then there is no crossing-free right-alignment $\gr$ such that $\tuple{\gl,\gr}$ is in the image of $\decomposition$.
 We will call a crossing-free left-alignment $\gl$ \emph{overcounted} if for any crossing-free right-alignment $\gr$,
-$\tuple{\gl,\gr}$ is overcounted. We will call a left cone \emph{$\pointset R$-vacuous} if it does not contain a point
+$\tuple{\gl,\gr}$ is overcounted. We will call a left cone \emph{vacuous} if it does not contain a point
 from $\pointset R$. 
-Moreover, we will write that a conifer $\gk$ is \emph{$\pointset R$-vacuous} if for some $p\in\pointset L$,
+Moreover, we will write that a conifer $\gk$ is \emph{vacuous} if for some $p\in\pointset L$,
 $\gk\of{p}$ is vacuous. Thus, if $\conification_\gl$ is vacuous, $\gl$ is overcounted.
 It follows that an upper bound on the number of non-vacuous left conifers is an upper bound on the number of non-overcounted
 crossing-free left-alignments.
 \section{Highly convex matchings across a line}
 \label{sectionHighlyConvex}
 \marginfig[Point sets $\pointset L$ and $\pointset R$, both
-of size $8$. $\pointset L$ has five $\pointset R$-liminary points, shown in
+of size $8$. $\pointset L$ has five liminary points, shown in
 white. One of them is the leftmost point, the others are separated in two
-upper $\pointset R$-liminary points and three lower $\pointset R$-liminary points.
+upper liminary points and three lower liminary points.
 The first two $\pointset L$-cones and the last three $\pointset L$-cones (shaded)
-are $\pointset R$-vacuous.\label{figLiminaryPoints}]{
+are vacuous.\label{figLiminaryPoints}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \tikzstyle{wdot}=[draw,shape=circle,fill=white,scale=0.5]
@@ -1122,47 +1123,55 @@ are $\pointset R$-vacuous.\label{figLiminaryPoints}]{
 \end{tikzpicture}}
 We will now use convexity considerations to give an upper bound on the number of non-vacuous left conifers.
 Let us first define some concepts related to convex hulls.
-Given a set of points $\pointset P$ in general position, the \emph{extreme points of $\pointset P$} are the points of
-$\pointset P$ that
+The \emph{extreme points of $\pointset P$} are the points of $\pointset P$ that
 are in the boundary of the convex hull of $\pointset P$.
-Given a set of points $\pointset L$ in general position with respect to the horizontal and a set of points $\pointset R$
-in general position with respect to the horizontal to the right of $\pointset L$,
-the \emph{$\pointset R$-liminary points of $\pointset L$} are the points of $\pointset L$ which are extreme points
-of $L\Union R$,
+The \emph{liminary points of $\pointset L$} are the points of $\pointset L$ which are extreme points
+of $\pointset P = \pointset L\Union \pointset R$,
 see figure~\ref{figLiminaryPoints}.
-We will call $\leftmost\pointset L$ the leftmost point of $\pointset L$; note that it is an $\pointset R$-liminary point
-of $\pointset L$.
+Note that $\leftmost\pointset L$ is a liminary point of $\pointset L$.
 
-Note that in polar order around $\leftmost\pointset L$, the $\pointset R$-liminary points of $\pointset L$ other than
+Note that around $\leftmost\pointset L$, the liminary points of $\pointset L$ other than
 $\leftmost\pointset L$ are separated by
-$\pointset R$, that is, in polar order, one subset of the $\pointset R$-liminary points of $\pointset L$ appears
+$\pointset R$, that is, clockwise aronud $\pointset L$, one subset of the liminary points of $\pointset L$ appears
 first, followed by
-all points of $\pointset R$, followed by the rest of the $\pointset R$-liminary points of $\pointset L$ (except
-$\leftmost\pointset L$).
-We will call those $\pointset R$-liminary points of $\pointset L$ which appear below $\pointset R$ the \emph{lower
-$\pointset R$-liminary points of $\pointset L$},
-and those that appear above $\pointset R$ the \emph{upper $\pointset R$-liminary points of $\pointset L$}.
+all points of $\pointset R$ and the non-liminary points of $\pointset L$,
+followed by the rest of the liminary points of $\pointset L$ (except $\leftmost\pointset L$).
+We will call those liminary points of $\pointset L$ which appear before $\pointset R$ the \emph{upper
+liminary points of $\pointset L$},
+and those that appear after $\pointset R$ the \emph{lower liminary points of $\pointset L$}.
 
-If there are $\gD^-$ upper $\pointset R$-liminary points of $\pointset L$, then the first $\gD^-$ left
+If there are $\gD^-$ upper liminary points of $\pointset L$, then the first $\gD^-$ left
 $\pointset L$-cones are vacuous.
-Similarly, if there are $\gD^+$ lower $\pointset R$-liminary points of $\pointset L$, then the last
+Similarly, if there are $\gD^+$ lower liminary points of $\pointset L$, then the last
 $\gD^+$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
-$\mathscr{k}$, any upper $\pointset R$-liminary points
-of $\pointset L$ are $\pointset R$-liminary points of the
-subset of $\pointset L$ above $\mathscr{k}$, and any lower $\pointset R$-liminary points of $\pointset L$ are
-$\pointset R$-liminary points of the
+$\mathscr{k}$, any upper liminary points
+of $\pointset L$ are liminary points of the
+subset of $\pointset L$ above $\mathscr{k}$, and any lower liminary points of $\pointset L$ are
+liminary points of the
 subset of $\pointset L$ below $\mathscr{k}$, so that we get the recurrence
 \[\gcp_{k,\gD}\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\]
 where $\gcp_{k,\gD}$ is an upper bound on the number of crossing-free non-vacuous left conifers on $k$ points
-of which at least $\gD$ are $\pointset R$-liminary.
+of which at least $\gD$ are liminary.
 Moreover, we can start that recurrence with
 \begin{align*}
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
 \gcp_{k,k}&\DefineAs1\text,
 \end{align*}
-since there is at least one $\pointset R$-liminary point of $\pointset L$ (the leftmost one), and if all points are
-$\pointset R$-liminary,
-only one cone is non-vacuous.
+since there is at least one liminary point of $\pointset L$ (the leftmost one), and if all points are
+liminary, only one cone is non-vacuous.
+
+This is a bound on the number of non-overcounted crossing-free left-alignments of $\pointset L$.
+Since the same argument applies on the right, we get the following upper bound on
+$\gn_{\pointset P}\of{\langle^k\rangle^k}$ when $\pointset P$ has $\gG$ extreme points.\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}\leq
+\max_{\gD_{\pointset L} + \gD_{\pointset R} = \gG} \gcp_{k,\gD_{\pointset L}} \gcp_{k,\gD_{\pointset R}}
+\]
+We will show in section~\ref{tyingLooseEnds} that\[
+\gcp_{k,\gD}=TODOTODOTODO\text,
+\]
+and thus that\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}\leq TODOTODOTODO\text.
+\]
 \section{Three changes of bracket direction}
 \label{sectionThreeChanges}
 We now consider perfect matchings consistent with bracket expressions which have three
