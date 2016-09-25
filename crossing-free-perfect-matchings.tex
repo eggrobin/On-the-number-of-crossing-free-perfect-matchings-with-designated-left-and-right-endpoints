@@ -695,7 +695,55 @@ separated by rays emanating from $\leftmost\of L$ and going through other points
 \emph{left $\pointset L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
 Note that there are $i$ points of $\pointset L$ above the interior of left $\pointset L$-cone
 number $i+1$, and $\Cardinality L - i - 1$ points below.
+\marginfig[TODO\label{figConesNeedPoints}]{
+\begin{tikzpicture}[scale=0.6]
+\tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 
+\draw[very thick, name path=V] (0,5) -- (0,0);
+
+\node at (-2,5) {$\pointset L$};
+
+\node at (0,5.5) {$V$};
+
+\node at (3,4.5) {$\pointset R$};
+
+\node[dot] at (-.5,4.5) (a1) {};
+\node[dot] at (-1,3.5) (a3) {};
+\node[dot] at (-4,3) (a4) {};
+\node[dot] at (-1.3,2) (a6) {};
+
+\node[dot] at (2,4.7) (b1) {};
+\node[dot] at (1.5,2.6) (b3) {};
+\node[dot] at (2.5,1.8) (b4) {};
+\node[dot] at (1,0.5) (b6) {};
+
+\draw[gray, name path=edge] (a1) -- (b1);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (a1) -- (align);
+\node[label={[font=\scriptsize,label distance=-5pt]below left:$1$}] at (align) {};
+\draw[gray, name path=edge] (a3) -- (b3);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (a3) -- (align);
+\node[label={[font=\scriptsize,label distance=-5pt]below left:$2$}] at (align) {};
+\draw[gray, name path=edge] (a4) -- (b4);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (a4) -- (align);
+\node[label={[font=\scriptsize,label distance=-5pt]below left:$3$}] at (align) {};
+\draw[gray, name path=edge] (a6) -- (b6);
+\draw[->,thick,name intersections={of=edge and V, by=align}] (a6) -- (align);
+\node[label={[font=\scriptsize,label distance=-5pt]below left:$4$}] at (align) {};
+
+\begin{scope}
+\clip (-4,0) rectangle (2.5,5);
+\draw (a4) -- ($(a4)!10cm!(a1)$);
+\draw (a4) -- ($(a4)!10cm!(a3)$);
+\draw (a4) -- ($(a4)!10cm!(a6)$);
+\end{scope}
+
+\begin{scope}[on background layer]
+\clip ($(a4)!10cm!(a3)$) -- (a4.center) -- ($(a4)!10cm!(a6)$) -- cycle;
+\shade[shading=axis,
+       left color=gray,
+       right color=white] (-5,0) rectangle (2.5,6);
+\end{scope}
+\end{tikzpicture}}
 Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{\gs_p}{p\in L}$
 realizing $\gl$, the segment $\gs_{\leftmost\of L}$ of the leftmost point then has to be contained in left
 $\pointset L$-cone number $\gl\of{\leftmost\of L}$.
