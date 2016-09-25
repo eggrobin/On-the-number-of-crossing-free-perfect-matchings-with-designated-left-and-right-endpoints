@@ -756,7 +756,7 @@ $\Cardinality{\pointset L}$ cones $\lcone i$.\label{figCones}]{
 \draw (lm) -- ($(lm)!10cm!(p5)$);
 \end{scope}
 \end{tikzpicture}}
-\marginfig[A crossing-free perfect matching across a line $\gm$.
+\marginfig[A crossing-free perfect matching $\gm$ across a line $V$.
 Its decomposition is $\tuple{\gl,\gr}\DefineAs\decomposition\of\gm$;
 the crossing-free left-alignment $\gl$ is shown here. Since
 $\gl\of{\leftmost\pointset L}=3$, $\leftmost\pointset L$ is matched within
@@ -774,7 +774,7 @@ the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
 
 \node[dot] at (-.5,4.5) (a1) {};
 \node[dot] at (-1,3.5) (a3) {};
-\node[dot,label=below:$\leftmost\pointset L$] at (-4,3) (a4) {};
+\node[dot,label=left:$\leftmost\pointset L$] at (-4,3) (a4) {};
 \node[dot] at (-1.3,2) (a6) {};
 
 \node[dot] at (2,4.7) (b1) {};
@@ -797,6 +797,7 @@ the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
 
 \begin{scope}
 \clip (-4,0) rectangle (2.5,5);
+\draw (-4,0) -- (-4,5);
 \draw (a4) -- ($(a4)!10cm!(a1)$);
 \draw (a4) -- ($(a4)!10cm!(a3)$);
 \draw (a4) -- ($(a4)!10cm!(a6)$);
@@ -1013,38 +1014,55 @@ the red and green cones respectively, and thus they would cross, a contradiction
        nearly transparent] (-1,0) rectangle (0,5);
 \end{scope}
 \end{tikzpicture}}
-Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost L}$ and by
-crossing-free left alignments
-of the points above and below any edge realizing $\gl$\idest above and below $\lcone{\gl\of{\leftmost L}}$.
+Recall that a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$
+is determined by the value of $\gl\of{\leftmost L}$ and by
+crossing-free left alignments $\gl^-$ and $\gl^+$ on $V$
+of subsets $\pointset S^-$ and $\pointset S^+$ above and below any edge
+realizing $\gl$\idest subsets above and below $\lcone{\gl\of{\leftmost L}}$.
+Formally, with
+\begin{align*}
+\pointset S^- &\DefineAs \gl^{-1}\of{[\gl\of{\leftmost\pointset L}]}\text,\\
+\pointset S^+ &\DefineAs \gl^{-1}\of{[\Cardinality{\pointset L}]\setminus[\gl\of{\leftmost\pointset L}]}\text,\\
+\gl^-\of{p} &\DefineAs \gl\of{p} \text{ for $p\in\pointset S^-$,}\\
+\gl^+\of{p} &\DefineAs \gl\of{p}-\gl\of{\leftmost\pointset L} \text{ for $p\in\pointset S^+$,}
+\end{align*}
+$\gl^\pm$ is a crossing-free left-alignment of $\pointset S^\pm$ on $V$.
 
 We can thus define a recursive construction $\conification$ of a left conifer $\conification_\gl$ from
 a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$ as follows:
 \begin{enumerate}
 \item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
-\item $\gl^-$ be the crossing-free left-alignment of the points above
+\item $\conification_\gl\of{p}=\conification_{\gl^-}\of{p}$ for $p\in\pointset S^-$;
+\item $\conification_\gl\of{p}=\conification_{\gl^+}\of{p}$ for $p\in\pointset S^+$.
 \end{enumerate}
-This is equivalent to choosing left $\pointset L$-cone number $\gl\of{\leftmost L}$,
-and recursively doing so in the point subsets above and below the
-interior of that cone, see figure~\ref{figConification}.
-This gives an injective map $\FunctionNamedBody\conification\gl{\conification_\gl}$
-from crossing-free left-alignments of $\pointset L$ on any line to left conifers. 
-Note that it is not bijective, see figure~\ref{figCrossingConifer}.
+See figure~\ref{figConification} for an example.
+
+This gives an injective map\[
+\FunctionDefinition {\conification} {\CFLA_{\pointset L, V}} {\LC L} {\gl} {\conification_\gl}
+\]
+from crossing-free left-alignments of $\pointset L$ on $V$ to left conifers on $\pointset L$.
 In turn, this yields $\Cardinality{\CFLA_{\pointset L, V}}\leq\Cardinality{\LC L}=
 \CatalanNumber {\Cardinality L}$, which is exactly the
 Sharir--Welzl bound.
+Note that $\conification$ is in general not bijective, see figure~\ref{figCrossingConifer}.
 
 Now, note that
 the map $\conification$ has the property that for any set of segments $A=\setst{\gs_p}{p\in L}$ realizing $\gl$,
-$\gs_p$ lies inside the cone $\conification_\gl\of{p}$; since the edges of a matching $\gm$ realize the crossing-free
+$\gs_p$ lies inside the cone $\conification_\gl\of{p}$. Since the edges of a matching $\gm$ realize the crossing-free
 alignments $\decomposition\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
+This extends the property illustrated by figure~\ref{figConesNeedPoints} to the whole of $\pointset L$.
 
+In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
+then there is no crossing-free right-alignment $\gr$ such that $\tuple{\gl,\gr}$ is in the image of $\decomposition$.
+We will call a crossing-free left-alignment $\gl$ \emph{overcounted} if for any crossing-free right-alignment $\gr$,
+$\tuple{\gl,\gr}$ is overcounted. We will call a left cone \emph{$\pointset R$-vacuous} if it does not contain a point
+from $\pointset R$. 
+Moreover, we will write that a conifer $\gk$ is \emph{$\pointset R$-vacuous} if for some $p\in\pointset L$,
+$\gk\of{p}$ is vacuous. Thus, if $\conification_\gl$ is vacuous, $\gl$ is overcounted.
+It follows that an upper bound on the number of non-vacuous left conifers is an upper bound on the number of non-overcounted
+crossing-free left-alignments.
 \section{Highly convex matchings across a line}
 \label{sectionHighlyConvex}
-In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
-then $\gl$ is overcounted.
-We will call \emph{vacuous} a left cone that does not contain any right-points,
-and we will call vacuous a left conifer that has vacuous cones; thus $\gl$ is overcounted
-if $\conification_\gl$ is vacuous.
 \marginfig[Point sets $\pointset L$ and $\pointset R$, both
 of size $8$. $\pointset L$ has five $\pointset R$-liminary points, shown in
 white. One of them is the leftmost point, the others are separated in two
@@ -1100,7 +1118,6 @@ are $\pointset R$-vacuous.\label{figLiminaryPoints}]{
        right color=white] (-5,-1) rectangle (0,6);
 \end{scope}
 \end{tikzpicture}}
-
 We will now use convexity considerations to give an upper bound on the number of non-vacuous left conifers.
 Let us first define some concepts related to convex hulls.
 Given a set of points $\pointset P$ in general position, the \emph{extreme points of $\pointset P$} are the points of
