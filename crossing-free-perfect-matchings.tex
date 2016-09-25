@@ -1156,11 +1156,11 @@ where $\gcp_{k,\gD}$ is an upper bound on the number of non-vacuous left conifer
 of which at least $\gD$ are liminary.
 Moreover, we can start that recurrence with
 \begin{align*}
-\gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
+\gcp_{k,0}&\DefineAs\gcp_{k,1}\text{ for $k>0$,}\\
 \gcp_{k,k}&\DefineAs1\text,
 \end{align*}
-since there is at least one liminary point of $\pointset L$ (the leftmost one), and if all points are
-liminary, only one cone is non-vacuous.
+since there is at least one liminary point of $\pointset L$ if it is nonempty (the leftmost one), and if all
+points are liminary, only one cone is non-vacuous.
 
 This is a bound on the number of non-overcounted crossing-free left-alignments of $\pointset L$.
 Since the same argument applies on the right, we get the following upper bound on
@@ -1708,10 +1708,10 @@ and $b$ closing brackets), or with a closing bracket (preceded by a well-formed 
 and $b-1$ closing brackets).
 \subsubsection{Tying some loose ends}
 \label{tyingLooseEnds}
-We now solve the recurrence $\gcp$ defined in the previous section. Recall that
+We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex}. Recall that $\gcp$ is defined by
 \begin{align*}
 \gcp_{k,\gD}&\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\\
-\gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
+\gcp_{k,0}&\DefineAs\gcp_{k,1}\text{ for $k>0$, and}\\
 \gcp_{k,k}&\DefineAs1\text.
 \end{align*}
 We will show that $\gcp\of{k,\gD}$ is the number of well-formed prefixes with $k$ opening brackets of which $\gD$
@@ -1736,6 +1736,13 @@ by chaining
 \item an opening bracket, which will be unmatched;
 \item a prefix containing the last $\gD^+$ unmatched opening brackets.
 \end{enumerate}
+Thus, for any nonnegative $\gD^-$ and $\gD^+$ such that $\gD^-+\gD^+=\gD-1$,\[
+\gw_{k,\gD}=\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
+\]
+In particular,\[
+\gw_{k,\gD}=\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
+\]
+It follows that $\gw=\gcp$; this completes the proof.
 \subsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
