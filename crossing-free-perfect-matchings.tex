@@ -29,6 +29,8 @@
 \newcommand{\pointset}{\symscr}
 \newcommand{\lcone}[1]{\mathscr{k}_{\pointset L, #1}}
 \newcommand{\conification}{\mathfrak{K}}
+\newcommand{\decomposition}{\mathfrak{D}}
+\newcommand{\composition}{\mathfrak{D}}
 
 \newcommand*{\tn}[2]{\tikz[baseline,remember picture]\node[inner sep=0pt,anchor=base] (#1) {#2};}
 
@@ -695,7 +697,11 @@ separated by rays emanating from $\leftmost\of L$ and going through other points
 \emph{left $\pointset L$-cones}, and number them from top to bottom from $1$ to $\Cardinality L$, see figure~\ref{figCones}.
 Note that there are $i$ points of $\pointset L$ above the interior of left $\pointset L$-cone
 number $i+1$, and $\Cardinality L - i - 1$ points below.
-\marginfig[TODO\label{figConesNeedPoints}]{
+\marginfig[A crossing-free perfect matching across a line $\gm$.
+Its decomposition is $\tuple{\gl,\gr}\DefineAs\decomposition\of\gm$;
+the crossing-free left-alignment $\gl$ is shown here. Since
+$\gl\of{\leftmost\pointset L}=3$, $\leftmost\pointset L$ is matched within
+the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
 \begin{tikzpicture}[scale=0.6]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 
@@ -705,11 +711,11 @@ number $i+1$, and $\Cardinality L - i - 1$ points below.
 
 \node at (0,5.5) {$V$};
 
-\node at (3,4.5) {$\pointset R$};
+\node at (3,5) {$\pointset R$};
 
 \node[dot] at (-.5,4.5) (a1) {};
 \node[dot] at (-1,3.5) (a3) {};
-\node[dot] at (-4,3) (a4) {};
+\node[dot,label=below:$\leftmost\pointset L$] at (-4,3) (a4) {};
 \node[dot] at (-1.3,2) (a6) {};
 
 \node[dot] at (2,4.7) (b1) {};
