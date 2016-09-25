@@ -615,7 +615,7 @@ Similarly, $\gr$ is a crossing-free right-alignment of $\pointset R$ on the vert
 \end{proof}
 \section{Analysing the overcounting in the upper bound for matchings across a line}
 \label{sectionOvercounting}
-The bound given above for the number of matchings across a line is not optimal;
+The bound given in the previous section for the number of matchings across a line is not optimal;
 an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
 right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{crossingPMAL}).
 \marginfig[Composing crossing-free alignments, only to get a crossing perfect
@@ -644,40 +644,53 @@ matching.\label{crossingPMAL}]{
 \end{tikzpicture}}
 
 There is however more to the overcounting than just counting some crossing matchings.
-To characterize that, it helps to name some functions and sets. Again, are considering a
+To characterize that, it helps to name some functions and sets. Again, we are considering a
 set $\pointset P$ of $2k$ points in general position with respect to the horizontal and the bracket
 expression $\langle^k\rangle^k$.  We let $\pointset L$ be the set of left-points, and $\pointset R$ be the
 set of right-points. Moreover, we pick a vertical line separating $\pointset L$ and $\pointset R$, and call it
 $V$.
 
 In the previous section, given a crossing-free perfect matching $\gm$, we constructed crossing-free
-left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call that
-construction $\decomposition$, thus $\decomposition\of{\gm}=\tuple{\gl, \gr}$. Moreover, let us call $\CFLA_{\pointset L, V}$ the
+left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call these
+crossing-free alignments the \emph{decomposition} $\decomposition$ of $\gm$,
+thus $\decomposition\of{\gm}=\tuple{\gl, \gr}$.
+We remarked that the composition $\gr^{-1}\Compose\gl$ of these alignments yielded the original matching.
+We thus define the \emph{composition} $\composition\of{\gl,\gr}\DefineAs\gr^{-1}\Compose\gl$ for
+arbitrary crossing-free left-aligment $\gl$ of $\pointset L$ on $V$ and $\gr$ of $\pointset R$ on $V$.
+Moreover, let us call $\CFLA_{\pointset L, V}$ the
 set of crossing-free left-alignments of $\pointset L$ on $V$, and $\CFLA_{\pointset R, V}$ the set of crossing-free
-left-alignments of $\pointset R$ on $V$. Given sets of equal sizes $\pointset L$ and $\pointset R$,
-$\gl\in\CFLA_{\pointset L, V}$, and $\gr\in\CFRA_{\pointset R, V}$,
-let $\composition\of{\gl,\gr}$ be the (possibly crossing) perfect matching $\gr^{-1}\Compose\gl$.
+left-alignments of $\pointset R$ on $V$.
 Finally, let us name the sets of perfect matchings across a line and of
 crossing-free perfect matchings across a line,
 \begin{align*}
 \PMAL_{\pointset P} &\DefineAs \bracketing_{\pointset P}^{-1}\of{\langle^k\rangle^k}\\
 \CFPMAL_{\pointset P} &\DefineAs \PMAL_{\pointset P} \Intersection \CFPM_{\pointset P}\text.
 \end{align*}
-Then the following diagram commutes\idest constructing crossing-free alignments from a matching
-and then composing them yields the initial matching.
+Then the following diagram commutes\idest decomposing a crossing-free perfect matching across a line
+and then composing the resulting alignments yields the initial matching.
 \[\begin{tikzcd}
 \CFPMAL_{\pointset P} \arrow{r}{\decomposition} \arrow[hook]{d}{\Subset} &
 \CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V} \arrow{ld}{\composition} \\
 \PMAL_{\pointset P}
 \end{tikzcd}\]
-The result of Sharir and Welzl consists in deducing from the commutative diagram that
-$\decomposition$ must be injective, and so that\begin{equation}
-\Cardinality{\CFPMAL_{\pointset P}} \leq
-\Cardinality{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}\text, \label{SharirWelzlOvercounting}
-\end{equation}
-and then a bound for the number of crossing-free alignments yields a bound for the number of
-crossing-free matchings across a line.
+We will call the elements of $\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}$ \emph{pairs of alignments}.
 
+The result of Sharir and Welzl is proved in two steps. First we see
+from the commutative diagram that $\CFPMAL_{\pointset P}$ lies within the image of
+$\composition$, so that\begin{equation}
+\gn_{\pointset P}\of{\langle^k\rangle^k} =
+\Cardinality{\CFPMAL_{\pointset P}} \leq
+\Cardinality{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}\text. \label{SharirWelzlOvercounting}
+\end{equation}
+Then, we derive an upper bound for the number $\Cardinality{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}$
+of pairs of alignments. We will examine this second step later.
+Looking at the commutative diagram, we can see that $\decomposition$ is injective; this is another way of getting
+(\ref{SharirWelzlOvercounting}), but more importantly, it tells us that $\gn_{\pointset P}\of{\langle^k\rangle^k}$
+is equal to the cardinality of the image of $\decomposition$.
+
+It follows that the pairs of alignments that are \emph{not} in the image of $\decomposition$ are responsible
+for the slackness of the inequality (\ref{SharirWelzlOvercounting}). We will thus call them
+\emph{overcounted pairs of alignments}.
 \marginfig[Composing crossing-free alignments, and getting a crossing-free perfect matching,
 but one that does not decompose to the original alignments.\label{figWeirdAligments}]{
 \begin{tikzpicture}[scale=0.6]
@@ -702,17 +715,14 @@ but one that does not decompose to the original alignments.\label{figWeirdAligme
 \draw[->,very thick] (r1) -- (a1);
 \draw[->,very thick] (l2) -- (a1);
 \end{tikzpicture}}
-The inequality (\ref{SharirWelzlOvercounting}) is strict, as shown in figure~\ref{crossingPMAL}.
-We would thus like to study the pairs of crossing-free alignments which are \emph{not} in
-the image of $\decomposition$, since they are responsible for that excess; we will call them \emph{overcounted}.
-Overcounted pairs of crossing-free alignments fall into one of two categories;
+An overcounted pair of alignments $\composition\of{\gl,\gr}$ falls into one of two families:
 \begin{enumerate}
 \item
-evidently, if $\composition\of{\gl,\gr}$ is crossing, then $\tuple{\gl,\gr}$ is not in the image of $\decomposition$,
-since the diagram commutes;
-\item on the other hand, figure~\ref{figWeirdAligments} shows a pair of
-crossing-free alignments $\tuple{\gl,\gr}$ which composes to a crossing-free alignment
-$\gm = \composition\of{\gl,\gr}$, but which is not equal to $\decomposition\of\gm$.
+$\composition\of{\gl,\gr}$ can be a crossing perfect matching, as in figure~\ref{crossingPMAL};
+This implies that $\tuple{\gl,\gr}$ is not in the image of $\decomposition$, since the diagram commutes;
+\item $\composition\of{\gl,\gr}$ can be a crossing-free perfect matching;
+in this case, we have $\tuple{\gl,\gr}\neq\decomposition\Compose\composition\of{\gl,\gr}$,
+since $\tuple{\gl,\gr}$ is overcounted; an example is shown in figure~\ref{figWeirdAligments}.
 \end{enumerate}
 In addition, we will call a crossing-free left alignment $\gl$ overcounted if any pair
 $\tuple{\gl, \gr}$ is overcounted.
