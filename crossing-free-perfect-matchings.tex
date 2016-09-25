@@ -672,8 +672,11 @@ There is however more to the overcounting than just counting some crossing match
 To characterize that, it helps to name some functions and sets. Again, we are considering a
 set $\pointset P$ of $2k$ points in general position with respect to the horizontal and the bracket
 expression $\langle^k\rangle^k$.  We let $\pointset L$ be the set of left-points, and $\pointset R$ be the
-set of right-points. Moreover, we pick a vertical line separating $\pointset L$ and $\pointset R$, and call it
-$V$.
+set of right-points. Moreover, we pick a vertical line $V$ separating $\pointset L$ and $\pointset R$.
+
+In this section and the following one, crossing-free left- and right-alignments will implicitly be on $V$,
+and unless otherwise mentioned, crossing-free left-alignments will be of $\pointset L$, and crossing-free
+right-alignments will be of $\pointset R$.
 
 In the previous section, given a crossing-free perfect matching $\gm$, we constructed crossing-free
 left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call these
@@ -1140,18 +1143,18 @@ We will call those $\pointset R$-liminary points of $\pointset L$ which appear b
 $\pointset R$-liminary points of $\pointset L$},
 and those that appear above $\pointset R$ the \emph{upper $\pointset R$-liminary points of $\pointset L$}.
 
-If there are $\gd_1$ upper $\pointset R$-liminary points of $\pointset L$, then the first $\gd_1$ left
+If there are $\gD^-$ upper $\pointset R$-liminary points of $\pointset L$, then the first $\gD^-$ left
 $\pointset L$-cones are vacuous.
-Similarly, if there are $\gd_2$ lower $\pointset R$-liminary points of $\pointset L$, then the last
-$\gd_2$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
+Similarly, if there are $\gD^+$ lower $\pointset R$-liminary points of $\pointset L$, then the last
+$\gD^+$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
 $\mathscr{k}$, any upper $\pointset R$-liminary points
 of $\pointset L$ are $\pointset R$-liminary points of the
 subset of $\pointset L$ above $\mathscr{k}$, and any lower $\pointset R$-liminary points of $\pointset L$ are
 $\pointset R$-liminary points of the
 subset of $\pointset L$ below $\mathscr{k}$, so that we get the recurrence
-\[\gcp_{k,\gd}\DefineAs\max_{\gd_1+\gd_2=\gd-1}\sum{i=\gd_1}[k-\gd_2-1]\gcp_{i,\gd_1}\gcp_{k-i-1,\gd_2}\text,\]
-where $\gcp_{k,\gd}$ is an upper bound on the number of crossing-free non-vacuous left conifers on $k$ points
-of which at least $\gd$ are $\pointset R$-liminary.
+\[\gcp_{k,\gD}\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\]
+where $\gcp_{k,\gD}$ is an upper bound on the number of crossing-free non-vacuous left conifers on $k$ points
+of which at least $\gD$ are $\pointset R$-liminary.
 Moreover, we can start that recurrence with
 \begin{align*}
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
