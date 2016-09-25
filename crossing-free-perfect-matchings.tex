@@ -1708,7 +1708,8 @@ and $b$ closing brackets), or with a closing bracket (preceded by a well-formed 
 and $b-1$ closing brackets).
 \subsubsection{Tying some loose ends}
 \label{tyingLooseEnds}
-We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex}. Recall that $\gcp$ is defined by
+We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex} by a combinatorial argument.
+Recall that $\gcp$ is defined by
 \begin{align*}
 \gcp_{k,\gD}&\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\\
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text{ for $k>0$, and}\\
@@ -1716,10 +1717,11 @@ We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex}.
 \end{align*}
 We will show that $\gcp\of{k,\gD}$ is the number of well-formed prefixes with $k$ opening brackets of which $\gD$
 are unmatched, thus that $\gcp\of{k,\gD}=\spc\of{k,k-\gD}$.
+
 Let $\gw_{k,\gD}\DefineAs\spc\of{k,k-\gD}$ be the number of well-formed prefixes with $k$ opening brackets of which $\gD$
 are unmatched.
+We have $\gw_{k,k}=1$, since the only such prefix is $\langle^k$.
 
-We have $\gw_{k,k}=1$, since the only such prefix is $\langle^k$. For
 Consider $\gw_{k,0}$ where $k>0$\idest the number of well-formed bracket expressions of length $k$. Note that any
 nonempty well-formed bracket expression can be turned into a well-formed prefix with one unmatched opening bracket
 by removing the final closing bracket, and that adding a closing bracket to a well-formed prefix with
@@ -1740,7 +1742,7 @@ Thus, for any nonnegative $\gD^-$ and $\gD^+$ such that $\gD^-+\gD^+=\gD-1$,\[
 \gw_{k,\gD}=\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
 \]
 In particular,\[
-\gw_{k,\gD}=\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
+\gw_{k,\gD}=\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
 \]
 It follows that $\gw=\gcp$; this completes the proof.
 \subsection{Asymptotics}
