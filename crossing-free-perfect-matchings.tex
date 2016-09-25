@@ -1707,7 +1707,35 @@ and $b$ closing brackets either ends with an opening bracket (preceded by a well
 and $b$ closing brackets), or with a closing bracket (preceded by a well-formed prefix with $a$ opening
 and $b-1$ closing brackets).
 \subsubsection{Tying some loose ends}
-TODO here give a combinatorial proof for the $\gcp$ from the section on highly convex matchings.
+\label{tyingLooseEnds}
+We now solve the recurrence $\gcp$ defined in the previous section. Recall that
+\begin{align*}
+\gcp_{k,\gD}&\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\\
+\gcp_{k,0}&\DefineAs\gcp_{k,1}\text,\\
+\gcp_{k,k}&\DefineAs1\text.
+\end{align*}
+We will show that $\gcp\of{k,\gD}$ is the number of well-formed prefixes with $k$ opening brackets of which $\gD$
+are unmatched, thus that $\gcp\of{k,\gD}=\spc\of{k,k-\gD}$.
+Let $\gw_{k,\gD}\DefineAs\spc\of{k,k-\gD}$ be the number of well-formed prefixes with $k$ opening brackets of which $\gD$
+are unmatched.
+
+We have $\gw_{k,k}=1$, since the only such prefix is $\langle^k$. For
+Consider $\gw_{k,0}$ where $k>0$\idest the number of well-formed bracket expressions of length $k$. Note that any
+nonempty well-formed bracket expression can be turned into a well-formed prefix with one unmatched opening bracket
+by removing the final closing bracket, and that adding a closing bracket to a well-formed prefix with
+one unmatched opening bracket yields a well-formed bracket expression. These operations are the inverse of each other,
+thus they are bijections, so $\gw_{k,0}=\gw_{k,1}$.
+
+Finally, we look at the sum. For any nonnegative $\gD^-$ and $\gD^+$ such that $\gD^-+\gD^+=\gD-1$,\[
+\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}
+\]
+counts the number of ways of constructing a bracket expression with $k$ opening brackets of which $\gD$ are unmatched
+by chaining
+\begin{enumerate}
+\item a prefix containing the first $\gD^-$ unmatched opening brackets;
+\item an opening bracket, which will be unmatched;
+\item a prefix containing the last $\gD^+$ unmatched opening brackets.
+\end{enumerate}
 \subsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
