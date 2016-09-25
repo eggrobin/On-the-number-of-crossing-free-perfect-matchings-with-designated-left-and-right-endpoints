@@ -710,7 +710,7 @@ $\composition$, so that\begin{equation}
 Then, we derive an upper bound for the number $\Cardinality{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}$
 of pairs of alignments. We will examine this second step later.
 Looking at the commutative diagram, we can see that $\decomposition$ is injective; this is another way of getting
-(\ref{SharirWelzlOvercounting}), but more importantly, it tells us that $\gn_{\pointset P}\of{\langle^k\rangle^k}$
+(\ref{SharirWelzlOvercounting}), but more importantly, it means that $\gn_{\pointset P}\of{\langle^k\rangle^k}$
 is equal to the cardinality of the image of $\decomposition$.
 
 It follows that the pairs of alignments that are \emph{not} in the image of $\decomposition$ are responsible
@@ -756,20 +756,6 @@ $\Cardinality{\pointset L}$ cones $\lcone i$.\label{figCones}]{
 \draw (lm) -- ($(lm)!10cm!(p5)$);
 \end{scope}
 \end{tikzpicture}}
-
-We would therefore like to give a bound on the number of non-overcounted pairs of alignments; in order to do that,
-we turn to the second part of the proof of Sharir and Welzl, namely the bound on the number of pairs of alignments,
-and examine it in more detail, with some fresh definitions.
-
-First, for a point set $\pointset L$ in general position with respect to the horizontal,
-note that we can partition the half-plane to the right of $\leftmost\pointset L$ in
-$\Cardinality{\pointset L}$ regions,
-separated by rays emanating from $\leftmost\pointset L$ and going through other points of
-$\pointset L$, see figure~\ref{figCones}.
-We will call those regions \emph{left $\pointset L$-cones}, and call them, from top to bottom, $\lcone 1$ to
-$\lcone {\Cardinality{\pointset L}}$.
-Note that there are $i$ points of $\pointset L$ above the interior of $\lcone i$,
-and $\Cardinality {\pointset L} - i - 1$ points below.
 \marginfig[A crossing-free perfect matching across a line $\gm$.
 Its decomposition is $\tuple{\gl,\gr}\DefineAs\decomposition\of\gm$;
 the crossing-free left-alignment $\gl$ is shown here. Since
@@ -823,22 +809,42 @@ the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
        right color=white] (-5,0) rectangle (2.5,6);
 \end{scope}
 \end{tikzpicture}}
-Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{\gs_p}{p\in L}$
-realizing $\gl$, the segment $\gs_{\leftmost L}$ of the leftmost point then has to be contained in left
+
+We would therefore like to give a bound on the number of non-overcounted pairs of alignments; in order to do that,
+we turn to the second part of the proof of Sharir and Welzl, namely the bound on the number of pairs of alignments,
+and examine it in more detail, with some fresh definitions. Again, we will look at crossing-free left-alignments; the
+following argument equally applies to crossing-free right-alignments.
+
+First, for a point set $\pointset L$ in general position with respect to the horizontal,
+note that we can partition the half-plane to the right of $\leftmost\pointset L$ in
+$\Cardinality{\pointset L}$ regions,
+separated by rays emanating from $\leftmost\pointset L$ and going through other points of
+$\pointset L$, see figure~\ref{figCones}.
+We will call those regions \emph{left $\pointset L$-cones}, and call them, from top to bottom, $\lcone 1$ to
+$\lcone {\Cardinality{\pointset L}}$.
+Note that there are $i$ points of $\pointset L$ above the interior of $\lcone i$,
+and $\Cardinality {\pointset L} - i - 1$ points below.
+
+Observe that the same separation of the point set held for realizing segments of crossing-free left-alignments,
+see for instance figure~\ref{figCrossingFreeAlignment}.
+As a consequence, given a vertical line $V$ to the right of $\pointset L$, and a crossing-free left-alignment
+$\gl$ of $\pointset L$ on $V$, for any set of segments $A=\setst{\gs_p}{p\in L}$
+realizing $\gl$, the segment $\gs_{\leftmost L}$ of the leftmost point has to be contained in left
 $\pointset L$-cone number $\gl\of{\leftmost L}$.
 As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
-to the left side of $V$ realize the left-alignment in $\decomposition\of\gm$. Thus if $\tuple{\gl, \gr}$ is in the image of
-$\decomposition$, $\leftmost L$ has to be matched to a right-point in left $\pointset L$-cone number $\gl\of{\leftmost L}$, see
-figure~\ref{figConesNeedPoints}.
+to the left side of $V$ realize the crossing-free
+left-alignment in $\decomposition\of\gm$. Thus, if $\tuple{\gl, \gr}$ is in the image of
+$\decomposition$, $\leftmost\pointset L$ has to be matched to a right-point in the cone
+$\lcone{\gl\of{\leftmost\pointset L}}$, see figure~\ref{figConesNeedPoints}.
 
-To extend this reasoning beyond the leftmost point of $\pointset L$, we define \emph{left conifers of $\pointset L$}.
-A left conifer $\gk$ of a point set $\pointset L$ is a map from points in $\pointset L$ to left $S$-cones for subsets $S$
-of $\pointset L$,
+To extend this reasoning beyond the leftmost point of $\pointset L$, we define \emph{left conifers on $\pointset L$}.
+A left conifer $\gk$ on a point set $\pointset L$ is a map from points in $\pointset L$ to left
+$\pointset S$-cones for subsets $\pointset S$ of $\pointset L$,
 satisfying the following properties:
 \begin{enumerate}
 \item $\gk\of{\leftmost L}$ is a left $\pointset L$-cone;
-\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost L}$ is a left conifer of these points;
-\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost L}$ is a left conifer of these points.
+\item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost L}$ is a left conifer on these points;
+\item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost L}$ is a left conifer on these points.
 \end{enumerate}
 \marginfig[A crossing-free left-alignment $\gl$ (the one from figure~\ref{figCrossingFreeAlignment}),
 together with the conifer $\conification_\gl$.\label{figConification}]{
@@ -963,6 +969,7 @@ See figure~\ref{figLeftConifer} for an example.
 \caption{The construction of a left conifer a set $\pointset L$ of five points.}
 \label{figLeftConifer}
 \end{figure}
+
 We call $\LC L$ the set of left conifers of $\pointset L$. From the observations above on the number
 of cones and the
 size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conifers of $k$ points,
@@ -1008,7 +1015,14 @@ the red and green cones respectively, and thus they would cross, a contradiction
 \end{tikzpicture}}
 Recall that a crossing-free left-alignment $\gl$ is determined by the value of $\gl\of{\leftmost L}$ and by
 crossing-free left alignments
-of the points above and below any edge realizing $\gl$\idest above and below cone number $\gl\of{\leftmost L}$.
+of the points above and below any edge realizing $\gl$\idest above and below $\lcone{\gl\of{\leftmost L}}$.
+
+We can thus define a recursive construction $\conification$ of a left conifer $\conification_\gl$ from
+a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$ as follows:
+\begin{enumerate}
+\item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
+\item $\gl^-$ be the crossing-free left-alignment of the points above
+\end{enumerate}
 This is equivalent to choosing left $\pointset L$-cone number $\gl\of{\leftmost L}$,
 and recursively doing so in the point subsets above and below the
 interior of that cone, see figure~\ref{figConification}.
