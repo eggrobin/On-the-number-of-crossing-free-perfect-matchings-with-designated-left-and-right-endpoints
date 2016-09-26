@@ -178,6 +178,21 @@ if for some polynomial $p$ (that does not depend on $z$),
 If $f \of {n,z}$ admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
 that $u\of {n,z} \leq p\of n \bar f \of{n}$, giving an upper bound truly independent of $z$.
 It also makes it possible to get a bound by summation of $f \of {n,z}$ over $z\in\gW_n$.
+
+Observe that these bounds up to a polynomial are related to $\BigO$ notation when the upper bound
+is exponential; specifically,
+\[u \of n \preccurlyeq_n \gz^n \Implies \forall\gce>0, u\of n\in\BigO\of{\pa{\gz+\gce}^n}\text.\]
+Moreover, for positive $f_1$ and $f_2$, if
+$u_1\of{a,z}\preccurlyeq_a f_1\of{a,z}$ and
+$u_2\of{b,z}\preccurlyeq_b f_2\of{b,z}$,
+both uniformly in $z$, we have\[
+u_1\of{a,z}u_2\of{b,z}\preccurlyeq_{m} f_1\of{a,z}f_2\of{m-a,z}
+\]
+uniformly in $b\in\intclos 0 m$ and in $z$. Indeed, if $u_i\of{a,z}\leq p_i\of{a} f_i\of{a,z}$,
+where without loss of generality the coefficients of $p_i$ are positive, we get
+\[u_1\of{a,z}u_2\of{a,z}
+\leq p_1\of{a}p_2\of{b} f_1\of{a,z}f_2\of{b,z}
+\leq p_1\of{a+b}p_2\of{a+b} f_1\of{a,z}f_2\of{b,z}\text.\]
 \subsection{A remark on the asymptotics of the binomial coefficient}
 Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
 upper bound for them.
