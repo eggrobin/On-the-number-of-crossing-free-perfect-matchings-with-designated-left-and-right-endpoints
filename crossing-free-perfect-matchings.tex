@@ -180,8 +180,8 @@ track of the growth due to $z$. We will write that\[
 u \of {n,z} \preccurlyeq_n f \of {n,z} \text{ \emph{uniformly in $z\in\gW_n$}}\]
 if for some polynomial $p$ (that does not depend on $z$),
 \[\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq p\of n f \of {n,z}\text.\]
-If $f \of {n,z}$ admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
-that $u\of {n,z} \leq p\of n \bar f \of{n}$, giving an upper bound truly independent of $z$.
+If $f \of {n,z}$ admits a supremum $F \of {n}$ in $z\in\gW_n$ for all $n$, this implies
+that $u\of {n,z} \leq p\of n F \of{n}$, giving an upper bound truly independent of $z$.
 It also makes it possible to get a bound by summation of $f \of {n,z}$ over $z\in\gW_n$.
 
 Observe that these bounds up to a polynomial are related to $\BigO$ notation when the upper bound
@@ -901,57 +901,6 @@ satisfying the following properties:
 \item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\pointset L}$ is a left conifer on these points;
 \item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\pointset L}$ is a left conifer on these points.
 \end{enumerate}
-\marginfig[A crossing-free left-alignment $\gl$ (the one from figure~\ref{figCrossingFreeAlignment}),
-together with the conifer $\conification_\gl$.\label{figConification}]{
-\begin{tikzpicture}[scale=0.75]
-\tikzstyle{dot}=[draw,shape=circle,scale=0.5]
-       
-\node[dot,fill=red] at (-5,2) (lm) {};
-\node[dot,fill=green] at (-4,1) (p2) {};
-\node[dot,fill=blue] at (-3,4) (p3) {};
-\node[dot,fill=cyan] at (-2,1.5) (p4) {};
-\node[dot,fill=black] at (-1,3.5) (p5) {};
-
-\node[inner sep=0pt,label=right:$1$] at (0,4) (l1) {};
-\node[inner sep=0pt,label=right:$2$] at (0,3) (l2) {};
-\node[inner sep=0pt,label=right:$3$] at (0,2.5) (l3) {};
-\node[inner sep=0pt,label=right:$4$] at (0,1.5) (l4) {};
-\node[inner sep=0pt,label=right:$5$] at (0,1) (l5) {};
-
-\draw[->] (lm) -- (l3);
-\draw[->] (p3) -- (l2);
-\draw[->] (p5) -- (l1);
-\draw[->] (p4) -- (l4);
-\draw[->] (p2) -- (l5);
-
-\begin{scope}[on background layer]
-\begin{scope}
-\clip ($(lm)!10cm!(p5)$) -- (lm.center) -- ($(lm)!10cm!(p4)$) -- cycle;
-\shade[shading=axis,
-       left color=red,
-       nearly transparent] (-5,0) rectangle (1,5);
-\end{scope}
-\begin{scope}
-\clip ($(p2)!10cm!(p4)$) -- (p2.center) -- (-4,0) -- (1,0) -- cycle;
-\shade[shading=axis,
-       left color=green,
-       nearly transparent] (-4,0) rectangle (1,5);
-\end{scope}
-\begin{scope}
-\clip ($(p3)!10cm!(p5)$) -- (p3.center) -- (-3,0) -- (1,0) -- cycle;
-\shade[shading=axis,
-       left color=blue,
-       nearly transparent] (-3,0) rectangle (1,5);
-\end{scope}
-\shade[shading=axis,
-       left color=cyan,
-       nearly transparent] (-2,0) rectangle (1,5);
-\shade[shading=axis,
-       left color=black,
-       nearly transparent] (-1,0) rectangle (1,5);
-\end{scope}
-\draw[very thick] (0,5) -- (0,0);
-\end{tikzpicture}}
 See figure~\ref{figLeftConifer} for an example.
 \begin{figure}[ht!]
 \centering
@@ -1035,6 +984,79 @@ we have
 where the summation index $i$ corresponds to the choice $\gk\of{\leftmost L}=\lcone {i+1}$.
 We thus have $\Cardinality{\LC {\pointset L}} = \CatalanNumber {\Cardinality{\pointset L}}$.
 
+Recall that a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$
+is determined by the value of $\gl\of{\leftmost\pointset L}$ and by
+crossing-free left alignments $\gl^-$ and $\gl^+$ on $V$
+of subsets $\pointset S^-$ and $\pointset S^+$ above and below any edge
+realizing $\gl$\idest subsets above and below $\lcone{\gl\of{\leftmost\pointset L}}$.
+Formally, we have
+\begin{align*}
+\pointset S^- &= \gl^{-1}\of{[\gl\of{\leftmost\pointset L}]}\text,\\
+\pointset S^+ &= \gl^{-1}\of{[\Cardinality{\pointset L}]\setminus[\gl\of{\leftmost\pointset L}]}\text,\\
+\gl^-\of{p} &= \gl\of{p} \text{ for $p\in\pointset S^-$, and}\\
+\gl^+\of{p} &= \gl\of{p}-\gl\of{\leftmost\pointset L} \text{ for $p\in\pointset S^+$.}
+\end{align*}
+
+\marginfig[A crossing-free left-alignment $\gl$ (the one from figure~\ref{figCrossingFreeAlignment}),
+together with the conifer $\conification_\gl$.\label{figConification}]{
+\begin{tikzpicture}[scale=0.75]
+\tikzstyle{dot}=[draw,shape=circle,scale=0.5]
+       
+\node[dot,fill=red] at (-5,2) (lm) {};
+\node[dot,fill=green] at (-4,1) (p2) {};
+\node[dot,fill=blue] at (-3,4) (p3) {};
+\node[dot,fill=cyan] at (-2,1.5) (p4) {};
+\node[dot,fill=black] at (-1,3.5) (p5) {};
+
+\node[inner sep=0pt,label=right:$1$] at (0,4) (l1) {};
+\node[inner sep=0pt,label=right:$2$] at (0,3) (l2) {};
+\node[inner sep=0pt,label=right:$3$] at (0,2.5) (l3) {};
+\node[inner sep=0pt,label=right:$4$] at (0,1.5) (l4) {};
+\node[inner sep=0pt,label=right:$5$] at (0,1) (l5) {};
+
+\draw[->] (lm) -- (l3);
+\draw[->] (p3) -- (l2);
+\draw[->] (p5) -- (l1);
+\draw[->] (p4) -- (l4);
+\draw[->] (p2) -- (l5);
+
+\begin{scope}[on background layer]
+\begin{scope}
+\clip ($(lm)!10cm!(p5)$) -- (lm.center) -- ($(lm)!10cm!(p4)$) -- cycle;
+\shade[shading=axis,
+       left color=red,
+       nearly transparent] (-5,0) rectangle (1,5);
+\end{scope}
+\begin{scope}
+\clip ($(p2)!10cm!(p4)$) -- (p2.center) -- (-4,0) -- (1,0) -- cycle;
+\shade[shading=axis,
+       left color=green,
+       nearly transparent] (-4,0) rectangle (1,5);
+\end{scope}
+\begin{scope}
+\clip ($(p3)!10cm!(p5)$) -- (p3.center) -- (-3,0) -- (1,0) -- cycle;
+\shade[shading=axis,
+       left color=blue,
+       nearly transparent] (-3,0) rectangle (1,5);
+\end{scope}
+\shade[shading=axis,
+       left color=cyan,
+       nearly transparent] (-2,0) rectangle (1,5);
+\shade[shading=axis,
+       left color=black,
+       nearly transparent] (-1,0) rectangle (1,5);
+\end{scope}
+\draw[very thick] (0,5) -- (0,0);
+\end{tikzpicture}}
+We can thus define a recursive construction $\conification$ of a left conifer $\conification_\gl$ from
+a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$ as follows:
+\begin{enumerate}
+\item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
+\item $\conification_\gl\of{p}=\conification_{\gl^-}\of{p}$ for $p\in\pointset S^-$;
+\item $\conification_\gl\of{p}=\conification_{\gl^+}\of{p}$ for $p\in\pointset S^+$.
+\end{enumerate}
+See figure~\ref{figConification} for an example.
+
 \marginfig[It is impossible to construct a vertical line $V$ to the right of these four points and a
 crossing-free left-alignment $\gl$ of these points on $V$ such that $\conification_\gl$ is the conifer
 shown. Indeed, realizing segments $\gs_p$ and $\gs_q$ would have to lie within
@@ -1069,28 +1091,6 @@ the red and green cones respectively, and thus they would cross, a contradiction
        nearly transparent] (-1,0) rectangle (0,5);
 \end{scope}
 \end{tikzpicture}}
-Recall that a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$
-is determined by the value of $\gl\of{\leftmost\pointset L}$ and by
-crossing-free left alignments $\gl^-$ and $\gl^+$ on $V$
-of subsets $\pointset S^-$ and $\pointset S^+$ above and below any edge
-realizing $\gl$\idest subsets above and below $\lcone{\gl\of{\leftmost\pointset L}}$.
-Formally, we have
-\begin{align*}
-\pointset S^- &= \gl^{-1}\of{[\gl\of{\leftmost\pointset L}]}\text,\\
-\pointset S^+ &= \gl^{-1}\of{[\Cardinality{\pointset L}]\setminus[\gl\of{\leftmost\pointset L}]}\text,\\
-\gl^-\of{p} &= \gl\of{p} \text{ for $p\in\pointset S^-$, and}\\
-\gl^+\of{p} &= \gl\of{p}-\gl\of{\leftmost\pointset L} \text{ for $p\in\pointset S^+$.}
-\end{align*}
-
-We can thus define a recursive construction $\conification$ of a left conifer $\conification_\gl$ from
-a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$ as follows:
-\begin{enumerate}
-\item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
-\item $\conification_\gl\of{p}=\conification_{\gl^-}\of{p}$ for $p\in\pointset S^-$;
-\item $\conification_\gl\of{p}=\conification_{\gl^+}\of{p}$ for $p\in\pointset S^+$.
-\end{enumerate}
-See figure~\ref{figConification} for an example.
-
 This gives an injective map\[
 \FunctionDefinition {\conification} {\CFLA_{\pointset L, V}} {\LC {\pointset L}} {\gl} {\conification_\gl}
 \]
@@ -1863,16 +1863,16 @@ We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymp
 (\ref{bound-ck-spckl-spcpq-cp}).
 We are interested in the asymptotics as a function of the length $n = a+b+c+d$ of the bracket expression.
 Since the bound is a product of two identical two-parameter factors, we study one of them,\[
-f_{a,b}\DefineAs \CatalanNumber a\spc\of{a,b}\text,
+\gj_{a,b}\DefineAs \CatalanNumber a\spc\of{a,b}\text,
 \]
 as a function of $m\DefineAs a+b$. Let $b = \gh a$, thus $0\leq \gh\leq 1$,
 the above expression becomes \[
-f_{\frac{m}{\gh+1}, \frac{m\gh}{\gh+1}}=
+\gj_{\frac{m}{\gh+1}, \frac{m\gh}{\gh+1}}=
 \CatalanNumber {\frac{m}{\gh + 1}} \binom{m}{\frac{m}{\gh + 1}} \frac{m-m\gh+\gh+1}{m+\gh+1}
 \leq \CatalanNumber {\frac{m}{\gh + 1}} \binom{m}{\frac{m}{\gh + 1}}\text.
 \]
 Asymptotically, this yields\[
-f_{\frac{m}{\gh+1}, \frac{m\gh}{\gh+1}}\preccurlyeq_m
+\gj_{\frac{m}{\gh+1}, \frac{m\gh}{\gh+1}}\preccurlyeq_m
 4^{\frac{m}{\gh + 1}}
 \pa{
   \frac
