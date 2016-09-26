@@ -283,16 +283,27 @@ perfect matching.\label{figConvexPerfectMatching}]{
 \node[dot,label=left:$1$] at (0,2) (p1) {};
 \node[dot,label=left:$2$] at (0.5,3.5) (p2) {};
 \node[dot,label=above left:$2i$] at (2,4) (p2i) {};
-\node[dot,label=above:$2i+1$] at (4,4) (p2iplus1) {};
+\node[dot,label=above:${j=2i+1}$] at (4,4) (p2iplus1) {};
 \node[dot,label=right:$2i+2$] at (5.5,3) (p2iplus2) {};
 \node[dot,label=right:$2n-2$] at (5,1) (p2nminus2) {};
 \node[dot,label=below:$2n-1$] at (3,0) (p2nminus1) {};
 \draw (p0) -- (p2iplus1);
 \end{tikzpicture}}
 
-[TODO talk about the number of crossing-free perfect matchings in convex position, give the proof;
-find the Alfred Errera thing from the octavo of the académie royale de belgique, reference 10 in
-Sharir--Welzl; this might require a trip to the library?]
+If $\pointset P$ is a set of $n=2k$ points in convex position,
+it was shown\footnote{In fact, Errera counts the number of figures that can be formed in the upper half-plane by $k$
+semicircles with their centres on the boundary. Since these are geodesic of the hyperbolic plane, switching to the
+Beltrami--Klein model turns the half-plane into the unit disk, and the semicircles into chords, so that the problem
+becomes that of crossing-free perfect matchings in convex position.}
+by A.~Errera in 1930 \cite{Errera1931} that\[\CFPM_{\pointset P}=\CatalanNumber k\text.\]
+Indeed, given a crossing-free perfect matching,
+numbering the points from $0$ to $2n-1$ along the boundary of the convex hull, as in figure~\ref{figConvexPerfectMatching},
+we see that the edge emanating from point $0$ and matching it to point $j$ partitions
+the point set. It follows that the restriction of the matching to either $\set{j+1,\dotsc,2n-1}$ or
+$\set{1,\dotsc,j-1}$ is a crossing-free perfect matching.
+As consequence, these sets have even size, so $j=2i+1$ for some $i$.
+We thus have Segner's recurrence for the number of crossing-free perfect matchings on a convex point set.
+Since there is only one---fairly boring---crossing-free perfect matching on the empty set, we get the Catalan numbers.
 
 For a set $\pointset P$ of $n$ points in general position, it was proved by Micha~Sharir and Emo~Welzl in 2005
 \cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq_n 10.05^n$.
@@ -435,10 +446,10 @@ Define $\gL\of\gm$ for a perfect matching $\gm$ on $\pointset P$ to be the sum o
 edges by the thin ones reduces the total edge length, while preserving left and right endpoints.]{
 \begin{tikzpicture}[scale=1]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
-\node[dot,label=below:$v$] at (0,0) (a) {};
-\node[dot,label=above:$v'$] at (-0.5,1) (c) {};
-\node[dot,label=below:$w'$] at (2,0.5) (d) {};
-\node[dot,label=above:$w$] at (1.5,1.5) (b) {};
+\node[dot,label=below:$p$] at (0,0) (a) {};
+\node[dot,label=above:$p'$] at (-0.5,1) (c) {};
+\node[dot,label=below:$q'$] at (2,0.5) (d) {};
+\node[dot,label=above:$q$] at (1.5,1.5) (b) {};
 
 \draw (a) -- (d);
 \draw (c) -- (b);
@@ -447,10 +458,10 @@ edges by the thin ones reduces the total edge length, while preserving left and 
 \end{tikzpicture}}
 Then, repeat the following procedure, starting at $i=0$.
 If there is no crossing in $\gm_i$, we have found a perfect matching with the desired properties.
-If there is a crossing, let $v$, $v'$, $w$, and $w'$ be the points involved, with $v$ and $v'$ being the left
-endpoints and $w$ and $w'$ being the right endpoints, so that the edge
-$vw$ crosses the edge $v'w'$. Remove these edges, and replace them by $vw'$ and $v'w$
-(thus untangling them). This yields another perfect matching $\gm_{i+1}$. By the triangle
+If there is a crossing, let $p$, $p'$, $q$, and $q'$ be the points involved, with $p$ and $p'$ being the left
+endpoints and $q$ and $q'$ being the right endpoints, so that the edge
+$pq$ crosses the edge $p'q'$. Remove these edges, and replace them by $pq'$ and $p'q$, thus untangling them.
+This yields another perfect matching $\gm_{i+1}$. By the triangle
 inequality (see figure \ref{figUncrossing}), $\gL\of{\gm_{i+1}}<\gL\of{\gm_i}$.
 
 If this procedure did not terminate, it would yield a sequence $\tuple{\gm_i}_{i\in\N}$ of crossing
