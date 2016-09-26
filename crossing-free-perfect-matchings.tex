@@ -166,7 +166,7 @@ existing results. Since the bounds are often exponential, we tend to ignore poly
 factors. We will thus write that\[
 u \of n \preccurlyeq_n f \of n
 \]
-if for some polynomial $p$, $\forall n\in \N, u\of n \leq p\of n f \of n$.
+if for some polynomial $\gP$, $\forall n\in \N, u\of n \leq \gP\of n f \of n$.
 
 In some cases, we may be interested in classes of functions $g_z\of{\pointset P}$
 which depend on some parameter $z\in\gW_n$.
@@ -178,10 +178,10 @@ of designated left and right endpoints.
 When giving exponential bounds in $n$ for these parameterized classes of graphs, we will want to keep
 track of the growth due to $z$. We will write that\[
 u \of {n,z} \preccurlyeq_n f \of {n,z} \text{ \emph{uniformly in $z\in\gW_n$}}\]
-if for some polynomial $p$ (that does not depend on $z$),
-\[\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq p\of n f \of {n,z}\text.\]
+if for some polynomial $\gP$ (that does not depend on $z$),
+\[\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq \gP\of n f \of {n,z}\text.\]
 If $f \of {n,z}$ admits a supremum $F \of {n}$ in $z\in\gW_n$ for all $n$, this implies
-that $u\of {n,z} \leq p\of n F \of{n}$, giving an upper bound truly independent of $z$.
+that $u\of {n,z} \leq \gP\of n F \of{n}$, giving an upper bound truly independent of $z$.
 It also makes it possible to get a bound by summation of $f \of {n,z}$ over $z\in\gW_n$.
 
 Observe that these bounds up to a polynomial are related to $\BigO$ notation when the upper bound
@@ -193,11 +193,11 @@ $u_2\of{b,z}\preccurlyeq_b f_2\of{b,z}$,
 both uniformly in $z$, we have\[
 u_1\of{a,z}u_2\of{b,z}\preccurlyeq_{m} f_1\of{a,z}f_2\of{m-a,z}
 \]
-uniformly in $b\in\intclos 0 m$ and in $z$. Indeed, if $u_i\of{a,z}\leq p_i\of{a} f_i\of{a,z}$,
-where without loss of generality the coefficients of $p_i$ are positive, we get
+uniformly in $b\in\intclos 0 m$ and in $z$. Indeed, if $u_i\of{a,z}\leq \gP_i\of{a} f_i\of{a,z}$,
+where without loss of generality the coefficients of $\gP_i$ are positive, we get
 \[u_1\of{a,z}u_2\of{a,z}
-\leq p_1\of{a}p_2\of{b} f_1\of{a,z}f_2\of{b,z}
-\leq p_1\of{a+b}p_2\of{a+b} f_1\of{a,z}f_2\of{b,z}\text.\]
+\leq \gP_1\of{a}\gP_2\of{b} f_1\of{a,z}f_2\of{b,z}
+\leq \gP_1\of{a+b}\gP_2\of{a+b} f_1\of{a,z}f_2\of{b,z}\text.\]
 \subsection{A remark on the asymptotics of the binomial coefficient}
 Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
 upper bound for them.
@@ -1796,7 +1796,7 @@ In that paper, the name is justified by (\ref{spckk}).}, and its solution is kno
 \end{equation}
 as shown by L.~F.~A.~Arbogast in 1800 \cite[p.~214--217]{Arbogast1800}.
 \subsubsection{A combinatorial interpretation of \texorpdfstring{$\spc$}{spc}}
-The Catalan triangle counts well-formed prefixes [CITATION];
+The Catalan triangle counts well-formed prefixes;
 specifically, $\spc\of{a,b}$ is the number of well-formed prefixes with $a$ opening brackets
 and $b$ closing brackets. This can in fact be seen from
 all the definitions of $\spc$ above, thus providing a more combinatorial solution, as we will now see.
