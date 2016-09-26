@@ -178,18 +178,6 @@ if for some polynomial $p$ (that does not depend on $z$),
 If $f \of {n,z}$ admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
 that $u\of {n,z} \leq p\of n \bar f \of{n}$, giving an upper bound truly independent of $z$.
 It also makes it possible to get a bound by summation of $f \of {n,z}$ over $z\in\gW_n$.
-
-Moreover, we will write $g \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of n$ if
-for some $u\of n\preccurlyeq_n f\of n$,\[
-\forall n\in \N, \forall \pointset P \text{ such that } \Cardinality {\pointset P} = n,
-g \of {\pointset P} \leq u \of n\text.\]
-Similarly, we will write $g_z \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of {n,z}$
-\emph{uniformly in $z\in\gW_n$} if
-for some $u \of {n,z} \preccurlyeq_n f \of {n,z}$ uniformly in $z\in\gW_n$,\[
-\forall n\in \N, \forall z\in\gW_n,
-\forall \pointset P \text{ such that } \Cardinality {\pointset P} = n,
-g_z \of {\pointset P} \leq u \of {n, z}\text.\]
-In both cases $\pointset P$ runs over all point sets that satisfy the relevant properties.
 \subsection{A remark on the asymptotics of the binomial coefficient}
 Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
 upper bound for them.
@@ -403,12 +391,12 @@ and $\pointset P_1$ lies to the left of $\pointset P_2$. The problem thus decomp
 
 The function $\gn_{\pointset P}$ has been studied before; though they did not explicitly phrase it in terms of brackets,
 M.~Sharir and E.~Welzl showed in 2005 \cite{SharirWelzl2006} that\[
-\gn_{\pointset P}\of B\preccurlyeq_{\Cardinality{\pointset P} = n}5.3793^n
+\gn_{\pointset P}\of B\preccurlyeq_n5.3793^n
 \]
 uniformly in $B$. Taking the sum of this bound over bracket expressions $B$ yields an upper bound for the overall number of
 crossing-free perfect matchings,\[
 \Cardinality{\CFPM_{\pointset P}}
-\preccurlyeq_{\Cardinality{\pointset P} = n} \CatalanNumber {\frac n 2} 5.3793^n
+\preccurlyeq_n \CatalanNumber {\frac n 2} 5.3793^n
 \preccurlyeq_n 10.76^n\text,
 \]
 but it is worse than the one mentioned in the previous section.
@@ -1422,7 +1410,7 @@ for the binomial coefficient is maximal
 when $\gh = \frac{3-\sqrt{5}}{2}$, where it is $\GoldenRatio = \frac{1+\sqrt{5}}{2}$.
 This gives the overall bound\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
-\preccurlyeq_{\Cardinality{\pointset P} = n}
+\preccurlyeq_n
 4^{a+b}
 \GoldenRatio^{a+b}
 4^{c+d}
@@ -1867,7 +1855,7 @@ $\gh=\frac 1 4$, where its value is $5$.
 We thus have the following asymptotic bound:\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
 \CatalanNumber a\spc\of{a, b}\spc\of{c, d}\CatalanNumber d
-\preccurlyeq_{\Cardinality{\pointset P} = n}
+\preccurlyeq_n
 5^{a+b}5^{c+d} = 5^n
 \end{equation}
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
