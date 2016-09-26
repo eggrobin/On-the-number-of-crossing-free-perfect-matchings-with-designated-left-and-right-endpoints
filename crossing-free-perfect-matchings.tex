@@ -1192,18 +1192,18 @@ We will call those liminary points of $\pointset L$ which appear before $\points
 liminary points of $\pointset L$},
 and those that appear after $\pointset R$ the \emph{lower liminary points of $\pointset L$}.
 
-If there are $\gD^-$ upper liminary points of $\pointset L$, then the first $\gD^-$ left
+If there are $\gD_1$ upper liminary points of $\pointset L$, then the first $\gD_1$ left
 $\pointset L$-cones are vacuous.
-Similarly, if there are $\gD^+$ lower liminary points of $\pointset L$, then the last
-$\gD^+$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
+Similarly, if there are $\gD_2$ lower liminary points of $\pointset L$, then the last
+$\gD_2$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
 $\mathscr{k}$, any upper liminary points
 of $\pointset L$ are liminary points of the
 subset of $\pointset L$ above $\mathscr{k}$, and any lower liminary points of $\pointset L$ are
 liminary points of the
 subset of $\pointset L$ below $\mathscr{k}$, so that we get the recurrence
-\[\gcp_{k,\gD}\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\]
+\[\gcp_{k,\gD}\DefineAs\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gcp_{i,\gD_1}\gcp_{k-i-1,\gD_2}\text,\]
 where $\gcp_{k,\gD}$ is an upper bound on the number of non-vacuous left conifers on $k$ points
-of which at least $\gD$ are liminary. The maximum runs over nonnegative $\gD^-$ and $\gD^+$.
+of which at least $\gD$ are liminary. The maximum runs over nonnegative $\gD_1$ and $\gD_2$.
 Moreover, we can start that recurrence with
 \begin{align*}
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text{ for $k>0$,}\\
@@ -1825,7 +1825,7 @@ and $b-1$ closing brackets).
 We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex} by a combinatorial argument.
 Recall that $\gcp$ is defined by
 \begin{align*}
-\gcp_{k,\gD}&\DefineAs\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gcp_{i,\gD^-}\gcp_{k-i-1,\gD^+}\text,\\
+\gcp_{k,\gD}&\DefineAs\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gcp_{i,\gD_1}\gcp_{k-i-1,\gD_2}\text,\\
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text{ for $k>0$, and}\\
 \gcp_{k,k}&\DefineAs1\text.
 \end{align*}
@@ -1842,21 +1842,21 @@ by removing the final closing bracket, and that adding a closing bracket to a we
 one unmatched opening bracket yields a well-formed bracket expression. These operations are the inverse of each other,
 thus they are bijections, so $\gw_{k,0}=\gw_{k,1}$.
 
-Finally, we look at the sum. For any nonnegative $\gD^-$ and $\gD^+$ such that $\gD^-+\gD^+=\gD-1$,\[
-\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}
+Finally, we look at the sum. For any nonnegative $\gD_1$ and $\gD_2$ such that $\gD_1+\gD_2=\gD-1$,\[
+\sum{i=\gD_1}[k-\gD_2-1]\gw_{i,\gD_1}\gw_{k-i-1,\gD_2}
 \]
 counts the number of ways of constructing a bracket expression with $k$ opening brackets of which $\gD$ are unmatched
 by chaining
 \begin{enumerate}
-\item a prefix containing the first $\gD^-$ unmatched opening brackets;
+\item a prefix containing the first $\gD_1$ unmatched opening brackets;
 \item an opening bracket, which will be unmatched;
-\item a prefix containing the last $\gD^+$ unmatched opening brackets.
+\item a prefix containing the last $\gD_2$ unmatched opening brackets.
 \end{enumerate}
-Thus, for any nonnegative $\gD^-$ and $\gD^+$ such that $\gD^-+\gD^+=\gD-1$,\[
-\gw_{k,\gD}=\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
+Thus, for any nonnegative $\gD_1$ and $\gD_2$ such that $\gD_1+\gD_2=\gD-1$,\[
+\gw_{k,\gD}=\sum{i=\gD_1}[k-\gD_2-1]\gw_{i,\gD_1}\gw_{k-i-1,\gD_2}\text.
 \]
 In particular,\[
-\gw_{k,\gD}=\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
+\gw_{k,\gD}=\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gw_{i,\gD_1}\gw_{k-i-1,\gD_2}\text.
 \]
 It follows that $\gw=\gcp$; this completes the proof.
 Substituting (\ref{spc-solution}), we get\begin{equation}
