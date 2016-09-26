@@ -177,6 +177,7 @@ if for some polynomial $p$ (that does not depend on $z$),
 \[\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq p\of n f \of {n,z}\text.\]
 If $f \of {n,z}$ admits a supremum $\bar f \of {n}$ in $z\in\gW_n$ for all $n$, this implies
 that $u\of {n,z} \leq p\of n \bar f \of{n}$, giving an upper bound truly independent of $z$.
+It also makes it possible to get a bound by summation of $f \of {n,z}$ over $z\in\gW_n$.
 
 Moreover, we will write $g \of {\pointset P}\preccurlyeq_{\Cardinality{\pointset P} = n} f\of n$ if
 for some $u\of n\preccurlyeq_n f\of n$,\[
@@ -388,12 +389,27 @@ closing brackets, for instance,\[
 \langle^2\rangle\langle^2\rangle^3 = \langle\langle\rangle\langle\langle\rangle\rangle\rangle
 \text.\]
 
-[TODO a section or subsection or something here, talking about the trivial upper bounds on $\langle\rangle$,
-and about the bound on a product of bracket expressions. Maybe about the boring stuff like
-$\langle\langle\rangle E \rangle$, but frankly that's not very interesting]
+A remarkable property of $\gn$ is its behaviour with respect to concatenation of well-formed bracket expressions.
+If $B_1$ and $B_2$ are well-formed bracket expressions of lengths $k_1$ and $k_2=n-k_1$,
+$\pointset P_1$ is the set of the leftmost $k_1$ points of $\pointset P$, and
+$\pointset P_2=\pointset P\setminus\pointset P_1$ is the set of the
+rightmost $k_2$ points, we have\[
+\gn_{\pointset P}\of{B_1B_2}=\gn_{\pointset P_1}\of{B_1}\gn_{\pointset P}\of{B_2}\text.
+\]
+Indeed, no edge may join $\pointset P_1$ and $\pointset P_2$, since half the points of $\pointset P_1$ are right-points,
+and $\pointset P_1$ lies to the left of $\pointset P_2$. The problem thus decomposes in two independent parts.
 
-[TODO cite the existing upper bound from Sharir--Welzl 2006 (the proof is unrelated to anything here
-though)]
+The function $\gn_{\pointset P}$ has been studied before; though they did not explicitly phrase it in terms of brackets,
+M.~Sharir and E.~Welzl showed in 2005 \cite{SharirWelzl2006} that\[
+\gn_{\pointset P}\of B\preccurlyeq_{\Cardinality{\pointset P} = n}5.3793^n
+\]
+uniformly in $B$. Taking the sum of this bound over bracket expressions $B$ yields an upper bound for the overall number of
+crossing-free perfect matchings,\[
+\Cardinality{\CFPM_{\pointset P}}
+\preccurlyeq_{\Cardinality{\pointset P} = n} \CatalanNumber {\frac n 2} 5.3793^n
+\preccurlyeq_n 10.76^n\text,
+\]
+but it is worse than the one mentioned in the previous section.
 \label{boundOnLeftRightPerfectMatchings}
 \subsection{An optimal lower bound for the number of crossing-free perfect matchings}
 The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
@@ -475,7 +491,7 @@ we will call it \emph{the vertical line}.
 Further, let us call the set of left-points $\pointset L$ and the set of right-points $\pointset R$.
 
 A perfect matching consistent with a given well-formed bracket expression (and in particular, a perfect
-matching across a line) is uniquely defined by a bijection $\FunctionSpec \gm {pointset L} {\pointset R}$ from
+matching across a line) is uniquely defined by a bijection $\FunctionSpec \gm {\pointset L} {\pointset R}$ from
 the left-points to the right-points. Consider such a perfect
 matching across a line, and let $E$ be the set of its edges.
 Now, number the intersections between the edges of the perfect matching and the vertical
@@ -571,31 +587,42 @@ points each---here $k = 5$ and $i = 2$.\label{figCrossingFreeAlignment}]{
 Let ${\pointset S}$ be a set of $k$ points in general position, and let $V$ be a vertical line to the right of ${\pointset S}$.
 There are at most $\CatalanNumber k$ crossing-free left-alignments of ${\pointset S}$ on $V$.
 \begin{proof}
-Let $l$ be the leftmost point of ${\pointset S}$, and let $\gl$ be a crossing-free left-alignment of ${\pointset S}$ on $V$.
+Let $\gl$ be a crossing-free left-alignment of ${\pointset S}$ on $V$.
 Let $A=\setst{\gs_p}{p\in{\pointset S}}$ be a set of non-crossing line segments realizing $\gl$.
 For a point $p\in{\pointset S}$, we will call $\gs_p$ \emph{the segment of $p$}.
 
-$\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $\gs_l$ of the leftmost point,
-is equal to one plus the number of points of ${\pointset S}$ that are above $\gs_l$. Indeed, the segments of points above
-$\gs_l$ must
-themselves reach the vertical line $V$ above $\gs_l$, otherwise they would cross $\gs_l$, and correspondingly for
-points below $\gs_l$, so that there are as many edges reaching the vertical line $V$ below $\gs_l$ as there are points
-below $\gs_l$.
+$\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $\gs_{\leftmost\pointset S}$
+of the leftmost point,
+is equal to one plus the number of points of ${\pointset S}$ that are above $\gs_{\leftmost\pointset S}$.
+Indeed, the segments of points above $\gs_{\leftmost\pointset S}$ must
+themselves reach the vertical line $V$ above $\gs_{\leftmost\pointset S}$,
+otherwise they would cross $\gs_l$, and correspondingly for
+points below $\gs_{\leftmost\pointset S}$,
+so that there are as many edges reaching the vertical line $V$ below $\gs_{\leftmost\pointset S}$ as there are points
+below $\gs_{\leftmost\pointset S}$.
 
-Moreover, as the oriented angle between $\gs_l$ and the horizontal increases, points are only added to the
-set of points below $\gs_l$, so that choosing the number of points below $\gs_l$ determines the sets of points
-below and above $\gs_l$.
+Moreover, as the oriented angle between $\gs_{\leftmost\pointset S}$
+and the horizontal increases, points are only added to the
+set of points below $\gs_{\leftmost\pointset S}$, so that choosing the number of points below
+$\gs_{\leftmost\pointset S}$ determines the sets of points
+below and above $\gs_{\leftmost\pointset S}$.
 
-Further, since points above $\gs_l$ must reach the vertical line $V$ above $\gs_l$, and correspondingly for points below,
-if the point $p$ is above $\gs_l$, then $\gl(p) < \gl(l)$, and if it is below, $\gl(p) > \gl(l)$. Thus
-$\gl$ restricted do the points above $\gs_l$ is a crossing-free left-alignment of the $\gl(l) - 1$ points above
-$\gs_l$, and $\gl-\gl(l)$ restricted to the points below $\gs_l$ is a crossing-free left-alignment of the
-$k - \gl(l)$ points below $\gs_l$, where the appropriate subsets of $A$ provide the set of segments required
+Further, since points above $\gs_{\leftmost\pointset S}$ must reach the vertical line $V$ above
+$\gs_{\leftmost\pointset S}$, and correspondingly for points below,
+if the point $p$ is above $\gs_{\leftmost\pointset S}$, then $\gl(p) < \gl({\leftmost\pointset S})$,
+and if it is below, $\gl(p) > \gl({\leftmost\pointset S})$. Thus
+$\gl$ restricted do the points above $\gs_{\leftmost\pointset S}$ is a crossing-free left-alignment of
+the $\gl({\leftmost\pointset S}) - 1$ points above
+$\gs_{\leftmost\pointset S}$, and $\gl-\gl({\leftmost\pointset S})$ restricted to the points below
+$\gs_{\leftmost\pointset S}$ is a crossing-free left-alignment of the
+$k - \gl({\leftmost\pointset S})$ points below $\gs_{\leftmost\pointset S}$,
+where the appropriate subsets of $A$ provide the set of segments required
 in the definition.
 
-It follows that $\gl$ is determined by the choice of $\gl\of l$ and crossing-free left-align\-ments
-of $\gl\of{l}-1$ and $k-\gl\of{l}$ points.
-Letting $i\DefineAs \gl\of l - 1$, these are crossing-free alignments of $i$ and $k-i-1$ points (see
+It follows that $\gl$ is determined by the choice of $\gl\of {\leftmost\pointset S}$
+and crossing-free left-align\-ments
+of $\gl\of{\leftmost\pointset S}-1$ and $k-\gl\of{\leftmost\pointset S}$ points.
+Letting $i\DefineAs \gl\of {\leftmost\pointset S} - 1$, these are crossing-free alignments of $i$ and $k-i-1$ points (see
 figure~\ref{figCrossingFreeAlignment}).
 Therefore, if $\gcp_j$ is an upper bound for the number of crossing-free
 left-alignments of $j$ points when $j < k$,
@@ -1402,7 +1429,7 @@ This gives the overall bound\[
 \approx 6.472^n
 \]
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
-Note that this is worse than the existing $5.3793^n$ bound $\gn_{\pointset P}\of{B}$ for an arbitrary
+Note that this is worse than the existing $5.3793^n$ bound on $\gn_{\pointset P}\of{B}$ for an arbitrary
 well-formed bracket expression $B$, see section~\ref{boundOnLeftRightPerfectMatchings}.
 \subsection{Improving the binomial bound}
 We can however improve upon that bound. Once $\ga$, $\gd$, $\pointset S$, and $\pointset T$
