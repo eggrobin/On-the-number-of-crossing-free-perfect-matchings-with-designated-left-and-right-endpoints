@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     36121,       1074]
-NotebookOptionsPosition[     33496,        978]
-NotebookOutlinePosition[     33840,        993]
-CellTagsIndexPosition[     33797,        990]
+NotebookDataLength[     36749,       1096]
+NotebookOptionsPosition[     33974,        995]
+NotebookOutlinePosition[     34318,       1010]
+CellTagsIndexPosition[     34275,       1007]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -940,40 +940,57 @@ Cell[BoxData["4"], "Output",
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Limit", "[", 
-  RowBox[{
-   SuperscriptBox[
-    RowBox[{"(", 
-     FractionBox[
-      RowBox[{
+ RowBox[{
+  RowBox[{"Limit", "[", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
+         FractionBox["1", 
+          RowBox[{"2", "-", "\[CapitalXi]"}]]], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+         FractionBox[
+          RowBox[{"1", "-", "\[CapitalXi]"}], 
+          RowBox[{"\[CapitalXi]", "-", "2"}]]]}], 
        SuperscriptBox[
         RowBox[{"(", 
-         RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
-        FractionBox["1", 
-         RowBox[{"2", "-", "\[CapitalXi]"}]]], 
-       SuperscriptBox[
-        RowBox[{"(", 
-         RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+         RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
         FractionBox[
          RowBox[{"1", "-", "\[CapitalXi]"}], 
-         RowBox[{"\[CapitalXi]", "-", "2"}]]]}], 
-      SuperscriptBox[
-       RowBox[{"(", 
-        RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
-       FractionBox[
-        RowBox[{"1", "-", "\[CapitalXi]"}], 
-        RowBox[{"\[CapitalXi]", "-", "2"}]]]], ")"}], 
-    RowBox[{"(", 
-     RowBox[{"2", "-", "\[CapitalXi]"}], ")"}]], ",", 
-   RowBox[{"\[CapitalXi]", "\[Rule]", 
-    RowBox[{"1", "/", "2"}]}]}], "]"}]], "Input",
- CellChangeTimes->{{3.683876063927123*^9, 3.683876064424363*^9}}],
+         RowBox[{"\[CapitalXi]", "-", "2"}]]]], ")"}], 
+     RowBox[{"(", 
+      RowBox[{"2", "-", "\[CapitalXi]"}], ")"}]], ",", 
+    RowBox[{"\[CapitalXi]", "\[Rule]", 
+     RowBox[{"1", "/", "2"}]}]}], "]"}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.683876063927123*^9, 3.6838761633841457`*^9}}],
 
 Cell[BoxData[
  FractionBox[
   RowBox[{"3", " ", 
    SqrtBox["3"]}], "2"]], "Output",
- CellChangeTimes->{3.683876065291526*^9}]
+ CellChangeTimes->{{3.683876065291526*^9, 3.6838760995208855`*^9}, {
+  3.6838761382835503`*^9, 3.683876163872363*^9}}]
+}, Open  ]],
+
+Cell[BoxData["GoldenRatio"], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"3", " ", 
+    SqrtBox["3"]}], "2"], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.683876278064131*^9, 3.683876278379918*^9}}],
+
+Cell[BoxData["2.598076211353316`"], "Output",
+ CellChangeTimes->{3.683876278893198*^9}]
 }, Open  ]]
 },
 WindowSize->{1264, 1336},
@@ -1073,8 +1090,13 @@ Cell[31395, 906, 898, 27, 67, "Input"],
 Cell[32296, 935, 70, 1, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32403, 941, 948, 28, 67, "Input"],
-Cell[33354, 971, 126, 4, 51, "Output"]
+Cell[32403, 941, 1007, 29, 67, "Input"],
+Cell[33413, 972, 203, 5, 51, "Output"]
+}, Open  ]],
+Cell[33631, 980, 37, 0, 31, "Input"],
+Cell[CellGroupData[{
+Cell[33693, 984, 175, 5, 51, "Input"],
+Cell[33871, 991, 87, 1, 31, "Output"]
 }, Open  ]]
 }
 ]
