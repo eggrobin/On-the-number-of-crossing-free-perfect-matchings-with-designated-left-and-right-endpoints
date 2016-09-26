@@ -1863,8 +1863,15 @@ Substituting (\ref{spc-solution}), we get\begin{equation}
 \gcp_{k,\gD}=\frac{\gD+1}{k+1}\binom{2k-\gD}{k}\text.
 \end{equation}
 \subsection{Asymptotics}
-We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
+We can now use the expression (\ref{spc-solution}) for $\spc$ to study the properties of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
+First, we note that in the extreme case where $b=c=0$, so that the problem is that of matchings across
+a line, the bound becomes ${\CatalanNumber a}^2$\idest we get exactly the Sharir--Welzl bound. When $a=b$ and
+$c=d$, so that the bracket expression being considered is $\langle^a\rangle^a\langle^d\rangle^d$,
+by (\ref{spckk}), we get a bound of ${\CatalanNumber a}^2{\CatalanNumber b}^2$. This is the bound that
+is obtained from matchings across a line by chaining well-formed bracket expressions.
+For nondegenerate cases, we look at the asymptotics.
+
 We are interested in the asymptotics as a function of the length $n = a+b+c+d$ of the bracket expression.
 Since the bound is a product of two identical two-parameter factors, we study one of them,\[
 \gj_{a,b}\DefineAs \CatalanNumber a\spc\of{a,b}\text,
