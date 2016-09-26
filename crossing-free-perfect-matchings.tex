@@ -1169,11 +1169,70 @@ $\gn_{\pointset P}\of{\langle^k\rangle^k}$ when $\pointset P$ has $\gG$ extreme 
 \max_{\gD_{\pointset L} + \gD_{\pointset R} = \gG} \gcp_{k,\gD_{\pointset L}} \gcp_{k,\gD_{\pointset R}}
 \]
 We will show in section~\ref{tyingLooseEnds} that\[
-\gcp_{k,\gD}=\frac{\gD+1}{k+1}\binom{2k-\gD}{k}\text,
+\gcp_{k,\gD}=\frac{\gD+1}{k+1}\binom{2k-\gD}{k}\text.
 \]
-and thus that\[
-\gn_{\pointset P}\of{\langle^k\rangle^k}\leq TODOTODOTODO\text.
+We now examine the expression $\gcp_{k,\gD_{\pointset L}} \gcp_{k,\gD_{\pointset R}}$ to maximize it under
+$\gD_{\pointset L} + \gD_{\pointset R} = \gG$.\begin{align*}
+\gcp_{k,\gD_{\pointset L}} \gcp_{k,\gD_{\pointset R}} &=
+\frac{\gD_{\pointset L}+1}{k+1}\binom{2k-\gD_{\pointset L}}{k} \frac{\gD_{\pointset R}+1}{k+1}\binom{2k-\gD_{\pointset R}}{k} \\
+&= \frac{\gD_{\pointset L}+1}{k+1}
+\frac{\Factorial{\pa{2k-\gD_{\pointset L}}}}{\Factorial k \Factorial{\pa{k-\gD_{\pointset L}}}}
+\frac{\gD_{\pointset R}+1}{k+1}
+\frac{\Factorial{\pa{2k-\gD_{\pointset R}}}}{\Factorial k \Factorial{\pa{k-\gD_{\pointset R}}}}
+\end{align*}
+Incrementing $\gD_{\pointset L}$ and decrementing $\gD_{\pointset R}$ multiplies the above expression by
+\begin{align*}
+\gy&\DefineAs
+\frac{\gD_{\pointset L}+2}{\gD_{\pointset L}+1}
+\frac{k-\gD_{\pointset L}}{2k-\gD_{\pointset L}}
+\frac{\gD_{\pointset R}}{\gD_{\pointset L}+1}
+\frac{2k-\gD_{\pointset R}+1}{k-\gD_{\pointset R}+1}\\
+&=
+\gq_1\of{\gD_{\pointset L}+1}
+\frac{1}{\gq_1\of{\gD_{\pointset R}}}
+\frac{1}{\gq_k\of{k-\gD_{\pointset L}}}
+\gq_k\of{k-\gD_{\pointset R}+1} \\
+&=
+\frac{\gq_1\of{\gD_{\pointset L}+1}}{\gq_1\of{\gD_{\pointset R}}}
+\frac{\gq_k\of{k+1-\gD_{\pointset R}}}{\gq_k\of{k+1-\pa{\gD_{\pointset L}+1}}}\text,
+\end{align*}
+where $\gq_x\of{y}\DefineAs\frac{x+y}{y}=1+\frac{x}{y}$.
+For positive $x$ and $y$, $\gq_x\of{y}$ is decreasing in $y$, so for $\gD_{\pointset L}+1\leq \gD_{\pointset R}$,
+$\gy\geq 1$. In other words, if $\gD_{\pointset L}+1\leq \gD_{\pointset R}$,
+$\gcp_{k,\gD_{\pointset L}} \gcp_{k,\gD_{\pointset R}}$ increases when incrementing $\gD_{\pointset L}$ and
+decrementing $\gD_{\pointset R}$. By symmetry, it is maximal when\[
+\gD_{\pointset L} = \Floor{\frac \gG 2} \text{ and } \gD_{\pointset R} = \Ceiling{\frac \gG 2}\text,
 \]
+So that, when the number $\gG$ of extreme points of $\pointset P$ is even,\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}\leq
+\pa{\frac{\frac \gG 2+1}{k+1}\binom{2k-\frac \gG 2}{k}}^2=
+\pa{\frac{\frac \gG 2+1}{\frac n 2+1}\binom{n-\frac \gG 2}{\frac n 2}}^2\text.
+\]
+Asymptotically, if we let $\gX\DefineAs\frac{\gG}{n}$ be proportion of the points that are extreme,
+\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}
+\preccurlyeq_n
+\pa{
+  \frac
+    {\pa{1-\frac{1}{2-\gX}}^{\frac{1}{2-\gX}-1}}
+    {\pa{\frac{1}{2-\gX}}^{\frac{1}{2-\gX}}}
+}^{2n-\gX n}
+=
+\pa{
+  \pa{
+    \frac
+      {\pa{2-\gX}^{\frac{1}{2-\gX}} \pa{\gX-1}^{\frac{1-\gX}{\gX-2}}}
+      {\pa{\gX-2}^{\frac{1-\gX}{\gX-2}}}
+  }^{2-\gX}
+}^n\text.
+\]
+The base of the exponential is $0$ for $\gX=0$, and it tends to $1$ as $\gX$ tends to $1$.
+For $\gX=\frac 1 2$\idest when half the points are extreme, this gives an asymptotic bound of
+\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}
+\preccurlyeq_n
+\pa{\frac{3\sqrt{3}}{2}}^n\approx 2.6^n\text.\]
+
 \section{Three changes of bracket direction}
 \label{sectionThreeChanges}
 We now consider perfect matchings consistent with bracket expressions which have three
@@ -1706,7 +1765,7 @@ Finally, (\ref{spc-catalan-triangle}) reflects the fact that a well-formed prefi
 and $b$ closing brackets either ends with an opening bracket (preceded by a well-formed prefix with $a-1$ opening
 and $b$ closing brackets), or with a closing bracket (preceded by a well-formed prefix with $a$ opening
 and $b-1$ closing brackets).
-\subsubsection{Tying some loose ends}
+\subsubsection{Tying up some loose ends}
 \label{tyingLooseEnds}
 We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex} by a combinatorial argument.
 Recall that $\gcp$ is defined by
@@ -1745,6 +1804,9 @@ In particular,\[
 \gw_{k,\gD}=\max_{\gD^-+\gD^+=\gD-1}\sum{i=\gD^-}[k-\gD^+-1]\gw_{i,\gD^-}\gw_{k-i-1,\gD^+}\text.
 \]
 It follows that $\gw=\gcp$; this completes the proof.
+Substituting (\ref{spc-solution}), we get\begin{equation}
+\gcp_{k,\gD}=\frac{\gD+1}{k+1}\binom{2k-\gD}{k}\text.
+\end{equation}
 \subsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the asymptotics of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).

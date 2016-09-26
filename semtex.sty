@@ -307,6 +307,8 @@
 \DeclareDelimiter\squareBrackets{[}{]}
 \DeclareDelimiter\curlyBrackets{\lbrace}{\rbrace}
 \DeclareDelimiter\angleBrackets{\langle}{\rangle}
+\DeclareDelimiter\floor{\lfloor}{\rfloor}
+\DeclareDelimiter\ceil{\lceil}{\rceil}
 %% Binary.
 \DeclareDelimiterX\lsquareCommaRsquare[2]{[}{]}{#1, #2}
 \DeclareDelimiterX\lsquareCommaLsquare[2]{[}{[}{#1, #2}
@@ -533,6 +535,9 @@
 \newcommand{\diff}[3]{\squareBrackets{#3}_{#1}^{#2}}
 \newcommand{\Evaluate}[2]{\emptyBar{#1}_{\mathrlap{#2}}}
 
+\newcommand\Floor[1]{\floor{#1}}
+\newcommand\Ceiling[1]{\ceil{#1}}
+
 %% Binary delimiters.
 % Intervals.
 % \intopen a b is the open interval from a excluded to b excluded.
@@ -606,6 +611,7 @@
 \newcommand\gG\capitalGamma
 \newcommand\gS\Sigma
 \newcommand\gP\capitalPi
+\newcommand\gX\Xi
 \newcommand\gW\Omega
 
 %% Vectors, matrices, higher-order tensors.
