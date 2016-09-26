@@ -547,8 +547,8 @@ $\gl\of{p}=\gr\of q = 2$.\label{figConstructCFA}]{
 \draw[very thick] (0,5) -- (0,0);
 \end{tikzpicture}}
 
-Define $\gl\of l \DefineAs \gi\of{e_l}$ mapping a left-point to the intersection number of its
-edge, and similarly $\gr\of r \DefineAs \gi\of{e_r}$ for the right-points. We have
+Define $\gl\of p \DefineAs \gi\of{e_p}$ mapping a left-point to the intersection number of its
+edge, and similarly $\gr\of q \DefineAs \gi\of{e_q}$ for the right-points. We have
 $\gm = \gr^{-1} \Compose \gl$.
 
 The bijection $\gl$ (respectively $\gr$) determines the order in which the left points (respectively right points)
@@ -612,12 +612,13 @@ Let $\gl$ be a crossing-free left-alignment of ${\pointset S}$ on $V$.
 Let $A=\setst{\gs_p}{p\in{\pointset S}}$ be a set of non-crossing line segments realizing $\gl$.
 For a point $p\in{\pointset S}$, we will call $\gs_p$ \emph{the segment of $p$}.
 
-$\gl(l)$, being the index on the vertical line $V$ of the right endpoint of the segment $\gs_{\leftmost\pointset S}$
+$\gl(\leftmost\pointset S)$, being the index on the vertical line $V$ of the right endpoint of the
+segment $\gs_{\leftmost\pointset S}$
 of the leftmost point,
 is equal to one plus the number of points of ${\pointset S}$ that are above $\gs_{\leftmost\pointset S}$.
 Indeed, the segments of points above $\gs_{\leftmost\pointset S}$ must
 themselves reach the vertical line $V$ above $\gs_{\leftmost\pointset S}$,
-otherwise they would cross $\gs_l$, and correspondingly for
+otherwise they would cross $\gs_{\leftmost\pointset S}$, and correspondingly for
 points below $\gs_{\leftmost\pointset S}$,
 so that there are as many edges reaching the vertical line $V$ below $\gs_{\leftmost\pointset S}$ as there are points
 below $\gs_{\leftmost\pointset S}$.
@@ -1657,7 +1658,7 @@ and the overall bound becomes\begin{equation}
 \subsection{A recurrence}
 In order to compute $\spc$ efficiently, and eventually, get its asymptotics, it is useful to get rid
 of the $\cells$ function. We can express $\spc$ as a recurrence instead.
-First, we note that $\spc\of{a,a} = \CatalanNumber k$: there is only one summand, $S'$ is the whole set, so
+First, we note that $\spc\of{a,a} = \CatalanNumber a$: there is only one summand, $S'$ is the whole set, so
 it has only one cell, namely $S'$ itself.
 Otherwise, $a-b\geq 1$; in the sum over the $S$, consider the greatest element $j$ of $S$, which is at least
 $a-b$, and split the sum over that,
@@ -1690,7 +1691,7 @@ By definition of $\spc$, this means
 \spc\of{j-1,b+j-a}\text.
 \]
 Rewriting this as a sum over $i\DefineAs a-j$, this gives us the following recurrence for $\spc$:
-\begin{align}\spc\of{a,b} &= \sum{i=0}[l]
+\begin{align}\spc\of{a,b} &= \sum{i=0}[b]
 \CatalanNumber {i}
 \spc\of{a-i-1,b-i} &\text{for $b<a$,} \label{spcRecurrence1}\\
 \spc\of{a,a} &= \CatalanNumber a \label{spckk}\text.
