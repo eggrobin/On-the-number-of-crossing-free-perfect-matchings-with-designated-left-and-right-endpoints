@@ -1,0 +1,71 @@
+﻿Consistency of notation for single-letter symbols.
+Double-struck:
+  N : ℕ. 0 is in there, because Bourbaki says so.
+Upright: standard symbols, as per ISO 2000.
+  π : well, π.
+  e : e?
+  φ : the golden ratio.
+  C : the Catalan numbers.
+Script capitals: points sets.
+  P          : the whole point set.
+  L, R       : in the context of matchings across a line, the left- and right- points.
+  S          : various subsets, or a name for a point set in a definition when P is already defined.
+  T          : in <><> matchings, a subset of D.
+  A, B, C, D : in <><> matchings, the four blocks.
+Fraktur captials: functions between sets of objects that are neither points nor numbers.
+  B : Perfect matchings to bracket expressions.
+  C : Composition, from pairs of alignments to perfect matchings.
+  D : Decomposition, from crossing-free perfect matchings to pairs of alignments.
+  K : Alignments to conifers.
+Script lowercase.
+  k : a cone.
+Italic lowercase:
+  κ          : a conifer.
+  p, q       : points.
+  ν          : the number of CFPMs consistent with a WFBE.
+  n          : size of the point set.
+  k          : in matchings across a line, n/2.
+               when discussing the asymptotics of the binomial coefficient, some integer.
+  ϖ          : with one parameter, a recurrence which ends up being the Catalan numbers.
+               with two parameters, a recurrence which ends up being a reparametrization of spc.
+  ω          : a reparametrization of spc, which we prove is equal to ϖ.
+  a, b       : cardinalities of point sets A and B.
+               in the section on asymptotics, some integers.
+  m          : a+b.
+  c, d       : cardinalities of point sets C and D.
+  Λ          : the total edge length of a perfect matching.
+  μ          : a perfect matching.
+  E          : the set of edges.
+  e          : an edge.
+  ι          : a numbering of edges.
+  α, β, γ, δ : alignments of point sets ABCD.
+  λ          : a crossing-free left-alignment.
+  ρ          : a crossing-free right-alignment of point set R.
+  A          : a set of realizing segments.
+  σ          : realizing segments.
+  Δ          : the number of liminary points.
+  Γ          : the number of extreme points.
+  Ξ          : the proportion of extreme points.
+  ψ          : a multiplicator used when solving the bound dependent on Γ.
+  θ          : a rather boring function used to write ψ.
+  ϕ          : the factor Catalan * spc.
+  η          : when discussing <><> matchings, b/a.
+               when discussing the asymptotics of the binomial coefficient, some real in [0, 1].
+  Ω          : in the section on asymptotics, a parameter space.
+  z          : in the section on asymptotics, a parameter.
+  Π          : in the section on asymptotics, a polynomial.
+  ζ          : in the section on asymptotics, the base of an exponential.
+  ε          : in the section on asymptotics, well, ε > 0.
+  f          : in the section on asymptotics, a function.
+  F          : in the section on asymptotics, the supremum of F.
+  u          : in the section on asymptotics, an upper bound.
+  l          : in the section on asymptotics, a lower bound.
+  g          : in the section on asymptotics, a graph-counting function.
+  Z          : trapezoidal cells.
+  χ          : cells of a set of integer.
+  S          : α(point set S).
+  s          : elements of S.
+  x, y       : when discussing <><> matchings, the base of an exponential.
+               when discussing a bound of CFPMALs dependent on Γ, names for the parameters of θ.
+  i, j       : indices.
+  B          : a bracket expression.
