@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     36749,       1096]
-NotebookOptionsPosition[     33974,        995]
-NotebookOutlinePosition[     34318,       1010]
-CellTagsIndexPosition[     34275,       1007]
+NotebookDataLength[     41923,       1257]
+NotebookOptionsPosition[     38796,       1144]
+NotebookOutlinePosition[     39140,       1159]
+CellTagsIndexPosition[     39097,       1156]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -870,36 +870,185 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Limit", "[", 
+ RowBox[{"Assuming", "[", 
   RowBox[{
-   SuperscriptBox[
-    RowBox[{"(", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[CapitalXi]", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"\[CapitalXi]", "\[LessEqual]", "1"}]}], "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
+          FractionBox["1", 
+           RowBox[{"2", "-", "\[CapitalXi]"}]]], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+          FractionBox[
+           RowBox[{"1", "-", "\[CapitalXi]"}], 
+           RowBox[{"\[CapitalXi]", "-", "2"}]]]}], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
+         FractionBox[
+          RowBox[{"1", "-", "\[CapitalXi]"}], 
+          RowBox[{"\[CapitalXi]", "-", "2"}]]]], ")"}], 
+      RowBox[{"(", 
+       RowBox[{"2", "-", "\[CapitalXi]"}], ")"}]], "\[Equal]", 
      FractionBox[
       RowBox[{
-       SuperscriptBox[
-        RowBox[{"(", 
-         RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
-        FractionBox["1", 
-         RowBox[{"2", "-", "\[CapitalXi]"}]]], 
+       RowBox[{"(", 
+        RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
        SuperscriptBox[
         RowBox[{"(", 
          RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
-        FractionBox[
-         RowBox[{"1", "-", "\[CapitalXi]"}], 
-         RowBox[{"\[CapitalXi]", "-", "2"}]]]}], 
+        RowBox[{"\[CapitalXi]", "-", "1"}]]}], 
       SuperscriptBox[
        RowBox[{"(", 
         RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
+       RowBox[{"\[CapitalXi]", "-", "1"}]]]}], "//", "FullSimplify"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6839815129494734`*^9, 3.683981584648245*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.683981579711234*^9, 3.6839815856833763`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Assuming", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[CapitalXi]", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"\[CapitalXi]", "\[LessEqual]", "1"}]}], "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
        FractionBox[
-        RowBox[{"1", "-", "\[CapitalXi]"}], 
-        RowBox[{"\[CapitalXi]", "-", "2"}]]]], ")"}], 
-    RowBox[{"(", 
-     RowBox[{"2", "-", "\[CapitalXi]"}], ")"}]], ",", 
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
+          FractionBox["1", 
+           RowBox[{"2", "-", "\[CapitalXi]"}]]], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+          FractionBox[
+           RowBox[{"1", "-", "\[CapitalXi]"}], 
+           RowBox[{"\[CapitalXi]", "-", "2"}]]]}], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
+         FractionBox[
+          RowBox[{"1", "-", "\[CapitalXi]"}], 
+          RowBox[{"\[CapitalXi]", "-", "2"}]]]], ")"}], 
+      RowBox[{"(", 
+       RowBox[{"2", "-", "\[CapitalXi]"}], ")"}]], "\[Equal]", 
+     RowBox[{"-", 
+      FractionBox[
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+        RowBox[{"\[CapitalXi]", "-", "1"}]], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
+        RowBox[{"\[CapitalXi]", "-", "2"}]]]}]}], "//", "FullSimplify"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6839822228231187`*^9, 3.6839822770927258`*^9}, {
+  3.6839823071743927`*^9, 3.6839823442648773`*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6839822443772707`*^9, 3.683982253665326*^9}, {
+  3.683982327855277*^9, 3.683982345210854*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Assuming", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"\[CapitalXi]", "\[GreaterEqual]", "0"}], ",", 
+     RowBox[{"\[CapitalXi]", "\[LessEqual]", "1"}]}], "}"}], ",", 
+   RowBox[{
+    RowBox[{
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox[
+        RowBox[{
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
+          FractionBox["1", 
+           RowBox[{"2", "-", "\[CapitalXi]"}]]], 
+         SuperscriptBox[
+          RowBox[{"(", 
+           RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+          FractionBox[
+           RowBox[{"1", "-", "\[CapitalXi]"}], 
+           RowBox[{"\[CapitalXi]", "-", "2"}]]]}], 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
+         FractionBox[
+          RowBox[{"1", "-", "\[CapitalXi]"}], 
+          RowBox[{"\[CapitalXi]", "-", "2"}]]]], ")"}], 
+      RowBox[{"(", 
+       RowBox[{"2", "-", "\[CapitalXi]"}], ")"}]], "\[Equal]", 
+     FractionBox[
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"1", "-", "\[CapitalXi]"}], ")"}], 
+       RowBox[{"\[CapitalXi]", "-", "1"}]], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
+       RowBox[{"\[CapitalXi]", "-", "2"}]]]}], "//", "FullSimplify"}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.683982373026849*^9, 3.683982402274726*^9}, {
+  3.6839824548121414`*^9, 3.683982484629774*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.6839823792315207`*^9, 3.6839824031990166`*^9}, {
+  3.6839824816162624`*^9, 3.6839824856292706`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Limit", "[", 
+  RowBox[{
+   FractionBox[
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"2", "-", "\[CapitalXi]"}], ")"}], 
+     SuperscriptBox[
+      RowBox[{"(", 
+       RowBox[{"\[CapitalXi]", "-", "1"}], ")"}], 
+      RowBox[{"\[CapitalXi]", "-", "1"}]]}], 
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{"\[CapitalXi]", "-", "2"}], ")"}], 
+     RowBox[{"\[CapitalXi]", "-", "1"}]]], ",", 
    RowBox[{"\[CapitalXi]", "\[Rule]", "1"}]}], "]"}]], "Input",
- CellChangeTimes->{{3.6838760302934093`*^9, 3.6838760477912416`*^9}}],
+ CellChangeTimes->{{3.6838760302934093`*^9, 3.6838760477912416`*^9}, {
+  3.6839821687243347`*^9, 3.6839821855591593`*^9}}],
 
 Cell[BoxData["1"], "Output",
- CellChangeTimes->{{3.683876035097389*^9, 3.683876048507989*^9}}]
+ CellChangeTimes->{{3.683876035097389*^9, 3.683876048507989*^9}, {
+  3.6839821764122972`*^9, 3.6839821869339437`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1012,15 +1161,15 @@ Notebook[{
 Cell[558, 20, 553, 15, 30, "Text"],
 Cell[CellGroupData[{
 Cell[1136, 39, 915, 21, 151, "Input"],
-Cell[2054, 62, 1102, 30, 176, "Output"]
+Cell[2054, 62, 1102, 30, 162, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[3193, 97, 1064, 31, 172, "Input"],
-Cell[4260, 130, 2934, 53, 176, "Output"]
+Cell[4260, 130, 2934, 53, 162, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7231, 188, 834, 24, 172, "Input"],
-Cell[8068, 214, 2928, 55, 176, "Output"]
+Cell[8068, 214, 2928, 55, 162, "Output"]
 }, Open  ]],
 Cell[11011, 272, 201, 5, 46, "Input"],
 Cell[CellGroupData[{
@@ -1082,21 +1231,33 @@ Cell[29812, 852, 281, 7, 46, "Input"],
 Cell[30096, 861, 201, 5, 46, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[30334, 871, 927, 27, 67, "Input"],
-Cell[31264, 900, 94, 1, 31, "Output"]
+Cell[30334, 871, 1540, 45, 67, "Input"],
+Cell[31877, 918, 99, 1, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[31395, 906, 898, 27, 67, "Input"],
-Cell[32296, 935, 70, 1, 31, "Output"]
+Cell[32013, 924, 1531, 44, 67, "Input"],
+Cell[33547, 970, 148, 2, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32403, 941, 1007, 29, 67, "Input"],
-Cell[33413, 972, 203, 5, 51, "Output"]
+Cell[33732, 977, 1495, 43, 67, "Input"],
+Cell[35230, 1022, 154, 2, 31, "Output"]
 }, Open  ]],
-Cell[33631, 980, 37, 0, 31, "Input"],
 Cell[CellGroupData[{
-Cell[33693, 984, 175, 5, 51, "Input"],
-Cell[33871, 991, 87, 1, 31, "Output"]
+Cell[35421, 1029, 609, 17, 52, "Input"],
+Cell[36033, 1048, 147, 2, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[36217, 1055, 898, 27, 67, "Input"],
+Cell[37118, 1084, 70, 1, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37225, 1090, 1007, 29, 67, "Input"],
+Cell[38235, 1121, 203, 5, 51, "Output"]
+}, Open  ]],
+Cell[38453, 1129, 37, 0, 31, "Input"],
+Cell[CellGroupData[{
+Cell[38515, 1133, 175, 5, 51, "Input"],
+Cell[38693, 1140, 87, 1, 31, "Output"]
 }, Open  ]]
 }
 ]

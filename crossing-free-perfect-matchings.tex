@@ -117,8 +117,8 @@ a \emph{geometric graph} is a collection of straight line segments (edges)
 whose endpoints are elements of $\pointset P$.
 
 It can be described as a simple graph (in the combinatorial sense)
-on the vertices $\pointset P$, where the edge $\set{v,w}$ corresponds to the segment joining
-$v$ and $w$.
+on the vertices $\pointset P$, where the edge $\set{p,q}$ corresponds to the segment joining
+$p$ and $q$.
 \end{definition}
 \begin{definition}[crossing-free]
 A geometric graph is \emph{crossing-free} if no two edges share points other than
@@ -129,8 +129,8 @@ geometric graph is a plane embedding.
 \begin{sloppypar}
 \begin{definition}[triangulation]
 A \emph{triangulation} is a maximal crossing-free geometric graph, that is,
-geometric graph such that for all $v$ and $w$ in $\pointset P$ that are not joined by a
-segment, adding the segment joining $v$ and $w$ would result in a crossing
+geometric graph such that for all $p$ and $q$ in $\pointset P$ that are not joined by a
+segment, adding the segment joining $p$ and $q$ would result in a crossing
 geometric graph.
 \end{definition}
 Note that the faces (in the sense of plane graphs) formed by a triangulation are
@@ -147,7 +147,7 @@ a geometric graph which corresponds to a perfect matching in the combinatorial s
 As outlined in the introduction, we are interested in statements regarding the number
 of geometric graphs, possibly restricted to a certain type, on a given point set.
 Evidently, that number would depend on the choice of the point set $\pointset P$, so instead we seek
-bounds on that number depending on the cardinality $\Cardinality P$, and possibly
+bounds on that number depending on the cardinality $\Cardinality {\pointset P}$, and possibly
 restricting $\pointset P$ so that it satisfies certain properties.
 
 An important property that $\pointset P$ can have is general position. We say that 
@@ -201,7 +201,7 @@ where without loss of generality the coefficients of $\gP_i$ are positive, we ge
 \subsection{A remark on the asymptotics of the binomial coefficient}
 Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
 upper bound for them.
-It can be shown by writing the logarithm of the factorial as a sum of logarithms,
+It can be shown, by writing the logarithm of the factorial as a sum of logarithms,
 and then bounding that sum by integrals, that\[
 \forall k\in \Positives, \E \pa{\frac{k}{\E}}^k \leq \Factorial k \leq k \E \pa{\frac{k}{\E}}^k\text.
 \]
@@ -280,6 +280,8 @@ yielding asymptotically
 We will call $\PM_{\pointset P}$ the set of perfect matchings on the point set $\pointset P$,
 and $\CFPM_{\pointset P}$ the set
 of crossing-free perfect matchings on the point set $\pointset P$.
+When discussing perfect matchings, we will denote the unique edge incident to point $p$ by
+$e_p$.
 \marginfig[Partitioning a convex point set to construct a crossing-free
 perfect matching.\label{figConvexPerfectMatching}]{
 \begin{tikzpicture}[scale=0.5]
@@ -292,7 +294,7 @@ perfect matching.\label{figConvexPerfectMatching}]{
 \node[dot,label=right:$2i+2$] at (5.5,3) (p2iplus2) {};
 \node[dot,label=right:$2k-2$] at (5,1) (p2nminus2) {};
 \node[dot,label=below:$2k-1$] at (3,0) (p2nminus1) {};
-\draw (p0) -- (p2iplus1);
+\draw (p0) -- (p2iplus1) node [midway, label=below right:$e_0$] {};
 \end{tikzpicture}}
 
 If $\pointset P$ is a set of $n=2k$ points in convex position,
@@ -303,7 +305,7 @@ into chords, so that the problem becomes that of crossing-free perfect matchings
 by A.~Errera in 1930 \cite{Errera1931} that\[\CFPM_{\pointset P}=\CatalanNumber k\text.\]
 Indeed, given a crossing-free perfect matching,
 numbering the points from $0$ to $2k-1$ along the boundary of the convex hull, as in figure~\ref{figConvexPerfectMatching},
-we see that the edge emanating from point $0$ and matching it to point $j$ partitions
+we see that the edge $e_0$ emanating from point $0$ and matching it to point $j$ partitions
 the point set. It follows that the restriction of the matching to either $\set{j+1,\dotsc,2k-1}$ or
 $\set{1,\dotsc,j-1}$ is a crossing-free perfect matching.
 As consequence, these sets have even size, so $j=2i+1$ for some $i$.
@@ -312,9 +314,6 @@ Since there is only one---fairly boring---crossing-free perfect matching on the 
 
 For a set $\pointset P$ of $n$ points in general position, it was proved by Micha~Sharir and Emo~Welzl in 2005
 \cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq_n 10.05^n$.
-
-When talking about a perfect matching, we will denote the unique edge incident to point $p$ by
-$e_p$.
 
 \subsection{Bracket expressions and their relations to perfect matchings}
 
@@ -550,7 +549,6 @@ $\gl\of{p}=\gr\of q = 2$.\label{figConstructCFA}]{
 Define $\gl\of p \DefineAs \gi\of{e_p}$ mapping a left-point to the intersection number of its
 edge, and similarly $\gr\of q \DefineAs \gi\of{e_q}$ for the right-points. We have
 $\gm = \gr^{-1} \Compose \gl$.
-
 The bijection $\gl$ (respectively $\gr$) determines the order in which the left points (respectively right points)
 reach the vertical line.
 
@@ -865,7 +863,7 @@ we turn to the second part of the proof of Sharir and Welzl, namely the bound on
 and examine it in more detail, with some fresh definitions. Again, we will look at crossing-free left-alignments; the
 following argument equally applies to crossing-free right-alignments.
 
-First, for a point set $\pointset S$ in general position with respect to the horizontal,
+For a point set $\pointset S$ in general position with respect to the horizontal,
 note that we can partition the half-plane to the right of $\leftmost\pointset S$ in
 $\Cardinality{\pointset S}$ regions,
 separated by rays emanating from $\leftmost\pointset S$ and going through other points of
@@ -1235,12 +1233,12 @@ Incrementing $\gD_{\pointset L}$ and decrementing $\gD_{\pointset R}$ multiplies
 \gy&\DefineAs
 \frac{\gD_{\pointset L}+2}{\gD_{\pointset L}+1}
 \frac{k-\gD_{\pointset L}}{2k-\gD_{\pointset L}}
-\frac{\gD_{\pointset R}}{\gD_{\pointset L}+1}
+\frac{\gD_{\pointset R}}{\gD_{\pointset R}+1}
 \frac{2k-\gD_{\pointset R}+1}{k-\gD_{\pointset R}+1}\\
 &=
 \gq_1\of{\gD_{\pointset L}+1}
-\frac{1}{\gq_1\of{\gD_{\pointset R}}}
 \frac{1}{\gq_k\of{k-\gD_{\pointset L}}}
+\frac{1}{\gq_1\of{\gD_{\pointset R}}}
 \gq_k\of{k-\gD_{\pointset R}+1} \\
 &=
 \frac{\gq_1\of{\gD_{\pointset L}+1}}{\gq_1\of{\gD_{\pointset R}}}
@@ -1253,29 +1251,40 @@ $\gcp_{k,\gD_{\pointset L}} \gcp_{k,\gD_{\pointset R}}$ increases when increment
 decrementing $\gD_{\pointset R}$. By symmetry, it is maximal when\[
 \gD_{\pointset L} = \Floor{\frac \gG 2} \text{ and } \gD_{\pointset R} = \Ceiling{\frac \gG 2}\text,
 \]
-So that, when the number $\gG$ of extreme points of $\pointset P$ is even,\[
+so that, when the number $\gG$ of extreme points of $\pointset P$ is even,\[
 \gn_{\pointset P}\of{\langle^k\rangle^k}\leq
 \pa{\frac{\frac \gG 2+1}{k+1}\binom{2k-\frac \gG 2}{k}}^2=
 \pa{\frac{\frac \gG 2+1}{\frac n 2+1}\binom{n-\frac \gG 2}{\frac n 2}}^2\text.
 \]
 Asymptotically, if we let $\gX\DefineAs\frac{\gG}{n}$ be proportion of the points that are extreme,
-\[
+\begin{align*}
 \gn_{\pointset P}\of{\langle^k\rangle^k}
-\preccurlyeq_n
+&\preccurlyeq_n
 \pa{
   \frac
     {\pa{1-\frac{1}{2-\gX}}^{\frac{1}{2-\gX}-1}}
     {\pa{\frac{1}{2-\gX}}^{\frac{1}{2-\gX}}}
-}^{2n-\gX n}
-=
+}^{2n-\gX n}\\
+&=
 \pa{
-  \pa{
-    \frac
-      {\pa{2-\gX}^{\frac{1}{2-\gX}} \pa{\gX-1}^{\frac{1-\gX}{\gX-2}}}
-      {\pa{\gX-2}^{\frac{1-\gX}{\gX-2}}}
-  }^{2-\gX}
-}^n\text.
-\]
+  \frac
+    {\pa{2-\gX}^{\frac{1}{2-\gX}} \pa{\gX-1}^{\frac{1-\gX}{\gX-2}}}
+    {\pa{\gX-2}^{\frac{1-\gX}{\gX-2}}}
+}^{\pa{2-\gX}n}\\
+&=
+\pa{
+  \frac
+    {\pa{2-\gX} \pa{\gX-1}^{\gX-1}}
+    {\pa{\gX-2}^{\gX-1}}
+}^{n} \\
+&=
+\pa{
+  \frac
+    {\pa{1-\gX}^{\gX-1}}
+    {\pa{2-\gX}^{\gX-2}}
+}^{n}
+\text.
+\end{align*}
 The base of the exponential is $4$ for $\gX=0$, and it tends to $1$ as $\gX$ tends to $1$.
 For $\gX=\frac 1 2$\idest when half the points are extreme, this gives an asymptotic bound of
 \[
@@ -1912,7 +1921,7 @@ Moreover, while we used cones and conifers to improve the bound on the number of
 line, we did so only by looking at convexity properties, and we did not extend this reasoning
 to the bracket expressions considered in section~\ref{sectionThreeChanges}.
 
-We conclude this work by highlighting a way in which the bound from section~\ref{sectionThreeChanges}
+We conclude this work by outlining a way in which the bound from section~\ref{sectionThreeChanges}
 may be extended to arbitrary bracket expressions, and by discussing how conifers can be used to further
 refine bounds regardless of convexity considerations.
 

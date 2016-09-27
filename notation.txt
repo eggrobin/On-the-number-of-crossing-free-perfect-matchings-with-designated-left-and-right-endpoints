@@ -1,6 +1,6 @@
 ﻿Consistency of notation for single-letter symbols.
 Double-struck:
-  N : ℕ. 0 is in there, because Bourbaki says so.
+  N : ℕ. 0 is in there, because Bourbaki says so. :-)
 Upright: standard symbols, as per ISO 2000.
   π : well, π.
   e : e?
