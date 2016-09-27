@@ -24,7 +24,7 @@ Italic lowercase:
   p, q       : points.
   ν          : the number of CFPMs consistent with a WFBE.
   n          : size of the point set.
-  k          : in matchings across a line, n/2.
+  k          : when discussing perfect matchings, n/2.
                when discussing the asymptotics of the binomial coefficient, some integer.
   ϖ          : with one parameter, a recurrence which ends up being the Catalan numbers.
                with two parameters, a recurrence which ends up being a reparametrization of spc.
@@ -69,3 +69,4 @@ Italic lowercase:
                when discussing a bound of CFPMALs dependent on Γ, names for the parameters of θ.
   i, j       : indices.
   B          : a bracket expression.
+  τ          : a function related to depths of bracket expressions; it comes up in the outlook.

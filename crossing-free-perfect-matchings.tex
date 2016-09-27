@@ -290,21 +290,21 @@ perfect matching.\label{figConvexPerfectMatching}]{
 \node[dot,label=above left:$2i$] at (2,4) (p2i) {};
 \node[dot,label=above:${j=2i+1}$] at (4,4) (p2iplus1) {};
 \node[dot,label=right:$2i+2$] at (5.5,3) (p2iplus2) {};
-\node[dot,label=right:$2n-2$] at (5,1) (p2nminus2) {};
-\node[dot,label=below:$2n-1$] at (3,0) (p2nminus1) {};
+\node[dot,label=right:$2k-2$] at (5,1) (p2nminus2) {};
+\node[dot,label=below:$2k-1$] at (3,0) (p2nminus1) {};
 \draw (p0) -- (p2iplus1);
 \end{tikzpicture}}
 
 If $\pointset P$ is a set of $n=2k$ points in convex position,
 it was shown\footnote{In fact, Errera counts the number of figures that can be formed in the upper half-plane by $k$
-semicircles with their centres on the boundary. Since these are geodesic of the hyperbolic plane, switching to the
-Beltrami--Klein model turns the half-plane into the unit disk, and the semicircles into chords, so that the problem
-becomes that of crossing-free perfect matchings in convex position.}
+semicircles with their centres on the boundary. Since these are geodesics of the hyperbolic plane in the Poincaré
+half-plane model, switching to the Beltrami--Klein model turns the half-plane into the unit disk, and the semicircles
+into chords, so that the problem becomes that of crossing-free perfect matchings in convex position.}
 by A.~Errera in 1930 \cite{Errera1931} that\[\CFPM_{\pointset P}=\CatalanNumber k\text.\]
 Indeed, given a crossing-free perfect matching,
-numbering the points from $0$ to $2n-1$ along the boundary of the convex hull, as in figure~\ref{figConvexPerfectMatching},
+numbering the points from $0$ to $2k-1$ along the boundary of the convex hull, as in figure~\ref{figConvexPerfectMatching},
 we see that the edge emanating from point $0$ and matching it to point $j$ partitions
-the point set. It follows that the restriction of the matching to either $\set{j+1,\dotsc,2n-1}$ or
+the point set. It follows that the restriction of the matching to either $\set{j+1,\dotsc,2k-1}$ or
 $\set{1,\dotsc,j-1}$ is a crossing-free perfect matching.
 As consequence, these sets have even size, so $j=2i+1$ for some $i$.
 We thus have Segner's recurrence for the number of crossing-free perfect matchings on a convex point set.
