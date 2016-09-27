@@ -31,6 +31,7 @@
 \newcommand{\pointset}{\symscr}
 \newcommand{\lcone}[1]{\mathscr{k}_{\pointset L, #1}}
 \newcommand{\scone}[1]{\mathscr{k}_{\pointset S, #1}}
+\newcommand{\rcone}[1]{\mathscr{k}_{\pointset R, #1}}
 \newcommand{\conification}{\mathfrak{K}}
 \newcommand{\decomposition}{\mathfrak{D}}
 \newcommand{\composition}{\mathfrak{C}}
@@ -1422,7 +1423,7 @@ The matching is uniquely determined by $\ga$, $\gb$, the choice of
 the subsets $\pointset S\Subset\pointset A$ and $\pointset T \Subset D$,
 and by $\gb$ and $\gc$. This gives the following bound for the number of these matchings:\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
-\leq \CatalanNumber a \binom a b \CatalanNumber b \CatalanNumber c \binom c d \CatalanNumber d\text.\]
+\leq \CatalanNumber a \binom a b \CatalanNumber b \CatalanNumber c \binom d c \CatalanNumber d\text.\]
 Asymptotically, the factor involving $a$ and $b$ is, for $b=\gh a$,\[
 \CatalanNumber a \binom a b \CatalanNumber b
 \preccurlyeq_{a+b}
@@ -1451,7 +1452,7 @@ This gives the overall bound\[
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 Note that this is worse than the existing $5.3793^n$ bound on $\gn_{\pointset P}\of{B}$ for an arbitrary
 well-formed bracket expression $B$, see section~\ref{boundOnLeftRightPerfectMatchings}.
-\subsection{Improving the binomial bound}
+\subsection{Improving upon the binomial bound}\label{ImprovingBinomial}
 We can however improve upon that bound. Once $\ga$, $\gd$, $\pointset S$, and $\pointset T$
 are fixed, the edges of the matching that cross both the left line
 and the right line---let us call these \emph{long edges}---are determined.
@@ -1650,7 +1651,7 @@ a Sum of Products of Catalan numbers.}\begin{equation}
 \end{equation}
 and the overall bound becomes\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
-\CatalanNumber a\spc\of{a, b}\spc\of{c, d}\CatalanNumber d\text.\label{bound-ck-spckl-spcpq-cp}
+\CatalanNumber a\spc\of{a, b}\spc\of{d, c}\CatalanNumber d\text.\label{bound-ck-spckl-spcpq-cp}
 \end{equation}
 
 \subsection{A recurrence}
@@ -1707,7 +1708,7 @@ $\begin{array}{r r r r r r}
 \tikz[remember picture,overlay]
     \path[->] (lastSummand.south) edge (result.north -| lastSummand.south);
 }
-\subsection{A better recurrence}
+\subsection{A better recurrence, and a solution}
 We can now turn this recurrence into a simpler and better-known one, namely
 \begin{align}
 \spc\of{a,b} &= \spc\of{a-1, b} + \spc\of{a,b-1} & \text{for $a\geq 1$, $0\leq b \leq a$,}\label{spc-catalan-triangle}\\
@@ -1896,14 +1897,77 @@ the base $y_\gh$ of that exponential is maximal for
 $\gh=\frac 1 4$, where its value is $5$.
 We thus have the following asymptotic bound:\begin{equation}
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}\leq
-\CatalanNumber a\spc\of{a, b}\spc\of{c, d}\CatalanNumber d
+\CatalanNumber a\spc\of{a, b}\spc\of{d, c}\CatalanNumber d
 \preccurlyeq_n
 5^{a+b}5^{c+d} = 5^n
 \end{equation}
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 \section{Outlook}
-[TODO: here a section about spc generalizing to arbitrary WFBEs, and the applicability of overcounting
-analyses]
+As previously observed, uniform bounds on $\gn_{\pointset P}$ can be used to bound the number of
+crossing-free perfect matchings, by summation over bracket expressions. The derived in the previous
+section only applies to a limited class of bracket expressions, and so it does not by itself
+yield such an overall upper bound.
+
+Moreover, while we used cones and conifers to improve the bound on the number of matchings across a
+line, we did so only by looking at convexity properties, and we did not extend this reasoning
+to the bracket expressions considered in section~\ref{sectionThreeChanges}.
+
+We conclude this work by highlighting a way in which the bound from section~\ref{sectionThreeChanges}
+may be extended to arbitrary bracket expressions, and by discussing how conifers can be used to further
+refine bounds regardless of convexity considerations.
+
+Recall that $\spc\of{a, b}$ counts the choices of the indices on the left side of the strip $\gS$
+of the long edges crossing $\gS$, together with (an upper bound on) right-alignments of the
+right-points by within that strip, separated by long edges.
+Looking at an arbitrary well-formed bracket expression, we can separate it into\begin{itemize}
+\item a sequence of opening brackets $\langle^a$;
+\item a sequence of expressions of the form $\rangle^{b_i}\langle^{c_i}$;
+\item a sequence of closing brackets $\rangle^d$.
+\end{itemize}
+The points $\pointset B_i$ and $\pointset C_i$ corresponding to the $\rangle^{b_i}\langle^{c_i}$ lie
+within vertical strips $\gS_i$, and an
+argument similar to section~\ref{ImprovingBinomial} can be made as follows.
+
+Working from left to right, we pick a crossing-free right-alignment of the points $\pointset A$ corresponding
+to $\langle^a$. Then, looking at a strip $\gS_i$, where the yet-unmatched points to the left of $\gS_i$ reach
+its left side in a known vertical order, we choose which ones will cross the strip. This determines the size of
+the sets $\pointset B_{ij} \Subset \pointset B_i$ of right-points within $\gS_i$ that are separated
+by strip-crossing edges. Since the points from which the strip-crossing edges emanate are known,
+the sizes determine the sets. We then pick crossing-free left-alignments of the $\pointset B_{ij}$.
+On the right side of the $\gS_i$, we pick the vertical indices of the
+strip-crossing edges, and this determines the sizes, of the sets $\pointset C_{ij}\Subset \pointset C_i$
+of right-points in $\gS_i$ separated by strip-crossing edges, and thus the $\pointset C_{ij}$ themselves.
+We pick crossing-free left-alignments of the $\pointset C_{ij}$, and move on to strip $\gS_{i+1}$.
+When finally we reach the points $\pointset D$ corresponding to $\rangle^d$, we pick a crossing-free right
+alignment of them.
+
+This yields a bound of\[
+\gn_{\pointset P}\of{\langle^a\rangle^{b_1}\langle^{c_1}\cdots\rangle^{b_r}\langle^{c_r}\rangle^d} \leq
+\CatalanNumber a \CatalanNumber d
+\prod{i=1}[r]\spc\of{a+\gt\of{i},b_i}
+             \spc\of{a+\gt\of{i}-b_i,c_i}\text,\]
+where $\gt\of{i}\DefineAs\sum{j=1}[i-1]\pa{c_j-b_j}$.
+This bound is super-exponential: for the bracket expression $\langle^a\rangle\langle\cdots\rangle\langle\rangle^a$,
+it yields ${\CatalanNumber a}^2 \spc\of{a, 1}^{2r}={\CatalanNumber a}^2 a^{2r}$. It may however be possible
+to improve it with overcounting analyses similar to the one we suggest below.
+
+Let us come back to crossing-free perfect matchings across a line. We have, based on conifers,\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}\leq \CatalanNumber k \CatalanNumber k
+= \pa{\sum{i=0}[k-1]\CatalanNumber i \CatalanNumber {k-i-1}}
+   \pa{\sum{j=0}[k-1]\CatalanNumber j \CatalanNumber {k-j-1}}\text,
+\]
+where in the first sum $i$ corresponds to the choice of the left $\pointset L$-cone $\lcone i$,
+and in the second sum $j$ corresponds to the choice of the right $\pointset R$-cone $\rcone i$.
+When expanding the product of these sums, if $i=j$, we are counting crossing-free perfect matchings
+where the leftmost point is matched to the rightmost point. However, recall that to avoid overcounting,
+a point must be matched within its cone. Since there is a single left-cone of $\pointset L$ that contains the
+rightmost point, and a single right-cone of $\pointset R$ that contains the leftmost point, all but at most one
+of the $i=j$ terms are overcounted. We then get the bound\[
+\gn_{\pointset P}\of{\langle^k\rangle^k}\leq
+\max_{i\in\set{0,\dotsc,k-1}} \pa{\CatalanNumber i \CatalanNumber {k-i-1}}^2
++ \sum{i=0}[k-1]\sum{\substack{j=0\\ j\neq i}}[k-1] \CatalanNumber i \CatalanNumber {k-i-1}
+                                                   \CatalanNumber j \CatalanNumber {k-j-1}\text.\]
+It may then be possible to extend this reasoning to the rest of the conifers to get an asymptotic improvement.
 \clearpage
 \nocite{*}
 \bibliography{crossing-free-perfect-matchings}
