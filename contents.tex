@@ -1,4 +1,4 @@
-\section*{Introduction}
+\sectionorchapter*{Introduction}
 In the study of plane embeddings of planar graphs, also known as plane graphs,
 embeddings with non-crossing straight edges (called crossing-free geometric graphs) are of particular
 interest.
@@ -46,10 +46,10 @@ matchings across a line that depends on the number of points in the interior of 
 We then give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
 right endpoints for a specific family of left-to-right orderings of the left and right endpoints
 (\ref{sectionThreeChanges}). 
-\section{Background}
+\sectionorchapter{Background}
 \label{sectionBackground}
 We first give some definitions, as well as existing proofs whose ideas we will use to derive our results.
-\subsection{Geometric graphs}
+\subsectionorsection{Geometric graphs}
 \begin{definition}[geometric graph]
 Given a set of points $\pointset P$ in the Euclidean plane $\R^2$,
 a \emph{geometric graph} is a collection of straight line segments (edges)
@@ -99,7 +99,7 @@ set $\pointset P$, we will look for lower bounds $l$ and upper bounds $u$ of the
 l \of n \leq g \of {\pointset P} \leq u \of n \text,\]
 where $\pointset P$ runs over all point sets that satisfy the relevant properties.
 
-\subsection{Asymptotics}
+\subsectionorsection{Asymptotics}
 In addition, we will want asymptotics on such bounds $l$ and $u$, to compare them with
 existing results. Since the bounds are often exponential, we tend to ignore polynomial
 factors. We will thus write that\[
@@ -134,10 +134,10 @@ u_1\of{a,z}u_2\of{b,z}\preccurlyeq_{m} f_1\of{a,z}f_2\of{m-a,z}
 \]
 uniformly in $b\in\intclos 0 m$ and in $z$. Indeed, if $u_i\of{a,z}\leq \gP_i\of{a} f_i\of{a,z}$,
 where without loss of generality the coefficients of $\gP_i$ are positive, we get
-\[u_1\of{a,z}u_2\of{a,z}
-\leq \gP_1\of{a}\gP_2\of{b} f_1\of{a,z}f_2\of{b,z}
-\leq \gP_1\of{a+b}\gP_2\of{a+b} f_1\of{a,z}f_2\of{b,z}\text.\]
-\subsection{A remark on the asymptotics of the binomial coefficient}
+\begin{align*}u_1\of{a,z}u_2\of{a,z}
+&\leq \gP_1\of{a}\gP_2\of{b} f_1\of{a,z}f_2\of{b,z}\\
+&\leq \gP_1\of{a+b}\gP_2\of{a+b} f_1\of{a,z}f_2\of{b,z}\text.\end{align*}
+\subsectionorsection{A remark on the asymptotics of the binomial coefficient}
 Unsurprisingly, binomial coefficients will be involved in the bounds, so we now give a uniform exponential
 upper bound for them.
 It can be shown, by writing the logarithm of the factorial as a sum of logarithms,
@@ -155,7 +155,7 @@ so that, since $\forall k\in \N, \binom k 0 = \binom k k = 1$, we have
 \begin{equation}
 \binom k {\gh k} \preccurlyeq_k \pa{\frac{\pa{1-\gh}^{\gh-1}}{\gh^\gh}}^k \text{ uniformly in $\gh\in\intclos 0 1$.}
 \end{equation}
-\subsection{Triangulations of convex point sets and the Catalan numbers}
+\subsectionorsection{Triangulations of convex point sets and the Catalan numbers}
 A set of points is said to be \emph{in convex position} if it is in general position and
 all points are in the boundary of its convex hull.
 
@@ -214,7 +214,7 @@ yielding asymptotically
 \CatalanNumber n \sim \frac{4^n}{n^{\frac{3}{2}}\sqrt{\Pi}} \preccurlyeq_n 4^n\text.
 \end{equation}
 
-\subsection{Crossing-free perfect matchings}
+\subsectionorsection{Crossing-free perfect matchings}
 \label{PerfectMatchingsIntro}
 We will call $\PM_{\pointset P}$ the set of perfect matchings on the point set $\pointset P$,
 and $\CFPM_{\pointset P}$ the set
@@ -254,7 +254,7 @@ Since there is only one---fairly boring---crossing-free perfect matching on the 
 For a set $\pointset P$ of $n$ points in general position, it was proved by Micha~Sharir and Emo~Welzl in 2005
 \cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq_n 10.05^n$.
 
-\subsection{Bracket expressions and their relations to perfect matchings}
+\subsectionorsection{Bracket expressions and their relations to perfect matchings}
 
 We say that a point set is \emph{in general position with respect to the horizontal} if it
 is in general position and no two points lie on a vertical line. Note that any point set in
@@ -370,7 +370,7 @@ crossing-free perfect matchings,\[
 \]
 but it is worse than the one mentioned in the previous section.
 \label{boundOnLeftRightPerfectMatchings}
-\subsection{An optimal lower bound for the number of crossing-free perfect matchings}
+\subsectionorsection{An optimal lower bound for the number of crossing-free perfect matchings}
 The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
 \begin{theorem}[Ruiz-Vargas--Welzl]
 Let $\pointset P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
@@ -430,7 +430,7 @@ section~\ref{PerfectMatchingsIntro}).
 
 Now that we have a tight uniform lower bound for $\gn_{\pointset P}$, we will start looking at upper bounds
 dependent on the bracket expression.
-\subsection{Matchings across a line}
+\subsectionorsection{Matchings across a line}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The matchings consistent with bracket expressions with $k$ opening brackets followed
 by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
@@ -649,7 +649,7 @@ but one that does not decompose to the original alignments.\label{figWeirdAligme
 \draw[->,very thick] (r1) -- (a1);
 \draw[->,very thick] (l2) -- (a1);
 \end{tikzpicture}}
-\section{Analysing the overcounting in the upper bound for matchings across a line}
+\sectionorchapter{Analysing the overcounting in the upper bound for matchings across a line}
 \label{sectionOvercounting}
 The bound given in the previous section for the number of matchings across a line is not optimal;
 an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
@@ -1051,7 +1051,7 @@ Moreover, we will write that a conifer $\gk$ is \emph{vacuous} if for some $p\in
 $\gk\of{p}$ is vacuous. Thus, if $\conification_\gl$ is vacuous, $\gl$ is overcounted.
 It follows that an upper bound on the number of non-vacuous left conifers is an upper bound on the number of non-overcounted
 crossing-free left-alignments.
-\section{Highly convex matchings across a line}
+\sectionorchapter{Highly convex matchings across a line}
 \label{sectionHighlyConvex}
 \marginfig[Point sets $\pointset L$ and $\pointset R$, both
 of size $8$. $\pointset L$ has five liminary points, shown in
@@ -1231,7 +1231,7 @@ For $\gX=\frac 1 2$\idest when half the points are extreme, this gives an asympt
 \preccurlyeq_n
 \pa{\frac{3\sqrt{3}}{2}}^n\approx 2.6^n\text.\]
 
-\section{Three changes of bracket direction}
+\sectionorchapter{Three changes of bracket direction}
 \label{sectionThreeChanges}
 We now consider perfect matchings consistent with bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
@@ -1400,7 +1400,7 @@ This gives the overall bound\[
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 Note that this is worse than the existing $5.3793^n$ bound on $\gn_{\pointset P}\of{B}$ for an arbitrary
 well-formed bracket expression $B$, see section~\ref{boundOnLeftRightPerfectMatchings}.
-\subsection{Improving upon the binomial bound}\label{ImprovingBinomial}
+\subsectionorsection{Improving upon the binomial bound}\label{ImprovingBinomial}
 We can however improve upon that bound. Once $\ga$, $\gd$, $\pointset S$, and $\pointset T$
 are fixed, the edges of the matching that cross both the left line
 and the right line---let us call these \emph{long edges}---are determined.
@@ -1602,7 +1602,7 @@ and the overall bound becomes\begin{equation}
 \CatalanNumber a\spc\of{a, b}\spc\of{d, c}\CatalanNumber d\text.\label{bound-ck-spckl-spcpq-cp}
 \end{equation}
 
-\subsection{A recurrence}
+\subsectionorsection{A recurrence}
 In order to compute $\spc$ efficiently, and eventually, get its asymptotics, it is useful to get rid
 of the $\cells$ function. We can express $\spc$ as a recurrence instead.
 First, we note that $\spc\of{a,a} = \CatalanNumber a$: there is only one summand, $S'$ is the whole set, so
@@ -1656,7 +1656,7 @@ $\begin{array}{r r r r r r}
 \tikz[remember picture,overlay]
     \path[->] (lastSummand.south) edge (result.north -| lastSummand.south);
 }
-\subsection{A better recurrence, and a solution}
+\subsectionorsection{A better recurrence, and a solution}
 We can now turn this recurrence into a simpler and better-known one, namely
 \begin{align}
 \spc\of{a,b} &= \spc\of{a-1, b} + \spc\of{a,b-1} & \text{for $a\geq 1$, $0\leq b \leq a$,}\label{spc-catalan-triangle}\\
@@ -1743,7 +1743,7 @@ In that paper, the name is justified by (\ref{spckk}).}, and its solution is kno
 \text,
 \end{equation}
 as shown by L.~F.~A.~Arbogast in 1800 \cite[p.~214--217]{Arbogast1800}.
-\subsubsection{A combinatorial interpretation of \texorpdfstring{$\spc$}{spc}}
+\subsubsectionorsubsection{A combinatorial interpretation of \texorpdfstring{$\spc$}{spc}}
 The Catalan triangle counts well-formed prefixes;
 specifically, $\spc\of{a,b}$ is the number of well-formed prefixes with $a$ opening brackets
 and $b$ closing brackets. This can in fact be seen from
@@ -1768,7 +1768,7 @@ Finally, (\ref{spc-catalan-triangle}) reflects the fact that a well-formed prefi
 and $b$ closing brackets either ends with an opening bracket (preceded by a well-formed prefix with $a-1$ opening
 and $b$ closing brackets), or with a closing bracket (preceded by a well-formed prefix with $a$ opening
 and $b-1$ closing brackets).
-\subsubsection{Tying up some loose ends}
+\subsubsectionorsubsection{Tying up some loose ends}
 \label{tyingLooseEnds}
 We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex} by a combinatorial argument.
 Recall that $\gcp$ is defined by
@@ -1810,7 +1810,7 @@ It follows that $\gw=\gcp$; this completes the proof.
 Substituting (\ref{spc-solution}), we get\begin{equation}
 \gcp_{k,\gD}=\frac{\gD+1}{k+1}\binom{2k-\gD}{k}\text.
 \end{equation}
-\subsection{Asymptotics}
+\subsectionorsection{Asymptotics}
 We can now use the expression (\ref{spc-solution}) for $\spc$ to study the properties of the bound
 (\ref{bound-ck-spckl-spcpq-cp}).
 First, we note that in the extreme case where $b=c=0$, so that the problem is that of matchings across
@@ -1850,7 +1850,7 @@ We thus have the following asymptotic bound:\begin{equation}
 5^{a+b}5^{c+d} = 5^n
 \end{equation}
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
-\section{Outlook}
+\sectionorchapter{Outlook}
 As previously observed, uniform bounds on $\gn_{\pointset P}$ can be used to bound the number of
 crossing-free perfect matchings, by summation over bracket expressions. The derived in the previous
 section only applies to a limited class of bracket expressions, and so it does not by itself
