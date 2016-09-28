@@ -1,0 +1,237 @@
+%% (Master) Thesis template
+% Template version used: v1.4
+%
+% Largely adapted from Adrian Nievergelt's template for the ADPS
+% (lecture notes) project.
+
+
+%% We use the memoir class because it offers a many easy to use features.
+\documentclass[11pt,a4paper,titlepage]{memoir}
+
+%% Packages
+%% ========
+
+%% LaTeX Font encoding -- DO NOT CHANGE
+\usepackage[OT1]{fontenc}
+
+%% Babel provides support for languages.  'english' uses British
+%% English hyphenation and text snippets like "Figure" and
+%% "Theorem". Use the option 'ngerman' if your document is in German.
+%% Use 'american' for American English.  Note that if you change this,
+%% the next LaTeX run may show spurious errors.  Simply run it again.
+%% If they persist, remove the .aux file and try again.
+\usepackage[german,french,english]{babel}
+
+%% Input encoding 'utf8'. In some cases you might need 'utf8x' for
+%% extra symbols. Not all editors, especially on Windows, are UTF-8
+%% capable, so you may want to use 'latin1' instead.
+\usepackage[utf8]{inputenc}
+
+%% This changes default fonts for both text and math mode to use Herman Zapfs
+%% excellent Palatino font.  Do not change this.
+\usepackage[sc]{mathpazo}
+
+%% The AMS-LaTeX extensions for mathematical typesetting.  Do not
+%% remove.
+\usepackage{amsmath,amssymb,amsfonts,mathrsfs}
+
+%% NTheorem is a reimplementation of the AMS Theorem package. This
+%% will allow us to typeset theorems like examples, proofs and
+%% similar.  Do not remove.
+%% NOTE: Must be loaded AFTER amsmath, or the \qed placement will
+%% break
+\usepackage[amsmath,thmmarks]{ntheorem}
+
+%% LaTeX' own graphics handling
+\usepackage{graphicx}
+
+%% We unfortunately need this for the Rules chapter.  Remove it
+%% afterwards; or at least NEVER use its underlining features.
+\usepackage{soul}
+
+%% This allows you to add .pdf files. It is used to add the
+%% declaration of originality.
+\usepackage{pdfpages}
+
+%% Some more packages that you may want to use.  Have a look at the
+%% file, and consult the package docs for each.
+\input{extrapackages}
+
+%% Our layout configuration.  DO NOT CHANGE.
+\input{layoutsetup}
+
+%% Theorem environments.  You will have to adapt this for a German
+%% thesis.
+\input{theoremsetup}
+
+%% Helpful macros.
+\input{macrosetup}
+
+%% Make document internal hyperlinks wherever possible. (TOC, references)
+%% This MUST be loaded after varioref, which is loaded in 'extrapackages'
+%% above.  We just load it last to be safe.
+\usepackage[linkcolor=black,colorlinks=true,citecolor=black,filecolor=black]{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{cd}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{intersections}
+\usetikzlibrary{backgrounds}
+\usepackage{tikz-qtree}
+\usepackage{braids}
+
+\usepackage{subcaption}
+
+\newcommand{\textfrench}[1]{\begin{otherlanguage}{french}#1\end{otherlanguage}}
+\newcommand{\textgerman}[1]{\begin{otherlanguage}{german}#1\end{otherlanguage}}
+
+\usepackage{xparse}
+\usepackage{upgreek}
+
+%% Document information
+%% ====================
+
+\title{On the number of crossing-free perfect matchings with designated left and right endpoints}
+\author{Robin Leroy}
+\thesistype{Master Thesis}
+\advisors{Advisors: Prof.\ Dr.\ Emo Welzl, Manuel Wettstein}
+\department{Department of Computer Science}
+\date{January 19, 2038}
+
+
+%%%% Shorthands.
+\input{shorthands}
+
+%%%% Compatibility between CADMO stuff and mine...
+\newcommand{\marginfig}[2][]{\begin{figure}\centering #2\caption{#1}\end{figure}}
+
+\newcommand\symscr\mathcal
+\newcommand\StandardSymbol\mathrm
+\newcommand{\BigO}{\mathcal{O}}
+
+\let\summationSign\sum
+\let\productSign\prod
+
+\DeclareDocumentCommand\sum{m O{}}{\summationSign_{#1}^{#2}}
+\DeclareDocumentCommand\prod{m O{}}{\productSign_{#1}^{#2}}
+
+\newcommand{\set}[1]{\left\lbrace #1\right\rbrace}
+\newcommand{\of}[1]{\left(#1\right)}
+\newcommand{\pa}[1]{\left(#1\right)}
+\newcommand{\tuple}[1]{\left(#1\right)}
+\newcommand{\Floor}[1]{\left\lfloor #1\right\rfloor}
+\newcommand{\Ceiling}[1]{\left\lceil #1\right\rceil}
+\newcommand{\intclos}[2]{\left[#1,#2\right]}
+\newcommand{\intopen}[2]{\left]#1,#2\right[}
+\newcommand{\setst}[2]{\left\lbrace #1\middle\vert #2\right\rbrace}
+
+\newcommand{\FunctionSpec}[3]{#1:#2\longrightarrow #3}
+\newcommand{\FunctionDefinition}[3]{#1:#2\longmapsto #3}
+
+\newcommand{\Compose}{\circ}
+\newcommand{\Cartesian}{\times}
+\newcommand{\Union}{\cup}
+\renewcommand{\Subset}{\subseteq}
+
+\newcommand{\EmptySet}{\varnothing}
+
+\newcommand{\Cardinality}[1]{\left\vert #1\right\vert}
+\newcommand{\Implies}{\longrightarrow}
+\newcommand{\E}{\mathrm{e}}
+\newcommand{\GoldenRatio}{\upphi}
+\let\CapitalPi\Pi
+\renewcommand{\Pi}{\uppi}
+\newcommand{\Positives}{\mathbb{N}^*}
+\newcommand{\Factorial}[1]{#1!}
+
+\newcommand{\DefineAs}{:=}
+\newcommand{\DefinitionOf}{=:}
+\newcommand{\Intersection}{\cap}
+
+\newcommand\ga\alpha
+\newcommand\gb\beta
+\renewcommand\gg\gamma
+\newcommand\gd\delta
+\renewcommand\ge\epsilon
+\newcommand\gce\varepsilon
+\newcommand\gz\zeta
+\newcommand\gh\eta
+\newcommand\gq\theta
+\newcommand\gcq\vartheta
+\newcommand\gi\iota
+\newcommand\gl\lambda
+\newcommand\gk\kappa
+\newcommand\gm\mu
+\newcommand\gn\nu
+\newcommand\gx\xi
+\newcommand\gom{o}
+\newcommand\gp\CapitalPi
+\newcommand\gcp\varpi
+\newcommand\gr\rho
+\newcommand\gcr\varrho
+\newcommand\gs\sigma
+\newcommand\gfs\varsigma
+\newcommand\gt\tau
+\newcommand\gu\upsilon
+\newcommand\gf\phi
+\newcommand\gj\varphi
+\newcommand\gc\chi
+\newcommand\gy\psi
+\newcommand\gw\omega
+\newcommand\gdig\digamma
+
+\newcommand\gD\varDelta
+\newcommand\gL\varLambda
+\newcommand\gG\varGamma
+\newcommand\gS\varSigma
+\newcommand\gP\varPi
+\newcommand\gX\varXi
+\newcommand\gW\varOmega
+
+\usepackage{ifxetex}
+\newcommand{\sectionorchapter}{\chapter}
+\newcommand{\subsectionorsection}{\section}
+\newcommand{\subsubsectionorsubsection}{\subsection}
+
+\begin{document}
+
+\frontmatter
+
+%% Title page is autogenerated from document information above.  DO
+%% NOT CHANGE.
+\begin{titlingpage}
+  \calccentering{\unitlength}
+  \begin{adjustwidth*}{\unitlength-24pt}{-\unitlength-24pt}
+    \maketitle
+  \end{adjustwidth*}
+\end{titlingpage}
+
+%% The abstract of your thesis.  Edit the file as needed.
+\input{abstract}
+
+%% TOC with the proper setup, do not change.
+\cleartorecto
+\tableofcontents
+\mainmatter
+
+%% Your real content!
+
+\input{contents}
+%\input{introduction}
+%\input{rules}
+%\input{typography}
+%\input{sections}
+
+\appendix
+
+\input{appendix}
+
+\backmatter
+
+\bibliographystyle{plain}
+\bibliography{crossing-free-perfect-matchings}
+
+\includepdf[pages={-}]{declaration-originality.pdf}
+
+\end{document}
