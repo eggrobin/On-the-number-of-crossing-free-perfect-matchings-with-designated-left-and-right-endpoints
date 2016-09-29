@@ -110,6 +110,110 @@
 %%%% Compatibility between CADMO stuff and mine...
 \newcommand{\marginfig}[2][]{\begin{figure}\centering #2\caption{#1}\end{figure}}
 
+%% Unspeakable LaTeX horrors
+
+% This is declares a scaling delimiter which does not scale
+% with indices, exponents, limits etc.
+
+\makeatletter
+
+\newif\if@delimsize
+\@delimsizefalse
+
+% Something seems to be very buggy, so we need to do some
+% dark magic to render things in the right order.
+% In particular, this involves negative phantoms.
+
+\def\nvphantom{\v@true\h@false\nph@nt}
+\def\nhphantom{\v@false\h@true\nph@nt}
+\def\nphantom{\v@true\h@true\nph@nt}
+\def\nph@nt{\ifmmode\def\next{\mathpalette\nmathph@nt}%
+  \else\let\next\nmakeph@nt\fi\next}
+\def\nmakeph@nt#1{\setbox\z@\hbox{#1}\nfinph@nt}
+\def\nmathph@nt#1#2{\setbox\z@\hbox{$\m@th#1{#2}$}\nfinph@nt}
+\def\nfinph@nt{\setbox\tw@\null
+  \ifv@ \ht\tw@\ht\z@ \dp\tw@\dp\z@\fi
+  \ifh@ \wd\tw@-\wd\z@\fi \box\tw@}
+
+% This is a well-known hack.
+
+\newcommand\@delimiterWrapper[3]{\mathopen{}\mathclose\bgroup #1 #2\aftergroup\egroup #3}
+
+
+\newcommand\delimsize[1]{
+\if@delimsize
+\else
+  \mathopen{
+    \left.{\kern-\nulldelimiterspace}
+    \@delimsizetrue\vphantom{\@delimcontent}\@delimsizefalse
+    \middle#1
+    {\kern-\nulldelimiterspace}\right.
+  }
+\fi
+}
+
+\def\DeclareDelimiterX#1[#2]#3#4#5 {
+  \DeclareRobustCommand{#1}[#2]{
+    \if@delimsize
+      #5
+    \else
+      \begingroup
+        \mathopen{}
+        \@delimsizetrue
+        \@delimiterWrapper{\left#3}{
+          \vphantom{#5}
+          {\kern-\nulldelimiterspace}
+        }{\right.}
+        \def\@delimcontent{#5}
+        \@delimsizefalse
+        {#5}
+        \mathclose{
+        \@delimsizetrue
+        \@delimiterWrapper{\left.}{
+          {\kern-\nulldelimiterspace}
+          \vphantom{#5}
+        }{\right#4}
+        }
+      \endgroup
+    \fi
+  }
+}
+
+\newcommand\DeclareDelimiter[3]{\DeclareDelimiterX{#1}[1]{#2}{#3}{##1}}
+
+\makeatother
+
+\let\oldunderbrace\underbrace
+\renewcommand{\underbrace}[1]{\if@delimsize#1\else\oldunderbrace{#1}\fi}
+
+% Unary.
+\DeclareDelimiter\doubleBars{\Vert}{\Vert}
+\DeclareDelimiter\singleBars{\lvert}{\rvert}
+\DeclareDelimiter\emptyBarUnkerned{.}{|}
+\newcommand{\emptyBar}[1]{\emptyBarUnkerned{\kern-\nulldelimiterspace #1}}
+\DeclareDelimiter\parentheses{\lparen}{\rparen}
+\DeclareDelimiter\squareBrackets{[}{]}
+\DeclareDelimiter\curlyBrackets{\lbrace}{\rbrace}
+\DeclareDelimiter\angleBrackets{\langle}{\rangle}
+\DeclareDelimiter\floor{\lfloor}{\rfloor}
+\DeclareDelimiter\ceil{\lceil}{\rceil}
+% Binary.
+\DeclareDelimiterX\lsquareCommaRsquare[2]{[}{]}{#1, #2}
+\DeclareDelimiterX\lsquareCommaLsquare[2]{[}{[}{#1, #2}
+\DeclareDelimiterX\rsquareCommaRsquare[2]{]}{]}{#1, #2}
+\DeclareDelimiterX\rsquareCommaLsquare[2]{]}{[}{#1, #2}
+\DeclareDelimiterX\langleBarRangle[2]{\langle}{\rangle}{#1\delimsize\vert #2} 
+\DeclareDelimiterX\langleCommaRangle[2]{\langle}{\rangle}{#1, #2}
+\DeclareDelimiterX\lAngleCommaRAngle[2]{\lAngle}{\rAngle}{#1, #2}
+\DeclareDelimiterX\lparenCommaRparen[2]{\lparen}{\rparen}{#1, #2}
+\DeclareDelimiterX\lParenCommaRParen[2]{\lParen}{\rParen}{#1, #2}
+\DeclareDelimiterX\unkernedEmptySlashEmpty[2]{.}{.}{#1\delimsize\fracslash #2}
+\DeclareDelimiterX\unkernedEmptyDotEmpty[2]{.}{.}{#1\cdot #2}
+\DeclareDelimiterX\lcurlyBarRcurly[2]{\lbrace}{\rbrace}{#1\:\delimsize\vert\: #2}
+\DeclareDelimiterX\lcurlyCommaRcurly[2]{\lbrace}{\rbrace}{#1, #2}
+
+%% end unspeakable horrors
+
 \newcommand\symscr\mathcal
 \renewcommand{\mathscr}{\mathcalligra}
 \newcommand\StandardSymbol\mathrm
@@ -121,15 +225,17 @@
 \DeclareDocumentCommand\sum{m O{}}{\summationSign_{#1}^{#2}}
 \DeclareDocumentCommand\prod{m O{}}{\productSign_{#1}^{#2}}
 
-\newcommand{\set}[1]{\left\lbrace #1\right\rbrace}
-\newcommand{\of}[1]{\left(#1\right)}
-\newcommand{\pa}[1]{\left(#1\right)}
-\newcommand{\tuple}[1]{\left(#1\right)}
-\newcommand{\Floor}[1]{\left\lfloor #1\right\rfloor}
-\newcommand{\Ceiling}[1]{\left\lceil #1\right\rceil}
-\newcommand{\intclos}[2]{\left[#1,#2\right]}
-\newcommand{\intopen}[2]{\left]#1,#2\right[}
-\newcommand{\setst}[2]{\left\lbrace #1\middle\vert #2\right\rbrace}
+\newcommand{\set}[1]{\curlyBrackets{#1}}
+\newcommand{\of}[1]{\parentheses{#1}}
+\newcommand{\pa}[1]{\parentheses{#1}}
+\newcommand{\tuple}[1]{\parentheses{#1}}
+\newcommand{\Floor}[1]{\floor{#1}}
+\newcommand{\Ceiling}[1]{\ceil{#1}}
+\newcommand{\intopen}[2]{\rsquareCommaLsquare{#1}{#2}}
+\newcommand{\intopcl}[2]{\rsquareCommaRsquare{#1}{#2}}
+\newcommand{\intclop}[2]{\lsquareCommaLsquare{#1}{#2}}
+\newcommand{\intclos}[2]{\lsquareCommaRsquare{#1}{#2}}
+\newcommand{\setst}[2]{\lcurlyBarRcurly{#1}{#2}}
 
 \newcommand{\FunctionSpec}[3]{#1:#2\longrightarrow #3}
 \newcommand{\FunctionDefinition}[5]{#1:#2&\longrightarrow #3\\#4&\longmapsto #5}
@@ -197,6 +303,8 @@
 \newcommand{\sectionorchapter}{\chapter}
 \newcommand{\subsectionorsection}{\section}
 \newcommand{\subsubsectionorsubsection}{\subsection}
+
+\newcommand{\minorplotsize}{0.75}
 
 \begin{document}
 
