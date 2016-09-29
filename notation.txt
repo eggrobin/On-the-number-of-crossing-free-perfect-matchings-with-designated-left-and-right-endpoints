@@ -6,6 +6,7 @@ Upright: standard symbols, as per ISO 2000.
   e : e?
   φ : the golden ratio.
   C : the Catalan numbers.
+  ζ : the ζ function.
 Script capitals: points sets.
   P          : the whole point set.
   L, R       : in the context of matchings across a line, the left- and right- points.
@@ -70,3 +71,4 @@ Italic lowercase:
   i, j       : indices.
   B          : a bracket expression.
   τ          : a function related to depths of bracket expressions; it comes up in the outlook.
+  ϑ          : the base of the ζ-based bound for spc.
