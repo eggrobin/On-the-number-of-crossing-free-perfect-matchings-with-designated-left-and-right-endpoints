@@ -35,7 +35,7 @@
   SmallCapsFeatures={Letters=SmallCaps},
   Contextuals=WordFinal,
             ]{Linux Libertine O}
-\setmonofont[Scale=MatchLowercase]{Linux Libertine Mono O}
+\setmonofont[Scale=MatchLowercase]{Consolas}
 \newfontface\textup[
   VerticalPosition=Superior,
   Numbers={OldStyle, Proportional}

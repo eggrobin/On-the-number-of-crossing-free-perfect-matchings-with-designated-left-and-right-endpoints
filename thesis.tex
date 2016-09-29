@@ -181,6 +181,23 @@
 
 \newcommand\DeclareDelimiter[3]{\DeclareDelimiterX{#1}[1]{#2}{#3}{##1}}
 
+\mathcode`\^="8000
+\mathcode`\_="8000
+
+\makeatletter
+\def\livechars@{
+  \catcode`\^=\active
+  \catcode`\_=\active
+}
+\def\killchars@{
+  \catcode`\^=7
+  \catcode`\_=8
+}
+
+\livechars@
+\newcommand^[1]{\if@delimsize{}\else\sp{#1}\fi}
+\newcommand_[1]{\if@delimsize{}\else\sb{#1}\fi}
+
 \makeatother
 
 \let\oldunderbrace\underbrace
