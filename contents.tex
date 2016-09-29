@@ -1405,7 +1405,10 @@ Asymptotically, the factor involving $a$ and $b$ is, for $b=\gh a$,\[
   {\gh}}^{\frac{\gh}{\gh+1}}}_{x_\gh}}^{a+b}\text,
 \]
 uniformly in $\gh\in\intclos 01$. See figure~\ref{figBinomialBound} for a plot.
-The base $x_\gh$ of the exponential bound for the binomial coefficient is maximal
+The base $x_\gh$ of the exponential bound for the binomial coefficient is
+maximal\footnote{This can be shown by differentiating $x_\gh$.
+One can alternatively study the sequence $\max_b \binom {m-b}{b}$, as in the
+work of S.~M.~Tanny and M.~Zuker \cite{TannyZuker1974}.}
 when $\gh = \frac{3-\sqrt{5}}{2}$, where it is $\GoldenRatio = \frac{1+\sqrt{5}}{2}$.
 This gives the overall bound\[
 \gn_{\pointset P}\of{\langle^a\rangle^b\langle^c\rangle^d}
@@ -1676,6 +1679,12 @@ $\begin{array}{r r r r r r}
 \tikz[remember picture,overlay]
     \path[->] (lastSummand.south) edge (result.north -| lastSummand.south);
 }
+We can use this recurrence directly to get a very slack bound on the asymptotics of (\ref{bound-ck-spckl-spcpq-cp}), see
+appendix~\ref{appendixZetaBound}.
+Since the recurrence allows for memoization, we can also compute $\spc$, and experimentally estimate its asymptotics, see
+appendix~\ref{appendixExperimental}.
+The $5^n$ bound that we can conjecture from these numerical calculations is much better than what we get by attempting to bound
+this recurrence, so this motivates looking for a better one, to ultimately solve $\spc$.
 \subsectionorsection{A better recurrence, and a solution}
 We can now turn this recurrence into a simpler and better-known one, namely
 \begin{align}
