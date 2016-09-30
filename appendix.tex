@@ -13,7 +13,7 @@ The definition (\ref{spcDefinition}) of $\spc$,\begin{equation*}
 \end{equation*}
 has exponentially many terms in the sum for constant $\gh$, so it is highly impractical to compute.
 
-However, using recurrence \ref{spcRecurrence1},
+However, using recurrence (\ref{spcRecurrence1}),
 \begin{align*}\spc\of{a,b} &= \sum{i=0}[b]
 \CatalanNumber {i}
 \spc\of{a-i-1,b-i} &\text{for $b<a$,} \\
@@ -52,7 +52,7 @@ $5$.\label{figSpcExperimental}}
 \sectionorchapter{An upper bound for \texorpdfstring{$\spc$}{spc} using the
 \texorpdfstring{$\RiemannZeta$}{Zeta} function}
 \label{appendixZetaBound}
-We can use the recurrence \ref{spcRecurrence1}
+We can use the recurrence (\ref{spcRecurrence1})
 \begin{align*}\spc\of{a,b} &= \sum{i=0}[b]
 \CatalanNumber {i}
 \spc\of{a-i-1,b-i} &\text{for $b<a$,} \\
@@ -106,7 +106,7 @@ This gives us the bound\[
 \spc\of{a,b}\leq\gcq^{a+b}\text,
 \]
 and so, with $\gh=\frac{b}{a}$,\begin{equation}
-\gn_{\pointset P}\of{\langle^a\rangle^b\langle^b\rangle^a} \leq \pa{\CatalanNumber a \spc\of{a,b}}^2\leq 4^{\frac{1}{\gh+1}} \gcq^{n}\text.
+\gn_{\pointset P}\of{\langle^a\rangle^b\langle^b\rangle^a} \leq \pa{\CatalanNumber a \spc\of{a,b}}^2\leq \pa{4^{\frac{1}{\gh+1}} \gcq}^{n}\text.
 \label{zetaBound}
 \end{equation}
 A plot of that bound is shown in figure~\ref{figZetaBound}.

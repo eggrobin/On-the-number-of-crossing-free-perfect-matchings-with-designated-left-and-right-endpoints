@@ -280,7 +280,7 @@ of length $2k$ is the Catalan number $\CatalanNumber k$. In fact, the recurrence
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
 in angle brackets here, as would be usual in Backus--Naur form, since that would result in hopeless
 confusion in a grammar describing nothing but sequences of angle brackets.}\begin{align*}
-\text{wfbe} \Coloneq
+\text{wfbe} \Produces
 & \langle \text{wfbe} \rangle \text{wfbe} \\
 \mid\: & \text{empty}\text,
 \end{align*}
@@ -1616,8 +1616,8 @@ from the choice of $\gb$), summing over the choices of $\pointset S$ (and thus o
 The improved factor becomes\footnote{The name $\spc$ was chosen because we define this as
 a Sum of Products of Catalan numbers.}\begin{equation}
 \spc\of{a,b}\DefineAs
-\sum{S\in\binom{[a]}{a-b}} \quad \prod{\gc\in\cells\of{[a] \setminus S}}\CatalanNumber {\Cardinality \gc} =
-\sum{S'\in\binom{[a]}{b}} \quad \prod{\gc\in\cells\of{S'}}\CatalanNumber {\Cardinality \gc}\text,
+\sum{S\in\binom{[a]}{a-b}} \eggspacing{\quad} \prod{\gc\in\cells\of{[a] \setminus S}}\CatalanNumber {\Cardinality \gc} =
+\sum{S'\in\binom{[a]}{b}} \eggspacing{\quad} \prod{\gc\in\cells\of{S'}}\CatalanNumber {\Cardinality \gc}\text,
 \label{spcDefinition}
 \end{equation}
 and the overall bound becomes\begin{equation}
@@ -1632,16 +1632,16 @@ First, we note that $\spc\of{a,a} = \CatalanNumber a$: there is only one summand
 it has only one cell, namely $S'$ itself.
 Otherwise, $a-b\geq 1$; in the sum over the $S$, consider the greatest element $j$ of $S$, which is at least
 $a-b$, and split the sum over that,
-\[\spc\of{a,b} = \sum{j=a-b}[a]\quad\;
-\sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \quad
+\[\spc\of{a,b} = \sum{j=a-b}[a]\eggspacing{\quad\;}
+\sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \eggspacing{\quad}
 \prod{\gc\in\cells\of{[a] \setminus S}}\CatalanNumber {\Cardinality \gc}\text.
 \]
 For fixed $j$, all summands (of the sum over $S$) will have a factor
 with $\gc=\set{j+1,\dotsc,a}$, and thus a factor of
 $\CatalanNumber {a-j}$. Factoring out this $\CatalanNumber {a-j}$, we get
 \[\spc\of{a, b} = \sum{j=a-b}[a]
-\CatalanNumber {a-j} \;\;
-\sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \quad
+\CatalanNumber {a-j} \eggspacing{\;\;}
+\sum{\substack{S\in\binom{[a]}{a-b} \\ j=\max S}} \eggspacing{\quad}
 \prod{\substack{\gc\in\cells\of{[a] \setminus S} \\ \gc\neq\set{j+1,\dotsc,a}}}
     \CatalanNumber {\Cardinality \gc}\text.
 \]
@@ -1650,8 +1650,8 @@ a subset $\tilde{S}$ of $[j-1]$ of size $a-b - 1$, where $S=\tilde{S}\Union\set{
 Moreover, the cells of $[a]\setminus S$ other
 than $\set{j+1,\dotsc,a}$ are exactly the cells of $[j-1]\setminus \tilde{S}$, thus
 \[\spc\of{a,b} = \sum{j=a-b}[a]
-\CatalanNumber {a-j} \;\;
-\sum{\tilde{S}\in\binom{[j-1]}{a-b - 1}} \quad\;
+\CatalanNumber {a-j} \eggspacing{\;\;}
+\sum{\tilde{S}\in\binom{[j-1]}{a-b - 1}} \eggspacing{\quad\;}
 \prod{\gc\in\cells\of{[j-1]\setminus \tilde{S}}}
     \CatalanNumber {\Cardinality \gc}\text.
 \]
@@ -1735,7 +1735,7 @@ Then we can apply this assumption to the summands of $\spc\of{a,b}$:
 +\sum{i=0}[b]\CatalanNumber {i}\spc\of{a-i-1,b-i-1} \nonumber \\
 &= \sum{i=0}[b]
 \CatalanNumber {i}\spc\of{(a-1)-i-1,b-i}
-+\sum{i=0}[b-1]\CatalanNumber {i}\spc\of{a-i-1,(b-1)-i} \nonumber \\&\phantom{=}\qquad +
++\sum{i=0}[b-1]\CatalanNumber {i}\spc\of{a-i-1,(b-1)-i} \nonumber \\&\phantom{=}\eggspacing{\qquad} +
 \underbrace{\CatalanNumber {b}\spc\of{a-b-1,-1}}_{=0}\text,
 \nonumber \\
 \intertext{so, by (\ref{spcRecurrence1}),}
@@ -1756,7 +1756,7 @@ $\begin{array}{r r r r r r}
               (summandLeft) edge (result);
 }
 
-The recurrence we just proved is defines a triangle of numbers sometimes known as
+The recurrence we just proved defines a triangle of numbers sometimes known as
 the Catalan triangle\footnote{This triangle first appears as an example in a book by Arbogast in 1800 \cite{Arbogast1800}.
 It features prominently in the previously-mentioned work of Errera \cite{Errera1931}, where it is
 attributed to Delannoy, who defined it in 1889 \cite{Delannoy1889} as the number of paths by which a
@@ -1787,7 +1787,7 @@ definition\footnote{This grammar requires infinite look-ahead to parse, but doin
 unmatched opening brackets resolves that.} of well-formed
 prefixes, where again wfbe denotes a well-formed bracket expression:
 \begin{align*}
-\text{wfprefix} \Coloneq
+\text{wfprefix} \Produces
 & \text{wfbe} \langle \text{wfprefix} \\
 \mid\: & \text{wfbe}.
 \end{align*}
