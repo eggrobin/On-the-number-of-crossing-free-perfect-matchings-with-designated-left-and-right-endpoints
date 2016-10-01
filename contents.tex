@@ -1943,8 +1943,8 @@ Let us come back to crossing-free perfect matchings across a line. We have, base
 = \pa{\sum{i=0}[k-1]\CatalanNumber i \CatalanNumber {k-i-1}}
    \pa{\sum{j=0}[k-1]\CatalanNumber j \CatalanNumber {k-j-1}}\text,
 \]
-where in the first sum $i$ corresponds to the choice of the left $\pointset L$-cone $\lcone i$,
-and in the second sum $j$ corresponds to the choice of the right $\pointset R$-cone $\rcone i$.
+where in the first sum $i$ corresponds to the choice of the left $\pointset L$-cone $\lcone {i+1}$,
+and in the second sum $j$ corresponds to the choice of the right $\pointset R$-cone $\rcone {j+1}$.
 When expanding the product of these sums, if $i=j$, we are counting crossing-free perfect matchings
 where the leftmost point is matched to the rightmost point. However, recall that to avoid overcounting,
 a point must be matched within its cone. Since there is a single left-cone of $\pointset L$ that contains the
