@@ -37,15 +37,15 @@ In this thesis,
 we start by giving an overview of some of the existing results, in particular a way
 to classify arrangements of designated left and right endpoints,
 and we restate the proof of the bound for matchings across a line by M.~Sharir and E.~Welzl
-(section~\ref{sectionBackground}).
+(\sectionorchapterword~\ref{sectionBackground}).
 We then study in detail the inequalities in that bound and the objects it actually counts,
-yielding criteria that will allow us to tighten the bound in specific cases (section~\ref{sectionOvercounting}).
+yielding criteria that will allow us to tighten the bound in specific cases (\sectionorchapterword~\ref{sectionOvercounting}).
 Using these criteria, we give a bound for
 matchings across a line that depends on the number of points in the interior of the convex hull
-(section~\ref{sectionHighlyConvex}).
+(\sectionorchapterword~\ref{sectionHighlyConvex}).
 We then give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
 right endpoints for a specific family of left-to-right orderings of the left and right endpoints
-(\ref{sectionThreeChanges}). 
+(\sectionorchapterword~\ref{sectionThreeChanges}). 
 \sectionorchapter{Background}
 \label{sectionBackground}
 We first give some definitions, as well as existing proofs whose ideas we will use to derive our results.
@@ -499,7 +499,7 @@ If the matching is crossing-free, we will show that
 $\gl$ and $\gr$ have to be in sets of size $\CatalanNumber k$, thus that there are at most ${\CatalanNumber k}^2$ functions
 $\gm = \gr^{-1} \Compose \gl$\idest that there can be at most ${\CatalanNumber k}^2$ crossing-free perfect matchings across a line.
 
-Since we are going to reuse these concepts in subsequent sections, we will formalize and name the properties of
+Since we are going to reuse these concepts in subsequent \sectionsorchaptersword, we will formalize and name the properties of
 $\gl$ and $\gr$ that we will consider.
 \begin{definition}[crossing-free alignment]
 Let ${\pointset S}$ be a set of $k$ points in general position. Let $V$ be a vertical line to the right of ${\pointset S}$.
@@ -656,7 +656,7 @@ but one that does not decompose to the original alignments.\label{figWeirdAligme
 \end{tikzpicture}}
 \sectionorchapter{Analysing the overcounting in the upper bound for matchings across a line}
 \label{sectionOvercounting}
-The bound given in the previous section for the number of matchings across a line is not optimal;
+The bound given in the previous \sectionorchapterword for the number of matchings across a line is not optimal;
 an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
 right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{figCrossingPMAL}).
 
@@ -665,10 +665,10 @@ To characterize that, it helps to name some functions and sets. Again, we are co
 set $\pointset P$ of $2k$ points in general position with respect to the horizontal and the bracket
 expression $\langle^k\rangle^k$.  We let $\pointset L$ be the set of left-points, and $\pointset R$ be the
 set of right-points. Moreover, we pick a vertical line $V$ separating $\pointset L$ and $\pointset R$.
-In this section and the following one, we will use the terms crossing-free left- and right-alignments
+In this \sectionorchapterword and the following one, we will use the terms crossing-free left- and right-alignments
 to mean crossing-free left- and right-alignments on $V$.
 
-In the previous section, given a crossing-free perfect matching $\gm$, we constructed crossing-free
+In the previous \sectionorchapterword, given a crossing-free perfect matching $\gm$, we constructed crossing-free
 left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call these
 crossing-free alignments the \emph{decomposition} $\decomposition$ of $\gm$,
 thus $\decomposition\of{\gm}=\tuple{\gl, \gr}$.
@@ -827,7 +827,7 @@ As a consequence, given a crossing-free left-alignment
 $\gl$ of $\pointset L$, for any set of segments $A=\setst{\gs_p}{p\in\pointset L}$
 realizing $\gl$, the segment $\gs_{\leftmost\pointset L}$ of the leftmost point has to be contained in
 $\lcone{\gl\of{\leftmost\pointset L}}$.
-As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
+As we remarked in the previous \sectionorchapterword, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
 to the left side of $V$ realize the crossing-free
 left-alignment in $\decomposition\of\gm$. Thus, if $\tuple{\gl, \gr}$ is in the image of
 $\decomposition$, $\leftmost\pointset L$ has to be matched to a right-point in the cone
@@ -1806,7 +1806,7 @@ and $b$ closing brackets), or with a closing bracket (preceded by a well-formed 
 and $b-1$ closing brackets).
 \subsubsectionorsubsection{Tying up some loose ends}
 \label{tyingLooseEnds}
-We now solve the recurrence $\gcp$ defined in section~\ref{sectionHighlyConvex} by a combinatorial argument.
+We now solve the recurrence $\gcp$ defined in \sectionorchapterword~\ref{sectionHighlyConvex} by a combinatorial argument.
 Recall that $\gcp$ is defined by
 \begin{align*}
 \gcp_{k,\gD}&\DefineAs\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gcp_{i,\gD_1}\gcp_{k-i-1,\gD_2}\text,\\
@@ -1898,15 +1898,15 @@ We thus have the following asymptotic bound:\begin{equation}
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 \sectionorchapter{Outlook}
 As previously observed, uniform bounds on $\gn_{\pointset P}$ can be used to bound the number of
-crossing-free perfect matchings, by summation over bracket expressions. The derived in the previous
-section only applies to a limited class of bracket expressions, and so it does not by itself
+crossing-free perfect matchings, by summation over bracket expressions. The bound derived in the previous
+\sectionorchapterword only applies to a limited class of bracket expressions, and so it does not by itself
 yield such an overall upper bound.
 
 Moreover, while we used cones and conifers to improve the bound on the number of matchings across a
 line, we did so only by looking at convexity properties, and we did not extend this reasoning
-to the bracket expressions considered in section~\ref{sectionThreeChanges}.
+to the bracket expressions considered in \sectionorchapterword~\ref{sectionThreeChanges}.
 
-We conclude this work by outlining a way in which the bound from section~\ref{sectionThreeChanges}
+We conclude this work by outlining a way in which the bound from \sectionorchapterword~\ref{sectionThreeChanges}
 may be extended to arbitrary bracket expressions, and by discussing how conifers can be used to further
 refine bounds regardless of convexity considerations.
 
