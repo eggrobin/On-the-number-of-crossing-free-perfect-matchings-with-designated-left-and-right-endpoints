@@ -54,11 +54,10 @@ We first give some definitions, as well as existing proofs whose ideas we will u
 Given a set of points $\pointset P$ in the Euclidean plane $\R^2$,
 a \emph{geometric graph} is a collection of straight line segments (edges)
 whose endpoints are elements of $\pointset P$.
-
-It can be described as a simple graph (in the combinatorial sense)
+\end{definition}
+A geometric graph can be described as a simple graph (in the combinatorial sense)
 on the vertices $\pointset P$, where the edge $\set{p,q}$ corresponds to the segment joining
 $p$ and $q$.
-\end{definition}
 \begin{definition}[crossing-free]
 A geometric graph is \emph{crossing-free} if no two edges share points other than
 their endpoints; it is called \emph{crossing} otherwise.
@@ -67,7 +66,7 @@ Note that being crossing-free implies that the corresponding simple graph is pla
 geometric graph is a plane embedding.
 \begin{sloppypar}
 \begin{definition}[triangulation]
-A \emph{triangulation} is a maximal crossing-free geometric graph, that is,
+A \emph{triangulation} is a maximal crossing-free geometric graph, that is, a
 geometric graph such that for all $p$ and $q$ in $\pointset P$ that are not joined by a
 segment, adding the segment joining $p$ and $q$ would result in a crossing
 geometric graph.
@@ -108,14 +107,14 @@ u \of n \preccurlyeq_n f \of n
 if for some polynomial $\gP$, $\forall n\in \N, u\of n \leq \gP\of n f \of n$.
 
 In some cases, we may be interested in classes of functions $g_z\of{\pointset P}$
-which depend on some parameter $z\in\gW_n$.
-For instance, $g_z$ could count crossing-free graphs on $\pointset P$ that contain a clique of size
-$z\in [n]$.
+which depend on some parameter $z\in\gW_n$, where $\gW_n$ is a set of arbitrary objects.
+For instance, $g_z$ could count crossing-free graphs on $\pointset P$ that contain an independent set
+of size $z\in [n]$.
 In this thesis, we will often use classes $g_z$ with $z$ being the left-to-right ordering
-of designated left and right endpoints.
+of designated left and right endpoints---this will be formalized in section~\ref{bracketExpressions}.
 
 When giving exponential bounds in $n$ for these parameterized classes of graphs, we will want to keep
-track of the growth due to $z$. We will write that\[
+track of any dependence on $z$. We will write that\[
 u \of {n,z} \preccurlyeq_n f \of {n,z} \text{ \emph{uniformly in $z\in\gW_n$}}\]
 if for some polynomial $\gP$ (that does not depend on $z$),
 \[\forall n\in \N,\forall z \in \gW_n, u\of {n,z} \leq \gP\of n f \of {n,z}\text.\]
@@ -126,7 +125,8 @@ It also makes it possible to get a bound by summation of $f \of {n,z}$ over $z\i
 Observe that these bounds up to a polynomial are related to $\BigO$ notation when the upper bound
 is exponential; specifically, for $\gz>1$,
 \[u \of n \preccurlyeq_n \gz^n \Implies \forall\gce>0, u\of n\in\BigO\of{\pa{\gz+\gce}^n}\text.\]
-Moreover, for positive $f_1$ and $f_2$, if
+Moreover, we can bound a product by the product of the bounds for its factors. Specifically,
+for positive $f_1$ and $f_2$, if
 $u_1\of{a,z}\preccurlyeq_a f_1\of{a,z}$ and
 $u_2\of{b,z}\preccurlyeq_b f_2\of{b,z}$,
 both uniformly in $z$, we have\[
@@ -142,8 +142,9 @@ Unsurprisingly, binomial coefficients will be involved in the bounds, so we now 
 upper bound for them.
 It can be shown, by writing the logarithm of the factorial as a sum of logarithms,
 and then bounding that sum by integrals, that\[
-\forall k\in \Positives, \E \pa{\frac{k}{\E}}^k \leq \Factorial k \leq k \E \pa{\frac{k}{\E}}^k\text.
+\forall k\in \Positives, \E \pa{\frac{k}{\E}}^k \leq \Factorial k \leq k \E \pa{\frac{k}{\E}}^k\text,
 \]
+where $\Positives\DefineAs\N\setminus\set{0}$.
 It follows that\begin{align*}
 \forall k\in \Positives, \forall \gh\in\intopen 0 1, \binom{k}{\gh k} &\leq
 \frac{k \E \pa{\frac{k}{\E}}^k}{\E \pa{\frac{\gh k}{\E}}^{\gh k} \E \pa{\frac{\pa{1-\gh} k}{\E}}^{\pa{1-\gh}k}}\\
@@ -238,16 +239,18 @@ perfect matching.\label{figConvexPerfectMatching}]{
 
 If $\pointset P$ is a set of $n=2k$ points in convex position,
 it was shown\footnote{In fact, Errera counts the number of figures that can be formed in the upper half-plane by $k$
+non-intersecting
 semicircles with their centres on the boundary. Since these are geodesics of the hyperbolic plane in the Poincaré
 half-plane model, switching to the Beltrami--Klein model turns the half-plane into the unit disk, and the semicircles
 into chords, so that the problem becomes that of crossing-free perfect matchings in convex position.}
-by A.~Errera in 1930 \cite{Errera1931} that\[\CFPM_{\pointset P}=\CatalanNumber k\text.\]
+by A.~Errera in 1930 \cite{Errera1931} that\[\Cardinality{\CFPM_{\pointset P}}=\CatalanNumber k\text.\]
 Indeed, given a crossing-free perfect matching,
-numbering the points from $0$ to $2k-1$ along the boundary of the convex hull, as in figure~\ref{figConvexPerfectMatching},
-we see that the edge $e_0$ emanating from point $0$ and matching it to point $j$ partitions
-the point set. It follows that the restriction of the matching to either $\set{j+1,\dotsc,2k-1}$ or
+number the points from $0$ to $2k-1$ along the boundary of the convex hull, as in
+figure~\ref{figConvexPerfectMatching}.
+Let $j$ be the point to which $0$ is matched by edge $e_0$. Observe that $e_0$ partitions the point set.
+It follows that the restriction of the matching to either $\set{j+1,\dotsc,2k-1}$ or
 $\set{1,\dotsc,j-1}$ is a crossing-free perfect matching.
-As consequence, these sets have even size, so $j=2i+1$ for some $i$.
+As a consequence, these sets have even size, so $j=2i+1$ for some $i$.
 We thus have Segner's recurrence for the number of crossing-free perfect matchings on a convex point set.
 Since there is only one---fairly boring---crossing-free perfect matching on the empty set, we get the Catalan numbers.
 
@@ -255,7 +258,7 @@ For a set $\pointset P$ of $n$ points in general position, it was proved by Mich
 \cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq_n 10.05^n$.
 
 \subsectionorsection{Bracket expressions and their relations to perfect matchings}
-
+\label{bracketExpressions}
 We say that a point set is \emph{in general position with respect to the horizontal} if it
 is in general position and no two points lie on a vertical line. Note that any point set in
 general position can be put in general position with respect to the horizontal by an arbitrarily
@@ -371,7 +374,7 @@ crossing-free perfect matchings,\[
 \]
 but it is worse than the one mentioned in the previous section.
 \subsectionorsection{An optimal lower bound for the number of crossing-free perfect matchings}
-The following proof is due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
+The following result, and its proof are, due to A.~J.~Ruiz-Vargas and E.~Welzl \cite{RuizVargasWelzl2016}.
 \begin{theorem}[Ruiz-Vargas--Welzl]
 Let $\pointset P$ be a point set of size $n = 2k$ in general position with respect to the horizontal,
 and let $B$ be a well-formed bracket expression of length $n$.
@@ -419,7 +422,8 @@ crossing-free perfect matching.
 This immediately yields a lower bound for the number of crossing-free perfect matchings, since
 there are $\CatalanNumber {\frac n 2}$ well-formed bracket expressions of length $n$.
 Note that this lower bound had already been proved by A.~García, M.~Noy, and J.~Tejel in 1995,
-by a recurrence that split the point set, rather than via well-formed bracket expressions
+by a recurrence that split the point set, yielding the Segner recurrence with inequality,
+rather than via well-formed bracket expressions
 \cite{GarciaNoyTejel2000}.
 \begin{corollary}
 Let $\pointset P$ be a point set of even size $n$ in general position. There are at least $\CatalanNumber {\frac n 2}$ distinct
@@ -437,9 +441,9 @@ by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
 across a line}. Indeed, any edge in such a matching will cross any vertical line that separates
 the left-points from the right-points.
 
-The following result, and its proof, were given by Micha Sharir and Emo Welzl in 2005 \cite{SharirWelzl2006}.
+The following result, and its proof, were given by M.~Sharir and E.~Welzl in 2005 \cite{SharirWelzl2006}.
 \NoEndMark
-\begin{theorem}[Sharir--Welzl]
+\begin{theorem}[Sharir--Welzl]\label{thmCFPMAL}
 Let $\pointset P$ be a set of $n=2k$ points in general position with respect to the horizontal.
 Then there are at most ${\CatalanNumber {\frac n 2}}^2$ crossing-free perfect matchings across a line on $\pointset P$\idest
 $\gn_{\pointset P}\of {\langle^k\rangle^k} \leq {\CatalanNumber k}^2$.
@@ -552,7 +556,7 @@ For a point $p\in{\pointset S}$, we will call $\gs_p$ \emph{the segment of $p$}.
 $\gl(\leftmost\pointset S)$, being the index on the vertical line $V$ of the right endpoint of the
 segment $\gs_{\leftmost\pointset S}$
 of the leftmost point,
-is equal to one plus the number of points of ${\pointset S}$ that are above $\gs_{\leftmost\pointset S}$.
+is equal to $1$ plus the number of points of ${\pointset S}$ that are above $\gs_{\leftmost\pointset S}$.
 Indeed, the segments of points above $\gs_{\leftmost\pointset S}$ must
 themselves reach the vertical line $V$ above $\gs_{\leftmost\pointset S}$,
 otherwise they would cross $\gs_{\leftmost\pointset S}$, and correspondingly for
@@ -570,7 +574,7 @@ Further, since points above $\gs_{\leftmost\pointset S}$ must reach the vertical
 $\gs_{\leftmost\pointset S}$, and correspondingly for points below,
 if the point $p$ is above $\gs_{\leftmost\pointset S}$, then $\gl(p) < \gl({\leftmost\pointset S})$,
 and if it is below, $\gl(p) > \gl({\leftmost\pointset S})$. Thus
-$\gl$ restricted do the points above $\gs_{\leftmost\pointset S}$ is a crossing-free left-alignment of
+$\gl$ restricted to the points above $\gs_{\leftmost\pointset S}$ is a crossing-free left-alignment of
 the $\gl({\leftmost\pointset S}) - 1$ points above
 $\gs_{\leftmost\pointset S}$, and $\gl-\gl({\leftmost\pointset S})$ restricted to the points below
 $\gs_{\leftmost\pointset S}$ is a crossing-free left-alignment of the
@@ -591,11 +595,12 @@ We can start the recurrence with $\gcp_0 = 1$; this is the recurrence for the Ca
 $\gcp_k=\CatalanNumber k$.
 \end{proof}
 \end{lemma}
-The same results holds for crossing-free right-alignments, simply exchange ``left'' and ``right'' in the above
+The same result holds for crossing-free right-alignments, simply exchange ``left'' and ``right'' in the above
 lemma and its proof.
 
-\begin{proof}[of the theorem]
-If we have a crossing-free perfect matching across a line, then $\gl$ as constructed above is a crossing-free
+\begin{proof}[\eggorcadmo{of the theorem}{of theorem~\ref{thmCFPMAL}}]
+If we have a crossing-free perfect matching across a line, then $\gl$ as constructed in figure~\ref{figConstructCFA}
+is a crossing-free
 left-alignment of $\pointset L$ on the vertical line; indeed, letting $\gs_p$ be the portion of the edge $e_p$
 to the left of the vertical line yields segments that realize $\gl$.
 Similarly, $\gr$ is a crossing-free right-alignment of $\pointset R$ on the vertical line.
@@ -660,7 +665,8 @@ To characterize that, it helps to name some functions and sets. Again, we are co
 set $\pointset P$ of $2k$ points in general position with respect to the horizontal and the bracket
 expression $\langle^k\rangle^k$.  We let $\pointset L$ be the set of left-points, and $\pointset R$ be the
 set of right-points. Moreover, we pick a vertical line $V$ separating $\pointset L$ and $\pointset R$.
-In this section and the following one, crossing-free left- and right-alignments will implicitly be on $V$.
+In this section and the following one, we will use the terms crossing-free left- and right-alignments
+to mean crossing-free left- and right-alignments on $V$.
 
 In the previous section, given a crossing-free perfect matching $\gm$, we constructed crossing-free
 left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call these
@@ -689,11 +695,12 @@ We will call the elements of $\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R
 
 The result of Sharir and Welzl is proved in two steps. First we see
 from the commutative diagram that $\CFPMAL_{\pointset P}$ lies within the image of
-$\composition$, so that\begin{equation}
-\gn_{\pointset P}\of{\langle^k\rangle^k} =
-\Cardinality{\CFPMAL_{\pointset P}} \leq
+$\composition$, so that\begin{align}
+\gn_{\pointset P}\of{\langle^k\rangle^k} &=
+\Cardinality{\CFPMAL_{\pointset P}} \nonumber \\ &\leq
+\Cardinality{\composition\of{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}} \nonumber \\ &\leq
 \Cardinality{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}\text. \label{SharirWelzlOvercounting}
-\end{equation}
+\end{align}
 Then, we derive an upper bound for the number $\Cardinality{\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}}$
 of pairs of alignments. We will examine this second step later.
 Looking at the commutative diagram, we can see that $\decomposition$ is injective; this is another way of getting
@@ -712,7 +719,7 @@ in this case, we have $\tuple{\gl,\gr}\neq\decomposition\Compose\composition\of{
 since $\tuple{\gl,\gr}$ is overcounted; an example is shown in figure~\ref{figWeirdAligments}.
 \end{enumerate}
 \marginfig[A set $\pointset S$ of five points. The half-plane to the right
-of the leftmost point $\leftmost \pointset S$ is partitioned in
+of the leftmost point $\leftmost \pointset S$ is partitioned into
 $\Cardinality{\pointset S}$ cones $\scone i$.\label{figCones}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
@@ -783,10 +790,10 @@ the cone $\lcone 3$ (shaded).\label{figConesNeedPoints}]{
 
 \begin{scope}
 \clip (-4,0) rectangle (2.5,5);
-\draw (-4,0) -- (-4,5);
-\draw (a4) -- ($(a4)!10cm!(a1)$);
-\draw (a4) -- ($(a4)!10cm!(a3)$);
-\draw (a4) -- ($(a4)!10cm!(a6)$);
+\draw[dotted] (-4,0) -- (-4,5);
+\draw[dotted] (a4) -- ($(a4)!10cm!(a1)$);
+\draw[dotted] (a4) -- ($(a4)!10cm!(a3)$);
+\draw[dotted] (a4) -- ($(a4)!10cm!(a6)$);
 \end{scope}
 
 \begin{scope}[on background layer]
@@ -803,23 +810,23 @@ and examine it in more detail, with some fresh definitions. Again, we will look 
 following argument equally applies to crossing-free right-alignments.
 
 For a point set $\pointset S$ in general position with respect to the horizontal,
-note that we can partition the half-plane to the right of $\leftmost\pointset S$ in
+note that we can partition the half-plane to the right of $\leftmost\pointset S$ into
 $\Cardinality{\pointset S}$ regions,
 separated by rays emanating from $\leftmost\pointset S$ and going through other points of
 $\pointset S$, see figure~\ref{figCones}.
-We will call those regions \emph{left $\pointset S$-cones}, and call them, from top to bottom, $\scone 1$ to
-$\scone {\Cardinality{\pointset L}}$.
-Note that there are $i$ points of $\pointset S$ above the interior of $\scone i$,
+We will call those regions, from top to bottom, $\scone 1$ to
+$\scone {\Cardinality{\pointset S}}$.
+Note that there are $i$ points of $\pointset S$ above the interior of $\scone {i+1}$,
 and $\Cardinality {\pointset S} - i - 1$ points below.
 We will use the term \emph{left cone of $\pointset L$} to mean
-``left $\pointset S$-cone for some $\pointset S\Subset\pointset L$''.
+$\scone {i}$ for some $\pointset S\Subset\pointset L$ and some $i\in[\pointset S]$.
 
 Observe that the same separation of the point set occurs with realizing segments of crossing-free left-alignments,
 see for instance figure~\ref{figCrossingFreeAlignment}.
 As a consequence, given a crossing-free left-alignment
 $\gl$ of $\pointset L$, for any set of segments $A=\setst{\gs_p}{p\in\pointset L}$
-realizing $\gl$, the segment $\gs_{\leftmost\pointset L}$ of the leftmost point has to be contained in left
-$\pointset L$-cone number $\gl\of{\leftmost\pointset L}$.
+realizing $\gl$, the segment $\gs_{\leftmost\pointset L}$ of the leftmost point has to be contained in
+$\lcone{\gl\of{\leftmost\pointset L}}$.
 As we remarked in the previous section, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
 to the left side of $V$ realize the crossing-free
 left-alignment in $\decomposition\of\gm$. Thus, if $\tuple{\gl, \gr}$ is in the image of
