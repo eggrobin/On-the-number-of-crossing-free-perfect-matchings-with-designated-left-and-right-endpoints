@@ -434,7 +434,7 @@ section~\ref{PerfectMatchingsIntro}).
 
 Now that we have a tight uniform lower bound for $\gn_{\pointset P}$, we will start looking at upper bounds
 dependent on the bracket expression.
-\subsectionorsection{Matchings across a line}
+\subsectionorsection{Matchings across a line}\label{MatchingsAcrossALine}
 Again we consider $n=2k$ points in general position with respect to the horizontal.
 The matchings consistent with bracket expressions with $k$ opening brackets followed
 by $k$ closing brackets, $\langle^k\rangle^k$, are called \emph{matchings
@@ -821,16 +821,20 @@ and $\Cardinality {\pointset S} - i - 1$ points below.
 We will use the term \emph{left cone of $\pointset L$} to mean
 $\scone {i}$ for some $\pointset S\Subset\pointset L$ and some $i\in[\pointset S]$.
 
-Observe that the same separation of the point set occurs with realizing segments of crossing-free left-alignments,
-see for instance figure~\ref{figCrossingFreeAlignment}.
+Observe that for a crossing-free left-alignment $\gl$ of $\pointset L$ with
+$\gl\of{\leftmost\pointset L} = i+1$,
+any realizing segment of $\gl$ incident to $\leftmost\pointset L$
+separates the points $\pointset L\setminus\set{\leftmost\pointset L}$ into sets of points above and below the
+segment, as in figure~\ref{figCrossingFreeAlignment}. Furthermore, these sets are the same as the sets of points
+above and below $\lcone {i+1}$.
 As a consequence, given a crossing-free left-alignment
 $\gl$ of $\pointset L$, for any set of segments $A=\setst{\gs_p}{p\in\pointset L}$
 realizing $\gl$, the segment $\gs_{\leftmost\pointset L}$ of the leftmost point has to be contained in
 $\lcone{\gl\of{\leftmost\pointset L}}$.
-As we remarked in the previous \sectionorchapterword, for a crossing-free perfect matching $\gm$, the edges of $\gm$ restricted
-to the left side of $V$ realize the crossing-free
-left-alignment in $\decomposition\of\gm$. Thus, if $\tuple{\gl, \gr}$ is in the image of
-$\decomposition$, $\leftmost\pointset L$ has to be matched to a right-point in the cone
+As we remarked in section~\ref{MatchingsAcrossALine}, for a crossing-free perfect matching
+$\gm$, the edges of $\gm$ restricted to the left side of $V$ realize the crossing-free
+left-alignment in $\decomposition\of\gm$. Thus, if $\tuple{\gl, \gr}=\decomposition\of\gm$ is in the image of
+$\decomposition$, $\gm$ must match $\leftmost\pointset L$ to a right-point in the cone
 $\lcone{\gl\of{\leftmost\pointset L}}$, see figure~\ref{figConesNeedPoints}.
 
 To extend this reasoning beyond the leftmost point of $\pointset L$, we define \emph{left conifers\footnote{Conifers are
@@ -917,9 +921,10 @@ See figure~\ref{figLeftConifer} for an example.
 \label{figLeftConifer}
 \end{figure}
 
-We call $\LC {\pointset L}$ the set of left conifers on $\pointset L$. From the observations above on the number
+Let $\LC {\pointset L}$ be the set of left conifers on $\pointset L$. From the observations above on the number
 of cones and the
-size of the sets of points above and below their interiors, if $\gcp_k$ is the number of left conifers on $k$ points,
+size of the sets of points above and below their interiors, we can see that the number of left conifers on a point
+set depends only on the size of that point set. Specifically, if $\gcp_k$ is the number of left conifers on $k$ points,
 we have
 \[
 \gcp_k=\sum{i=0}[k-1]\gcp_{i}\gcp_{k-i-1} \text{ and } \gcp_0=1\text,
@@ -931,11 +936,11 @@ Recall that a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$
 is determined by the value of $\gl\of{\leftmost\pointset L}$ and by
 crossing-free left alignments $\gl^-$ and $\gl^+$ on $V$
 of subsets $\pointset S^-$ and $\pointset S^+$ above and below any edge
-realizing $\gl$\idest subsets above and below $\lcone{\gl\of{\leftmost\pointset L}}$.
-Formally, we have
+realizing $\gl$ incident to $\leftmost\pointset L$\idest subsets above
+and below $\lcone{\gl\of{\leftmost\pointset L}}$. In other words, we have
 \begin{align*}
-\pointset S^- &= \gl^{-1}\of{[\gl\of{\leftmost\pointset L}]}\text,\\
-\pointset S^+ &= \gl^{-1}\of{[\Cardinality{\pointset L}]\setminus[\gl\of{\leftmost\pointset L}]}\text,\\
+\pointset S^- &= \gl^{-1}\of{\set{1,\dotsc,\gl\of{\leftmost\pointset L}-1}}\text,\\
+\pointset S^+ &= \gl^{-1}\of{\set{\gl\of{\leftmost\pointset L}+1,\dotsc,\Cardinality{\pointset L}}}\text,\\
 \gl^-\of{p} &= \gl\of{p} \text{ for $p\in\pointset S^-$, and}\\
 \gl^+\of{p} &= \gl\of{p}-\gl\of{\leftmost\pointset L} \text{ for $p\in\pointset S^+$.}
 \end{align*}
@@ -991,8 +996,9 @@ together with the conifer $\conification_\gl$.\label{figConification}]{
 \end{scope}
 \draw[very thick] (0,5) -- (0,0);
 \end{tikzpicture}}
-We can thus define a recursive construction $\conification$ of a left conifer $\conification_\gl$ from
-a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$ as follows:
+Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$,
+this allows us to construct a left conifer $\conification_\gl$
+as follows:
 \begin{enumerate}
 \item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
 \item $\conification_\gl\of{p}=\conification_{\gl^-}\of{p}$ for $p\in\pointset S^-$;
