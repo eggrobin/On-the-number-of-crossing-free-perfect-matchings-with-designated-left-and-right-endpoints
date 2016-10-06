@@ -26,7 +26,8 @@ the numbers of crossing-free perfect matchings, triangulations, and spanning cyc
 of point sets in convex position vastly predates the general problem, with the number of triangulations given by
 Euler in 1751 \cite{Euler1751}.
 
-For perfect matchings, an optimal lower bound of $\CatalanNumber {\frac n 2}$ was obtained as early as 1995 by A.~García,
+For perfect matchings, an optimal lower bound of $\CatalanNumber {\frac n 2}$ (where $\CatalanNumber k$ is the $k$th Catalan
+number, see section~\ref{TriangulationsAndCatalan}) was obtained as early as 1995 by A.~García,
 M.~Noy, and J.~Tejel \cite{GarciaNoyTejel2000}; upper bounds have been harder to come by, with the best one
 yet being asymptotically $10.05^n$, given by M.~Sharir and E.~Welzl in 2005 \cite{SharirWelzl2006}
 In that same work, an upper bound of $5.83^n$ is given for the number of crossing-free perfect matchings on a
@@ -45,7 +46,8 @@ matchings across a line that depends on the number of points in the interior of 
 (\sectionorchapterword~\ref{sectionHighlyConvex}).
 We then give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
 right endpoints for a specific family of left-to-right orderings of the left and right endpoints
-(\sectionorchapterword~\ref{sectionThreeChanges}). 
+(\sectionorchapterword~\ref{sectionThreeChanges}), namely orderings where, from left to right, the endpoint designation
+changes three times (thus left endpoints, right endpoints, left endpoints, and right endpoints).
 \sectionorchapter{Background}
 \label{sectionBackground}
 We first give some definitions, as well as existing proofs whose ideas we will use to derive our results.
@@ -156,7 +158,7 @@ so that, since $\forall k\in \N, \binom k 0 = \binom k k = 1$, we have
 \begin{equation}
 \binom k {\gh k} \preccurlyeq_k \pa{\frac{\pa{1-\gh}^{\gh-1}}{\gh^\gh}}^k \text{ uniformly in $\gh\in\intclos 0 1$.}
 \end{equation}
-\subsectionorsection{Triangulations of convex point sets and the Catalan numbers}
+\subsectionorsection{Triangulations of convex point sets and the Catalan numbers}\label{TriangulationsAndCatalan}
 A set of points is said to be \emph{in convex position} if it is in general position and
 all points are in the boundary of its convex hull.
 
@@ -254,7 +256,7 @@ As a consequence, these sets have even size, so $j=2i+1$ for some $i$.
 We thus have Segner's recurrence for the number of crossing-free perfect matchings on a convex point set.
 Since there is only one---fairly boring---crossing-free perfect matching on the empty set, we get the Catalan numbers.
 
-For a set $\pointset P$ of $n$ points in general position, it was proved by Micha~Sharir and Emo~Welzl in 2005
+For a set $\pointset P$ of $n$ points in general position, it was proved by M.~Sharir and E.~Welzl in 2005
 \cite{SharirWelzl2006} that $\Cardinality{\CFPM_{\pointset P}} \preccurlyeq_n 10.05^n$.
 
 \subsectionorsection{Bracket expressions and their relations to perfect matchings}
@@ -1073,21 +1075,24 @@ crossing-free left-alignments.
 \sectionorchapter{Highly convex matchings across a line}
 \label{sectionHighlyConvex}
 \marginfig[Point sets $\pointset L$ and $\pointset R$, both
-of size $8$. $\pointset L$ has five liminary points, shown in
+of size $9$. $\pointset L$ has five liminary points, shown in
 white. One of them is the leftmost point, the others are separated in two
 upper liminary points and three lower liminary points.
-The first two $\pointset L$-cones and the last three $\pointset L$-cones (shaded)
-are vacuous.\label{figLiminaryPoints}]{
+The first two $\lcone i$ and the last three $\lcone i$ (shaded)
+are vacuous. Note that this is true despite the presence of a non-liminary point
+between two lower liminary points (red), which just yields another vacuous cone (shaded in red).
+\label{figLiminaryPoints}]{
 \begin{tikzpicture}[scale=0.75]
 \tikzstyle{dot}=[draw,shape=circle,fill=black,scale=0.5]
 \tikzstyle{wdot}=[draw,shape=circle,fill=white,scale=0.5]
+\tikzstyle{rdot}=[draw,shape=circle,fill=red,scale=0.5]
 
 \node[wdot, label=left:$\leftmost \pointset L$] at (-5,2) (lm) {};
 \node[wdot] at (-4.25,1.1) (ll1) {};
 \node[wdot] at (-3.5,3.5) (ul1) {};
 \node[wdot] at (-3.25,0.5) (ll2) {};
 \node[wdot] at (-2.5,4) (ul2) {};
-\node[wdot] at (-2.4,0.25) (ll3) {};
+\node[wdot] at (-2.2,0.5) (ll3) {};
 
 \node at (-4,5) {$\pointset L$};
 \node at (-.5,5) {$\pointset R$};
@@ -1095,12 +1100,15 @@ are vacuous.\label{figLiminaryPoints}]{
 \node[dot] at (-3,2.25) (i2) {};
 \node[dot] at (-2.25,3) (i1) {};
 
+\node[rdot] at (-2.8,0.6) (incone) {};
+
 \draw[very thick] (-2,-1) -- (-2,6);
 
 \node[dot] at (-.25,3.25) {};
 \node[dot] at (-1.75,1) {};
 \node[dot] at (-1.5,1.7) {};
 \node[dot] at (-.8,0.75) {};
+\node[dot] at (-.6,0.7) {};
 \node[dot] at (-1,4) {};
 \node[dot] at (-.75,2.75) {};
 \node[dot] at (-.5,1.5) {};
@@ -1116,15 +1124,24 @@ are vacuous.\label{figLiminaryPoints}]{
 \draw (lm) -- ($(lm)!10cm!(i1)$);
 \draw (lm) -- ($(lm)!10cm!(i2)$);
 \draw (lm) -- (ll1) -- ($(lm)!10cm!(ll1)$);
+\draw (lm) -- (incone) -- ($(lm)!10cm!(incone)$);
 \draw (lm) -- (ll2) -- ($(lm)!10cm!(ll2)$);
 \draw (lm) -- (ll3) -- ($(lm)!10cm!(ll3)$);
 \end{scope}
 
 \begin{scope}[on background layer]
-\clip ($(lm)!10cm!(ul2)$) -- (lm.center) -- ($(lm)!10cm!(ll3)$) -- (-5,-1) -- (-5,6) -- cycle;
+\begin{scope}
+\clip ($(lm)!10cm!(ul2)$) -- (lm.center) -- ($(lm)!10cm!(incone)$) -- (-5,-1) -- (-5,6) -- cycle;
 \shade[shading=axis,
        left color=gray,
        right color=white] (-5,-1) rectangle (0,6);
+\end{scope}
+\begin{scope}
+\clip ($(lm)!10cm!(ll3)$) -- (lm.center) -- ($(lm)!10cm!(incone)$) -- cycle;
+\shade[shading=axis,
+       left color=red,
+       nearly transparent] (-5,-1) rectangle (0,6);
+\end{scope}
 \end{scope}
 \end{tikzpicture}}
 Again, we are considering crossing-free perfect matchings across a line, with a set $\pointset L$ of left-points and
