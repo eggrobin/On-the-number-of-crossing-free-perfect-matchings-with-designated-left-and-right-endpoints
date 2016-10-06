@@ -569,11 +569,13 @@ points below $\gs_{\leftmost\pointset S}$,
 so that there are as many edges reaching the vertical line $V$ below $\gs_{\leftmost\pointset S}$ as there are points
 below $\gs_{\leftmost\pointset S}$.
 
+\begin{sloppypar}
 Moreover, as the oriented angle between $\gs_{\leftmost\pointset S}$
 and the horizontal increases, points are only added to the
 set of points below $\gs_{\leftmost\pointset S}$, so that choosing the number of points below
 $\gs_{\leftmost\pointset S}$ determines the sets of points
 below and above $\gs_{\leftmost\pointset S}$.
+\end{sloppypar}
 
 Further, since points above $\gs_{\leftmost\pointset S}$ must reach the vertical line $V$ above
 $\gs_{\leftmost\pointset S}$, and correspondingly for points below,
@@ -673,6 +675,7 @@ set of right-points. Moreover, we pick a vertical line $V$ separating $\pointset
 In this \sectionorchapterword and the following one, we will use the terms crossing-free left- and right-alignments
 to mean crossing-free left- and right-alignments on $V$.
 
+\begin{sloppypar}
 In the previous \sectionorchapterword, given a crossing-free perfect matching $\gm$, we constructed crossing-free
 left- and right-alignments $\gl$ and $\gr$ (see figure~\ref{figConstructCFA}). Let us call these
 crossing-free alignments the \emph{decomposition} $\decomposition$ of $\gm$,
@@ -697,6 +700,7 @@ and then composing the resulting alignments yields the initial matching.
 \PMAL_{\pointset P}
 \end{tikzcd}\]
 We will call the elements of $\CFLA_{\pointset L, V}\Cartesian\CFRA_{\pointset R, V}$ \emph{pairs of alignments}.
+\end{sloppypar}
 
 The result of Sharir and Welzl is proved in two steps. First we see
 from the commutative diagram that $\CFPMAL_{\pointset P}$ lies within the image of
@@ -1068,7 +1072,7 @@ Then, there is no crossing-free right-alignment $\gr$ such that $\tuple{\gl,\gr}
 for all crossing-free right-aligments $\gr$, $\tuple{\gl,\gr}$ is overcounted.
 
 This condition motivates some definitions.
-We will call a crossing-free left-alignment $\gl$ \emph{overcounted} if for any crossing-free right-alignment $\gr$,
+We will call a crossing-free left-align\-ment $\gl$ \emph{overcounted} if for any crossing-free right-align\-ment $\gr$,
 $\tuple{\gl,\gr}$ is overcounted. We will call a left cone of $\pointset L$ \emph{vacuous} if it does not contain a point
 from $\pointset R$. 
 Moreover, we will write that a conifer $\gk$ is \emph{vacuous} if for some $p\in\pointset L$,
