@@ -1051,14 +1051,20 @@ Note that $\conification$ is in general not bijective, see figure~\ref{figCrossi
 
 Now, note that
 the map $\conification$ has the property that for any set of segments $A=\setst{\gs_p}{p\in\pointset L}$ realizing $\gl$,
-$\gs_p$ lies inside the cone $\conification_\gl\of{p}$. Since the edges of a matching $\gm$ realize the crossing-free
-alignments $\decomposition\of{\gm}$, $\conification_\gl\of{p}$ must contain the right-point to which $p$ is matched.
+$\gs_p$ lies inside the cone $\conification_\gl\of{p}$. Since the edges of a crossing-free perfect matching $\gm$
+realize the crossing-free alignments $\decomposition\of{\gm}=\tuple{\gl,\gr}$,
+$\conification_\gl\of{p}$ must contain the right-point to which $\gm$ matches $p$.
 This extends the property illustrated by figure~\ref{figConesNeedPoints} to the whole of $\pointset L$.
 
-In particular, this means that if there is no right-point in $\conification_\gl\of{p}$,
-then there is no crossing-free right-alignment $\gr$ such that $\tuple{\gl,\gr}$ is in the image of $\decomposition$.
+This property allows us to derive a necessary condition that a pair of alignments has to fulfill in order not to be overcounted.
+Consider a crossing-free left-alignment $\gl$ such that, for some $p\in\pointset L$,
+there is no right-point in $\conification_\gl\of{p}$.
+Then, there is no crossing-free right-alignment $\gr$ such that $\tuple{\gl,\gr}$ is in the image of $\decomposition$\idest
+for all crossing-free right-aligments $\gr$, $\tuple{\gl,\gr}$ is overcounted.
+
+This condition motivates some definitions.
 We will call a crossing-free left-alignment $\gl$ \emph{overcounted} if for any crossing-free right-alignment $\gr$,
-$\tuple{\gl,\gr}$ is overcounted. We will call a left cone \emph{vacuous} if it does not contain a point
+$\tuple{\gl,\gr}$ is overcounted. We will call a left cone of $\pointset L$ \emph{vacuous} if it does not contain a point
 from $\pointset R$. 
 Moreover, we will write that a conifer $\gk$ is \emph{vacuous} if for some $p\in\pointset L$,
 $\gk\of{p}$ is vacuous. Thus, if $\conification_\gl$ is vacuous, $\gl$ is overcounted.
@@ -1121,7 +1127,9 @@ are vacuous.\label{figLiminaryPoints}]{
        right color=white] (-5,-1) rectangle (0,6);
 \end{scope}
 \end{tikzpicture}}
-We will now use convexity considerations to give an upper bound on the number of non-vacuous left conifers.
+Again, we are considering crossing-free perfect matchings across a line, with a set $\pointset L$ of left-points and
+a set $\pointset R$ of right-points separated by a vertical line $V$.
+We will now examine the properties of the convex hull to give an upper bound on the number of non-vacuous left conifers;
 Let us first define some concepts related to convex hulls.
 For a point set $\pointset T$ in general position, the
 \emph{extreme points of $\pointset T$} are the points of $\pointset T$ that
