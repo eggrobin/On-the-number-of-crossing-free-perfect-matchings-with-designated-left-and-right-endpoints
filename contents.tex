@@ -1128,40 +1128,51 @@ are vacuous.\label{figLiminaryPoints}]{
 \end{scope}
 \end{tikzpicture}}
 Again, we are considering crossing-free perfect matchings across a line, with a set $\pointset L$ of left-points and
-a set $\pointset R$ of right-points separated by a vertical line $V$.
+a set $\pointset R$ of right-points, with $\Cardinality{\pointset L} = \Cardinality{\pointset R} = k = \frac n 2$,
+separated by a vertical line $V$.
 We will now examine the properties of the convex hull to give an upper bound on the number of non-vacuous left conifers;
+as observed at the end of the previous \sectionorchapterword, this will yields an upper bound on the number of non-overcounted
+crossing-free left-alignments, and by applying the same argument on the right, we will derive an upper bound on the number
+of non-overcounted pairs of alignment---thus an upper bound on the number of crossing-free perfect matchings across a line.
+
 Let us first define some concepts related to convex hulls.
 For a point set $\pointset T$ in general position, the
-\emph{extreme points of $\pointset T$} are the points of $\pointset T$ that
+\emph{extreme points of $\pointset T$} are those that
 are in the boundary of the convex hull of $\pointset T$.
 For $\pointset S\Subset \pointset L$, the
 \emph{liminary points of $\pointset S$} are the points of $\pointset S$ which are extreme points
-of $\pointset S\Union \pointset R$, see figure~\ref{figLiminaryPoints}.
-Note that $\leftmost\pointset S$ is a liminary point of $\pointset S$, and that
-the liminary points of $\pointset L$ are extreme points of $\pointset P$.
+of $\pointset S\Union \pointset R$, see figure~\ref{figLiminaryPoints} which illustrates
+the special case $\pointset S=\pointset L$.
+Note that the liminary points of $\pointset L$ are extreme points of $\pointset P$, and that
+for any $\pointset S\Subset\pointset L$, $\leftmost\pointset S$ is a liminary point of $\pointset S$.
 
-Note that around $\leftmost\pointset L$, the liminary points of $\pointset L$ other than
-$\leftmost\pointset L$ are separated by
-$\pointset R$, that is, clockwise aronud $\pointset L$, one subset of the liminary points of $\pointset L$ appears
-first, followed by
-all points of $\pointset R$ and the non-liminary points of $\pointset L$,
-followed by the rest of the liminary points of $\pointset L$ (except $\leftmost\pointset L$).
-We will call those liminary points of $\pointset L$ which appear before $\pointset R$ the \emph{upper
-liminary points of $\pointset L$},
-and those that appear after $\pointset R$ the \emph{lower liminary points of $\pointset L$}.
+Let $\pointset S\Subset\pointset L$. Observe that,
+clockwise around $\leftmost\pointset S$, one subset of the liminary points of $\pointset S$ appears
+first, followed by all points of $\pointset R$,
+followed by the rest of the liminary points of $\pointset S$ (except $\leftmost\pointset S$).
+We will call those liminary points of $\pointset S$ which appear before $\pointset R$ the \emph{upper
+liminary points of $\pointset S$},
+and those that appear after $\pointset R$ the \emph{lower liminary points of $\pointset S$}.
+Again, figure~\ref{figLiminaryPoints} illustrates the special case $\pointset S=\pointset L$.
 
-If there are $\gD_1$ upper liminary points of $\pointset L$, then the first $\gD_1$ left
-$\pointset L$-cones are vacuous.
-Similarly, if there are $\gD_2$ lower liminary points of $\pointset L$, then the last
-$\gD_2$ left $\pointset L$-cones are vacuous. Moreover, for any non-vacuous left $\pointset L$-cone
-$\mathscr{k}$, any upper liminary points
-of $\pointset L$ are liminary points of the
-subset of $\pointset L$ above $\mathscr{k}$, and any lower liminary points of $\pointset L$ are
-liminary points of the
-subset of $\pointset L$ below $\mathscr{k}$, so that we get the recurrence
-\[\gcp_{k,\gD}\DefineAs\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gcp_{i,\gD_1}\gcp_{k-i-1,\gD_2}\text,\]
-where $\gcp_{k,\gD}$ is an upper bound on the number of non-vacuous left conifers on $k$ points
-of which at least $\gD$ are liminary. The maximum runs over nonnegative $\gD_1$ and $\gD_2$.
+If there are $\gD_1$ upper liminary points of $\pointset S$, then the cones $\scone{1}$ through
+$\scone{\gD_1}$ are vacuous.
+Similarly, if there are $\gD_2$ lower liminary points of $\pointset S$, then the
+cones $\scone{k-\gD_2}$ through $\scone{k}$ are vacuous. This also shown in figure~\ref{figLiminaryPoints} in the case
+$\pointset S=\pointset L$.
+
+Moreover, for a non-vacuous cone $\scone {i+1}$, consider the points $\pointset S^-$ above $\scone {i+1}$ and the points
+$\pointset S^+$ below $\scone {i+1}$. Observe that any upper liminary points
+of $\pointset S$ are liminary points of $\pointset S^-$, and any lower liminary points of $\pointset S$ are
+liminary points of $\pointset S^-$. 
+
+We can now define an upper bound $\gcp_{k,\gD}$ on the number of non-vacuous left conifers on $k$ left-points
+of which at least $\gD$ are liminary. We take the maximum over the (nonnegative) values of $\gD_1$ and
+$\gD_2$, with $\gD_1+\gD_2=\gD-1$ (since the leftmost point is liminary, but neither upper nor lower liminary).
+Given the numbers of upper and lower liminary points, we take the sum over the choices of
+$\gk\of{\leftmost\pointset L}=\lcone {i+1}$, and excluding values of $i$ which correspond to vacuous cones by the
+observations above. This yields the recurrence
+\[\gcp_{k,\gD}\DefineAs\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gcp_{i,\gD_1}\gcp_{k-i-1,\gD_2}\text.\]
 Moreover, we can start that recurrence with
 \begin{align*}
 \gcp_{k,0}&\DefineAs\gcp_{k,1}\text{ for $k>0$,}\\
