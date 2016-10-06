@@ -8,6 +8,7 @@ Euclidean plane has non-crossing straight edges.
 In 1935, K.~Wagner proved \cite{Wagner1936} that any planar graph has such an
 embedding.
 
+\begin{sloppypar}
 A natural enumerative question is then, given a vertex set of $n$ points in the Euclidean plane,
 to bound the number of plane graphs of a certain sort (cycles, matchings, \etc.) which can be
 drawn with non-crossing straight edges.
@@ -15,6 +16,7 @@ For spanning cycles, the question was introduced by M.~Newborn and W.~O.~J.~Mose
 and a super-exponential upper bound was given.
 In 1980, M.~Ajtai, V.~Chvátal, M.~Newborn, and E.~Szemerédi \cite{AjtaiChvatalNewbornSzemeredi1982}
 proved that there are only exponentially many crossing-free geometric graphs on a given point set.
+\end{sloppypar}
 
 Exponential bounds for various sorts of graphs were then improved, in particular for triangulations---the
 maximal crossing-free geometric graphs. One of the interesting features of triangulations is that finding a bound for
@@ -61,13 +63,13 @@ whose endpoints are elements of $\pointset P$.
 A geometric graph can be described as a simple graph (in the combinatorial sense)
 on the vertices $\pointset P$, where the edge $\set{p,q}$ corresponds to the segment joining
 $p$ and $q$.
+\begin{sloppypar}
 \begin{definition}[crossing-free]
 A geometric graph is \emph{crossing-free} if no two edges share points other than
 their endpoints; it is called \emph{crossing} otherwise.
 \end{definition}
 Note that being crossing-free implies that the corresponding simple graph is planar, and that the
 geometric graph is a plane embedding.
-\begin{sloppypar}
 \begin{definition}[triangulation]
 A \emph{triangulation} is a maximal crossing-free geometric graph, that is, a
 geometric graph such that for all $p$ and $q$ in $\pointset P$ that are not joined by a
@@ -522,8 +524,10 @@ Such a set of segments is said to \emph{realize} $\gl$.
 Correspondingly, we define a \emph{crossing-free right-alignment}, where ``right'' and ``left'' are swapped in the
 definition.
 \end{definition}
+\begin{sloppypar}
 A crossing-free left-alignment of five points, with a realizing set of segments---drawn as arrows---is shown in
 figure~\ref{figCrossingFreeAlignment}.
+\end{sloppypar}
 
 \marginfig[A crossing-free left-alignment of five points. Once the index of the leftmost point is chosen (thick segment),
 the rest consists of two crossing-free left-alignments of $i$ and $k-i-1$
@@ -1205,7 +1209,7 @@ We can start that recurrence with
 since there is at least one liminary point of $\pointset L$ if it is nonempty (the leftmost one), and if all
 points are liminary, only one cone is non-vacuous.
 
-This is a bound on the number of non-overcounted crossing-free left-alignments of $\pointset L$.
+This is a bound on the number of non-overcounted crossing-free left-align\-ments of $\pointset L$.
 Since the same argument applies on the right, we get the following upper bound on
 $\gn_{\pointset P}\of{\langle^k\rangle^k}$ when $\pointset P$ has $\gG$ extreme points.\[
 \gn_{\pointset P}\of{\langle^k\rangle^k}\leq
@@ -1298,11 +1302,13 @@ on all of $\gn_{\pointset P}$ for comparison.\label{figConvexityBound}}
 \end{figure}
 \sectionorchapter{Three changes of bracket direction}
 \label{sectionThreeChanges}
+\begin{sloppypar}
 We now consider perfect matchings consistent with bracket expressions which have three
 changes of bracket directions\idest bracket expressions of the form
 $\langle^a\rangle^b\langle^c\rangle^d$,
 $a$ opening brackets, $b$ closing brackets, $c$ opening brackets, $d$ closing brackets, where
 $a-b=d-c\geq 0$ and $a+b+c+d\DefinitionOf n$.
+\end{sloppypar}
 
 In term of points, this means that four sets can be separated by vertical lines, from left
 to right, $a$ left-points forming the set $\pointset A$, $b$ right-points forming $\pointset B$,
@@ -1660,11 +1666,13 @@ In other words, the numbers of the edges emanating from any nonempty $\pointset 
 a maximal set of consecutive elements of $[a]\setminus S$. This motivates the following
 definition.
 
+\begin{sloppypar}
 \begin{definition}[cells of a set of integers]
 The \emph{cells} of $S'\Subset \N$, written $\cells\of{S'}$, is the set of maximal subsets of
 consecutive elements $S'$.
 \end{definition}
 For instance, $\cells\of{\set{2,3,5,6,7,10,13,14}}=\set{\set{2,3},\set{5,6,7},\set{10},\set{13,14}}$.
+\end{sloppypar}
 
 Then, we can improve the $\binom a b \CatalanNumber b$ factor in the bound (in which the binomial comes from
 the choice of $\pointset S$, and the Catalan number comes
