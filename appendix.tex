@@ -28,7 +28,7 @@ spc[a_, b_] := spc[a, b] =
   Sum[spc[i, i] spc[a - i - 1, b - i], {i, 0, b}];
 \end{verbatim}
 Note that we replace the Catalan number $\CatalanNumber i$ in the summands by $\spc\of{i,i}$ in
-order to benefit from the memoizatoin of Catalan numbers. While this does not visibly change the
+order to benefit from the memoization of Catalan numbers. While this does not visibly change the
 order of the asymptotics for the values of $i$ that we are considering, it improves performance by
 a noticeable constant.
 
@@ -41,7 +41,7 @@ $\gn_{\pointset P}\of{\langle^a\rangle^b\langle^b\rangle^a}$ is at most $\BigO\o
 \includegraphics[scale=1]{spc-asymptotics}
 \caption{Plots of $\pa{4^{a}\spc\of{a,b}}^{\frac{1}{a+b}}$,
 where $a=\frac{b}{\gh}$,
-as a fuction of $b$, for various values of $\gh$. As $b$ tends to infinity, this tends to the base
+as a function of $b$, for various values of $\gh$. As $b$ tends to infinity, this tends to the base
 of the exponential bound.
 We use $4^a$ rather than $\CatalanNumber a$ because we want to get rid of as many polynomial factors
 as possible, since we are looking for the exponential behaviour.

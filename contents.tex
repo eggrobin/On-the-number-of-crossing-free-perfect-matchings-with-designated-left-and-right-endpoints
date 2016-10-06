@@ -1,4 +1,5 @@
 \sectionorchapter*{Introduction}
+\eggorcadmo{}{\label{introduction}\addcontentsline{toc}{chapter}{\nameref{introduction}}}
 In the study of plane embeddings of planar graphs, also known as plane graphs,
 embeddings with non-crossing straight edges (called crossing-free geometric graphs) are of particular
 interest.
@@ -47,7 +48,7 @@ matchings across a line that depends on the number of points in the interior of 
 We then give new bounds on the number of crossing-free perfect matchings on a point set with designated left and
 right endpoints for a specific family of left-to-right orderings of the left and right endpoints
 (\sectionorchapterword~\ref{sectionThreeChanges}), namely orderings where, from left to right, the endpoint designation
-changes three times (thus left endpoints, right endpoints, left endpoints, and right endpoints).
+changes three times (thus left endpoints, then right endpoints, left endpoints, and finally right endpoints).
 \sectionorchapter{Background}
 \label{sectionBackground}
 We first give some definitions, as well as existing proofs whose ideas we will use to derive our results.
@@ -278,8 +279,10 @@ encountered never exceeds the number of opening brackets encountered.
 A \emph{well-formed bracket expression} is a well-formed prefix with the same number of opening and
 closing brackets.
 
-It is a well-known result, shown\footnote{Specifically, Catalan showed that the recurrence (\ref{CatalanRecurrence})
-counts the number of parenthesizings of $n+1$ factors.} by E.~C.~Catalan in 1838 \cite{Catalan1838}, that the
+It is a well-known result, shown\footnote{D.~Tamari showed that there were as many well-formed bracket
+expressions with $n$ parentheses as there are correct parenthesizings of $n+1$ factors. In turn,
+E.~C.~Catalan had shown in 1838 \citep{Catalan1838} that the recurrence (\ref{CatalanRecurrence}) counts
+the number of parenthesizings of $n+1$ factors.} by D.~Tamari in 1962 \cite{Tamari1962}, that the
 number of well-formed bracket expressions
 of length $2k$ is the Catalan number $\CatalanNumber k$. In fact, the recurrence can readily be seen from
 a grammatical definition of well-formed bracket expressions,\footnote{We have not enclosed nonterminals
@@ -608,6 +611,8 @@ to the left of the vertical line yields segments that realize $\gl$.
 Similarly, $\gr$ is a crossing-free right-alignment of $\pointset R$ on the vertical line.
 \end{proof}
 
+\sectionorchapter{Analysing the overcounting in the upper bound for matchings across a line}
+\label{sectionOvercounting}
 \marginfig[Composing crossing-free alignments, only to get a crossing perfect
 matching.\label{figCrossingPMAL}]{
 \begin{tikzpicture}[scale=0.6]
@@ -656,8 +661,6 @@ but one that does not decompose to the original alignments.\label{figWeirdAligme
 \draw[->,very thick] (r1) -- (a1);
 \draw[->,very thick] (l2) -- (a1);
 \end{tikzpicture}}
-\sectionorchapter{Analysing the overcounting in the upper bound for matchings across a line}
-\label{sectionOvercounting}
 The bound given in the previous \sectionorchapterword for the number of matchings across a line is not optimal;
 an example is given by Sharir and Welzl of a crossing-free left-alignment $\gl$ and a crossing-free
 right-alignment $\gr$ such that $\gr^{-1}\Compose \gl$ is not crossing-free (see figure~\ref{figCrossingPMAL}).
@@ -998,16 +1001,6 @@ together with the conifer $\conification_\gl$.\label{figConification}]{
 \end{scope}
 \draw[very thick] (0,5) -- (0,0);
 \end{tikzpicture}}
-Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$,
-this allows us to construct a left conifer $\conification_\gl$
-as follows:
-\begin{enumerate}
-\item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
-\item $\conification_\gl\of{p}=\conification_{\gl^-}\of{p}$ for $p\in\pointset S^-$;
-\item $\conification_\gl\of{p}=\conification_{\gl^+}\of{p}$ for $p\in\pointset S^+$.
-\end{enumerate}
-See figure~\ref{figConification} for an example.
-
 \marginfig[It is impossible to construct a vertical line $V$ to the right of these four points and a
 crossing-free left-alignment $\gl$ of these points on $V$ such that $\conification_\gl$ is the conifer
 shown. Indeed, realizing segments $\gs_p$ and $\gs_q$ would have to lie within
@@ -1042,6 +1035,16 @@ the red and green cones respectively, and thus they would cross, a contradiction
        nearly transparent] (-1,0) rectangle (0,5);
 \end{scope}
 \end{tikzpicture}}
+Given a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$,
+this allows us to construct a left conifer $\conification_\gl$
+as follows:
+\begin{enumerate}
+\item $\conification_\gl\of{\leftmost\pointset L}=\lcone{\gl\of{\leftmost\pointset L}}$;
+\item $\conification_\gl\of{p}=\conification_{\gl^-}\of{p}$ for $p\in\pointset S^-$;
+\item $\conification_\gl\of{p}=\conification_{\gl^+}\of{p}$ for $p\in\pointset S^+$.
+\end{enumerate}
+See figure~\ref{figConification} for an example.
+
 This gives an injective map\begin{align*}
 \FunctionDefinition {\conification} {\CFLA_{\pointset L, V}} {\LC {\pointset L}} {\gl} {\conification_\gl}
 \end{align*}
@@ -1108,7 +1111,7 @@ between two lower liminary points (red), which just yields another vacuous cone 
 \node[dot] at (-1.75,1) {};
 \node[dot] at (-1.5,1.7) {};
 \node[dot] at (-.8,0.75) {};
-\node[dot] at (-.6,0.7) {};
+\node[dot] at (-.6,1.1) {};
 \node[dot] at (-1,4) {};
 \node[dot] at (-.75,2.75) {};
 \node[dot] at (-.5,1.5) {};
@@ -1917,7 +1920,7 @@ Asymptotically, this yields\[
     {\pa{\frac{1}{\gh+1}}^{\frac{1}{\gh+1}}}}^{m}
 = \pa{\underbrace{4^{\frac{1}{\gh + 1}} \frac{\gh+1}{\gh^{\frac{\gh}{\gh+1}}}}_{y_\gh}}^m
 \]
-uniformly in $\gh\in\intclos 0 1$. See figue~\ref{figSpcBound} for a plot.
+uniformly in $\gh\in\intclos 0 1$. See figure~\ref{figSpcBound} for a plot.
 \begin{figure}[htb!]
 \centering
 \includegraphics[scale=0.75]{spc-bound}
@@ -1985,9 +1988,11 @@ This yields a bound of\[
 \prod{i=1}[r]\spc\of{a+\gt\of{i},b_i}
              \spc\of{a+\gt\of{i}-b_i,c_i}\text,\]
 where $\gt\of{i}\DefineAs\sum{j=1}[i-1]\pa{c_j-b_j}$.
-This bound is super-exponential: when $b_i=c_i=1$ for all $i$\idest for the bracket expression
-$\langle^a\rangle\langle\dotsb\rangle\langle\rangle^a$,
-it yields ${\CatalanNumber a}^2 \spc\of{a, 1}^{2r}={\CatalanNumber a}^2 a^{2r}$. It may however be possible
+This bound is super-exponential: when $b_i=c_i=1$ for all $i$, we get
+\[
+\gn_{\pointset P}\of{\langle^a\rangle\langle\dotsb\rangle\langle\rangle^a}
+\leq {\CatalanNumber a}^2 \spc\of{a, 1}^{2r}={\CatalanNumber a}^2 a^{2r}\text.\]
+It may however be possible
 to improve it with overcounting analyses similar to the one we suggest below.
 
 Let us come back to crossing-free perfect matchings across a line. We have, based on conifers,\[
@@ -2016,5 +2021,5 @@ mentioned the combinatorial interpretation of $\spc$, without which solving $\gc
 more difficult.
 
 Moreover, I thank Pascal~Leroy for jokingly suggesting the word ``conifer'', which turned out to be more appropriate than expected,
-and, of course, the \emph{On-Line Encyclopedia of Integer Sequences}, and \emph{Mathematica}.
+and, of course, I thank the \emph{On-Line Encyclopedia of Integer Sequences}, and \emph{Mathematica}.
 
