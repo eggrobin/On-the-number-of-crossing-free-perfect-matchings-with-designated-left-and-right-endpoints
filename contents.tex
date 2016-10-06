@@ -1923,7 +1923,7 @@ We thus have the following asymptotic bound:\begin{equation}
 uniformly in $a$, $b$, $c$, and $d$ such that $a+b+c+d=n$.
 \sectionorchapter{Outlook}
 As previously observed, uniform bounds on $\gn_{\pointset P}$ can be used to bound the number of
-crossing-free perfect matchings, by summation over bracket expressions. The bound derived in the previous
+crossing-free perfect matchings, by summation over all bracket expressions. The bound derived in the previous
 \sectionorchapterword only applies to a limited class of bracket expressions, and so it does not by itself
 yield such an overall upper bound.
 
@@ -1933,11 +1933,11 @@ to the bracket expressions considered in \sectionorchapterword~\ref{sectionThree
 
 We conclude this work by outlining a way in which the bound from \sectionorchapterword~\ref{sectionThreeChanges}
 may be extended to arbitrary bracket expressions, and by discussing how conifers can be used to further
-refine bounds regardless of convexity considerations.
+refine bounds regardless of the number of extreme points.
 
-Recall that $\spc\of{a, b}$ counts the choices of the indices on the left side of the strip $\gS$
-of the long edges crossing $\gS$, together with (an upper bound on) right-alignments of the
-right-points by within that strip, separated by long edges.
+Recall that $\spc\of{a, b}$ counts the choices of ordering of the long edges crossing the strip $\gS$ on the left side of
+that strip, together with (an upper bound on) right-alignments of the
+right-points in the cells of that strip separated by the long edges.
 Looking at an arbitrary well-formed bracket expression, we can separate it into\begin{enumerate}
 \item a sequence of opening brackets $\langle^a$;
 \item a sequence of expressions of the form $\rangle^{b_i}\langle^{c_i}$;
@@ -1952,21 +1952,24 @@ to $\langle^a$. Then, looking at a strip $\gS_i$, where the yet-unmatched points
 its left side in a known vertical order, we choose which ones will cross the strip. This determines the size of
 the sets $\pointset B_{ij} \Subset \pointset B_i$ of right-points within $\gS_i$ that are separated
 by strip-crossing edges. Since the points from which the strip-crossing edges emanate are known,
-the sizes determine the sets. We then pick crossing-free left-alignments of the $\pointset B_{ij}$.
+the sizes determine the sets, since, as in section~\ref{MatchingsAcrossALine}, rotating an edge clockwise around its
+left endpoint only adds to the set of points above it.
+We then pick crossing-free right-alignments of the $\pointset B_{ij}$.
 On the right side of the $\gS_i$, we pick the vertical indices of the
 strip-crossing edges, and this determines the sizes, of the sets $\pointset C_{ij}\Subset \pointset C_i$
-of right-points in $\gS_i$ separated by strip-crossing edges, and thus the $\pointset C_{ij}$ themselves.
+of left-points in $\gS_i$ separated by strip-crossing edges, and thus the $\pointset C_{ij}$ themselves.
 We pick crossing-free left-alignments of the $\pointset C_{ij}$, and move on to strip $\gS_{i+1}$.
-When finally we reach the points $\pointset D$ corresponding to $\rangle^d$, we pick a crossing-free right
+When we finally reach the points $\pointset D$ corresponding to $\rangle^d$, we pick a crossing-free right
 alignment of them.
 
 This yields a bound of\[
-\gn_{\pointset P}\of{\langle^a\rangle^{b_1}\langle^{c_1}\cdots\rangle^{b_r}\langle^{c_r}\rangle^d} \leq
+\gn_{\pointset P}\of{\langle^a\rangle^{b_1}\langle^{c_1}\dotsb\rangle^{b_r}\langle^{c_r}\rangle^d} \leq
 \CatalanNumber a \CatalanNumber d
 \prod{i=1}[r]\spc\of{a+\gt\of{i},b_i}
              \spc\of{a+\gt\of{i}-b_i,c_i}\text,\]
 where $\gt\of{i}\DefineAs\sum{j=1}[i-1]\pa{c_j-b_j}$.
-This bound is super-exponential: for the bracket expression $\langle^a\rangle\langle\cdots\rangle\langle\rangle^a$,
+This bound is super-exponential: when $b_i=c_i=1$ for all $i$\idest for the bracket expression
+$\langle^a\rangle\langle\dotsb\rangle\langle\rangle^a$,
 it yields ${\CatalanNumber a}^2 \spc\of{a, 1}^{2r}={\CatalanNumber a}^2 a^{2r}$. It may however be possible
 to improve it with overcounting analyses similar to the one we suggest below.
 
@@ -1977,13 +1980,24 @@ Let us come back to crossing-free perfect matchings across a line. We have, base
 \]
 where in the first sum $i$ corresponds to the choice of the left $\pointset L$-cone $\lcone {i+1}$,
 and in the second sum $j$ corresponds to the choice of the right $\pointset R$-cone $\rcone {j+1}$.
-When expanding the product of these sums, if $i=j$, we are counting crossing-free perfect matchings
+When expanding the product of these sums, the terms with $i=j$ count crossing-free perfect matchings
 where the leftmost point is matched to the rightmost point. However, recall that to avoid overcounting,
 a point must be matched within its cone. Since there is a single left-cone of $\pointset L$ that contains the
 rightmost point, and a single right-cone of $\pointset R$ that contains the leftmost point, all but at most one
-of the $i=j$ terms are overcounted. We then get the bound\[
+of the terms with $i=j$ are overcounted. We then get the bound\[
 \gn_{\pointset P}\of{\langle^k\rangle^k}\leq
 \max_{i\in\set{0,\dotsc,k-1}} \pa{\CatalanNumber i \CatalanNumber {k-i-1}}^2
 + \sum{i=0}[k-1]\sum{\substack{j=0\\ j\neq i}}[k-1] \CatalanNumber i \CatalanNumber {k-i-1}
                                                    \CatalanNumber j \CatalanNumber {k-j-1}\text.\]
 It may then be possible to extend this reasoning to the rest of the conifers to get an asymptotic improvement.
+\subsectionorsection*{Acknowledgements}
+I would like to thank Emo~Welzl and Manuel~Wettstein for providing me with the opportunity to work on this subject, and for
+their supervision and their numerous suggestions. In particular, Emo~Welzl suggested that I look for a bound dependent on
+the number of extreme points, when I had used the reasoning of \sectionorchapterword~\ref{sectionHighlyConvex} only to
+get a constant-factor improvement based on the fact that there are at least three extreme points, and Manuel~Wettstein
+mentioned the combinatorial interpretation of $\spc$, without which solving $\gcp_{k,\gD}$ would have been far
+more difficult.
+
+Moreover, I thank Pascal~Leroy for jokingly suggesting the word ``conifer'', which turned out to be more appropriate than expected,
+and, of course, the \emph{On-Line Encyclopedia of Integer Sequences}, and \emph{Mathematica}.
+
