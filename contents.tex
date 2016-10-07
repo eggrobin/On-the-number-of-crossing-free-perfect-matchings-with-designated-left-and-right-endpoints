@@ -1160,9 +1160,9 @@ Again, we are considering crossing-free perfect matchings across a line, with a 
 a set $\pointset R$ of right-points, with $\Cardinality{\pointset L} = \Cardinality{\pointset R} = k = \frac n 2$,
 separated by a vertical line $V$.
 We will now examine the properties of the convex hull to give an upper bound on the number of non-vacuous left conifers;
-as observed at the end of the previous \sectionorchapterword, this will yields an upper bound on the number of non-overcounted
+as observed at the end of the previous \sectionorchapterword, this will be an upper bound on the number of non-overcounted
 crossing-free left-alignments, and by applying the same argument on the right, we will derive an upper bound on the number
-of non-overcounted pairs of alignment---thus an upper bound on the number of crossing-free perfect matchings across a line.
+of non-overcounted pairs of alignments---thus an upper bound on the number of crossing-free perfect matchings across a line.
 
 Let us first define some concepts related to convex hulls.
 For a point set $\pointset T$ in general position, the
@@ -1199,7 +1199,7 @@ We can now define an upper bound $\gcp_{k,\gD}$ on the number of non-vacuous lef
 of which at least $\gD$ are liminary. We take the maximum over the (nonnegative) values of $\gD_1$ and
 $\gD_2$, with $\gD_1+\gD_2=\gD-1$ (since the leftmost point is liminary, but neither upper nor lower liminary).
 Given the numbers of upper and lower liminary points, we take the sum over the choices of
-$\gk\of{\leftmost\pointset L}=\lcone {i+1}$, and excluding values of $i$ which correspond to vacuous cones by the
+$\gk\of{\leftmost\pointset L}=\lcone {i+1}$, excluding values of $i$ which correspond to vacuous cones by the
 observations above. This yields the recurrence
 \[\gcp_{k,\gD}\DefineAs\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gcp_{i,\gD_1}\gcp_{k-i-1,\gD_2}\text.\]
 We can start that recurrence with
