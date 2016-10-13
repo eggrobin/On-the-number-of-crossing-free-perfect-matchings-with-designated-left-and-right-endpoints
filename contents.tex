@@ -1894,10 +1894,12 @@ by chaining
 \item an opening bracket, which will be unmatched;
 \item a prefix containing the last $\gD_2$ unmatched opening brackets.
 \end{enumerate}
+Indeed, such a decomposition of is unique, since $i$ is the number of opening brackets
+before the $\pa{\gD+1}$th unmatched opening bracket.
 Thus, for any nonnegative $\gD_1$ and $\gD_2$ such that $\gD_1+\gD_2=\gD-1$,\[
 \gw_{k,\gD}=\sum{i=\gD_1}[k-\gD_2-1]\gw_{i,\gD_1}\gw_{k-i-1,\gD_2}\text.
 \]
-In particular,\[
+In particular, we have the trivial maximum (over equal values)\[
 \gw_{k,\gD}=\max_{\gD_1+\gD_2=\gD-1}\sum{i=\gD_1}[k-\gD_2-1]\gw_{i,\gD_1}\gw_{k-i-1,\gD_2}\text.
 \]
 It follows that $\gw=\gcp$; this completes the proof.
