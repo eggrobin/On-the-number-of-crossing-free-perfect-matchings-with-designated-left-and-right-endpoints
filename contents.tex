@@ -1890,9 +1890,11 @@ Finally, we look at the sum. For any nonnegative $\gD_1$ and $\gD_2$ such that $
 counts the number of ways of constructing a bracket expression with $k$ opening brackets of which $\gD$ are unmatched
 by chaining
 \begin{enumerate}
-\item a prefix containing the first $\gD_1$ unmatched opening brackets;
+\item a prefix with $i$ opening brackets containing the first $\gD_1$
+unmatched opening brackets;
 \item an opening bracket, which will be unmatched;
-\item a prefix containing the last $\gD_2$ unmatched opening brackets.
+\item a prefix with $k-i-1$ opening brackets containing the last $\gD_2$
+unmatched opening brackets.
 \end{enumerate}
 Indeed, such a decomposition of is unique, since $i$ is the number of opening brackets
 before the $\pa{\gD+1}$th unmatched opening bracket.
