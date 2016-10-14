@@ -833,7 +833,7 @@ $\scone {\Cardinality{\pointset S}}$.
 Note that there are $i$ points of $\pointset S$ above the interior of $\scone {i+1}$,
 and $\Cardinality {\pointset S} - i - 1$ points below.
 We will use the term \emph{left cone of $\pointset L$} to mean
-$\scone {i}$ for some $\pointset S\Subset\pointset L$ and some $i\in[\pointset S]$.
+$\scone {j}$ for some $\pointset S\Subset\pointset L$ and some $j\in[\pointset S]$.
 
 Observe that for a crossing-free left-alignment $\gl$ of $\pointset L$ with
 $\gl\of{\leftmost\pointset L} = i+1$,
@@ -858,7 +858,7 @@ A left conifer $\gk$ on $\pointset L$ is a map from points in $\pointset L$ to l
 cones of $\pointset L$,
 satisfying the following properties:
 \begin{enumerate}
-\item $\gk\of{\leftmost\pointset L}$ is a left $\pointset L$-cone;
+\item $\gk\of{\leftmost\pointset L}=\lcone j$ for some $j\in[\pointset L]$;
 \item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\pointset L}$ is a left conifer on these points;
 \item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\pointset L}$ is a left conifer on these points.
 \end{enumerate}
@@ -885,8 +885,7 @@ See figure~\ref{figLeftConifer} for an example.
 \end{scope}
 \end{scope}
 \end{tikzpicture}
-  \caption{The conifer maps the leftmost point of $\pointset L$ to an $\pointset L$-cone,
-  in this case $\lcone 3$.
+  \caption{The conifer maps the leftmost point of $\pointset L$ to $\lcone 3$.
   This separates the other points into those above (black) and below (white) the interior of $\lcone 3$.
   The construction is continued by constructing left conifers on both subsets.}
 \end{subfigure}\hfill
@@ -2018,12 +2017,12 @@ Let us come back to crossing-free perfect matchings across a line. We have, base
 = \pa{\sum{i=0}[k-1]\CatalanNumber i \CatalanNumber {k-i-1}}
    \pa{\sum{j=0}[k-1]\CatalanNumber j \CatalanNumber {k-j-1}}\text,
 \]
-where in the first sum $i$ corresponds to the choice of the left $\pointset L$-cone $\lcone {i+1}$,
-and in the second sum $j$ corresponds to the choice of the right $\pointset R$-cone $\rcone {j+1}$.
+where in the first sum $i$ corresponds to the choice of the left cone $\lcone {i+1}$,
+and in the second sum $j$ corresponds to the choice of the right cone $\rcone {j+1}$.
 When expanding the product of these sums, the terms with $i=j$ count crossing-free perfect matchings
 where the leftmost point is matched to the rightmost point. However, recall that to avoid overcounting,
-a point must be matched within its cone. Since there is a single left-cone of $\pointset L$ that contains the
-rightmost point, and a single right-cone of $\pointset R$ that contains the leftmost point, all but at most one
+a point must be matched within its cone. Since there is a single left cone of $\pointset L$ that contains the
+rightmost point, and a single right cone of $\pointset R$ that contains the leftmost point, all but at most one
 of the terms with $i=j$ are overcounted. We then get the bound\[
 \gn_{\pointset P}\of{\langle^k\rangle^k}\leq
 \max_{i\in\set{0,\dotsc,k-1}} \pa{\CatalanNumber i \CatalanNumber {k-i-1}}^2
