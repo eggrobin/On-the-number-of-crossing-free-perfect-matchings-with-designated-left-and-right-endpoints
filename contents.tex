@@ -1191,13 +1191,14 @@ cones $\scone{k-\gD_2}$ through $\scone{k}$ are vacuous. This also shown in figu
 $\pointset S=\pointset L$.
 
 Moreover, for a non-vacuous cone $\scone {i+1}$, consider the points $\pointset S^-$ above $\scone {i+1}$ and the points
-$\pointset S^+$ below $\scone {i+1}$. Observe that any upper liminary points
-of $\pointset S$ are liminary points of $\pointset S^-$, and any lower liminary points of $\pointset S$ are
-liminary points of $\pointset S^-$. 
+$\pointset S^+$ below $\scone {i+1}$. We have $\Cardinality{\pointset S^-} = i$, and
+$\Cardinality{\pointset S^+} = \Cardinality{\pointset S}-i-1$. Observe that any upper liminary points
+of $\pointset S$ are liminary points of $\pointset S^-$, and any lower liminary points
+of $\pointset S$ are liminary points of $\pointset S^+$.
 
 We can now define an upper bound $\gcp_{k,\gD}$ on the number of non-vacuous left conifers on $k$ left-points
 of which at least $\gD$ are liminary. We take the maximum over the (nonnegative) values of $\gD_1$ and
-$\gD_2$, with $\gD_1+\gD_2=\gD-1$ (since the leftmost point is liminary, but neither upper nor lower liminary).
+$\gD_2$ satisfying $\gD_1+\gD_2=\gD-1$ (since the leftmost point is liminary, but neither upper nor lower liminary).
 Given the numbers of upper and lower liminary points, we take the sum over the choices of
 $\gk\of{\leftmost\pointset L}=\lcone {i+1}$, excluding values of $i$ which correspond to vacuous cones by the
 observations above. This yields the recurrence
