@@ -833,7 +833,7 @@ $\scone {\Cardinality{\pointset S}}$.
 Note that there are $i$ points of $\pointset S$ above the interior of $\scone {i+1}$,
 and $\Cardinality {\pointset S} - i - 1$ points below.
 We will use the term \emph{left cone of $\pointset L$} to mean
-$\scone {j}$ for some $\pointset S\Subset\pointset L$ and some $j\in[\pointset S]$.
+$\scone {j}$ for some $\pointset S\Subset\pointset L$ and some $j\in\set{1,\dotsc,\Cardinality{\pointset S}}$.
 
 Observe that for a crossing-free left-alignment $\gl$ of $\pointset L$ with
 $\gl\of{\leftmost\pointset L} = i+1$,
@@ -858,7 +858,7 @@ A left conifer $\gk$ on $\pointset L$ is a map from points in $\pointset L$ to l
 cones of $\pointset L$,
 satisfying the following properties:
 \begin{enumerate}
-\item $\gk\of{\leftmost\pointset L}=\lcone j$ for some $j\in[\pointset L]$;
+\item $\gk\of{\leftmost\pointset L}=\lcone j$ for some $j\in\set{1,\dotsc,\Cardinality{\pointset L}}$;
 \item $\gk$ restricted to the points above the interior of $\gk\of{\leftmost\pointset L}$ is a left conifer on these points;
 \item $\gk$ restricted to the points below the interior of $\gk\of{\leftmost\pointset L}$ is a left conifer on these points.
 \end{enumerate}
@@ -947,7 +947,7 @@ We thus have $\Cardinality{\LC {\pointset L}} = \CatalanNumber {\Cardinality{\po
 
 Recall that a crossing-free left-alignment $\gl$ of $\pointset L$ on $V$
 is determined by the value of $\gl\of{\leftmost\pointset L}$ and by
-crossing-free left alignments $\gl^-$ and $\gl^+$ on $V$
+crossing-free left-alignments $\gl^-$ and $\gl^+$ on $V$
 of subsets $\pointset S^-$ and $\pointset S^+$ above and below any edge
 realizing $\gl$ incident to $\leftmost\pointset L$\idest subsets above
 and below $\lcone{\gl\of{\leftmost\pointset L}}$. In other words, we have
@@ -1996,8 +1996,8 @@ On the right side of the $\gS_i$, we pick the vertical indices of the
 strip-crossing edges, and this determines the sizes of the sets $\pointset C_{ij}\Subset \pointset C_i$
 of left-points in $\gS_i$ separated by strip-crossing edges, and thus the $\pointset C_{ij}$ themselves.
 We pick crossing-free left-alignments of the $\pointset C_{ij}$, and move on to strip $\gS_{i+1}$.
-When we finally reach the points $\pointset D$ corresponding to $\rangle^d$, we pick a crossing-free right
-alignment of them.
+When we finally reach the points $\pointset D$ corresponding to $\rangle^d$, we pick a crossing-free
+right-alignment of them.
 
 This yields a bound of\[
 \gn_{\pointset P}\of{\langle^a\rangle^{b_1}\langle^{c_1}\dotsb\rangle^{b_r}\langle^{c_r}\rangle^d} \leq
